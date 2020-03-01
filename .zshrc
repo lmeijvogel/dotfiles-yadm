@@ -53,7 +53,7 @@ plugins=(ruby rvm vim-interaction gitfast zsh-autosuggestions zsh-history-substr
 
 # User configuration
 
-PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/lennaert/.local/bin"
 export PATH="$HOME/bin:$HOME/.rbenv/shims:$HOME/.rbenv/bin:$HOME/perl5/bin:$HOME/.rvm/bin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
