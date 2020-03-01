@@ -1,0 +1,97 @@
+# #!/usr/bin/env ruby
+snippet #!
+#!/usr/bin/env ruby
+
+# New Block
+endsnippet
+
+snippet n
+puts "\n"*30
+endsnippet
+
+snippet \n
+puts "\n"*30
+endsnippet
+
+snippet rbm
+require 'benchmark'
+endsnippet
+
+snippet bm
+TESTS = ${1:10_000}
+Benchmark.bmbm do |results|
+  ${2}
+end
+endsnippet
+
+snippet rep
+results.report("${1:name}:") { TESTS.times { ${2} }}
+endsnippet
+
+snippet spec
+require "spec_helper"
+
+describe ${1:class_under_spec} do
+  # Test basic functionality - Delete after first run
+  it "fails" do
+    expect(true).to eq false
+  end
+
+  it "succeeds" do
+    expect(true).to eq true
+  end
+end
+endsnippet
+
+snippet be
+before do
+  ${1}
+end
+endsnippet
+
+snippet cx
+context "when ${1}" do
+  ${2}
+end
+endsnippet
+
+snippet ds
+describe ${1} do
+  ${2}
+end
+endsnippet
+
+snippet it
+it "should ${1}" do
+  ${2}
+end
+endsnippet
+
+snippet rli
+Rails.logger.info "${1}"
+
+endsnippet
+
+snippet rle
+Rails.logger.error "${1}"
+endsnippet
+
+snippet byebug
+require 'byebug' ; byebug
+endsnippet
+
+snippet bug
+require 'byebug' ; byebug
+endsnippet
+
+snippet shot
+save_screenshot('/tmp/screenshot$1.png', full: true)
+endsnippet
+
+snippet html
+save_page('/tmp/page.html')
+endsnippet
+
+snippet pry
+binding.pry
+endsnippet

@@ -1,0 +1,1 @@
+xinput list | grep -i Touchpad | gawk '// { match($0, /id=([0-9]+)/, matches); print matches[1] }' | xargs xinput --disable

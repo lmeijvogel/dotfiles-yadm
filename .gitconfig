@@ -1,0 +1,156 @@
+[color]
+  ui = auto
+[alias]
+  # This picks up duplicate 'git' commands: 'git git status' etc.
+  git = !git
+  co = checkout
+  cob = "!f() { git checkout -b $1 origin/master; }; f"
+  com = checkout master
+  cop = checkout --patch
+  co1 = checkout HEAD~1
+  co2 = checkout HEAD~2
+  co3 = checkout HEAD~3
+  co4 = checkout HEAD~4
+  co5 = checkout HEAD~5
+
+  br = branch
+
+  ci = commit
+  cp = cherry-pick
+  c = diff --cached
+  swc = stash save --keep-index
+  citmp = commit -m TEMP
+
+  d  = diff
+  dom = diff origin/master
+  doo    = "!f() { base_branch=$(git symbolic-ref --short HEAD); git diff origin/${1:-$base_branch}; }; f"
+  mt = mergetool
+
+  # nl -v 0 - adds line numbers to the output
+  l = "!f() { git --no-pager log --color --decorate --oneline -n 10 $1; }; f"
+  ll = "!f() { git log --color --decorate --oneline $1 | less --no-init --raw-control-chars --quit-if-one-screen ; }; f"
+  loo  = "!f() { base_branch=$(git symbolic-ref --short HEAD); git --no-pager log --color --decorate --oneline -n 10 origin/${1:-$base_branch}; }; f"
+  lloo = "!f() { base_branch=$(git symbolic-ref --short HEAD); git log --color --decorate --oneline origin/${1:-$base_branch} | less --no-init --raw-control-chars --quit-if-one-screen; }; f"
+
+  fp = fetch-and-prune
+
+  # This prevents accidental pushing when I typo git-fp.
+  pf = "!f() { echo 'Please use git-pff!'; }; f"
+
+  ; Remove a commit from the history: Default is the last commit
+  uncommit = "!f() { git rebase --onto ${1:-HEAD}^ ${1:-HEAD}; }; f"
+
+  tmp    = branch -f tmp
+
+  rup    = "!f() { base_commit=`git rev-parse --symbolic-full-name @{upstream}` git rebase --autosquash -i ${1:-$base_commit}; }; f"
+  rup1   = rebase --interactive --autosquash HEAD~1
+  rup2   = rebase --interactive --autosquash HEAD~2
+  rup3   = rebase --interactive --autosquash HEAD~3
+  rup4   = rebase --interactive --autosquash HEAD~4
+  rup5   = rebase --interactive --autosquash HEAD~5
+
+  rom    = rebase origin/master
+  roo    = "!f() { base_branch=$(git symbolic-ref --short HEAD); git rebase origin/${1:-$base_branch}; }; f"
+
+  cim = commit --message
+  cia = commit --amend --no-edit
+  ciam = commit --amend
+
+  s  = show
+  s1 = show HEAD~1
+  s2 = show HEAD~2
+  s3 = show HEAD~3
+
+  sic = show-in-current
+
+  rs  = reset --soft
+  rs1 = reset --soft HEAD~1
+  rs2 = reset --soft HEAD~2
+  rs3 = reset --soft HEAD~3
+
+  r  = reset
+  r1 = reset HEAD~1
+  r2 = reset HEAD~2
+  r3 = reset HEAD~3
+
+  rh  = reset --hard
+  rh1 = reset HEAD~1 --hard
+  rh2 = reset HEAD~2 --hard
+  rh3 = reset HEAD~3 --hard
+
+  rhoo = "!f() { base_branch=$(git symbolic-ref --short HEAD); git reset --hard origin/${1:-$base_branch}; }; f"
+  rsoo = "!f() { base_branch=$(git symbolic-ref --short HEAD); git reset --soft origin/${1:-$base_branch}; }; f"
+
+  sl = stash list
+
+  ss  = stash show -p
+  ss1 = stash show -p stash@{1}
+  ss2 = stash show -p stash@{2}
+  ss3 = stash show -p stash@{3}
+
+  sa  = stash apply
+  sa1 = stash apply stash@{1}
+  sa2 = stash apply stash@{2}
+  sa3 = stash apply stash@{3}
+
+  sp  = stash pop
+  sp1 = stash pop stash@{1}
+  sp2 = stash pop stash@{2}
+  sp3 = stash pop stash@{3}
+
+  sd  = stash drop
+  sd1 = stash drop stash@{1}
+  sd2 = stash drop stash@{2}
+  sd3 = stash drop stash@{3}
+
+  rc = rebase --continue
+  ra = rebase --abort
+
+  bg = bisect good
+  bb = bisect bad
+
+  cif  = "!f() { git log --oneline | fzf --layout=reverse | awk '{ print $1; }' | xargs git commit --fixup; }; f"
+  cif1 = commit --fixup HEAD~1
+  cif2 = commit --fixup HEAD~2
+  cif3 = commit --fixup HEAD~3
+
+  brc = branch --contains
+  clena = clean
+
+[mergetool]
+  keepBackup = false
+[advice]
+  statusHints = false
+  pushNonFastForward = false
+  detachedHead = false
+[interactive]
+  singlekey = true
+[help]
+  autocorrect = 10
+[push]
+  default = current
+[rebase]
+  autoStash  = true
+  autoSquash = true
+[pull]
+  # Passes --rebase-merges to the rebase command.
+  rebase = merges
+[merge]
+  tool = kdiff3
+[core]
+  pager = less --no-init --raw-control-chars --quit-if-one-screen
+  editor = nvim
+[rerere]
+	enabled = true
+[include]
+  path = ~/.gitconfig_private
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[diff]
+	noprefix = true
+
+[include]
+  path = .gitconfig_private

@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+
+require 'open3'
+require 'shellwords'
+
+class DeleteOutdated
+  def main
+    local_branches_except_current_and_master.map do |line|
+      local_branch = line.match(/([^ ]+)/)[1]
+      upstream_branch_match = line.match(/\[([^\]]+)\]/)
+
+      {local_branch: local_branch, upstream_branch_match: upstream_branch_match}
+    end
+      .select {|res| is_gone?(res[:upstream_branch_match]) }
+      .each {|res| suggest_delete_branch(res[:local_branch]) }
+  end
+
+  private
+  def local_branches_except_current_and_master
+    `git branch -vv`.each_line.map(&:strip).reject {|line| line.start_with?("*") || line.start_with?("master") }
+  end
+
+  def is_gone?(match)
+    match && match[1].end_with?(": gone")
+  end
+
+  def suggest_delete_branch(branch)
+    $stdout.write "#{branch}. Delete [yN]? "
+    response = gets.strip
+
+    if response.downcase == 'y'
+      `git branch -D #{Shellwords.shellescape(branch)}`
+      puts 'Deleting'
+    end
+  end
+end
+
+DeleteOutdated.new.main

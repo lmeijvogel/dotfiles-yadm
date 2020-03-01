@@ -1,0 +1,273 @@
+[machine-specific]
+include-file = $HOME/.config/polybar/machine-specific
+
+[colors]
+background = #181818
+background-alt = #555
+foreground = #dfdfdf
+foreground-dimmed = #777
+primary = #ffb52a
+primary-faded = #b5b5b5
+secondary = #e60053
+alert = #bd2c40
+alert-bright = #ff3450
+green = #44bb44
+underline-green = #44bb44
+underline-grey = ${colors.primary-faded}
+underline-orange = #ffb52a
+
+volume-low  = #55aa55
+volume-mid  = #f5a70a
+volume-high = #ff5555
+
+[bar/base]
+monitor = ${env:MONITOR}
+
+modules-left = powermenu i3
+modules-right = ${machine-specific.modules-right}
+
+bottom = true
+
+width = 100%
+height = 42
+radius = 6.0
+fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+alert = ${colors.alert}
+alert-bright = ${colors.alert-bright}
+monitoring-green = ${colors.green}
+monitoring-grey = ${colors.foreground-dimmed}
+monitoring-red = ${colors.alert}
+
+line-size = 3
+line-color = #f00
+
+border-size = 4
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = Deja Vu Sans:pixelsize=19;1
+font-1 = FontAwesome:pixelsize=21;1
+font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-3 = siji:pixelsize=10;1
+
+[bar/left]
+inherit = bar/base
+
+[bar/right]
+inherit = bar/base
+
+tray-position = right
+tray-padding = 2
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+label-mounted =  %mountpoint%%{F-}: %percentage_used%%
+label-mounted-foreground = ${colors.foreground}
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground}
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+strip-wsnumber = false
+index-sort = true
+wrapping-scroll = false
+
+; Only show workspaces on the same output as the bar
+pin-workspaces = true
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.primary}
+
+; focused = Active workspace on focused monitor
+label-focused = %name%
+label-focused-background = ${colors.background-alt}
+label-focused-underline= ${colors.underline-orange}
+label-focused-padding = 2
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %name%
+label-unfocused-padding = 2
+
+; visible = Active workspace on unfocused monitor
+label-visible = %name%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${colors.underline-grey}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+[module/cpu]
+type = internal/cpu
+interval = 3
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+label = %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+label = %percentage_used%%
+
+[module/wlan]
+type = internal/network
+interface = ${machine-specific.wlan-interface}
+interval = 3.0
+
+format-connected =  <ramp-signal> <label-connected>
+format-connected-underline = ${colors.underline-green}
+label-connected = %essid%
+
+format-disconnected = 
+format-disconnected-foreground = ${colors.foreground-dimmed}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = ~
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground}
+
+[module/eth]
+type = internal/network
+interface = ${machine-specific.eth-interface}
+interval = 5.0
+
+format-connected-underline = ${colors.underline-green}
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground}
+label-connected = %local_ip%
+
+format-disconnected = ""
+format-disconnected-foreground = ${colors.foreground-dimmed}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = "%a %b %d -"
+date-alt =
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix-foreground = ${colors.foreground}
+
+label = %date% %time%
+
+[module/sound]
+type = ${machine-specific.sound-module}
+
+format-volume = <label-volume> <bar-volume>
+label-volume =  %percentage%%
+label-volume-foreground = ${colors.foreground}
+
+label-muted = 
+label-muted-foreground = ${colors.foreground-dimmed}
+
+bar-volume-width = 10
+bar-volume-foreground-0 = ${colors.volume-low}
+bar-volume-foreground-1 = ${colors.volume-low}
+bar-volume-foreground-2 = ${colors.volume-low}
+bar-volume-foreground-3 = ${colors.volume-low}
+bar-volume-foreground-4 = ${colors.volume-mid}
+bar-volume-foreground-5 = ${colors.volume-mid}
+bar-volume-foreground-6 = ${colors.volume-high}
+bar-volume-gradient = true
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+format-charging =  <label-charging>
+format-charging-underline = ${colors.underline-green}
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = ${colors.underline-orange}
+
+format-full = 
+format-full-prefix-foreground = ${colors.foreground}
+format-full-underline = ${colors.underline-green}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground}
+
+[module/ssl-status]
+type = custom/script
+exec = /usr/bin/env ruby $HOME/.config/polybar/scripts/check_ssl_validity.rb
+interval = 15
+
+[module/backup-status]
+type = custom/script
+exec = /usr/bin/env ruby $HOME/.config/polybar/scripts/check_backup_status.rb
+interval = 60
+
+[module/powermenu]
+type = custom/menu
+expand-right = true
+format-spacing = 1
+
+label-open =  Leave
+label-close = cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-dimmed}
+
+menu-0-0 = suspend
+menu-0-0-exec = menu-open-1
+menu-0-1 = reboot
+menu-0-1-exec = menu-open-2
+menu-0-2 = logout
+menu-0-2-exec = menu-open-3
+menu-0-3 = power off
+menu-0-3-exec = menu-open-4
+
+menu-1-0 = suspend
+menu-1-0-exec = sudo pm-suspend
+
+menu-2-0 = reboot
+menu-2-0-exec = reboot
+
+menu-3-0 = logout
+menu-3-0-exec = i3-msg exit
+
+menu-4-0 = power off
+menu-4-0-exec = poweroff
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
