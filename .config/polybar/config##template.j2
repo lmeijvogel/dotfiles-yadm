@@ -1,5 +1,15 @@
 [machine-specific]
-include-file = $HOME/.config/polybar/machine-specific
+{% if YADM_HOSTNAME == "home-desktop" %}
+modules-right = cpu eth backup-status sound date
+
+eth-interface = enp3s0
+{% elif YADM_HOSTNAME == "lennaert-Precision-5530" %}
+modules-right = eth wlan battery sound date
+
+eth-interface = enx8c04ba6b821a
+wlan-interface = wlp59s0
+{% endif %}
+
 
 [colors]
 background = #181818
@@ -174,7 +184,7 @@ format-prefix-foreground = ${colors.foreground}
 label = %date% %time%
 
 [module/sound]
-type = ${machine-specific.sound-module}
+type = internal/pulseaudio
 
 format-volume = <label-volume> <bar-volume>
 label-volume =  %percentage%%
