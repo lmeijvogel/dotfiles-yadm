@@ -1,0 +1,69 @@
+#!/usr/bin/env ruby
+
+require "fileutils"
+require "shellwords"
+
+HOME_DIR = ENV.fetch("CUSTOM_HOME", ENV.fetch("HOME"))
+
+$dry_run = ENV.key?("DRY_RUN")
+
+def main
+  initialize_oh_my_zsh
+  initialize_zsh_plugins
+  initialize_vim_plug
+end
+
+def initialize_oh_my_zsh
+  {
+    "https://github.com/olivierverdier/zsh-git-prompt" => "#{HOME_DIR}/.zsh-git-prompt",
+    "https://github.com/robbyrussell/oh-my-zsh.git" => "#{HOME_DIR}/.oh-my-zsh"
+  }.each do |github_url, destination_dir|
+    if File.directory?(destination_dir)
+      puts "Not cloning #{github_url} into #{destination_dir}: It exists"
+    else
+      `git clone #{github_url} #{destination_dir}`
+    end
+  end
+end
+
+def initialize_zsh_plugins
+  zsh_custom_path = File.join(HOME_DIR, ".oh-my-zsh/custom/plugins")
+  zsh_plugins = %w[zsh-autosuggestions zsh-syntax-highlighting zsh-history-substring-search]
+
+  if $dry_run
+    puts "Dry-run: Initializing zsh plugins:"
+    zsh_plugins.each do |plugin|
+      puts "Dry-run: - #{plugin}"
+    end
+  else
+    FileUtils.mkdir_p zsh_custom_path
+
+    zsh_plugins.each do |plugin|
+      target_path = File.join(zsh_custom_path, plugin)
+
+      if File.directory?(target_path)
+        puts "Not cloning zsh plugin #{plugin} into #{target_path}: It exists"
+      else
+        system("git", "clone",
+               "https://github.com/zsh-users/#{plugin}",
+               target_path)
+      end
+    end
+  end
+end
+
+def initialize_vim_plug
+  plug_script_path = File.join(HOME_DIR, ".config/nvim/autoload/plug.vim")
+
+  if $dry_run
+    puts "Dry-run: Cloning vim-plug at #{plug_script_path}"
+  else
+    if File.exist?(plug_script_path)
+      puts "Not putting #{plug_script_path}: It exists"
+    else
+      `curl -fLo #{plug_script_path} --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
+    end
+  end
+end
+
+main
