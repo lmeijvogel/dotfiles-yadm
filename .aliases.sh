@@ -31,5 +31,8 @@ alias d=br
 
 cl() { if [ -d "$1" ]; then cd "$1"; ls -l; else echo "*** Directory not found ***" ; fi; }
 
+alias ys='yadm status'
+alias yl='yadm log'
+
 # Allow custom aliases per environment
 [[ -x "$HOME/.aliases_private.sh" ]] && . "$HOME/.aliases_private.sh"
