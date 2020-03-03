@@ -143,7 +143,7 @@
 [rerere]
 	enabled = true
 [include]
-  path = ~/.gitconfig_private
+	path = ~/.gitconfig_private
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -151,6 +151,3 @@
 	required = true
 [diff]
 	noprefix = true
-
-[include]
-  path = .gitconfig_private
