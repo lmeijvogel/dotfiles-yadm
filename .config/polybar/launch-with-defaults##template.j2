@@ -1,0 +1,10 @@
+{% if YADM_HOSTNAME == "home-desktop" %}
+  export MONITOR_LEFT=DP-1
+  export MONITOR_RIGHT=HDMI-1
+{% elif YADM_HOSTNAME == "lennaert-Precision-5530" %}
+  export MONITOR_LEFT=DP-1-1
+  export MONITOR_RIGHT=DP-1-2-8
+  export MONITOR_LAPTOP=eDP-1
+{% endif %}
+
+~/.config/polybar/launch.sh
