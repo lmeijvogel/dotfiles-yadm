@@ -19,8 +19,13 @@ font pango:DejaVu Sans 13
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec mate-terminal
+{% if YADM_HOSTNAME == "home-desktop" %}
+  # start a terminal
+  bindsym $mod+Return exec alacritty
+{% elif YADM_HOSTNAME == "lennaert-Precision-5530" %}
+  # start a terminal
+  bindsym $mod+Return exec mate-terminal
+{% endif %}
 
 # lock the screen - The `sleep` ensures that locking is not cancelled by releasing the keys.
 bindsym $mod+Control+q exec "sleep 0.3 ; /usr/bin/qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock"
