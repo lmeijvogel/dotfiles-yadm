@@ -53,6 +53,7 @@ Plug 'mg979/vim-visual-multi'
 Plug 'rbgrouleff/bclose.vim' " Close buffers while keeping windows open
 Plug 'leafgarland/typescript-vim' " Syntax files for typescript
 Plug 'ruanyl/vim-sort-imports' " Sort typescript imports
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
 call plug#end()
 call yankstack#setup()

@@ -1,6 +1,7 @@
 source ~/.vimrc.d/plugins/vim-grepper.vim
 source ~/.vimrc.d/plugins/coc.nvim.vim
 source ~/.vimrc.d/plugins/nerdtree.vim
+source ~/.vimrc.d/plugins/firenvim.vim
 
 " Tag list
 let Tlist_Ctags_Cmd = "/usr/bin/ctags"
