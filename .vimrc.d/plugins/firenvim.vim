@@ -18,4 +18,5 @@ let fc['.*'] = { 'takeover': 'empty' }
 if exists('g:started_by_firenvim')
   set laststatus=0
   let g:buftabline_show=0
+  startinsert
 endif
