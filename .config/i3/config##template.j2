@@ -168,17 +168,7 @@ bindsym $mod+Control+Shift+r restart
 #   ShutdownModeInteractive = 3
 # };
 
-mode "exit: pow[e]roff, [s]uspend, [l]ogout, [r]eboot" {
-  bindsym e exec qdbus org.kde.ksmserver /KSMServer logout -1 2 -1 # Poweroff
-  bindsym s exec sudo pm-suspend
-  bindsym l exec qdbus org.kde.ksmserver /KSMServer logout -1 0 -1 # Logout
-
-  bindsym r exec qdbus org.kde.ksmserver /KSMServer logout -1 1 -1 # Reboot
-  bindsym Escape mode "default"
-  bindsym Return mode "default"
-}
-
-bindsym $mod+Shift+e mode "exit: pow[e]roff, [s]uspend, [l]ogout, [r]eboot"
+bindsym $mod+Shift+e exec qdbus org.kde.ksmserver /KSMServer logout -1 2 -1 # Poweroff
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
