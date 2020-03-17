@@ -50,6 +50,7 @@ nmap <leader>ra :CocAction<CR>
 vmap <leader>ra :CocAction<CR>
 
 nmap <silent> <leader>cr :CocRestart<CR>
+nmap <silent> <leader>lr :CocListResume<CR>
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
