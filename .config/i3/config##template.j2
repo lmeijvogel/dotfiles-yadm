@@ -208,6 +208,8 @@ for_window [title="^DevTools - .*"] move container to workspace $ws3; workspace 
 for_window [window_role="gnome-calculator"] floating enable
 for_window [class="Gnome-system-monitor"] floating enable
 for_window [class="Gnote"] floating enable
+for_window [class="zoom" title="^Zoom - Pro Account.*"] floating enable resize set 376 500
+for_window [class="zoom" title="Settings"] floating enable
 
 # Used for VirtualBox: Two virtual monitors on $ws5 and $ws6. Removes the status bar on both
 bindsym $mod+b workspace $ws5; workspace $ws6
@@ -220,7 +222,7 @@ for_window [window_role="task_dialog"] floating enable
 for_window [title="Desktop — Plasma"] kill; floating enable; border none
 for_window [class="yakuake"] floating enable
 for_window [class="systemsettings"] floating enable
-for_window [class="plasmashell"] floating enable;
+for_window [class="plasmashell"] floating enable
 for_window [class="Plasma"] floating enable; border none
 for_window [title="plasma-desktop"] floating enable; border none
 for_window [title="win7"] floating enable; border none
