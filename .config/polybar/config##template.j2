@@ -33,7 +33,7 @@ volume-high = #ff5555
 [bar/base]
 monitor = ${env:MONITOR}
 
-modules-left = i3
+modules-left = logo i3
 modules-right = ${machine-specific.modules-right}
 
 bottom = true
@@ -87,6 +87,11 @@ label-mounted =  %mountpoint%%{F-}: %percentage_used%%
 label-mounted-foreground = ${colors.foreground}
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground}
+
+[module/logo]
+type = custom/text
+content = ""
+content-padding = 1
 
 [module/i3]
 type = internal/i3
