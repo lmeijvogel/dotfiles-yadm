@@ -346,6 +346,11 @@ mode "volume" {
     bindsym a        exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% # decrease sound volume
     bindsym Shift+a  exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% # decrease sound volume (small step)
 
+    bindsym z        exec --no-startup-id clementine --previous
+    bindsym x        exec --no-startup-id clementine --play
+    bindsym c        exec --no-startup-id clementine --pause
+    bindsym v        exec --no-startup-id clementine --stop
+    bindsym b        exec --no-startup-id clementine --next
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
