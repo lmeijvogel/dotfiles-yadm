@@ -20,7 +20,7 @@ font pango:DejaVu Sans 13
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec konsole
+bindsym $mod+Return exec kitty
 
 # lock the screen - The `sleep` ensures that locking is not cancelled by releasing the keys.
 bindsym $mod+Control+q exec "sleep 0.3 ; /usr/bin/qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock"
