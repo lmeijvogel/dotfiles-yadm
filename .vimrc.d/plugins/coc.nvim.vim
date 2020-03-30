@@ -28,6 +28,18 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " written to the buffer. I uninstalled endwise.
 " inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 
+" Keys from the coc.nvim github example config
+"
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)"
+
 " Remap keys for gotos
 nmap <silent> <F12> <Plug>(coc-definition)
 
@@ -35,6 +47,7 @@ nmap <silent> <C-F12> <Plug>(coc-implementation)
 
 " For neovim-qt
 nmap <silent> <S-F12> <Plug>(coc-references)
+nmap <silent> gr <Plug>(coc-references)
 
 " For console usage
 nmap <silent> <F24> <Plug>(coc-references)
