@@ -77,9 +77,6 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Use `:Format` to format current buffer
-command! -nargs=0 Format :call CocAction('format')
-
 " Highlight position of error black on red
 highlight CocErrorHighlight ctermbg=Red ctermfg=Black guifg=#000000 guibg=#ff0000
 
