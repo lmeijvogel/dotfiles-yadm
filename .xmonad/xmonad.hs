@@ -14,7 +14,10 @@ import Graphics.X11.ExtraTypes.XF86
 main = xmonad kdeConfig
     { modMask = mod4Mask -- use the Windows button as mod
     , manageHook = manageHook kdeConfig <+> myManageHook
-    , layoutHook = (addTopBar (avoidStruts $ spacing spacingPx $ Tall 1 (3/100) (1/2))) ||| (addTopBar Accordion) ||| simpleTabbed ||| Full  -- leave gaps at the top and right)
+    , layoutHook = (addTopBar (avoidStruts $ spacing spacingPx $ Tall 1 (3/100) (1/2)))
+                   ||| (addTopBar (avoidStruts $ spacing spacingPx $ Accordion))
+                   ||| (avoidStruts $ spacing spacingPx $ simpleTabbed)
+                   ||| Full
     , keys = myKeys `mappend` (keys defaultConfig)
     , workspaces = myWorkspaces
     , XMonad.focusFollowsMouse = False
