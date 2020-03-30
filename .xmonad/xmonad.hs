@@ -93,5 +93,7 @@ myScreenSwitchingKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
 myShutdownKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   [
-    ((modm .|. shiftMask, xK_q), spawn "qdbus org.kde.ksmserver /KSMServer logout -1 2 -1 # Poweroff")
+    ((modm .|. shiftMask, xK_q), spawn "qdbus org.kde.ksmserver /KSMServer logout -1 2 -1") -- Poweroff
+  , ((modm .|. controlMask, xK_q), spawn "sleep 0.3 ; /usr/bin/qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock") -- Lock
+
   ]
