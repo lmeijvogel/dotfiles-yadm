@@ -94,6 +94,11 @@ myScreenSwitchingKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
       , (f, mask) <- [(viewScreen def, 0), (sendToScreen def, shiftMask)]
   ]
 
+myWorkspaceSwitchingKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
+  [
+    ((modm, xK_0), windows $ W.greedyView "10")
+  ]
+
 myShutdownKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   [
     ((modm .|. shiftMask, xK_q), spawn "qdbus org.kde.ksmserver /KSMServer logout -1 2 -1") -- Poweroff
