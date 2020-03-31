@@ -8,6 +8,7 @@ import XMonad.Layout.Spacing
 import XMonad.Layout.Tabbed
 import qualified Data.Map as M
 import qualified XMonad.StackSet as W -- to shift and float windows
+import XMonad.Util.NamedScratchpad
 
 import Graphics.X11.ExtraTypes.XF86
 
@@ -63,13 +64,15 @@ myManageHook = composeAll . concat $
     , [ title       =? t --> doFloat           | t <- myOtherFloatsByTitle]
     , [ className   =? c --> doF (W.shift "2") | c <- webApps]
     , [ className   =? c --> doF (W.shift "3") | c <- ircApps]
+    , [ className   =? c --> doIgnore          | c <- ignoredOsWindows ]
     ]
-  where myFloatsByClass      = ["MPlayer", "Gimp", "plasmashell", "ksmserver"]
+  where myFloatsByClass      = ["MPlayer", "Gimp", "plasmashell", "ksmserver", "Firefox"]
         myOtherFloatsByTitle = ["alsamixer"]
         webApps       = ["Firefox-bin", "Opera"] -- open on desktop 2
         ircApps       = ["Ksirc"]                -- open on desktop 3
+        ignoredOsWindows = ["plasmashell"]       -- No OS windows should get focus, like notifications. This also fixes the dropdown menus from the KDE panel.
 
-myKeys = myApplicationKeys `mappend` mySoundControlKeys `mappend` myScreenSwitchingKeys `mappend` myShutdownKeys
+myKeys = myApplicationKeys `mappend` mySoundControlKeys `mappend` myScreenSwitchingKeys `mappend` myWorkspaceSwitchingKeys `mappend` myShutdownKeys `mappend` myScratchpadKeys
 
 myApplicationKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   [
@@ -95,5 +98,16 @@ myShutdownKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   [
     ((modm .|. shiftMask, xK_q), spawn "qdbus org.kde.ksmserver /KSMServer logout -1 2 -1") -- Poweroff
   , ((modm .|. controlMask, xK_q), spawn "sleep 0.3 ; /usr/bin/qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock") -- Lock
-
   ]
+
+myScratchpadKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
+  [
+    ((modm, xK_grave), namedScratchpadAction scratchpads "firefox")
+  ]
+
+-- Copied from https://notabug.org/Digit/tabularboonad/src/master/xmonad.hs
+scratchpads =
+  [
+    NS "firefox" "firefox" (className =? "Firefox")
+      (customFloating $ W.RationalRect (0/1) (0/1) (1/1) (1/2))
+  ] where role = stringProperty "WM_WINDOW_ROLE"
