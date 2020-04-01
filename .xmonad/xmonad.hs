@@ -12,9 +12,14 @@ import XMonad.Util.NamedScratchpad
 
 import Graphics.X11.ExtraTypes.XF86
 
+startupWorkspace = "4"
+
 main = xmonad kdeConfig
     { modMask = mod4Mask -- use the Windows button as mod
-    , manageHook = manageHook kdeConfig <+> myManageHook
+    , startupHook = do
+        windows $ W.greedyView startupWorkspace
+        spawn "~/.xmonad/startup-hook"
+    , manageHook = myManageHook <+> manageHook kdeConfig
     , layoutHook = (addTopBar (avoidStruts $ spacing spacingPx $ Tall 1 (3/100) (1/2)))
                    ||| (addTopBar (avoidStruts $ spacing spacingPx $ Accordion))
                    ||| (avoidStruts $ spacing spacingPx $ simpleTabbed)
