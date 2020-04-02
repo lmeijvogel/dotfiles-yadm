@@ -82,7 +82,7 @@ myManageHook = composeAll . concat $
         ircApps       = ["Ksirc"]                -- open on desktop 3
         ignoredOsWindows = ["plasmashell"]       -- No OS windows should get focus, like notifications. This also fixes the dropdown menus from the KDE panel.
 
-myKeys = myApplicationKeys `mappend` mySoundControlKeys `mappend` myScreenSwitchingKeys `mappend` myWorkspaceSwitchingKeys `mappend` myShutdownKeys `mappend` myScratchpadKeys
+myKeys = mconcat [myApplicationKeys, mySoundControlKeys, myScreenSwitchingKeys, myWorkspaceSwitchingKeys, myShutdownKeys, myScratchpadKeys]
 
 myApplicationKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
   [
