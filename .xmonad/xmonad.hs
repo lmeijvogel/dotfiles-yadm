@@ -9,6 +9,8 @@ import XMonad.Layout.Tabbed
 import qualified Data.Map as M
 import qualified XMonad.StackSet as W -- to shift and float windows
 import XMonad.Util.NamedScratchpad
+import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops
 
 import Graphics.X11.ExtraTypes.XF86
 
@@ -17,13 +19,16 @@ startupWorkspace = "4"
 main = xmonad kdeConfig
     { modMask = mod4Mask -- use the Windows button as mod
     , startupHook = do
+        ewmhDesktopsStartup
         windows $ W.greedyView startupWorkspace
         spawn "~/.xmonad/startup-hook"
     , manageHook = myManageHook <+> manageHook kdeConfig
+    , handleEventHook = handleEventHook kdeConfig <+> ewmhDesktopsEventHook
     , layoutHook = (addTopBar (avoidStruts $ spacing spacingPx $ Tall 1 (3/100) (1/2)))
                    ||| (addTopBar (avoidStruts $ spacing spacingPx $ Accordion))
                    ||| (avoidStruts $ spacing spacingPx $ simpleTabbed)
                    ||| Full
+    , logHook = ewmhDesktopsLogHook
     , keys = myKeys `mappend` (keys defaultConfig)
     , workspaces = myWorkspaces
     , XMonad.focusFollowsMouse = False

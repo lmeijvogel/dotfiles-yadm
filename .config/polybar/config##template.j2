@@ -33,7 +33,7 @@ volume-high = #ff5555
 [bar/base]
 monitor = ${env:MONITOR}
 
-modules-left = logo i3
+modules-left = logo emwh
 modules-right = ${machine-specific.modules-right}
 
 bottom = true
@@ -92,6 +92,51 @@ label-unmounted-foreground = ${colors.foreground}
 type = custom/text
 content = ""
 content-padding = 1
+
+; Shows xmonad workspaces. This is by no means complete!
+[module/emwh]
+type = internal/xworkspaces
+; pin-workspaces = true
+
+format = <label-state>
+strip-wsnumber = false
+index-sort = true
+wrapping-scroll = false
+
+; Only show workspaces on the same output as the bar
+; pin-workspaces = true
+
+; label-mode-padding = 2
+; label-mode-foreground = #000
+; label-mode-background = ${colors.primary}
+
+; focused = Active workspace on focused monitor
+label-active = %name%
+label-active-background = ${colors.background-alt}
+label-active-underline= ${colors.underline-orange}
+label-active-padding = 2
+
+label-occupied = %name%
+label-occupied-background = ${colors.background-alt}
+label-occupied-underline= ${colors.underline-grey}
+label-occupied-padding = 2
+
+label-empty = " %name% "
+label-empty-foreground = ${colors.foreground-dimmed}
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %name%
+label-unfocused-padding = 2
+
+; visible = Active workspace on unfocused monitor
+label-visible = %name%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${colors.underline-grey}
+label-visible-padding = ${self.label-focused-padding}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
 
 [module/i3]
 type = internal/i3
