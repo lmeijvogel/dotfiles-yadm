@@ -10,21 +10,26 @@ eth-interface = enx8c04ba6b821a
 wlan-interface = wlp59s0
 {% endif %}
 
-
 [colors]
-background = #181818
-background-alt = #555
-foreground = #dfdfdf
-foreground-dimmed = #777
+foreground = #444
+background = #e4eaf0
+
+foreground-focused = #111
+background-focused = #ffb52a
+
+foreground-visible = #7a6b4b
+background-visible = #fff38e
+
+foreground-dimmed = #bbb
 primary = #ffb52a
 primary-faded = #b5b5b5
 secondary = #e60053
 alert = #bd2c40
 alert-bright = #ff3450
 green = #44bb44
-underline-green = #44bb44
-underline-grey = ${colors.primary-faded}
-underline-orange = #ffb52a
+overline-green = #44bb44
+overline-grey = ${colors.primary-faded}
+overline-orange = #ffb52a
 
 volume-low  = #55aa55
 volume-mid  = #f5a70a
@@ -109,8 +114,9 @@ label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
 label-focused = %name%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.underline-orange}
+label-focused-foreground = ${colors.foreground-focused}
+label-focused-background = ${colors.background-focused}
+label-focused-overline= ${colors.overline-orange}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
@@ -119,9 +125,10 @@ label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %name%
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${colors.underline-grey}
-label-visible-padding = ${self.label-focused-padding}
+label-visible-foreground = ${colors.foreground-visible}
+label-visible-background = ${colors.background-visible}
+label-visible-overline = ${colors.background-focused}
+label-visible-padding = 2
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %name%
@@ -148,7 +155,7 @@ interface = ${machine-specific.wlan-interface}
 interval = 3.0
 
 format-connected =  <ramp-signal> <label-connected>
-format-connected-underline = ${colors.underline-green}
+format-connected-overline = ${colors.overline-green}
 label-connected = %essid%
 
 format-disconnected = 
@@ -166,7 +173,7 @@ type = internal/network
 interface = ${machine-specific.eth-interface}
 interval = 5.0
 
-format-connected-underline = ${colors.underline-green}
+format-connected-overline = ${colors.overline-green}
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground}
 label-connected = %local_ip%
@@ -222,14 +229,14 @@ adapter = AC
 full-at = 98
 
 format-charging =  <label-charging>
-format-charging-underline = ${colors.underline-green}
+format-charging-overline = ${colors.overline-green}
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${colors.underline-orange}
+format-discharging-overline = ${colors.overline-orange}
 
 format-full = 
 format-full-prefix-foreground = ${colors.foreground}
-format-full-underline = ${colors.underline-green}
+format-full-overline = ${colors.overline-green}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
