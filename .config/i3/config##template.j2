@@ -300,18 +300,18 @@ bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+Shift+bracketleft move workspace to output left
 bindsym $mod+Shift+bracketright move workspace to output right
 
-workspace 1 output $output_left
-workspace 3 output $output_left
-workspace 5 output $output_left
-workspace 7 output $output_left
+workspace $ws1 output $output_left
+workspace $ws3 output $output_left
+workspace $ws5 output $output_left
+workspace $ws7 output $output_left
 
-workspace 2 output $output_right
-workspace 4 output $output_right
-workspace 6 output $output_right
-workspace 8 output $output_right
-workspace 10 output $output_right
+workspace $ws2 output $output_right
+workspace $ws4 output $output_right
+workspace $ws6 output $output_right
+workspace $ws8 output $output_right
+workspace $ws10 output $output_right
 
-workspace 9 output $output_right_or_laptop
+workspace $ws9 output $output_right_or_laptop
 
 
 {% if YADM_HOSTNAME == "home-desktop" %}
