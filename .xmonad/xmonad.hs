@@ -32,7 +32,7 @@ main = xmonad kdeConfig
     , keys = myKeys `mappend` (keys defaultConfig)
     , workspaces = myWorkspaces
     , XMonad.focusFollowsMouse = False
-    , XMonad.clickJustFocuses = True
+    , XMonad.clickJustFocuses = False
     , focusedBorderColor = active
     , normalBorderColor = base
     }
