@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+require 'open3'
+
+prompt = "Choose config file"
+
+labels_and_files = {
+  "i3" => File.join(ENV["HOME"], ".config/i3/config##template.j2"),
+  "polybar" => File.join(ENV["HOME"], ".config/polybar/config##template.j2")
+}
+
+labels_as_dmenu_input = labels_and_files.keys.join("\n")
+
+output, status = Open3.capture2("rofi", "-dmenu", stdin_data: labels_as_dmenu_input)
+
+if status.success?
+  chosen_file = labels_and_files.fetch(output.strip)
+  system("nvim-qt", chosen_file)
+end
+
+# vim:ft=ruby
