@@ -11,11 +11,15 @@ wlan-interface = wlp59s0
 {% endif %}
 
 [colors]
+primary = #ffb52a
+alert = #bd2c40
+alert-bright = #ff3450
+
 foreground = #444
 background = #e4eaf0
 
 foreground-focused = #111
-background-focused = #ffb52a
+background-focused = ${colors.primary}
 
 foreground-visible = #7a6b4b
 background-visible = #fff38e
@@ -25,14 +29,9 @@ foreground-dimmed = #bbb
 foreground-unfocused = #888
 background-unfocused = #f4faff
 
-primary = #ffb52a
-primary-faded = #b5b5b5
-secondary = #e60053
-alert = #bd2c40
-alert-bright = #ff3450
 green = #44bb44
-overline-green = #44bb44
-overline-grey = ${colors.primary-faded}
+
+overline-green = ${colors.green}
 overline-orange = #ffb52a
 
 volume-low  = #55aa55
@@ -52,8 +51,8 @@ height = 42
 radius = 6.0
 fixed-center = false
 
-background = ${colors.background}
 foreground = ${colors.foreground}
+background = ${colors.background}
 alert = ${colors.alert}
 alert-bright = ${colors.alert-bright}
 monitoring-green = ${colors.green}
@@ -113,7 +112,6 @@ wrapping-scroll = false
 pin-workspaces = true
 
 label-mode-padding = 2
-label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
@@ -145,7 +143,6 @@ label-urgent-padding = 2
 type = internal/cpu
 interval = 3
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground}
 label = %percentage:2%%
 
 [module/memory]
@@ -181,7 +178,6 @@ interval = 5.0
 
 format-connected-overline = ${colors.overline-green}
 format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground}
 label-connected = %local_ip%
 
 format-disconnected = ""
@@ -197,8 +193,6 @@ date-alt =
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix-foreground = ${colors.foreground}
-
 label = %date% %time%
 
 [module/sound]
@@ -206,7 +200,6 @@ type = internal/pulseaudio
 
 format-volume = <label-volume> <bar-volume>
 label-volume =  %percentage%%
-label-volume-foreground = ${colors.foreground}
 
 label-muted = 
 label-muted-foreground = ${colors.foreground-dimmed}
@@ -226,7 +219,6 @@ bar-volume-fill = ─
 bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground}
 
 [module/battery]
 type = internal/battery
@@ -241,13 +233,11 @@ format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-overline = ${colors.overline-orange}
 
 format-full = 
-format-full-prefix-foreground = ${colors.foreground}
 format-full-overline = ${colors.overline-green}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground}
 
 [module/ssl-status]
 type = custom/script
