@@ -84,17 +84,6 @@ inherit = bar/base
 tray-position = right
 tray-padding = 2
 
-[module/filesystem]
-type = internal/fs
-interval = 25
-
-mount-0 = /
-
-label-mounted =  %mountpoint%%{F-}: %percentage_used%%
-label-mounted-foreground = ${colors.foreground}
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground}
-
 [module/logo]
 type = custom/text
 content = ""
@@ -143,13 +132,6 @@ type = internal/cpu
 interval = 3
 format-prefix = " "
 label = %percentage:2%%
-
-[module/memory]
-type = internal/memory
-interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground}
-label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
