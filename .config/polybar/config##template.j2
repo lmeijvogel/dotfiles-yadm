@@ -1,10 +1,10 @@
 [machine-specific]
 {% if YADM_HOSTNAME == "home-desktop" %}
-modules-right = cpu eth backup-status sound date
+modules-right = cpu eth backup-status cmus sound date
 
 eth-interface = enp3s0
 {% elif YADM_HOSTNAME == "lennaert-Precision-5530" %}
-modules-right = eth wlan battery sound date
+modules-right = eth wlan battery cmus sound date
 
 eth-interface = enx8c04ba6b821a
 wlan-interface = wlp59s0
@@ -173,6 +173,11 @@ time = %H:%M
 time-alt = %H:%M:%S
 
 label = %date% %time%
+
+[module/cmus]
+type = custom/script
+exec = /usr/bin/env ruby $HOME/bin/cmus_status
+interval = 5
 
 [module/sound]
 type = internal/pulseaudio

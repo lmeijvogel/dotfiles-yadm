@@ -1,0 +1,43 @@
+class NotRunning < StandardError ; end
+
+class CmusStatus
+  def initialize(status)
+    @status = status
+  end
+
+  def method_missing(name)
+    tag(name, status)
+  end
+
+  def to_s
+    "#{tracknumber}: #{artist} - #{title}"
+  end
+
+  private
+
+  def tag(name, status)
+    matched_line = status.each_line.grep(/^tag #{name}/)
+
+    return "" if (matched_line.empty?)
+
+    matches = matched_line[0].match(/^tag #{name} (.*)/)
+
+    matches[1]
+  end
+end
+
+def status
+  result = `cmus-remote -Q 2>/dev/null`
+
+  if result.strip.empty? || result =~ /^status stopped$/
+    raise NotRunning
+  else
+    result
+  end
+end
+
+begin
+  puts CmusStatus.new(status).to_s
+rescue NotRunning
+  puts ""
+end
