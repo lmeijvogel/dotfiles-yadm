@@ -43,6 +43,9 @@ nmap <C-A-k> :bn<CR>
 nmap <C-A-j> :bp<CR>
 
 " FZF
+
+" Disable preview window since it obscures the file basename
+let g:fzf_preview_window = ''
 nmap <silent> <C-p> :GFiles<CR>
 nmap <silent> <leader>h :History<CR>
 nmap - :Buffers<CR>
