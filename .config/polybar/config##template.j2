@@ -138,9 +138,9 @@ type = internal/network
 interface = ${machine-specific.wlan-interface}
 interval = 3.0
 
-format-connected =  <ramp-signal> <label-connected>
+format-connected = <label-connected> <ramp-signal>
 format-connected-overline = ${colors.overline-green}
-label-connected = %essid%
+label-connected = 
 
 format-disconnected = 
 format-disconnected-foreground = ${colors.foreground-dimmed}
@@ -157,11 +157,10 @@ type = internal/network
 interface = ${machine-specific.eth-interface}
 interval = 5.0
 
+label-connected = 
 format-connected-overline = ${colors.overline-green}
-format-connected-prefix = " "
-label-connected = %local_ip%
 
-format-disconnected = ""
+label-disconnected = ""
 format-disconnected-foreground = ${colors.foreground-dimmed}
 
 [module/date]
@@ -184,27 +183,11 @@ interval = 5
 [module/sound]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
+format-volume = <label-volume>
 label-volume =  %percentage%%
 
 label-muted = 
 label-muted-foreground = ${colors.foreground-dimmed}
-
-bar-volume-width = 10
-bar-volume-foreground-0 = ${colors.volume-low}
-bar-volume-foreground-1 = ${colors.volume-low}
-bar-volume-foreground-2 = ${colors.volume-low}
-bar-volume-foreground-3 = ${colors.volume-low}
-bar-volume-foreground-4 = ${colors.volume-mid}
-bar-volume-foreground-5 = ${colors.volume-mid}
-bar-volume-foreground-6 = ${colors.volume-high}
-bar-volume-gradient = true
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
 
 [module/battery]
 type = internal/battery
