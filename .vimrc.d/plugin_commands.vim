@@ -58,9 +58,6 @@ nmap <silent> <F7> :call LMBackgroundLight()<CR>
 nmap <leader>gs :Gstatus<CR>
 nmap <leader>gb :call GitGuiBlame()<CR>
 
-" Merginal
-nmap <leader>gr :Merginal<CR>
-
 " vim-buftabline
 " Show buffer number next to buffer name
 let g:buftabline_numbers = 1
