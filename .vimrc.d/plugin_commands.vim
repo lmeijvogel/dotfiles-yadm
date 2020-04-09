@@ -75,6 +75,10 @@ let g:NERDCompactSexyComs = 1
 nmap <C-_>   <Plug>NERDCommenterToggle
 vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
 
+" vim-indentwise
+nmap <M-k> <Plug>(IndentWisePreviousLesserIndent)
+nmap <M-j> <Plug>(IndentWiseNextLesserIndent)
+
 if has('nvim')
   " NeoTerm
   let g:neoterm_default_mod = 'horizontal'
