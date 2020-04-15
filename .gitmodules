@@ -1,3 +1,6 @@
 [submodule "projects/git_scripts/powerlevel10k"]
 	path = projects/git_scripts/powerlevel10k
 	url = /home/lennaert/.zsh_custom/themes/powerlevel10k
+[submodule ".zsh_custom/plugins/zsh-git-scripts/zsh-git-scripts"]
+	path = .zsh_custom/plugins/zsh-git-scripts/zsh-git-scripts
+	url = /home/lennaert/.zsh_custom/plugins/zsh-git-scripts

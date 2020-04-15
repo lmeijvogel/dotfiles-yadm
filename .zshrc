@@ -56,7 +56,7 @@ ZSH_CUSTOM=$HOME/.zsh_custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(ruby rvm vim-interaction gitfast zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting)
+plugins=(ruby rvm vim-interaction gitfast zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting zsh-git-scripts)
 
 # User configuration
 
@@ -109,9 +109,12 @@ fi
 bindkey '^U' backward-kill-line
 bindkey '^Y' yank
 
+alias gs="eval \"\`ruby $ZSH_CUSTOM/plugins/zsh-git-scripts/numbered-git-status.rb\`\""
+
 # These bindings also seem to bind <M-...>, which is what I was after
-# Bind <Esc>s to 'gs' (scmpuff 'git status')
-bindkey -s '\es' 'gs\n'
+
+# Bind <Esc>s (and alt-s) to show the numbered git status
+bindkey -s '\es' "eval \"\`ruby $ZSH_CUSTOM/plugins/zsh-git-scripts/numbered-git-status.rb\`\"\n"
 # Bind <Esc>a to 'git add -p'
 bindkey -s '\ea' 'git add -p\n'
 # Bind <Esc>g to 'git log --oneline --decorate -n 10'
@@ -119,9 +122,9 @@ bindkey -s '\eg' 'gitl\n'
 # Bind <Esc>G to 'git log --oneline --decorate'
 bindkey -s '\eG' 'gitll\n'
 # Bind <Esc>r to 'gbr' (git branch)
-bindkey -s '\er' 'gbr\n'
+bindkey '\er' _git_choose_branch
 # Bind <Esc>R to 'gbrr' (git branch --remote)
-bindkey -s '\eR' 'gbrr\n'
+bindkey '\eR' _git_choose_remote_branch
 
 # Bind <Esc>c to 'git diff' (Previously: Uppercase sentence and move to next sentence)
 bindkey -s '\ec' 'git diff\n'
