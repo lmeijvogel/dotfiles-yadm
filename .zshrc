@@ -114,7 +114,7 @@ alias gs="eval \"\`ruby $ZSH_CUSTOM/plugins/zsh-git-scripts/numbered-git-status.
 # These bindings also seem to bind <M-...>, which is what I was after
 
 # Bind <Esc>s (and alt-s) to show the numbered git status
-bindkey -s '\es' "eval \"\`ruby $ZSH_CUSTOM/plugins/zsh-git-scripts/numbered-git-status.rb\`\"\n"
+bindkey -s '\es' 'eval \"\`ruby $ZSH_CUSTOM/plugins/zsh-git-scripts/numbered-git-status.rb\`\"\n'
 # Bind <Esc>a to 'git add -p'
 bindkey -s '\ea' 'git add -p\n'
 # Bind <Esc>g to 'git log --oneline --decorate -n 10'
@@ -145,7 +145,7 @@ function gitll () {
   eval "`$HOME/bin/gitll`"
 }
 
-[ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
+# [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 
