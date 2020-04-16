@@ -1,6 +1,15 @@
-[submodule "projects/git_scripts/powerlevel10k"]
-	path = projects/git_scripts/powerlevel10k
-	url = /home/lennaert/.zsh_custom/themes/powerlevel10k
-[submodule ".zsh_custom/plugins/zsh-git-scripts/zsh-git-scripts"]
-	path = .zsh_custom/plugins/zsh-git-scripts/zsh-git-scripts
-	url = /home/lennaert/.zsh_custom/plugins/zsh-git-scripts
+[submodule ".zsh_custom/themes/powerlevel10k"]
+	path = .zsh_custom/themes/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k
+[submodule ".zsh_custom/plugins/zsh-autosuggestions"]
+	path = .zsh_custom/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule ".zsh_custom/plugins/zsh-history-substring-search"]
+	path = .zsh_custom/plugins/zsh-history-substring-search
+	url = https://github.com/zsh-users/zsh-history-substring-search
+[submodule ".zsh_custom/plugins/zsh-syntax-highlighting"]
+	path = .zsh_custom/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting
+[submodule ".zsh_custom/plugins/zsh-git-scripts"]
+	path = .zsh_custom/plugins/zsh-git-scripts
+	url = https://github.com/lmeijvogel/zsh-git-scripts
