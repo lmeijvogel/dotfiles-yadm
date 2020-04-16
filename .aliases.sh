@@ -34,6 +34,8 @@ cl() { if [ -d "$1" ]; then cd "$1"; ls -l; else echo "*** Directory not found *
 alias yas='yadm status'
 alias yal='yadm log'
 alias yap='yadm add -p'
+alias yad='yadm diff'
+alias yadc='yadm diff --cached'
 
 # Allow custom aliases per environment
 [[ -x "$HOME/.aliases_private.sh" ]] && . "$HOME/.aliases_private.sh"
