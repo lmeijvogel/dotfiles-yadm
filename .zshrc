@@ -118,9 +118,9 @@ bindkey -s '\es' 'eval \"\`ruby $ZSH_CUSTOM/plugins/zsh-git-scripts/numbered-git
 # Bind <Esc>a to 'git add -p'
 bindkey -s '\ea' 'git add -p\n'
 # Bind <Esc>g to 'git log --oneline --decorate -n 10'
-bindkey -s '\eg' 'gitl\n'
+bindkey -s '\eg' 'eval \"\`ruby $ZSH_CUSTOM/plugins/zsh-git-scripts/numbered-git-log.rb\`\"\n'
 # Bind <Esc>G to 'git log --oneline --decorate'
-bindkey -s '\eG' 'gitll\n'
+bindkey -s '\eG' 'eval \"\`ruby $ZSH_CUSTOM/plugins/zsh-git-scripts/numbered-git-log-all.rb\`\"\n'
 # Bind <Esc>r to 'gbr' (git branch)
 bindkey '\er' _git_choose_branch
 # Bind <Esc>R to 'gbrr' (git branch --remote)
@@ -135,15 +135,6 @@ bindkey -s '\eC' 'git diff --cached\n'
 unsetopt nomatch
 
 alias -g D=$HOME/Downloads
-
-# Eval these scripts: They set environment variables.
-function gitl () {
-  eval "`$HOME/bin/gitl`"
-}
-
-function gitll () {
-  eval "`$HOME/bin/gitll`"
-}
 
 # [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 
