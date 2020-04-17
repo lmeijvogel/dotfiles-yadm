@@ -56,7 +56,7 @@ ZSH_CUSTOM=$HOME/.zsh_custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(ruby rvm vim-interaction gitfast zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting zsh-git-scripts)
+plugins=(ruby rvm vim-interaction gitfast zsh-autosuggestions zsh-history-substring-search zsh-git-scripts)
 
 # User configuration
 
