@@ -39,3 +39,6 @@ alias yadc='yadm diff --cached'
 
 # Allow custom aliases per environment
 [[ -x "$HOME/.aliases_private.sh" ]] && . "$HOME/.aliases_private.sh"
+
+alias gd='git diff'
+alias gdc='git diff --cached'
