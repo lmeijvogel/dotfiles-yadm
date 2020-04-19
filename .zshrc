@@ -132,6 +132,7 @@ bindkey -s '\ec' 'git diff\n'
 # Bind <Esc>C to 'git diff'
 bindkey -s '\eC' 'git diff --cached\n'
 
+alias ga=_git_add
 unsetopt nomatch
 
 alias -g D=$HOME/Downloads
