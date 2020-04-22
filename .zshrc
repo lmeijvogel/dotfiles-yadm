@@ -133,6 +133,8 @@ bindkey -s '\ec' 'git diff\n'
 bindkey -s '\eC' 'git diff --cached\n'
 
 alias ga=_git_add
+alias gd=_git_diff
+alias gdc="_git_diff --cached"
 unsetopt nomatch
 
 alias -g D=$HOME/Downloads
