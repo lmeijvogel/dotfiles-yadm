@@ -132,6 +132,8 @@ bindkey -s '\ec' 'git diff\n'
 # Bind <Esc>C to 'git diff'
 bindkey -s '\eC' 'git diff --cached\n'
 
+bindkey '\ex' _expand_indices
+
 alias ga=_git_add
 alias gd=_git_diff
 alias gdc="_git_diff --cached"
