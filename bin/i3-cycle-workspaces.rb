@@ -2,16 +2,21 @@
 require 'json'
 
 def main(up_or_down)
-  `i3-msg workspace "#{next_workspace(up_or_down)}"`
+  next_workspace_name = next_workspace(up_or_down)["name"]
+
+  `i3-msg workspace "#{next_workspace_name}"`
 end
 
 def next_workspace(direction)
   next_workspaces = next_workspaces(direction)
 
-  current_index = next_workspaces.index(focused_workspace_name)
+  # Nothing to switch, so just return the current one
+  return focused_workspace if next_workspaces.count < 2
+
+  current_index = next_workspaces.index(focused_workspace)
 
   # A #cycle feels a bit more robust than current + 1 % length
-  next_workspaces.cycle(2).to_a[current_index + 1]
+  next_workspaces.cycle(2).find.with_index { |ws, i| i > current_index && !should_skip?(ws) }
 end
 
 def next_workspaces(direction)
@@ -22,10 +27,6 @@ def next_workspaces(direction)
   end
 end
 
-def focused_workspace_name
-  focused_workspace["name"]
-end
-
 def focused_workspace
   workspaces.find { |ws| ws["focused"] }
 end
@@ -33,8 +34,6 @@ end
 def workspaces_on_current_output
   workspaces
     .select { |ws| ws["output"] == current_output }
-    .reject { |ws| should_skip?(ws) }
-    .map { |ws| ws["name"] }
 end
 
 def workspaces
