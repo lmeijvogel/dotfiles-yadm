@@ -296,7 +296,8 @@ bindsym Control+Mod1+l exec --no-startup-id $HOME/bin/i3-cycle-workspaces.rb up
 bindsym Control+Mod1+Left exec --no-startup-id $HOME/bin/i3-cycle-workspaces.rb down
 bindsym Control+Mod1+h exec --no-startup-id $HOME/bin/i3-cycle-workspaces.rb down
 
-bindsym $mod+Tab workspace back_and_forth
+bindsym Mod1+Tab exec --no-startup-id $HOME/bin/i3-cycle-windows.rb up
+bindsym Mod1+Shift++Tab exec --no-startup-id $HOME/bin/i3-cycle-windows.rb down
 
 # Move workspace to left and right monitors
 bindsym $mod+Shift+bracketleft move workspace to output left
