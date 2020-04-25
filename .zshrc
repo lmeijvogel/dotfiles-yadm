@@ -109,18 +109,20 @@ fi
 bindkey '^U' backward-kill-line
 bindkey '^Y' yank
 
-alias gs="eval \"\`ruby $ZSH_CUSTOM/plugins/zsh-git-scripts/numbered-git-status.rb\`\""
+alias gs="_git_status"
+alias gl="_git_log"
+alias gll="_git_log_all"
 
 # These bindings also seem to bind <M-...>, which is what I was after
 
 # Bind <Esc>s (and alt-s) to show the numbered git status
-bindkey -s '\es' 'eval \"\`ruby $ZSH_CUSTOM/plugins/zsh-git-scripts/numbered-git-status.rb\`\"\n'
+bindkey -s '\es' 'gs\n'
 # Bind <Esc>a to 'git add -p'
 bindkey -s '\ea' 'git add -p\n'
 # Bind <Esc>g to 'git log --oneline --decorate -n 10'
-bindkey -s '\eg' 'eval \"\`ruby $ZSH_CUSTOM/plugins/zsh-git-scripts/numbered-git-log.rb\`\"\n'
+bindkey -s '\eg' 'gl\n'
 # Bind <Esc>G to 'git log --oneline --decorate'
-bindkey -s '\eG' 'eval \"\`ruby $ZSH_CUSTOM/plugins/zsh-git-scripts/numbered-git-log-all.rb\`\"\n'
+bindkey -s '\eG' 'gll\n'
 # Bind <Esc>r to 'gbr' (git branch)
 bindkey '\er' _git_choose_branch
 # Bind <Esc>R to 'gbrr' (git branch --remote)
