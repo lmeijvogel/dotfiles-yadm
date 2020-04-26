@@ -12,6 +12,8 @@
 # Mod4 == Win key
 set $mod Mod4
 
+set $ruby ruby --disable=gems
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:DejaVu Sans 13
@@ -41,16 +43,16 @@ bindsym $mod+F1 exec --no-startup-id $HOME/.lib/run-custom-command.sh
 bindsym $mod+Shift+slash exec --no-startup-id bash $HOME/.lib/open-notes.sh
 
 # change focus
-bindsym $mod+h exec --no-startup-id ruby $HOME/bin/i3-change-focus-with-floating-window.rb left
-bindsym $mod+j exec --no-startup-id ruby $HOME/bin/i3-change-focus-with-floating-window.rb down
-bindsym $mod+k exec --no-startup-id ruby $HOME/bin/i3-change-focus-with-floating-window.rb up
-bindsym $mod+l exec --no-startup-id ruby $HOME/bin/i3-change-focus-with-floating-window.rb right
+bindsym $mod+h exec --no-startup-id $ruby $HOME/bin/i3-change-focus-with-floating-window.rb left
+bindsym $mod+j exec --no-startup-id $ruby $HOME/bin/i3-change-focus-with-floating-window.rb down
+bindsym $mod+k exec --no-startup-id $ruby $HOME/bin/i3-change-focus-with-floating-window.rb up
+bindsym $mod+l exec --no-startup-id $ruby $HOME/bin/i3-change-focus-with-floating-window.rb right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left exec --no-startup-id ruby $HOME/bin/i3-change-focus-with-floating-window.rb left
-bindsym $mod+Down exec --no-startup-id ruby $HOME/bin/i3-change-focus-with-floating-window.rb down
-bindsym $mod+Up exec --no-startup-id ruby $HOME/bin/i3-change-focus-with-floating-window.rb up
-bindsym $mod+Right exec --no-startup-id ruby $HOME/bin/i3-change-focus-with-floating-window.rb right
+bindsym $mod+Left exec --no-startup-id $ruby $HOME/bin/i3-change-focus-with-floating-window.rb left
+bindsym $mod+Down exec --no-startup-id $ruby $HOME/bin/i3-change-focus-with-floating-window.rb down
+bindsym $mod+Up exec --no-startup-id $ruby $HOME/bin/i3-change-focus-with-floating-window.rb up
+bindsym $mod+Right exec --no-startup-id $ruby $HOME/bin/i3-change-focus-with-floating-window.rb right
 
 # move focused window
 bindsym $mod+Shift+h move left
