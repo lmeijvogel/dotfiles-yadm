@@ -48,23 +48,17 @@ bindsym $mod+j exec --no-startup-id $ruby $HOME/bin/i3-change-focus-with-floatin
 bindsym $mod+k exec --no-startup-id $ruby $HOME/bin/i3-change-focus-with-floating-window.rb up
 bindsym $mod+l exec --no-startup-id $ruby $HOME/bin/i3-change-focus-with-floating-window.rb right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left exec --no-startup-id $ruby $HOME/bin/i3-change-focus-with-floating-window.rb left
-bindsym $mod+Down exec --no-startup-id $ruby $HOME/bin/i3-change-focus-with-floating-window.rb down
-bindsym $mod+Up exec --no-startup-id $ruby $HOME/bin/i3-change-focus-with-floating-window.rb up
-bindsym $mod+Right exec --no-startup-id $ruby $HOME/bin/i3-change-focus-with-floating-window.rb right
+# resize windows with the arrow keys
+bindsym $mod+Left resize shrink width 10 px or 10 ppt
+bindsym $mod+Down resize grow height 10 px or 10 ppt
+bindsym $mod+Up resize shrink height 10 px or 10 ppt
+bindsym $mod+Right resize grow width 10 px or 10 ppt
 
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+backslash split h
