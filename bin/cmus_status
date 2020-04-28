@@ -9,8 +9,17 @@ class CmusStatus
     tag(name, status)
   end
 
+  def truncate(field)
+    max_length = 22
+    if field.length + 3 < max_length
+      field
+    else
+      "#{field[0..max_length]}..."
+    end
+  end
+
   def to_s
-    "#{tracknumber}: #{artist} - #{title}"
+    "#{tracknumber}: #{truncate(artist)} - #{truncate(title)}"
   end
 
   private
