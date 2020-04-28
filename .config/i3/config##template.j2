@@ -126,6 +126,7 @@ bindsym $mod+z workspace $ws1
 bindsym $mod+x workspace $ws3
 bindsym $mod+c workspace $ws2
 bindsym $mod+v workspace $ws4
+bindsym $mod+b workspace $ws6
 
 # Move focused container to predefined workspace
 bindsym $mod+Shift+z move container to workspace $ws1; workspace $ws1
@@ -205,11 +206,9 @@ for_window [title="^DevTools - .*"] move container to workspace $ws3; workspace 
 for_window [window_role="gnome-calculator"] floating enable
 for_window [class="Gnome-system-monitor"] floating enable
 for_window [class="Gnote"] floating enable
+for_window [class="zoom"] move container to workspace $ws5; workspace $ws5
 for_window [class="zoom" title="^Zoom - Pro Account.*"] floating enable resize set 376 500
 for_window [class="zoom" title="Settings"] floating enable
-
-# Used for VirtualBox: Two virtual monitors on $ws5 and $ws6. Removes the status bar on both
-bindsym $mod+b workspace $ws5; workspace $ws6
 
 # KDE integration
 # Plasma compatibility improvements
