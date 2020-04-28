@@ -90,7 +90,13 @@ set $ws1 "1: console"
 set $ws2 "2: code"
 set $ws3 "3: devtools"
 set $ws4 "4: www"
-set $ws5 "5: windows"
+
+{% if YADM_HOSTNAME == "home-desktop" %}
+  set $ws5 "5: windows"
+{% elif YADM_HOSTNAME == "lennaert-Precision-5530" %}
+  set $ws5 "5: zoom/win"
+{% endif %}
+
 set $ws6 "6: windows"
 set $ws7 "7"
 set $ws8 "8: music"
