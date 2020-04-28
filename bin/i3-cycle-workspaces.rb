@@ -39,7 +39,7 @@ def workspace_contains_virtualbox?(workspace_name)
   workspace = find_workspace_in_tree(workspace_name)
 
   recursive(workspace) do |node|
-    return true if node["name"]&.include? "htop"
+    return true if node["name"]&.include? "[Running]"
   end
 
   false
