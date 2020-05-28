@@ -6,6 +6,7 @@
 set $mod Mod4
 
 set $ruby ruby --disable=gems
+set $mpc mpc -h 192.168.2.3
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -346,11 +347,11 @@ mode "volume" {
     bindsym a        exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% # decrease sound volume
     bindsym Shift+a  exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% # decrease sound volume (small step)
 
-    bindsym z        exec --no-startup-id cmus-remote --prev
-    bindsym x        exec --no-startup-id cmus-remote --play
-    bindsym c        exec --no-startup-id cmus-remote --pause
-    bindsym v        exec --no-startup-id cmus-remote --stop
-    bindsym b        exec --no-startup-id cmus-remote --next
+    bindsym z        exec --no-startup-id $mpc prev
+    bindsym x        exec --no-startup-id $mpc play
+    bindsym c        exec --no-startup-id $mpc pause
+    bindsym v        exec --no-startup-id $mpc stop
+    bindsym b        exec --no-startup-id $mpc next
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
