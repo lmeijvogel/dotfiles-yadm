@@ -7,7 +7,7 @@ let g:firenvim_config = {
             \ 'cmdline': 'neovim',
             \ 'priority': 0,
             \ 'selector': 'textarea',
-            \ 'takeover': 'always',
+            \ 'takeover': 'never',
         \ },
     \ }
 \ }
@@ -15,7 +15,7 @@ let g:firenvim_config = {
 let fc = g:firenvim_config['localSettings']
 let fc['.*'] = {
 \   'selector': 'textarea',
-\   'takeover': 'empty'
+\   'takeover': 'never'
 \ }
 
 if exists('g:started_by_firenvim')
