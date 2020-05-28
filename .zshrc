@@ -109,9 +109,9 @@ fi
 bindkey '^U' backward-kill-line
 bindkey '^Y' yank
 
-alias gs="_git_status"
-alias gl="_git_log"
-alias gll="_git_log_all"
+alias gs="_zsh_git_scripts_git_status"
+alias gl="_zsh_git_scripts_git_log"
+alias gll="_zsh_git_scripts_git_log_all"
 
 # These bindings also seem to bind <M-...>, which is what I was after
 
@@ -124,9 +124,9 @@ bindkey -s '\eg' 'gl\n'
 # Bind <Esc>G to 'git log --oneline --decorate'
 bindkey -s '\eG' 'gll\n'
 # Bind <Esc>r to 'gbr' (git branch)
-bindkey '\er' _git_choose_branch
+bindkey '\er' _zsh_git_scripts_git_choose_branch
 # Bind <Esc>R to 'gbrr' (git branch --remote)
-bindkey '\eR' _git_choose_remote_branch
+bindkey '\eR' _zsh_git_scripts_git_choose_remote_branch
 
 # Bind <Esc>c to 'git diff' (Previously: Uppercase sentence and move to next sentence)
 bindkey -s '\ec' 'git diff\n'
@@ -134,11 +134,11 @@ bindkey -s '\ec' 'git diff\n'
 # Bind <Esc>C to 'git diff'
 bindkey -s '\eC' 'git diff --cached\n'
 
-bindkey '\ex' _expand_indices
+bindkey '\ex' _zsh_git_scripts_expand_indices
 
-alias ga=_git_add
-alias gd=_git_diff
-alias gdc="_git_diff --cached"
+alias ga=_zsh_git_scripts_git_add
+alias gd=_zsh_git_scripts_git_diff
+alias gdc="_zsh_git_scripts_git_diff --cached"
 unsetopt nomatch
 
 alias -g D=$HOME/Downloads
