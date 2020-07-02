@@ -1,59 +1,75 @@
 #!/bin/bash
 
+SHOULD_BUILD_NEOVIM_QT=0
+SHOULD_BUILD_NEOVIM=1
+
+NEOVIM_REF=master
+
 pushd $HOME/git
 
   echo
-  pushd neovim
-    echo "Building neovim"
-    git pull
-    make distclean
+
+  if [[ "$SHOULD_BUILD_NEOVIM" = "1" ]]; then
+    pushd neovim
+      echo "Building neovim"
+      git co $NEOVIM_REF
+      git pull
+      make distclean
+
+      if [[ "$?" -ne "0" ]]; then
+        echo "Error cleaning neovim"
+        exit 1
+      fi
+
+      CMAKE_BUILD_TYPE=Release make -j4
+    popd
 
     if [[ "$?" -ne "0" ]]; then
-      echo "Error cleaning neovim"
+      echo "Error building neovim"
       exit 1
     fi
-
-    CMAKE_BUILD_TYPE=Release make -j4
-  popd
-
-  if [[ "$?" -ne "0" ]]; then
-    echo "Error building neovim"
-    exit 1
   fi
 
   echo
-  pushd neovim-qt
-    echo "Building neovim-qt"
-    git pull
-    mkdir -p build
-    cd build
-    rm -rf *
-    cmake -DCMAKE_BUILD_TYPE=Release ..
-    make
-  popd
+  if [[ "$SHOULD_BUILD_NEOVIM_QT" = "1" ]]; then
+    pushd neovim-qt
+      echo "Building neovim-qt"
+      git pull
+      mkdir -p build
+      cd build
+      rm -rf *
+      cmake -DCMAKE_BUILD_TYPE=Release ..
+      make
+    popd
 
-  if [[ "$?" -ne "0" ]]; then
-    echo "Error building neovim-qt"
-    exit 1
+    if [[ "$?" -ne "0" ]]; then
+      echo "Error building neovim-qt"
+      exit 1
+    fi
   fi
 
   echo
-  pushd neovim
-    echo "Installing neovim"
-    sudo make install
 
-    # Clean up afterwards. This is necessary because `make install` actually creates these directories
-    # with additional contents. Since it runs as root, these directories are owned by root and can't be
-    # deleted without sudo.
+  if [[ "$SHOULD_BUILD_NEOVIM" = "1" ]]; then
+    pushd neovim
+      echo "Installing neovim"
+      sudo make install
 
-    # When this `rm` is run, the sudo password is probably still cached and doesn't have to be asked again.
-    sudo rm -rf $HOME/git/neovim/{.deps,build}
-  popd
+      # Clean up afterwards. This is necessary because `make install` actually creates these directories
+      # with additional contents. Since it runs as root, these directories are owned by root and can't be
+      # deleted without sudo.
 
-  echo
-  pushd neovim-qt/build
-    echo "Installing neovim-qt"
+      # When this `rm` is run, the sudo password is probably still cached and doesn't have to be asked again.
+      sudo rm -rf $HOME/git/neovim/{.deps,build}
+    popd
+  fi
 
-    sudo make install
-  popd
+  if [[ "$SHOULD_BUILD_NEOVIM_QT" = "1" ]]; then
+    echo
+    pushd neovim-qt/build
+      echo "Installing neovim-qt"
+
+      sudo make install
+    popd
+  fi
 popd
