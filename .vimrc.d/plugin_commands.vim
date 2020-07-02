@@ -79,6 +79,9 @@ vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
 nmap <M-k> <Plug>(IndentWisePreviousLesserIndent)
 nmap <M-j> <Plug>(IndentWiseNextLesserIndent)
 
+" vim-matchup
+let g:matchup_matchparen_offscreen = {}
+
 if has('nvim')
   " NeoTerm
   let g:neoterm_default_mod = 'horizontal'
