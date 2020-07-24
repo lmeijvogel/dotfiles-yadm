@@ -4,7 +4,7 @@ modules-right = cpu eth backup-status cmus sound date
 
 eth-interface = enp3s0
 {% elif YADM_HOSTNAME == "lennaert-Precision-5530" %}
-modules-right = eth wlan battery cmus sound date
+modules-right = bluetooth-headset eth wlan battery cmus sound date
 
 eth-interface = enx8c04ba6b821a
 wlan-interface = wlp59s0
@@ -175,11 +175,6 @@ time-alt = %H:%M:%S
 
 label = %date% %time%
 
-[module/cmus]
-type = custom/script
-exec = /usr/bin/env ruby $HOME/bin/cmus_status
-interval = 5
-
 [module/sound]
 type = internal/pulseaudio
 
@@ -217,6 +212,11 @@ interval = 15
 type = custom/script
 exec = /usr/bin/env ruby $HOME/.config/polybar/scripts/check_backup_status.rb
 interval = 60
+
+[module/bluetooth-headset]
+type = custom/script
+exec = /usr/bin/env ruby $HOME/bin/bluetooth_headset --show
+interval = 1
 
 [settings]
 screenchange-reload = true
