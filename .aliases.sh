@@ -17,7 +17,7 @@ alias o='xdg-open'
 alias vi='nvim'
 alias vim='nvim'
 
-alias nq='nvim-qt'
+alias nq='swallow nvim-qt --nofork'
 
 alias k1='kill %1'
 alias k91='kill -9 %1'
