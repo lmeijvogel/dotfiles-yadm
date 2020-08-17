@@ -4,7 +4,7 @@ modules-right = cpu eth backup-status cmus sound date
 
 eth-interface = enp3s0
 {% elif YADM_HOSTNAME == "lennaert-Precision-5530" %}
-modules-right = bluetooth-headset eth wlan battery cmus sound date
+modules-right = current-mpd-song bluetooth-headset eth wlan battery cmus sound date
 
 eth-interface = enx8c04ba6b821a
 wlan-interface = wlp59s0
@@ -217,6 +217,11 @@ interval = 60
 type = custom/script
 exec = /usr/bin/env ruby $HOME/bin/bluetooth_headset --show
 interval = 1
+
+[module/current-mpd-song]
+type = custom/script
+exec = /usr/bin/env ruby $HOME/bin/mpd-status
+interval = 5
 
 [settings]
 screenchange-reload = true

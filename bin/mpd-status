@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+input = `mpc --host 192.168.2.3 --format "%artist%-@*@#@*!-%title%" status`
+
+if input.lines.length <= 1
+  puts ""
+  exit
+end
+
+description, song_status, settings = input.lines
+
+artist, title = description.strip.split("-@*@@*!-")
+
+matches = song_status.match(%r{\[([^\]]+)\]\s+#(\d+)/(\d+)})
+
+playing_mode = case matches[1]
+               when "paused" then ""
+               when "playing" then ""
+end
+
+current, total = matches[2,3]
+
+puts "#{playing_mode} #{title} #{current}/#{total}"
+
+# vim: set ft=ruby
