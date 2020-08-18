@@ -20,6 +20,6 @@ end
 
 current, total = matches[2,3]
 
-puts "#{playing_mode} #{title} #{current}/#{total}"
+puts "#{playing_mode} #{title} (#{current}/#{total})"
 
 # vim: set ft=ruby
