@@ -18,3 +18,4 @@ rofi.eh: 1
 rofi.separator-style: solid
 rofi.hide-scrollbar: false
 rofi.auto-select: false
+rofi.modi: window,run,ssh,drun
