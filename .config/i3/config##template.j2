@@ -253,9 +253,10 @@ hide_edge_borders horizontal
   exec_always --no-startup-id exec $HOME/start.sh
   exec --no-startup-id exec ~/bin/start_workrave
 
-  exec firefox
   for_window [class="Firefox"] floating enable, move to scratchpad, scratchpad show
   bindsym $mod+grave [class="Firefox"] scratchpad show
+
+  exec --no-startup-id firefox
 
   set $output_left eDP-1
   set $output_right DP-1-2
