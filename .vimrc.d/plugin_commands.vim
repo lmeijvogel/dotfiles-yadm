@@ -79,6 +79,10 @@ vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
 nmap <M-k> <Plug>(IndentWisePreviousLesserIndent)
 nmap <M-j> <Plug>(IndentWiseNextLesserIndent)
 
+" These aren't mapped by default
+nmap silent [- <Plug>(IndentWisePreviousLesserIndent)
+nmap silent ]- <Plug>(IndentWiseNextLesserIndent)
+
 " vim-matchup
 let g:matchup_matchparen_offscreen = {}
 
