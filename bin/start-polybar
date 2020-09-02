@@ -1,1 +1,2 @@
+#!/bin/sh
 sh $HOME/.config/polybar/launch-with-defaults
