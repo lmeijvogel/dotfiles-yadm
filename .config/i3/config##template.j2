@@ -62,6 +62,7 @@ bindsym $mod+minus split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+f exec --no-startup-id $HOME/bin/focus-mode on
 
 # change container layout (stacked, toggle split)
 bindsym $mod+s layout stacking
@@ -97,6 +98,9 @@ set $ws8 "8: music"
 set $ws9 "9"
 set $ws10 "10"
 set $ws_itest "itest"
+
+set $ws_focus_left "focus_left"
+set $ws_focus_right "focus_right"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -209,6 +213,10 @@ mode "go to window" {
 }
 
 bindsym $mod+g mode "go to window"
+
+mode "focus mode" {
+    bindsym $mod+Shift+f exec --no-startup-id $HOME/bin/focus-mode off
+}
 
 # KDE integration
 # Plasma compatibility improvements
@@ -330,6 +338,8 @@ workspace $ws10 output $output_right
 
 workspace $ws9 output $output_right_or_laptop
 
+workspace $ws_focus_left output $output_left
+workspace $ws_focus_right output $output_right
 
 {% if YADM_HOSTNAME == "home-desktop" %}
   # For i3-gaps: No border

@@ -1,0 +1,102 @@
+#!/usr/bin/env ruby
+
+TEMP_FILE_PATH = "/tmp/focus_mode_state"
+
+$LOAD_PATH << File.join(__dir__, "lib")
+
+require 'json'
+require 'i3_workspace_helpers'
+
+def main(on_or_off)
+  if on_or_off == "on"
+    save_state
+
+    enter_focus_mode
+  else
+    load_state
+
+    exit_focus_mode
+  end
+end
+
+def save_state
+  visible_workspaces = workspaces.select {|ws| ws["visible"] }
+
+  state = {
+    current_window_id: current_window["id"],
+    previous_workspace: focused_workspace["name"],
+    visible_workspaces: visible_workspaces.map {|ws| ws["name"] }
+  }
+
+  File.open(TEMP_FILE_PATH, "w") do |file|
+    file.write(state.to_json)
+  end
+end
+
+def load_state
+  saved_state = JSON.parse(File.read(TEMP_FILE_PATH))
+
+  # Show previously shown workspaces
+  saved_state["visible_workspaces"].each {|ws| system('i3-msg', 'workspace', ws) }
+
+  # Focus previously focused window
+  move_to_workspace(id: saved_state["current_window_id"], workspace_name: saved_state["previous_workspace"])
+  system('i3-msg', "[con_id=#{saved_state["current_window_id"]}]", 'focus')
+ensure
+  File.delete(TEMP_FILE_PATH)
+end
+
+def enter_focus_mode
+  system("killall", "-q", "polybar")
+
+  move_to_workspace(workspace_name: "focus_right")
+
+  `i3-msg workspace focus_left`
+  `i3-msg workspace focus_right`
+
+  `i3-msg mode "focus mode"`
+end
+
+def exit_focus_mode
+  `i3-msg mode default`
+
+  `#{ENV["HOME"]}/bin/start-polybar`
+end
+
+def focused_workspace_in_tree
+  @_focused_workspace_in_tree ||= find_workspace_in_tree(focused_workspace["name"])
+end
+
+def windows_in_workspace
+  @_windows_in_workspace ||= begin
+                               result = []
+
+                               recursive(focused_workspace_in_tree) do |node|
+                                 result << node if leaf_node?(node)
+                               end
+
+                               result
+                             end
+end
+
+def leaf_node?(node)
+  node["nodes"].empty?
+end
+
+def current_window
+  windows_in_workspace.find { |window| window["focused"] }
+end
+
+def move_to_workspace(workspace_name:, id: nil)
+  if id
+    system('i3-msg', "[con_id=#{id}]", 'move container to workspace', workspace_name)
+  else
+    system('i3-msg', 'move container to workspace', workspace_name)
+  end
+end
+
+main(ARGV.fetch(0))
+
+exit
+
+# vim: set ft=ruby

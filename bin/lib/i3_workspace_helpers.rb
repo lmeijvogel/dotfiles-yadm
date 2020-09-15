@@ -2,9 +2,13 @@ def focused_workspace
   workspaces.find { |ws| ws["focused"] }
 end
 
-def workspaces_on_current_output
+def workspaces_on_output(output_name)
   workspaces
-    .select { |ws| ws["output"] == current_output }
+    .select { |ws| ws["output"] == output_name }
+end
+
+def workspaces_on_current_output
+  workspaces_on_output(current_output)
 end
 
 def workspaces
