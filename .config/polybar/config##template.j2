@@ -41,9 +41,6 @@ volume-high = #ff5555
 [bar/base]
 monitor = ${env:MONITOR}
 
-modules-left = logo i3
-modules-right = ${machine-specific.modules-right}
-
 bottom = true
 
 width = 100%
@@ -78,11 +75,22 @@ font-3 = siji:pixelsize=10;1
 [bar/left]
 inherit = bar/base
 
+modules-left = logo i3
+modules-right = ${machine-specific.modules-right}
+
 [bar/right]
 inherit = bar/base
 
+modules-left = logo i3
+modules-right = ${machine-specific.modules-right}
+
 tray-position = right
 tray-padding = 2
+
+[bar/focus]
+inherit = bar/base
+
+modules-center = focus-message
 
 [module/logo]
 type = custom/text
@@ -222,6 +230,10 @@ interval = 1
 type = custom/script
 exec = /usr/bin/env ruby $HOME/bin/mpd-status
 interval = 5
+
+[module/focus-message]
+type = custom/text
+content = "Focus mode"
 
 [settings]
 screenchange-reload = true

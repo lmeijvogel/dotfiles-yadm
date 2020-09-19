@@ -1,9 +1,10 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env -S ruby --disable-gems
 
 TEMP_FILE_PATH = "/tmp/focus_mode_state"
 
 $LOAD_PATH << File.join(__dir__, "lib")
 
+require 'fileutils'
 require 'json'
 require 'i3_workspace_helpers'
 
@@ -34,6 +35,8 @@ def save_state
 end
 
 def load_state
+  return unless File.exist?(TEMP_FILE_PATH)
+
   saved_state = JSON.parse(File.read(TEMP_FILE_PATH))
 
   # Show previously shown workspaces
@@ -43,11 +46,11 @@ def load_state
   move_to_workspace(id: saved_state["current_window_id"], workspace_name: saved_state["previous_workspace"])
   system('i3-msg', "[con_id=#{saved_state["current_window_id"]}]", 'focus')
 ensure
-  File.delete(TEMP_FILE_PATH)
+  FileUtils.rm_f(TEMP_FILE_PATH)
 end
 
 def enter_focus_mode
-  system("killall", "-q", "polybar")
+  fork { exec("#{ENV["HOME"]}/bin/start-polybar focus") }
 
   move_to_workspace(workspace_name: "focus_right")
 
@@ -58,9 +61,11 @@ def enter_focus_mode
 end
 
 def exit_focus_mode
-  `i3-msg mode default`
+  # I think the fork is necessary because i3 will wait until the command is completed but
+  # the command only completes when i3 responds (because of the i3 module that is loaded on the bar)
+  fork { exec("#{ENV["HOME"]}/bin/start-polybar") }
 
-  `#{ENV["HOME"]}/bin/start-polybar`
+  `i3-msg mode default`
 end
 
 def focused_workspace_in_tree
@@ -96,7 +101,5 @@ def move_to_workspace(workspace_name:, id: nil)
 end
 
 main(ARGV.fetch(0))
-
-exit
 
 # vim: set ft=ruby
