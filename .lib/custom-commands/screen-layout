@@ -10,10 +10,10 @@ if [ -d "$layouts_dir" ]; then
   if [ "$COMMAND" != "" ]; then
     sh -c ./$COMMAND
 
-    $HOME/bin/start-polybar-`hostname`.sh
-
     # -b == daemonize
     killall -q compton; compton -b --config $HOME/.config/compton/compton.conf
+
+    sh $HOME/bin/start-polybar
   fi
 else
   notify-send "Could not find layouts for host $(hostname)"
