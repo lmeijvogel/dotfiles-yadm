@@ -30,7 +30,7 @@ end
 def recursive(node, depth = 0, ancestors = [], &block)
   yield node, depth, ancestors
 
-  node['nodes'].each do |child_node|
+  (node['nodes'] + node['floating_nodes']).each do |child_node|
     recursive(child_node, depth + 2, ancestors + [node], &block)
   end
 end
