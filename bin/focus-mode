@@ -54,7 +54,7 @@ def enter_focus_mode
   `i3-msg workspace focus_left`
   `i3-msg workspace focus_right`
 
-  `i3-msg mode "focus mode"`
+  `i3-msg mode "focus"`
 end
 
 def exit_focus_mode

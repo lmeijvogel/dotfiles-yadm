@@ -212,7 +212,8 @@ mode "go to window" {
 bindsym $mod+o mode "go to window"
 bindsym $mod+g mode "go to window"
 
-mode "focus mode" {
+mode "focus" {
+    bindsym $mod+Shift+s mode "sound focus"
     bindsym $mod+Shift+f exec --no-startup-id $HOME/bin/focus-mode off
 }
 
@@ -353,7 +354,8 @@ bindsym --release Print exec spectacle --gui
 # Screenshot current window
 bindsym --release Shift+Print exec spectacle --region
 
-mode "volume" {
+{% for focus_state in ["default", "focus"] -%}
+mode "sound {{focus_state}}" {
     # Lots of duplication, since i3wm doesn't support recursive variables :(
     bindsym s        exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@ toggle
 
@@ -370,11 +372,12 @@ mode "volume" {
     bindsym v        exec --no-startup-id $mpc stop
     bindsym b        exec --no-startup-id $mpc next
 
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+    bindsym Return mode "{{focus_state}}"
+    bindsym Escape mode "{{focus_state}}"
 }
+{% endfor %}
 
-bindsym $mod+Shift+s mode "volume"
+bindsym $mod+Shift+s mode "sound default"
 
 bindsym $mod+Shift+w exec --no-startup-id $HOME/bin/breaks_off
 
