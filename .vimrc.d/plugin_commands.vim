@@ -3,6 +3,15 @@ source ~/.vimrc.d/plugins/coc.nvim.vim
 source ~/.vimrc.d/plugins/nerdtree.vim
 source ~/.vimrc.d/plugins/firenvim.vim
 
+" Vim-sneak
+let g:sneak#label = 1 " Emulate easymotion (show label for navigation). Otherwise, it would navigate with ;,
+
+nmap <leader>f <Plug>Sneak_s
+nmap <leader>F <Plug>Sneak_S
+
+nmap f <Plug>Sneak_f
+nmap F <Plug>Sneak_F
+
 " Tag list
 let Tlist_Ctags_Cmd = "/usr/bin/ctags"
 let Tlist_WinWidth = 50

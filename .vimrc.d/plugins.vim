@@ -28,7 +28,7 @@ Plug 'jgdavey/tslime.vim'
 Plug 'jgdavey/vim-turbux'
 Plug 'buztard/vim-rel-jump' " Store relative jumps (5j, 3k) in the jump list
 Plug 'ap/vim-buftabline' " Buffer list at top of screen
-Plug 'easymotion/vim-easymotion'
+Plug 'justinmk/vim-sneak'
 Plug 'kassio/neoterm'
 Plug 'janko-m/vim-test'
 Plug 'AndrewRadev/splitjoin.vim'
@@ -56,6 +56,7 @@ Plug 'ruanyl/vim-sort-imports' " Sort typescript imports
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
 call plug#end()
+
 call yankstack#setup()
 
 filetype off
