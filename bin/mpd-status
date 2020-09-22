@@ -1,13 +1,23 @@
 #!/usr/bin/env ruby
 
-input = `mpc --host 192.168.2.3 --format "%artist%-@*@#@*!-%title%" status`
+MPD_HOST = "192.168.2.3"
 
-if input.lines.length <= 1
+require 'open3'
+
+mpd_status, exit_status = Open3.capture2e("mpc", "--host", MPD_HOST, "--format", "%artist%-@*@#@*!-%title%", "status")
+# mpd_status, exit_status = Open3.capture2e("mpc", "--format", '"%artist%-@*@#@*!-%title%"', "status")
+
+if !exit_status.success?
+  puts ""
+  exit
+end
+
+if mpd_status.lines.length <= 1
   puts ""
   exit
 end
 
-description, song_status, settings = input.lines
+description, song_status, settings = mpd_status.lines
 
 artist, title = description.strip.split("-@*@@*!-")
 
