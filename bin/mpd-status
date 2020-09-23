@@ -4,39 +4,50 @@ MPD_HOST = "192.168.2.3"
 
 require 'open3'
 
-host_available = `ping -c 1 -W 1 -q #{MPD_HOST}`
+class HostNotAvailable < StandardError ; end
 
-if !$?.success?
+def query_mpd_status
+  `ping -c 1 -W 1 -q #{MPD_HOST}`
+
+  if !$?.success?
+    raise HostNotAvailable, "Ping failed"
+  end
+
+  mpd_status, exit_status = Open3.capture2e("mpc", "--host", MPD_HOST, "--format", "%artist%-@*@#@*!-%title%", "status")
+
+  if !exit_status.success?
+    raise HostNotAvailable, "Could not contact service"
+  end
+
+  mpd_status.lines
+end
+
+def main
+  mpd_status = query_mpd_status
+
+  if mpd_status.length <= 1
+    puts ""
+    exit
+  end
+
+  description, song_status, settings = mpd_status
+
+  artist, title = description.strip.split("-@*@@*!-")
+
+  matches = song_status.match(%r{\[([^\]]+)\]\s+#(\d+)/(\d+)})
+
+  playing_mode = case matches[1]
+                 when "paused" then ""
+                 when "playing" then ""
+  end
+
+  current, total = matches[2,3]
+
+  puts "#{playing_mode} #{title} (#{current}/#{total})"
+rescue HostNotAvailable => e
   puts ""
-  exit
 end
 
-mpd_status, exit_status = Open3.capture2e("mpc", "--host", MPD_HOST, "--format", "%artist%-@*@#@*!-%title%", "status")
-# mpd_status, exit_status = Open3.capture2e("mpc", "--format", '"%artist%-@*@#@*!-%title%"', "status")
-
-if !exit_status.success?
-  puts ""
-  exit
-end
-
-if mpd_status.lines.length <= 1
-  puts ""
-  exit
-end
-
-description, song_status, settings = mpd_status.lines
-
-artist, title = description.strip.split("-@*@@*!-")
-
-matches = song_status.match(%r{\[([^\]]+)\]\s+#(\d+)/(\d+)})
-
-playing_mode = case matches[1]
-               when "paused" then ""
-               when "playing" then ""
-end
-
-current, total = matches[2,3]
-
-puts "#{playing_mode} #{title} (#{current}/#{total})"
+main
 
 # vim: set ft=ruby
