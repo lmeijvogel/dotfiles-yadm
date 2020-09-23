@@ -4,6 +4,13 @@ MPD_HOST = "192.168.2.3"
 
 require 'open3'
 
+host_available = `ping -c 1 -W 1 -q #{MPD_HOST}`
+
+if !$?.success?
+  puts ""
+  exit
+end
+
 mpd_status, exit_status = Open3.capture2e("mpc", "--host", MPD_HOST, "--format", "%artist%-@*@#@*!-%title%", "status")
 # mpd_status, exit_status = Open3.capture2e("mpc", "--format", '"%artist%-@*@#@*!-%title%"', "status")
 
