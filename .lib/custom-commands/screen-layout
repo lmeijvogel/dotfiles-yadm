@@ -1,6 +1,5 @@
 layouts_dir=$HOME/.lib/custom-commands/layouts/`hostname`
 
-echo $layouts_dir
 if [ -d "$layouts_dir" ]; then
 
   cd $layouts_dir
@@ -12,6 +11,8 @@ if [ -d "$layouts_dir" ]; then
 
     # -b == daemonize
     killall -q compton; compton -b --config $HOME/.config/compton/compton.conf
+
+    $HOME/.fehbg &
 
     sh $HOME/bin/start-polybar
   fi

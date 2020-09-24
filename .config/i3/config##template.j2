@@ -391,12 +391,10 @@ bindsym $mod+Shift+s mode "sound default"
 
 bindsym $mod+Shift+w exec --no-startup-id $HOME/bin/breaks_off
 
+exec_always "/usr/bin/bash $HOME/start.sh"
+
 # The "sleep" is to (hopefully) ensure that compton is started long after all the monitor adjustments
 exec_always --no-startup-id "sleep 10; killall -q compton; compton --config ~/.config/compton/compton.conf"
-exec_always --no-startup-id MONITOR_LEFT=$output_left MONITOR_RIGHT=$output_right MONITOR_LAPTOP=$output_laptop $HOME/.config/polybar/launch.sh
-exec_always --no-startup-id kmix
-
-exec_always --no-startup-id $HOME/.fehbg &
 
 exec --no-startup-id i3-msg workspace $ws1
 exec --no-startup-id i3-msg workspace $ws4

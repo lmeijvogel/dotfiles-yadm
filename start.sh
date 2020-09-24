@@ -1,10 +1,12 @@
 # Correctly position monitors
 ruby ~/.lib/custom-commands/layouts/`hostname`/default.rb
 
-# Now done by KDE
-mouse left
+$HOME/bin/mouse left
 
-xmodmap ~/.Xmodmap
+$HOME/bin/start-polybar
 
-# Allow writing special chars with right alt
-setxkbmap -option compose:paus
+$HOME/.fehbg
+
+# For some reason, this has to be run *after* start-polybar, otherwise,
+# something in there will reset the caps lock keybinding to normal.
+/usr/bin/setxkbmap -option "caps:swapescape"
