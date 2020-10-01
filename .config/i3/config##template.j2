@@ -212,6 +212,13 @@ bindsym $mod+o mode "go to window"
 bindsym $mod+g mode "go to window"
 
 mode "focus" {
+    # Move workspace to left and right monitors
+    bindsym $mod+Shift+bracketleft move container to workspace $ws_focus_left; workspace $ws_focus_left
+    bindsym $mod+Shift+bracketright move container to workspace $ws_focus_right; workspace $ws_focus_right
+
+    bindsym $mod+Shift+h move container to workspace $ws_focus_left; workspace $ws_focus_left
+    bindsym $mod+Shift+l move container to workspace $ws_focus_right; workspace $ws_focus_right
+
     bindsym $mod+Shift+s mode "sound focus"
     bindsym $mod+Shift+f exec --no-startup-id $HOME/bin/focus-mode off
 }
