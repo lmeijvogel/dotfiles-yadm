@@ -106,3 +106,14 @@ vmap <leader>m /^<<<<<<<\\|^=======\\|^>>>>>>>/<CR>
 
 " Only redraw screen _after_ a macro is finished
 set lazyredraw
+
+function! FormatXML()
+    execute '%s/\\"/"/g'
+    execute '%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"'
+endfunction
+
+function! UnformatXML()
+    execute '%s/"/\\"/g'
+    execute '%s/^\s*//g'
+    execute '%join!'
+endfunction
