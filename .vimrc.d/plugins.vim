@@ -47,7 +47,7 @@ Plug 'mattn/calendar-vim'
 Plug 'jeetsukumaran/vim-indentwise' " Easy navigation based on indent level
 Plug 'nacitar/a.vim'                  " Easily alternate between related files
 Plug 'rakr/vim-one' " Light color scheme
-Plug 'neoclide/coc.nvim', {'branch': 'release'} " Language Server Protocol client
+Plug 'neoclide/coc.nvim', {'branch': 'master'} " Language Server Protocol client
 Plug 'ianks/vim-tsx' " Correctly set filetype for tsx files
 Plug 'mg979/vim-visual-multi'
 Plug 'rbgrouleff/bclose.vim' " Close buffers while keeping windows open
