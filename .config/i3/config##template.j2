@@ -5,7 +5,11 @@
 # Mod4 == Win key
 set $mod Mod4
 
-set $default_sink @DEFAULT_SINK@
+{% if YADM_HOSTNAME == "home-desktop" %}
+  set $default_sink @DEFAULT_SINK@
+{% elif YADM_HOSTNAME == "lennaert-Precision-5530" %}
+  set $default_sink 2
+{% endif %}
 
 set $ruby ruby --disable=gems
 set $mpc mpc -h 192.168.2.3
