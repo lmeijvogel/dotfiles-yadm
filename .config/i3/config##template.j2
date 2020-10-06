@@ -401,6 +401,16 @@ mode "sound {{focus_state}}" {
 
 bindsym $mod+Shift+s mode "sound default"
 
+mode "yadm" {
+    bindsym y exec /home/lennaert/bin/yadm alt; reload ; mode "default"
+    bindsym $mod+y exec /home/lennaert/bin/yadm alt; reload ; mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+y mode "yadm"
+
 bindsym $mod+Shift+w exec --no-startup-id $HOME/bin/breaks_off
 
 exec_always "/usr/bin/bash $HOME/start.sh"
