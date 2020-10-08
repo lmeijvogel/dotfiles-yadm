@@ -24,9 +24,14 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " It was disabled because it also autocompleted on whole word match, causing
 " it to "swallow" an enter press.
 
-" Note: This used to clash with endwise.vim, causing the string to be
-" written to the buffer. I uninstalled endwise.
-" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+" It conflicts with the endwise plugin, so it is disabled.
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+
+" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+"                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 
 " Keys from the coc.nvim github example config
 "
