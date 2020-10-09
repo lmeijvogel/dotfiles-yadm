@@ -25,7 +25,7 @@ floating_modifier $mod
 bindsym $mod+Return exec konsole
 
 # lock the screen - The `sleep` ensures that locking is not cancelled by releasing the keys.
-bindsym $mod+Control+q exec "lxqt-leave --lockscreen"
+bindsym $mod+Control+q exec "sleep 0.3 ; /usr/bin/qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -172,7 +172,8 @@ bindsym $mod+Control+Shift+r restart
 #   ShutdownModeInteractive = 3
 # };
 
-bindsym $mod+Shift+e mode "exit menu: (l)ogout | (r)eboot | (s)uspend | (h)ibernate default: shutdown"
+bindsym $mod+Shift+e exec qdbus org.kde.ksmserver /KSMServer logout -1 2 -1 # Poweroff
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -227,16 +228,6 @@ mode "focus" {
 
     bindsym $mod+Shift+s mode "sound focus"
     bindsym $mod+Shift+f exec --no-startup-id $HOME/bin/focus-mode off
-}
-
-mode "exit menu: (l)ogout | (r)eboot | (s)uspend | (h)ibernate default: shutdown" {
-    bindsym l exec lxqt-leave --logout
-    bindsym s exec lxqt-leave --suspend
-    bindsym h exec lxqt-leave --hibernate
-    bindsym r exec lxqt-leave --reboot
-
-    bindsym Return exec lxqt-leave --shutdown
-    bindsym Escape mode "default"
 }
 
 # KDE integration
