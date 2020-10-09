@@ -5,7 +5,7 @@
 # Mod4 == Win key
 set $mod Mod4
 
-{% if YADM_HOSTNAME == "home-desktop" %}
+{% if YADM_HOSTNAME == "desktop" %}
   set $default_sink @DEFAULT_SINK@
 {% elif YADM_HOSTNAME == "lennaert-Precision-5530" %}
   set $default_sink 2
@@ -88,7 +88,7 @@ set $ws2 "2: code"
 set $ws3 "3: devtools"
 set $ws4 "4: www"
 
-{% if YADM_HOSTNAME == "home-desktop" %}
+{% if YADM_HOSTNAME == "desktop" %}
   set $ws5 "5: windows"
 {% elif YADM_HOSTNAME == "lennaert-Precision-5530" %}
   set $ws5 "5: zoom/win"
@@ -287,11 +287,11 @@ client.background       #ffffff
 
 hide_edge_borders horizontal
 
-{% if YADM_HOSTNAME == "home-desktop" %}
-  set $output_left DP-1
-  set $output_right HDMI-1
+{% if YADM_HOSTNAME == "desktop" %}
+  set $output_left DP1
+  set $output_right HDMI1
 
-  set $output_right_or_laptop HDMI-1
+  set $output_right_or_laptop HDMI1
 {% elif YADM_HOSTNAME == "lennaert-Precision-5530" %}
   exec_always --no-startup-id exec $HOME/start.sh
   exec --no-startup-id exec ~/bin/start_workrave
@@ -362,7 +362,7 @@ workspace $ws9 output $output_right_or_laptop
 workspace $ws_focus_left output $output_left
 workspace $ws_focus_right output $output_right
 
-{% if YADM_HOSTNAME == "home-desktop" %}
+{% if YADM_HOSTNAME == "desktop" %}
   # For i3-gaps: No border
   for_window [class=".*"] border pixel 2
   gaps inner 4
