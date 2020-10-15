@@ -1,0 +1,227 @@
+#!/usr/bin/env ruby
+
+puts `pwd`
+require 'bundler'
+
+Bundler.load
+
+require 'curses'
+include Curses
+
+COLOR_INVERTED = 2
+COLOR_NORMAL   = 1
+
+KEY_TAB = 9
+KEY_SHIFT_TAB = 353
+KEY_ESCAPE = 27
+
+class VolumeUI
+  def initialize
+    initialize_windows
+
+    @selected_sink_index = 0
+  end
+
+  def resize
+    initialize_windows
+  end
+
+  def draw
+    @sink_windows.zip(sinks).each_with_index do |(window, sink), i|
+      is_selected = i == @selected_sink_index
+
+      draw_sink(window, sink, is_selected)
+    end
+  end
+
+  def getch
+    @window.getch
+  end
+
+  def select_next
+    @selected_sink_index += 1
+    @selected_sink_index %= sinks.count
+  end
+
+  def select_prev
+    @selected_sink_index -= 1
+    @selected_sink_index = (@selected_sink_index + sinks.count) % sinks.count
+  end
+
+  def change(delta)
+    selected_sink.change_volume(delta)
+
+    invalidate_cache
+  end
+
+  def toggle_mute
+    selected_sink.toggle_mute
+
+    invalidate_cache
+  end
+
+  private
+
+  def initialize_windows
+    @window.close if @window
+
+    @window = Window.new(cols, lines, 0, 0)
+    @window.clear
+    @window.nodelay = true
+    @window.keypad = false # Setting this to true allows cursor keys and shift-tab, but makes quitting (Esc) slower.
+
+    @sink_windows.each(&:close) if @sink_windows
+
+    @sink_windows = sinks.map.with_index do |sink, i|
+      width_per_sink = cols / sinks.count
+
+      Window.new(3, width_per_sink, 0, i*width_per_sink)
+    end
+  end
+
+  def draw_sink(window, sink, is_selected)
+    colors = is_selected ? COLOR_INVERTED : COLOR_NORMAL
+
+    window.attrset(color_pair(colors))
+
+    window.setpos(1, 2)
+    window << sink.to_s
+    window.clrtoeol
+
+    window.attrset(color_pair(COLOR_NORMAL))
+    window.box("|", "-")
+
+    window.refresh
+  end
+
+  def selected_sink
+    @sinks[@selected_sink_index]
+  end
+
+  def sinks
+    now = Time.now
+
+    if @sinks.nil? || (now - @sinks_refresh_time) > 1
+      @sinks_refresh_time = now
+
+      @sinks = `pactl list sinks`.each_line.slice_before(/Sink #\d+/).map {|data| Sink.new(data) }
+    end
+
+    number_of_sinks_changed = @sink_windows && @sink_windows.count != @sinks.count
+
+    if number_of_sinks_changed
+      initialize_windows
+    end
+
+    @sinks
+  end
+
+  def invalidate_cache
+    @sinks = nil
+  end
+end
+
+class Sink
+  def initialize(data)
+    @data = data
+  end
+
+  def id
+    @data.find { |line| line.match(/Sink #(\d+)/) }
+
+    Integer($1)
+  end
+
+  def to_s
+    @data.find { |line| line =~ /device.description = "([^)]*)"/ }
+
+    description = $1
+
+    format("%s: %s : %s", mute? ? "mute" : volume.to_s, description, id.to_s)
+  end
+
+  def volume
+    volume_line = @data.find { |line| line =~ /Volume: / }
+
+    volume_line.split(/,\s+/).map do |line|
+      matches = line.match /\s*(?<name>[^:]+):\s+(?<id>\d+)\s+\/\s+(?<percentage>\d+)%\s+\/\s+(?<decibel>[\-0-9,]+)\s*dB/
+      matches[:percentage]
+    end[0]
+  end
+
+  def mute?
+    @data.find { |line| line =~ /Mute: (.*)/ }
+
+    $1 == 'yes'
+  end
+
+  def change_volume(delta)
+    delta_to_s = delta > 0 ? "+#{delta}%" : "#{delta}%"
+
+    system("pactl", "set-sink-volume", id.to_s, delta_to_s)
+  end
+
+  def toggle_mute
+    system("pactl", "set-sink-mute", id.to_s, "toggle")
+  end
+end
+
+def main
+  ui = VolumeUI.new
+
+  loop do
+    ui.draw
+    char = ui.getch
+
+    case char
+    when 'q', 'k'
+      ui.change(5)
+    when 'Q', 'K'
+      ui.change(1)
+    when 'a', 'j'
+      ui.change(-5)
+    when 'A', 'J'
+      ui.change(-1)
+    when 's', 'm'
+      ui.toggle_mute
+    when 'z', 'x', 'c', 'v', 'b'
+      control_player(char)
+    when KEY_TAB, 'l'
+      ui.select_next
+    when KEY_SHIFT_TAB, 'h'
+      ui.select_prev
+    when Key::RESIZE
+      ui.resize
+    when KEY_ESCAPE
+      break
+    when ''
+      sleep 0.1
+    end
+  end
+end
+
+def control_player(char)
+  command = case char
+            when 'z' then "prev"
+            when 'x' then "play"
+            when 'c' then "pause"
+            when 'v' then "stop"
+            when 'b' then "next"
+            end
+
+  system("mpc", "-h 192.168.2.3", command)
+end
+
+begin
+  init_screen
+  curs_set(0)  # Hide cursor
+  noecho
+
+  start_color
+  init_pair(COLOR_NORMAL, COLOR_WHITE, COLOR_BLACK)
+  init_pair(COLOR_INVERTED, COLOR_BLACK, COLOR_WHITE)
+
+  main
+ensure
+  close_screen
+end
