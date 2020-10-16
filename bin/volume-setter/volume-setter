@@ -198,6 +198,7 @@ def main
       ui.toggle_mute
     when 'z', 'x', 'c', 'v', 'b'
       control_player(char)
+      exit
     when KEY_TAB, 'l'
       ui.select_next
     when KEY_SHIFT_TAB, 'h'
@@ -221,7 +222,7 @@ def control_player(char)
             when 'b' then "next"
             end
 
-  system("mpc", "-h 192.168.2.3", command)
+  system("mpc", "-h", "192.168.2.3", command)
 end
 
 begin
