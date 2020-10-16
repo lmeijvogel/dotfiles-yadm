@@ -143,8 +143,20 @@ class Sink
   def volume
     volume_line = @data.find { |line| line =~ /Volume: / }
 
+    sep = %q[\s+/\s+]
     volume_line.split(/,\s+/).map do |line|
-      matches = line.match /\s*(?<name>[^:]+):\s+(?<id>\d+)\s+\/\s+(?<percentage>\d+)%\s+\/\s+(?<decibel>[\-0-9,]+)\s*dB/
+      matches = line.match %r{
+        \s*
+        (?<name>[^:]+):
+        \s+
+        (?<id>\d+)
+        #{sep}
+        (?<percentage>\d+)%
+        (?:#{sep}                         # Not all devices report decibels, so that part is optional
+          (?<decibel>[\-1-9,]+)\s*dB
+        )?
+      }x
+
       matches[:percentage]
     end[0]
   end
