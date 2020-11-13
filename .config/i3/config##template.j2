@@ -28,7 +28,9 @@ bindsym $mod+Return exec konsole
 bindsym $mod+Control+q exec "sleep 0.3 ; /usr/bin/qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock"
 
 # kill focused window
+bindsym $mod+q kill
 bindsym $mod+Shift+q kill
+
 bindsym Mod1+F4 kill
 
 focus_follows_mouse no
@@ -133,6 +135,8 @@ bindsym $mod+x workspace $ws3
 bindsym $mod+c workspace $ws2
 bindsym $mod+v workspace $ws4
 bindsym $mod+b workspace $ws6
+bindsym $mod+n workspace $ws7
+bindsym $mod+m workspace $ws8
 
 # Move focused container to predefined workspace
 bindsym $mod+Shift+z move container to workspace $ws1; workspace $ws1
@@ -140,6 +144,8 @@ bindsym $mod+Shift+x move container to workspace $ws3; workspace $ws3
 bindsym $mod+Shift+c move container to workspace $ws2; workspace $ws2
 bindsym $mod+Shift+v move container to workspace $ws4; workspace $ws4
 bindsym $mod+Shift+b move container to workspace $ws6; workspace $ws6
+bindsym $mod+Shift+n move container to workspace $ws7; workspace $ws7
+bindsym $mod+Shift+m move container to workspace $ws8; workspace $ws8
 
 # reload i3 configuration
 bindsym $mod+Shift+r reload
