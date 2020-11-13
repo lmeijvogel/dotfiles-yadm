@@ -17,17 +17,17 @@ let Tlist_Ctags_Cmd = "/usr/bin/ctags"
 let Tlist_WinWidth = 50
 
 " Rebuild tag list
-command! LMGenerateTags :!ctags-exuberant --format=2 -R --exclude=.git --exclude=log .
+command! LMGenerateTags ;!ctags-exuberant --format=2 -R --exclude=.git --exclude=log .
 
 nnoremap <F5> :UndotreeToggle<CR>
 
 " Yaml tools
-nmap <silent> <leader>u :YamlGoToParent<CR>
-nmap <leader>y :YamlGetFullPath<CR>
-nmap <leader>Y :YamlGoToKey 
+nnoremap <silent> <leader>u :YamlGoToParent<CR>
+nnoremap <leader>y :YamlGetFullPath<CR>
+nnoremap <leader>Y :YamlGoToKey 
 
 " Buffet
-nmap <silent> <leader>be :Bufferlist<CR>
+nnoremap <silent> <leader>be :Bufferlist<CR>
 
 " Syntastic
 let g:syntastic_mode_map = { 'mode': 'active',
@@ -48,31 +48,31 @@ nnoremap <leader>st :SyntasticToggleMode<CR>
 
 " The order is "reversed" (j is previous, k is next) to look more like
 " left <-> right
-nmap <C-A-k> :bn<CR>
-nmap <C-A-j> :bp<CR>
+nnoremap <C-A-k> :bn<CR>
+nnoremap <C-A-j> :bp<CR>
 
 " FZF
 
 " Disable preview window since it obscures the file basename
 let g:fzf_preview_window = ''
-nmap <silent> <C-p> :GFiles<CR>
-nmap <silent> <leader>h :History<CR>
-nmap - :Buffers<CR>
+nnoremap <silent> <C-p> :GFiles<CR>
+nnoremap <silent> <leader>h :History<CR>
+nnoremap - :Buffers<CR>
 
 " Color schemes
-nmap <silent> <F6> :call LMBackgroundDark()<CR>
-nmap <silent> <F7> :call LMBackgroundLight()<CR>
+nnoremap <silent> <F6> :call LMBackgroundDark()<CR>
+nnoremap <silent> <F7> :call LMBackgroundLight()<CR>
 
 " fugitive
-nmap <leader>gs :Gstatus<CR>
-nmap <leader>gb :call GitGuiBlame()<CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gb :call GitGuiBlame()<CR>
 
 " vim-buftabline
 " Show buffer number next to buffer name
 let g:buftabline_numbers = 1
 
 " Open file from clipboard
-nmap <leader>ec :call OpenClipboardFile()<CR>
+nnoremap <leader>ec :call OpenClipboardFile()<CR>
 
 " NERDCommenter - space after comment delimiters
 let g:NERDSpaceDelims = 1
@@ -235,4 +235,4 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 let g:alternateExtensions_{'tsx'} = "scss"
 let g:alternateExtensions_{'scss'} = "tsx"
 
-nmap <leader>si :SortImport<CR>
+nnoremap <leader>si :SortImport<CR>

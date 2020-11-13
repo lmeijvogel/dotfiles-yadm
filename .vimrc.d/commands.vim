@@ -2,12 +2,16 @@
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <leader>lv :so $MYVIMRC<CR>
 
+" Make it easier to enter command mode
+nnoremap ; :
+nnoremap : ;
+
 " Quickly clear search history
-nmap <silent> <leader>/ :nohlsearch<CR>
+nnoremap <silent> <leader>/ :nohlsearch<CR>
 
 " Quickly select next and previous search results
-nmap <silent> <C-A-n> :cn<CR>
-nmap <silent> <C-A-p> :cp<CR>
+nnoremap <silent> <C-A-n> :cn<CR>
+nnoremap <silent> <C-A-p> :cp<CR>
 
 " Add aliases to catch typos
 command! W w
@@ -39,8 +43,8 @@ nmap <silent> <C-k> <C-w>k
 nmap <silent> <C-l> <C-w>l
 
 " Copy filename:line_number to clipboard
-map <silent> <leader>fl :let @+ = expand("%:p").':'.line('.')<CR>
-map <silent> <leader>ff :let @+ = expand("%:p")<CR>
+nnoremap <silent> <leader>fl :let @+ = expand("%:p").':'.line('.')<CR>
+nnoremap <silent> <leader>ff :let @+ = expand("%:p")<CR>
 
 " Easily create splits
 nmap <silent> <leader>ss <C-w>s
@@ -56,13 +60,13 @@ nmap <silent> <M-Down> <C-w>8-
 nmap <silent> <M-Left> <C-w>8<
 nmap <silent> <M-Right> <C-w>8>
 
-nmap <silent> <leader>gb :!git gui blame %
+nnoremap <silent> <leader>gb :!git gui blame %
 
 " Replace Ruby rocket syntax with keyvalue syntax
 command! LMRewriteRockets %s/:\([a-z3-9_]\{1,\}[!?]\?\) \?=>/\1:/g
 
 " Delete trailing whitespace
-command! LMDeleteTrailing %s/\s*$//<CR>:noh
+command! LMDeleteTrailing %s/\s*$//<CR>;noh
 
 " Easy toggling of word wrap
 command! LMToggleWrap set wrap!
@@ -74,20 +78,20 @@ nmap Q @@
 nmap K <Nop>
 
 " Easier next/prev buffer
-nmap <silent> <M-h> :bp<CR>
-nmap <silent> <M-l> :bn<CR>
+nnoremap <silent> <M-h> :bp<CR>
+nnoremap <silent> <M-l> :bn<CR>
 
 " These work well in combination with 'delete buffer' <M-S-d>:
 " I don't have to press/lift Shift every time.
-nmap <silent> <M-S-h> :bp<CR>
-nmap <silent> <M-S-l> :bn<CR>
+nnoremap <silent> <M-S-h> :bp<CR>
+nnoremap <silent> <M-S-l> :bn<CR>
 
 " Same with ctrl-tab
-nmap <silent> <C-Tab> :bn<CR>
-nmap <silent> <C-S-Tab> :bp<CR>
+nnoremap <silent> <C-Tab> :bn<CR>
+nnoremap <silent> <C-S-Tab> :bp<CR>
 
 " Easy delete buffer
-nmap <M-S-d> :BD<CR>
+nnoremap <M-S-d> :BD<CR>
 
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
