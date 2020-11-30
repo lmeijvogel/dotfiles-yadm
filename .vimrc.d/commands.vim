@@ -1,6 +1,6 @@
 " Quickly edit/reload the vimrc file
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <leader>lv :so $MYVIMRC<CR>
+nnoremap <silent> <leader>ev :e $MYVIMRC<CR>
+nnoremap <leader>lv :so $MYVIMRC<CR>
 
 " Make it easier to enter command mode
 nnoremap ; :
