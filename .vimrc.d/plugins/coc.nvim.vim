@@ -43,7 +43,7 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)"
+nmap <silent> gr <Plug>(coc-references)
 
 " Remap keys for gotos
 nmap <silent> <F12> <Plug>(coc-definition)
@@ -67,8 +67,8 @@ nmap <leader>rr <Plug>(coc-rename)
 nmap <leader>ra <Plug>(coc-codeaction-selected)
 vmap <leader>ra <Plug>(coc-codeaction-selected)
 
-nmap <silent> <leader>cr :CocRestart<CR>
-nmap <silent> <leader>lr :CocListResume<CR>
+nnoremap <silent> <leader>cr :CocRestart<CR>
+nnoremap <silent> <leader>lr :CocListResume<CR>
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
