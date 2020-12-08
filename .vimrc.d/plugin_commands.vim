@@ -12,6 +12,8 @@ nmap <leader>F <Plug>Sneak_S
 nmap f <Plug>Sneak_f
 nmap F <Plug>Sneak_F
 
+nmap : <Plug>Sneak_;
+
 " Tag list
 let Tlist_Ctags_Cmd = "/usr/bin/ctags"
 let Tlist_WinWidth = 50
