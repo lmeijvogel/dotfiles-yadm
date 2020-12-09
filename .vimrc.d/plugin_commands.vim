@@ -65,6 +65,9 @@ nnoremap - :Buffers<CR>
 nnoremap <silent> <F6> :call LMBackgroundDark()<CR>
 nnoremap <silent> <F7> :call LMBackgroundLight()<CR>
 
+" Make comments actually visible
+let g:molokayo#high_contrast#comments = 1
+
 " fugitive
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gb :call GitGuiBlame()<CR>
