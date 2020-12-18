@@ -416,6 +416,7 @@ bindsym $mod+Shift+w $exec $HOME/bin/breaks_off
 
 exec_always --no-startup-id "/usr/bin/bash $HOME/start.sh"
 
+$exec "sleep 10; redshift-gtk"
 
 # The "sleep" is to (hopefully) ensure that compton is started long after all the monitor adjustments
 exec_always --no-startup-id "killall -q compton; sleep 10; compton --config ~/.config/compton/compton.conf"
