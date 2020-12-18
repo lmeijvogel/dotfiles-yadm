@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 MPD_HOST = "192.168.2.3"
+SEPARATOR = "-@*@%@*-"
 
 require 'open3'
 
@@ -13,7 +14,14 @@ def query_mpd_status
     raise HostNotAvailable, "Ping failed"
   end
 
-  mpd_status, exit_status = Open3.capture2e("mpc", "--host", MPD_HOST, "--format", "%artist%-@*@#@*!-%title%", "status")
+  format = %w[albumartist artist title].map {|s| "%#{s}%"}.join(SEPARATOR)
+
+  mpd_status, exit_status = Open3.capture2e(
+    "mpc",
+    "--host", MPD_HOST,
+    "--format", format,
+    "status"
+  )
 
   if !exit_status.success?
     raise HostNotAvailable, "Could not contact service"
@@ -30,9 +38,9 @@ def main
     exit
   end
 
-  description, song_status, settings = mpd_status
+  description, song_status, _ = mpd_status
 
-  artist, title = description.strip.split("-@*@@*!-")
+  albumartist, artist, title = description.strip.split(SEPARATOR)
 
   matches = song_status.match(%r{\[([^\]]+)\]\s+#(\d+)/(\d+)})
 
@@ -43,8 +51,14 @@ def main
 
   current, total = matches[2,3]
 
-  puts "#{playing_mode} #{title} (#{current}/#{total})"
-rescue HostNotAvailable => e
+  song_description = if albumartist == "Various Artists"
+                       "#{artist} - #{title}"
+                     else
+                       title
+                     end
+
+  puts "#{playing_mode} #{song_description} (#{current}/#{total})"
+rescue HostNotAvailable
   puts ""
 end
 
