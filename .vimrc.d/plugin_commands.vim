@@ -177,20 +177,15 @@ function! LMBackgroundLight()
   hi link BufTabLineHidden  PmenuSel
   hi link BufTabLineFill    TabLineFill
 
-  set background=light
-
   colorscheme one
+
+  set background=light
 endfunction
 
 function! LMBackgroundDark()
-  hi link BufTabLineCurrent PmenuSel
-  hi link BufTabLineActive  TabLineSel
-  hi link BufTabLineHidden  TabLine
-  hi link BufTabLineFill    TabLineFill
+  colorscheme one
 
   set background=dark
-
-  colorscheme molokayo
 
   if (has("termguicolors"))
     set termguicolors
