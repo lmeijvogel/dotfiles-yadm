@@ -11,6 +11,7 @@ set $mod Mod4
   set $default_sink 2
 {% endif %}
 
+set $exec exec --no-startup-id
 set $ruby ruby --disable=gems
 set $mpc mpc -h 192.168.2.3
 
@@ -37,18 +38,18 @@ focus_follows_mouse no
 mouse_warping none
 
 # start rofi (program launcher)
-bindsym $mod+d exec --no-startup-id rofi -show drun
-bindsym $mod+slash exec --no-startup-id rofi -show window
-bindsym $mod+F1 exec --no-startup-id $HOME/.lib/run-custom-command.sh
+bindsym $mod+d $exec rofi -show drun
+bindsym $mod+slash $exec rofi -show window
+bindsym $mod+F1 $exec $HOME/.lib/run-custom-command.sh
 
 # Open or show my notes
-bindsym $mod+Shift+slash exec --no-startup-id bash $HOME/.lib/open-notes.sh
+bindsym $mod+Shift+slash $exec bash $HOME/.lib/open-notes.sh
 
 # change focus
-bindsym $mod+h exec --no-startup-id $ruby $HOME/bin/i3-change-focus-with-floating-window.rb left
-bindsym $mod+j exec --no-startup-id $ruby $HOME/bin/i3-change-focus-with-floating-window.rb down
-bindsym $mod+k exec --no-startup-id $ruby $HOME/bin/i3-change-focus-with-floating-window.rb up
-bindsym $mod+l exec --no-startup-id $ruby $HOME/bin/i3-change-focus-with-floating-window.rb right
+bindsym $mod+h $exec $ruby $HOME/bin/i3-change-focus-with-floating-window.rb left
+bindsym $mod+j $exec $ruby $HOME/bin/i3-change-focus-with-floating-window.rb down
+bindsym $mod+k $exec $ruby $HOME/bin/i3-change-focus-with-floating-window.rb up
+bindsym $mod+l $exec $ruby $HOME/bin/i3-change-focus-with-floating-window.rb right
 
 # resize windows with the arrow keys
 bindsym $mod+Left resize shrink width 10 px or 10 ppt
@@ -70,7 +71,7 @@ bindsym $mod+minus split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
-bindsym $mod+Shift+f exec --no-startup-id $HOME/bin/focus-mode on
+bindsym $mod+Shift+f $exec $HOME/bin/focus-mode on
 
 # change container layout (stacked, toggle split)
 bindsym $mod+s layout stacking
@@ -211,10 +212,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 mode "go to window" {
-      bindsym s exec --no-startup-id i3-msg [class=Slack] focus ; mode "default"
-      bindsym v exec --no-startup-id i3-msg [class=nvim-qt] focus ; mode "default"
-      bindsym z exec --no-startup-id i3-msg [class=zoom] focus ; mode "default"
-      bindsym t exec --no-startup-id i3-msg [class=Thunderbird] focus ; mode "default"
+      bindsym s $exec i3-msg [class=Slack] focus ; mode "default"
+      bindsym v $exec i3-msg [class=nvim-qt] focus ; mode "default"
+      bindsym z $exec i3-msg [class=zoom] focus ; mode "default"
+      bindsym t $exec i3-msg [class=Thunderbird] focus ; mode "default"
 
       # back to normal: Enter or Escape
       bindsym Return mode "default"
@@ -233,7 +234,7 @@ mode "focus" {
     bindsym $mod+Shift+l move container to workspace $ws_focus_right; workspace $ws_focus_right
 
     bindsym $mod+Shift+s mode "sound focus"
-    bindsym $mod+Shift+f exec --no-startup-id $HOME/bin/focus-mode off
+    bindsym $mod+Shift+f $exec $HOME/bin/focus-mode off
 }
 
 # KDE integration
@@ -294,12 +295,12 @@ hide_edge_borders horizontal
   set $output_right_or_laptop HDMI1
 {% elif YADM_HOSTNAME == "lennaert-Precision-5530" %}
   exec_always --no-startup-id exec $HOME/start.sh
-  exec --no-startup-id exec ~/bin/start_workrave
+  $exec ~/bin/start_workrave
 
   for_window [class="Firefox"] floating enable, move to scratchpad, scratchpad show
   bindsym $mod+grave [class="Firefox"] scratchpad show
 
-  exec --no-startup-id firefox
+  $exec firefox
 
   set $output_left eDP-1
   set $output_right DP-1-2
@@ -309,38 +310,38 @@ hide_edge_borders horizontal
   for_window [title="^Windows 10 .*: 1"] move container to workspace $ws6
   for_window [title="^Windows 10 .*: 2"] move container to workspace $ws5
 
-  bindsym Control+$mod+Mod1+Escape exec --no-startup-id $HOME/.lib/custom-commands/layouts/$(hostname)/laptop-only.sh
+  bindsym Control+$mod+Mod1+Escape $exec $HOME/.lib/custom-commands/layouts/$(hostname)/laptop-only.sh
 {% endif %}
 
 
 
 # Pulse Audio controls
-bindsym $mod+F8        exec --no-startup-id pactl set-sink-mute   $default_sink toggle # mute/unmute sound
+bindsym $mod+F8        $exec pactl set-sink-mute   $default_sink toggle # mute/unmute sound
 
 # Open sound mixer in a floating window
 bindsym $mod+Shift+F8  exec qpaeq; exec "bash -c 'sleep 0.2s;i3-msg floating enable;i3-msg resize set 800px 600px;i3-msg move position center'"
 
-bindsym $mod+F9        exec --no-startup-id pactl set-sink-volume $default_sink -5% # decrease sound volume
-bindsym $mod+Shift+F9  exec --no-startup-id pactl set-sink-volume $default_sink -1% # decrease sound volume (small step)
+bindsym $mod+F9        $exec pactl set-sink-volume $default_sink -5% # decrease sound volume
+bindsym $mod+Shift+F9  $exec pactl set-sink-volume $default_sink -1% # decrease sound volume (small step)
 
-bindsym $mod+F10       exec --no-startup-id pactl set-sink-volume $default_sink +5% # increase sound volume
-bindsym $mod+Shift+F10 exec --no-startup-id pactl set-sink-volume $default_sink +1% # increase sound volume (small step)
+bindsym $mod+F10       $exec pactl set-sink-volume $default_sink +5% # increase sound volume
+bindsym $mod+Shift+F10 $exec pactl set-sink-volume $default_sink +1% # increase sound volume (small step)
 
 # Calculator
-bindsym $mod+F11        exec --no-startup-id gnome-calculator
+bindsym $mod+F11        $exec gnome-calculator
 
 # Cycle between workspaces on the current display
-bindsym Control+Mod1+Right exec --no-startup-id $ruby $HOME/bin/i3-cycle-workspaces.rb up
-bindsym Control+Mod1+l exec --no-startup-id $ruby $HOME/bin/i3-cycle-workspaces.rb up
+bindsym Control+Mod1+Right $exec $ruby $HOME/bin/i3-cycle-workspaces.rb up
+bindsym Control+Mod1+l $exec $ruby $HOME/bin/i3-cycle-workspaces.rb up
 
-bindsym Control+Mod1+Left exec --no-startup-id $ruby $HOME/bin/i3-cycle-workspaces.rb down
-bindsym Control+Mod1+h exec --no-startup-id $ruby $HOME/bin/i3-cycle-workspaces.rb down
+bindsym Control+Mod1+Left $exec $ruby $HOME/bin/i3-cycle-workspaces.rb down
+bindsym Control+Mod1+h $exec $ruby $HOME/bin/i3-cycle-workspaces.rb down
 
 # Cycle windows (super-tab and alt-tab)
-bindsym $mod+Tab exec --no-startup-id $ruby $HOME/bin/i3-cycle-windows.rb up
-bindsym Mod1+Tab exec --no-startup-id $ruby $HOME/bin/i3-cycle-windows.rb up
-bindsym $mod+Shift++Tab exec --no-startup-id $ruby $HOME/bin/i3-cycle-windows.rb down
-bindsym Mod1+Shift++Tab exec --no-startup-id $ruby $HOME/bin/i3-cycle-windows.rb down
+bindsym $mod+Tab $exec $ruby $HOME/bin/i3-cycle-windows.rb up
+bindsym Mod1+Tab $exec $ruby $HOME/bin/i3-cycle-windows.rb up
+bindsym $mod+Shift++Tab $exec $ruby $HOME/bin/i3-cycle-windows.rb down
+bindsym Mod1+Shift++Tab $exec $ruby $HOME/bin/i3-cycle-windows.rb down
 
 # Move workspace to left and right monitors
 bindsym $mod+Shift+bracketleft move workspace to output left
@@ -379,20 +380,20 @@ bindsym --release Shift+Print exec spectacle --region
 {% for focus_state in ["default", "focus"] -%}
 mode "sound {{focus_state}}" {
     # Lots of duplication, since i3wm doesn't support recursive variables :(
-    bindsym s        exec --no-startup-id pactl set-sink-mute   $default_sink toggle
+    bindsym s        $exec pactl set-sink-mute   $default_sink toggle
 
     # Volume up/down with q/a
-    bindsym q       exec --no-startup-id pactl set-sink-volume $default_sink +5% # increase sound volume
-    bindsym Shift+q exec --no-startup-id pactl set-sink-volume $default_sink +1% # increase sound volume (small step)
+    bindsym q       $exec pactl set-sink-volume $default_sink +5% # increase sound volume
+    bindsym Shift+q $exec pactl set-sink-volume $default_sink +1% # increase sound volume (small step)
 
-    bindsym a        exec --no-startup-id pactl set-sink-volume $default_sink -5% # decrease sound volume
-    bindsym Shift+a  exec --no-startup-id pactl set-sink-volume $default_sink -1% # decrease sound volume (small step)
+    bindsym a        $exec pactl set-sink-volume $default_sink -5% # decrease sound volume
+    bindsym Shift+a  $exec pactl set-sink-volume $default_sink -1% # decrease sound volume (small step)
 
-    bindsym z        exec --no-startup-id $mpc prev
-    bindsym x        exec --no-startup-id $mpc play
-    bindsym c        exec --no-startup-id $mpc pause
-    bindsym v        exec --no-startup-id $mpc stop
-    bindsym b        exec --no-startup-id $mpc next
+    bindsym z        $exec $mpc prev
+    bindsym x        $exec $mpc play
+    bindsym c        $exec $mpc pause
+    bindsym v        $exec $mpc stop
+    bindsym b        $exec $mpc next
 
     bindsym Return mode "{{focus_state}}"
     bindsym Escape mode "{{focus_state}}"
@@ -411,13 +412,13 @@ mode "yadm" {
 
 bindsym $mod+y mode "yadm"
 
-bindsym $mod+Shift+w exec --no-startup-id $HOME/bin/breaks_off
+bindsym $mod+Shift+w $exec $HOME/bin/breaks_off
 
-exec_always "/usr/bin/bash $HOME/start.sh"
+exec_always --no-startup-id "/usr/bin/bash $HOME/start.sh"
+
 
 # The "sleep" is to (hopefully) ensure that compton is started long after all the monitor adjustments
-exec_always --no-startup-id "sleep 10; killall -q compton; compton --config ~/.config/compton/compton.conf"
+exec_always --no-startup-id "killall -q compton; sleep 10; compton --config ~/.config/compton/compton.conf"
 
-exec --no-startup-id i3-msg workspace $ws1
-exec --no-startup-id i3-msg workspace $ws4
-
+$exec i3-msg workspace $ws1
+$exec i3-msg workspace $ws4
