@@ -11,7 +11,7 @@ def main
 
     exit
   end
-  
+
   results = %w[energy_download borg_status b2_status].each_with_object({}) do |field, result|
     result[field] = status_file[field]
   end
@@ -37,7 +37,9 @@ def print(text, status)
                fg_color_ok
              when :error
                fg_color_error
-             when :running
+             when :running, :pending
+               fg_color_running
+             else
                fg_color_running
              end
 
@@ -49,21 +51,31 @@ def outdated?(timestamp)
 
   timestamp < two_days_ago
 end
-  
+
 def fg_color_ok
-  @fg_color_ok ||= `polybar --dump=monitoring-green base`.strip
+  @fg_color_ok ||= color(:ok)
 end
 
 def fg_color_running
-  @fg_color_running ||= `polybar --dump=monitoring-grey base`.strip
+  @fg_color_running ||= color(:running)
 end
 
 def fg_color_error
-  @fg_color_error ||= `polybar --dump=monitoring-red base`.strip
+  @fg_color_error ||= color(:error)
 end
 
 def bg_color
-  @bg_color ||= `polybar --dump=background base`.strip
+  @bg_color ||= `polybar --log=warning --dump=background base`.strip
+end
+
+def color(name)
+  color_names = {
+    ok: "green",
+    running: "grey",
+    error: "red",
+  }
+
+  `polybar --log=warning --dump=monitoring-#{color_names.fetch(name)} base`.strip
 end
 
 def print_usage
