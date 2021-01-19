@@ -7,9 +7,17 @@ $HOME/bin/start-polybar
 
 nitrogen --restore &
 
+# The "sleep" is to (hopefully) ensure that compton is started long after all the monitor adjustments
 if [ -x /usr/bin/picom ]; then
-  echo Exists
+  killall -q picom
+  sleep 10
+
   /usr/bin/picom &
+elif [ -x /usr/bin/compton ]; then
+  killall -q compton
+  sleep 10
+
+  /usr/bin/compton --config ~/.config/compton/compton.conf &
 fi
 
 # For some reason, this has to be run *after* start-polybar, otherwise,

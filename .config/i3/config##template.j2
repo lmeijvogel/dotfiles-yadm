@@ -418,8 +418,5 @@ exec_always --no-startup-id "/usr/bin/bash $HOME/start.sh"
 
 $exec "sleep 10; redshift-gtk"
 
-# The "sleep" is to (hopefully) ensure that compton is started long after all the monitor adjustments
-exec_always --no-startup-id "killall -q compton; sleep 10; compton --config ~/.config/compton/compton.conf"
-
 $exec i3-msg workspace $ws1
 $exec i3-msg workspace $ws4
