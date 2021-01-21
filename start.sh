@@ -20,6 +20,8 @@ elif [ -x /usr/bin/compton ]; then
   /usr/bin/compton --config ~/.config/compton/compton.conf &
 fi
 
+killall -q redshift-gtk ; sleep 10; redshift-gtk
+
 # For some reason, this has to be run *after* start-polybar, otherwise,
 # something in there will reset the caps lock keybinding to normal.
 /usr/bin/setxkbmap -option "caps:swapescape"
