@@ -4,6 +4,7 @@
 
 # Mod4 == Win key
 set $mod Mod4
+set $hyper Mod4+Control+Shift+Mod1
 
 {% if YADM_HOSTNAME == "desktop" %}
   set $default_sink @DEFAULT_SINK@
@@ -377,6 +378,21 @@ bindsym --release Print exec spectacle --gui
 # Screenshot current window
 bindsym --release Shift+Print exec spectacle --region
 
+
+# Music bindings without the i3 mode
+bindsym $hyper+s        $exec pactl set-sink-mute   $default_sink toggle
+
+# Volume up/down with q/a
+bindsym $hyper+q       $exec pactl set-sink-volume $default_sink +5% # increase sound volume
+
+bindsym $hyper+a        $exec pactl set-sink-volume $default_sink -5% # decrease sound volume
+
+bindsym $hyper+z        $exec $mpc prev
+bindsym $hyper+x        $exec $mpc play
+bindsym $hyper+c        $exec $mpc pause
+bindsym $hyper+v        $exec $mpc stop
+bindsym $hyper+b        $exec $mpc next
+
 {% for focus_state in ["default", "focus"] -%}
 mode "sound {{focus_state}}" {
     # Lots of duplication, since i3wm doesn't support recursive variables :(
@@ -413,6 +429,7 @@ mode "yadm" {
 bindsym $mod+y mode "yadm"
 
 bindsym $mod+Shift+w $exec $HOME/bin/breaks_off
+bindsym $hyper+w $exec $HOME/bin/breaks_off
 
 exec_always --no-startup-id "/usr/bin/bash $HOME/start.sh"
 
