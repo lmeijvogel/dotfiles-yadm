@@ -4,7 +4,9 @@ nnoremap <leader>lv :so $MYVIMRC<CR>
 
 " Make it easier to enter command mode
 nnoremap ; :
-" nnoremap : ; -- This is a vim-sneak command, so remapped there
+vnoremap ; :
+" vnoremap : ; -- These are vim-sneak commands, so remapped there
+" nnoremap : ;
 
 " Quickly clear search history
 nnoremap <silent> <leader>/ :nohlsearch<CR>
