@@ -21,7 +21,6 @@ let fc['.*'] = {
 if exists('g:started_by_firenvim')
   set laststatus=0
   let g:buftabline_show=0
-  startinsert
 
   au TextChanged * ++nested write
   au TextChangedI * ++nested write
