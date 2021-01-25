@@ -173,11 +173,6 @@ endfunction
 let g:prettier#exec_cmd_path = getcwd() . "/node_modules/.bin/prettier-eslint"
 
 function! LMBackgroundLight()
-  hi link BufTabLineCurrent TabLineSel
-  hi link BufTabLineActive  TabLine
-  hi link BufTabLineHidden  PmenuSel
-  hi link BufTabLineFill    TabLineFill
-
   colorscheme one
 
   set background=light
