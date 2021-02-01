@@ -1,0 +1,6 @@
+#!/bin/bash
+
+/home/lennaert/bin/yadm alt
+
+i3-msg reload
+i3-msg mode "default"

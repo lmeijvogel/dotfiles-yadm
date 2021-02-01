@@ -419,8 +419,14 @@ mode "sound {{focus_state}}" {
 bindsym $mod+Shift+s mode "sound default"
 
 mode "yadm" {
-    bindsym y exec /home/lennaert/bin/yadm alt; reload ; mode "default"
-    bindsym $mod+y exec /home/lennaert/bin/yadm alt; reload ; mode "default"
+    bindsym y exec bash /home/lennaert/bin/lib/reload-i3-from-yadm >/tmp/reload_i3
+    bindsym $mod+y exec bash /home/lennaert/bin/lib/reload-i3-from-yadm >/tmp/reload_i3
+
+    bindsym b exec bash /home/lennaert/bin/lib/start-polybar >/tmp/reload_polybar
+    bindsym $mod+b exec bash /home/lennaert/bin/lib/start-polybar >/tmp/reload_polybar
+
+    bindsym s exec bash /home/lennaert/bin/lib/start-plasmashell > /tmp/reload_plasmashell
+    bindsym $mod+s exec bash /home/lennaert/bin/lib/start-plasmashell > /tmp/reload_plasmashell
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
