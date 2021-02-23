@@ -3,6 +3,23 @@ source ~/.vimrc.d/plugins/coc.nvim.vim
 source ~/.vimrc.d/plugins/nerdtree.vim
 source ~/.vimrc.d/plugins/firenvim.vim
 
+" ALE
+let g:ale_linters = { 'scss': ['stylelint'],
+                    \ 'css': ['stylelint'],
+                    \ 'tsx': ['prettier'],
+                    \ 'ts': ['prettier'],
+                  \ }
+
+let g:ale_fixers = { 'scss': ['stylelint', 'prettier'],
+                   \ 'css': ['stylelint', 'prettier']
+                 \ }
+
+nnoremap <leader>af :ALEFix<CR>
+"
+" GoTo code navigation.
+nnoremap <silent> gd :ALEGoToDefinition<CR>
+nnoremap <silent> gy :ALEGoToTypeDefinition<CR>
+
 " Vim-sneak
 let g:sneak#label = 1 " Emulate easymotion (show label for navigation). Otherwise, it would navigate with ;,
 
