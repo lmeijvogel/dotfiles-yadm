@@ -3,8 +3,8 @@ nnoremap <silent> <leader>ev :e $MYVIMRC<CR>
 nnoremap <leader>lv :so $MYVIMRC<CR>
 
 " Make it easier to enter command mode
-nnoremap ; :
-vnoremap ; :
+" nnoremap ; :
+" vnoremap ; :
 " vnoremap : ; -- These are vim-sneak commands, so remapped there
 " nnoremap : ;
 
