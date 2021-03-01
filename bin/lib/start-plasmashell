@@ -1,3 +1,5 @@
 #!/bin/bash
 
 killall plasmashell && plasmashell & disown
+
+sleep 2 ; i3-msg mode default
