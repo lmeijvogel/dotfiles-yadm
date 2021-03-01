@@ -296,7 +296,6 @@ hide_edge_borders horizontal
 
   set $output_right_or_laptop HDMI1
 {% elif YADM_HOSTNAME == "lennaert-Precision-5530" %}
-  exec_always --no-startup-id exec $HOME/start.sh
   $exec ~/bin/start_workrave
 
   for_window [class="Firefox"] floating enable, move to scratchpad, scratchpad show
