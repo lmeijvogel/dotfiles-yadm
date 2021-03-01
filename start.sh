@@ -18,7 +18,6 @@ elif [ -x /usr/bin/compton ]; then
   /usr/bin/compton --config ~/.config/compton/compton.conf &
 fi
 
-echo Starting polybar >>/tmp/log_start.sh
 $HOME/bin/lib/start-polybar
 
 killall -q redshift-gtk ; sleep 10; redshift-gtk &
