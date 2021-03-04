@@ -1,6 +1,3 @@
-# Correctly position monitors
-ruby ~/.lib/custom-commands/layouts/`hostname`/default.rb
-
 $HOME/bin/mouse left
 
 nitrogen --restore &
@@ -22,6 +19,10 @@ $HOME/bin/lib/start-polybar
 
 killall -q redshift-gtk ; sleep 10; redshift-gtk &
 
-# For some reason, this has to be run *after* start-polybar, otherwise,
-# something in there will reset the caps lock keybinding to normal.
-/usr/bin/setxkbmap -option "caps:swapescape"
+# Only swap caps and escape if no ErgoDox is connected.
+if [ "$(lsusb | grep ErgoDox)" == "" ]; then
+  # For some reason, this has to be run *after* start-polybar, otherwise,
+  # something in there will reset the caps lock keybinding to normal.
+
+  /usr/bin/setxkbmap -option "caps:swapescape"
+fi
