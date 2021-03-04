@@ -1,0 +1,11 @@
+#!/bin/sh
+
+echo "Asking for sudo because it's necessary for resetting the device later."
+sudo true
+
+# This roundabout way is necessary because fzf will break terminal settings
+# when its output is piped to a command. Probably because it renders its UI to
+# stdout as well.
+DEVICE=$(lsusb | fzf)
+
+echo $DEVICE | sudo ruby $HOME/bin/lib/reset_usb_device_from_listing.rb
