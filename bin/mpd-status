@@ -40,16 +40,14 @@ def main
 
   description, song_status, _ = mpd_status
 
-  albumartist, artist, title = description.strip.split(SEPARATOR)
+  playing_state, current, total = read_player_state(song_status)
 
-  matches = song_status.match(%r{\[([^\]]+)\]\s+#(\d+)/(\d+)})
-
-  playing_mode = case matches[1]
+  playing_mode = case playing_state
                  when "paused" then ""
                  when "playing" then ""
   end
 
-  current, total = matches[2,3]
+  albumartist, artist, title = description.strip.split(SEPARATOR)
 
   song_description = if albumartist == "Various Artists"
                        "#{artist} - #{title}"
@@ -62,6 +60,24 @@ rescue HostNotAvailable
   puts ""
 end
 
-main
+def read_player_state(song_status)
+  matches = song_status.match(%r{\[([^\]]+)\]\s+#(\d+)/(\d+)})
+
+  matches[1, 3]
+end
+
+if ARGV.any?("--status-only")
+  _, song_status, _ = query_mpd_status
+
+  if song_status
+    playing_state, _, _ = read_player_state(song_status)
+
+    puts playing_state
+  else
+    puts "stopped"
+  end
+else
+  main
+end
 
 # vim: set ft=ruby

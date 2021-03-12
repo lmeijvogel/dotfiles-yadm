@@ -14,6 +14,7 @@ set $hyper Mod4+Control+Shift+Mod1
 
 set $exec exec --no-startup-id
 set $ruby ruby --disable=gems
+set $mpd_host 192.168.2.3
 # set $mpc mpc -h 192.168.2.4
 set $mpc mpc -h 192.168.2.3
 
@@ -388,7 +389,7 @@ bindsym $hyper+q       $exec pactl set-sink-volume $default_sink +5% # increase 
 bindsym $hyper+a        $exec pactl set-sink-volume $default_sink -5% # decrease sound volume
 
 bindsym $hyper+z        $exec $mpc prev
-bindsym $hyper+x        $exec $mpc play
+bindsym $hyper+x        $exec $ruby $HOME/bin/toggle-mpd-playing $mpd_host
 bindsym $hyper+c        $exec $mpc pause
 bindsym $hyper+v        $exec $mpc stop
 bindsym $hyper+b        $exec $mpc next
@@ -406,7 +407,7 @@ mode "sound {{focus_state}}" {
     bindsym Shift+a  $exec pactl set-sink-volume $default_sink -1% # decrease sound volume (small step)
 
     bindsym z        $exec $mpc prev
-    bindsym x        $exec $mpc play
+    bindsym x        $exec $ruby $HOME/bin/toggle-mpd-playing $mpd_host
     bindsym c        $exec $mpc pause
     bindsym v        $exec $mpc stop
     bindsym b        $exec $mpc next

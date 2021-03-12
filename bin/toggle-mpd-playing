@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+mpd_host = ARGV.fetch(0)
+puts "Host: #{mpd_host}"
+
+mpd_status = File.join(ENV["HOME"], "bin", "mpd-status")
+
+current_state = `ruby --disable=gems #{mpd_status} --status-only`.each_line.first.strip
+
+puts "Current state: #{current_state}"
+command = if current_state == "playing"
+            "pause"
+          else
+            "play"
+          end
+
+puts system("mpc", "-h", mpd_host, command).inspect
+
+# vim: set ft=ruby
