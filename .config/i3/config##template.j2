@@ -107,9 +107,6 @@ set $ws9 "9"
 set $ws10 "10"
 set $ws_itest "itest"
 
-set $ws_focus_left "focus_left"
-set $ws_focus_right "focus_right"
-
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -227,18 +224,6 @@ mode "go to window" {
 
 bindsym $mod+o mode "go to window"
 bindsym $mod+g mode "go to window"
-
-mode "focus" {
-    # Move workspace to left and right monitors
-    bindsym $mod+Shift+bracketleft move container to workspace $ws_focus_left; workspace $ws_focus_left
-    bindsym $mod+Shift+bracketright move container to workspace $ws_focus_right; workspace $ws_focus_right
-
-    bindsym $mod+Shift+h move container to workspace $ws_focus_left; workspace $ws_focus_left
-    bindsym $mod+Shift+l move container to workspace $ws_focus_right; workspace $ws_focus_right
-
-    bindsym $mod+Shift+s mode "sound focus"
-    bindsym $mod+Shift+f $exec $HOME/bin/focus-mode off
-}
 
 # KDE integration
 # Plasma compatibility improvements
@@ -362,9 +347,6 @@ workspace $ws10 output $output_right
 
 workspace $ws9 output $output_right_or_laptop
 
-workspace $ws_focus_left output $output_left
-workspace $ws_focus_right output $output_right
-
 {% if YADM_HOSTNAME == "desktop" %}
   # For i3-gaps: No border
   for_window [class=".*"] border pixel 2
@@ -394,8 +376,7 @@ bindsym $hyper+c        $exec $mpc pause
 bindsym $hyper+v        $exec $mpc stop
 bindsym $hyper+b        $exec $mpc next
 
-{% for focus_state in ["default", "focus"] -%}
-mode "sound {{focus_state}}" {
+mode "sound" {
     # Lots of duplication, since i3wm doesn't support recursive variables :(
     bindsym s        $exec pactl set-sink-mute   $default_sink toggle
 
@@ -412,12 +393,11 @@ mode "sound {{focus_state}}" {
     bindsym v        $exec $mpc stop
     bindsym b        $exec $mpc next
 
-    bindsym Return mode "{{focus_state}}"
-    bindsym Escape mode "{{focus_state}}"
+    bindsym Return mode default
+    bindsym Escape mode default
 }
-{% endfor %}
 
-bindsym $mod+Shift+s mode "sound default"
+bindsym $mod+Shift+s mode "sound"
 
 mode "yadm" {
     bindsym y exec bash /home/lennaert/bin/lib/reload-i3-from-yadm >/tmp/reload_i3
