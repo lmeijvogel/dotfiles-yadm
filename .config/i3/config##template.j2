@@ -400,14 +400,14 @@ mode "sound" {
 bindsym $mod+Shift+s mode "sound"
 
 mode "yadm" {
-    bindsym y exec bash /home/lennaert/bin/lib/reload-i3-from-yadm >/tmp/reload_i3
-    bindsym $mod+y exec bash /home/lennaert/bin/lib/reload-i3-from-yadm >/tmp/reload_i3
+    bindsym y exec bash $HOME/bin/lib/reload-i3-from-yadm
+    bindsym $mod+y exec bash $HOME/bin/lib/reload-i3-from-yadm
 
-    bindsym b exec bash /home/lennaert/bin/lib/start-polybar >/tmp/reload_polybar
-    bindsym $mod+b exec bash /home/lennaert/bin/lib/start-polybar >/tmp/reload_polybar
+    bindsym b exec bash $HOME/bin/lib/start-polybar
+    bindsym $mod+b exec bash $HOME/bin/lib/start-polybar
 
-    bindsym s exec bash /home/lennaert/bin/lib/start-plasmashell > /tmp/reload_plasmashell
-    bindsym $mod+s exec bash /home/lennaert/bin/lib/start-plasmashell > /tmp/reload_plasmashell
+    bindsym s exec bash $HOME/bin/lib/start-plasmashell
+    bindsym $mod+s exec bash $HOME/bin/lib/start-plasmashell
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
