@@ -214,7 +214,7 @@ bindsym $mod+r mode "resize"
 mode "go to window" {
       bindsym s $exec i3-msg [class=Slack] focus ; mode "default"
       bindsym v $exec i3-msg [class=nvim-qt] focus ; mode "default"
-      bindsym z $exec i3-msg [class=zoom] focus ; mode "default"
+      bindsym z $exec $HOME/bin/start-zoom ; mode "default"
       bindsym t $exec i3-msg [class=Thunderbird] focus ; mode "default"
 
       # back to normal: Enter or Escape
