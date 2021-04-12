@@ -1,11 +1,52 @@
 #!/bin/bash
 
-if [ "$1" = "left" ]; then
-  xmodmap -e "pointer = 3 2 1"
-elif [ "$1" = "right" ]; then
+state () {
+  FIRST_MOUSE_MAPPING=$(xmodmap -pp | grep -P '\d+\s+\d+' | awk '// { print $2; }' | head -1)
+
+  if [ "$FIRST_MOUSE_MAPPING" = "3" ]; then
+    echo "left"
+  else
+    echo "right"
+  fi
+}
+
+format_for_polybar () {
+  local click_action="$0 swap"
+  local icon
+
+  if [[ "$(state)" == "left" ]]; then
+    icon=""
+  else
+    icon=""
+  fi
+
+  echo "%{A1:$click_action:}%{A3:$click_action:}$icon $(state)%{A}%{A}"
+}
+
+right () {
   xmodmap -e "pointer = 1 2 3"
+}
+
+left () {
+  xmodmap -e "pointer = 3 2 1"
+}
+
+if [ "$1" = "state-polybar" ]; then
+  format_for_polybar
+elif [ "$1" = "left" ]; then
+  left
+elif [ "$1" = "right" ]; then
+  right
+elif [ "$1" = "swap" ]; then
+  if [ "$(state)" = "left" ]; then
+    echo "now left" >/tmp/swap
+    right
+  else
+    echo "now right" >/tmp/swap
+    left
+  fi
 else
-  echo "Usage: $0 (left|right)"
+  echo "Usage: $0 (left|right|swap|state-polybar)"
   exit 1
 fi
 

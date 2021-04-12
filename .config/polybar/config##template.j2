@@ -4,7 +4,7 @@ modules-right = cpu eth backup-status sound date
 
 eth-interface = enp3s0
 {% elif YADM_HOSTNAME == "lennaert-Precision-5530" %}
-modules-right = current-mpd-song bluetooth-headset eth wlan battery sound date
+modules-right = current-mpd-song bluetooth-headset mouse eth wlan battery sound date
 
 eth-interface = enx8c04ba6b821a
 wlan-interface = wlp59s0
@@ -220,6 +220,11 @@ interval = 15
 type = custom/script
 exec = /usr/bin/env ruby $HOME/.config/polybar/scripts/check_backup_status.rb
 interval = 60
+
+[module/mouse]
+type = custom/script
+exec = $HOME/bin/mouse state-polybar
+interval = 1
 
 [module/bluetooth-headset]
 type = custom/script
