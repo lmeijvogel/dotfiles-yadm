@@ -370,13 +370,13 @@ bindsym $hyper+q       $exec pactl set-sink-volume $default_sink +5% # increase 
 
 bindsym $hyper+a        $exec pactl set-sink-volume $default_sink -5% # decrease sound volume
 
-bindsym $hyper+z        $exec $mpc prev
+bindsym $hyper+z        $exec $mpc cdprev
 bindsym $hyper+x        $exec $ruby $HOME/bin/toggle-mpd-playing $mpd_host
 bindsym $hyper+c        $exec $mpc pause
 bindsym $hyper+v        $exec $mpc stop
 bindsym $hyper+b        $exec $mpc next
 
-mode "sound" {
+mode sound {
     # Lots of duplication, since i3wm doesn't support recursive variables :(
     bindsym s        $exec pactl set-sink-mute   $default_sink toggle
 
@@ -387,7 +387,7 @@ mode "sound" {
     bindsym a        $exec pactl set-sink-volume $default_sink -5% # decrease sound volume
     bindsym Shift+a  $exec pactl set-sink-volume $default_sink -1% # decrease sound volume (small step)
 
-    bindsym z        $exec $mpc prev
+    bindsym z        $exec $mpc cdprev
     bindsym x        $exec $ruby $HOME/bin/toggle-mpd-playing $mpd_host
     bindsym c        $exec $mpc pause
     bindsym v        $exec $mpc stop
@@ -397,7 +397,7 @@ mode "sound" {
     bindsym Escape mode default
 }
 
-bindsym $mod+Shift+s mode "sound"
+bindsym $mod+Shift+s mode sound
 
 mode "yadm" {
     bindsym y exec bash $HOME/bin/lib/reload-i3-from-yadm
