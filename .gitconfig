@@ -138,12 +138,13 @@
 [merge]
   tool = kdiff3
 [core]
-  pager = less --no-init --raw-control-chars --quit-if-one-screen
+  pager = delta
   editor = nvim
 [rerere]
 	enabled = true
 [include]
 	path = ~/.gitconfig_private
+	path = ~/.config/delta/themes.gitconfig
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -151,3 +152,5 @@
 	required = true
 [diff]
 	noprefix = true
+[delta]
+  features = hoopoe
