@@ -81,7 +81,7 @@ set number " Still show the current line number instead of '0'
 set winfixwidth
 
 " Save all files when Vim loses focus
-au FocusLost * silent! ;wa
+au FocusLost * silent! :wa
 
 au BufRead,BufNewFile *.es6  set filetype=javascript
 
