@@ -39,6 +39,7 @@ inoremap <silent><expr> <c-space> coc#refresh()
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
+nmap <silent> <leader>cd :CocList diagnostics<CR>
 
 " GoTo code navigation.
 
