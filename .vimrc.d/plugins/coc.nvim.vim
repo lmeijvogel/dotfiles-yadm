@@ -44,8 +44,8 @@ nmap <silent> <leader>cd :CocList diagnostics<CR>
 " GoTo code navigation.
 
 " These two are handled by ALE since it provides tagstack support
-" nmap <silent> gd <Plug>(coc-definition)
-" nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
 
 " do not use the "expected" gi shortcut, since that would replace the "continue
 " last insert" command.

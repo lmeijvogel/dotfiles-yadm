@@ -17,8 +17,10 @@ let g:ale_fixers = { 'scss': ['stylelint', 'prettier'],
 nnoremap <leader>af :ALEFix<CR>
 "
 " GoTo code navigation.
-nnoremap <silent> gd :ALEGoToDefinition<CR>
-nnoremap <silent> gy :ALEGoToTypeDefinition<CR>
+" nnoremap <silent> gd :ALEGoToDefinition<CR>
+" nnoremap <silent> gy :ALEGoToTypeDefinition<CR>
+
+let g:ale_lint_on_text_changed = 'never'
 
 " Vim-sneak
 let g:sneak#label = 1 " Emulate easymotion (show label for navigation). Otherwise, it would navigate with ;,
