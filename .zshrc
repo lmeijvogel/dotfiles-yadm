@@ -112,7 +112,8 @@ bindkey '^Y' yank
 alias gs="_zsh_git_scripts_git_status"
 alias gl="_zsh_git_scripts_git_log"
 alias gll="_zsh_git_scripts_git_log_all"
-alias ga="$HOME/.zsh_custom/plugins/zsh-git-scripts/git-choose-files-from-status.zsh"
+alias ga="$HOME/.zsh_custom/plugins/zsh-git-scripts/git-choose-files-from-status.zsh | xargs -t -o git add $@"
+alias gr="$HOME/.zsh_custom/plugins/zsh-git-scripts/git-choose-files-from-status.zsh | xargs -t -o git reset $@"
 # These bindings also seem to bind <M-...>, which is what I was after
 
 # Bind <Esc>s (and alt-s) to show the numbered git status
