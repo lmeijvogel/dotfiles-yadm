@@ -112,7 +112,7 @@ bindkey '^Y' yank
 alias gs="_zsh_git_scripts_git_status"
 alias gl="_zsh_git_scripts_git_log"
 alias gll="_zsh_git_scripts_git_log_all"
-
+alias ga="$HOME/.zsh_custom/plugins/zsh-git-scripts/git-choose-files-from-status.zsh"
 # These bindings also seem to bind <M-...>, which is what I was after
 
 # Bind <Esc>s (and alt-s) to show the numbered git status
@@ -136,7 +136,6 @@ bindkey -s '\eC' 'git diff --cached\n'
 
 bindkey '\ex' _zsh_git_scripts_expand_indices
 
-alias ga=_zsh_git_scripts_git_add
 alias gd=_zsh_git_scripts_git_diff
 alias gdc="_zsh_git_scripts_git_diff --cached"
 unsetopt nomatch
