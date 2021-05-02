@@ -156,7 +156,7 @@ if (which exa >/dev/null); then
 fi
 
 if (which bat >/dev/null); then
-  alias cat="`which bat` --theme \"GitHub\""
+  alias cat="`which bat`"
 fi
 
 # Near unlimited history
@@ -169,3 +169,5 @@ export SAVEHIST=10000000
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export PATH="$HOME/.cargo/bin:$PATH"
+
+export BAT_THEME="Solarized (dark)"
