@@ -26,6 +26,9 @@
   doo    = "!f() { base_branch=$(git symbolic-ref --short HEAD); git diff origin/${1:-$base_branch}; }; f"
   mt = mergetool
 
+  dts = "!f() { git difftool -d ${1:-HEAD}~1..${1:-HEAD}; }; f"
+  dt = "!f() { git difftool -d $@; }; f"
+
   # nl -v 0 - adds line numbers to the output
   l = "!f() { git --no-pager log --color --decorate --oneline -n 10 $1; }; f"
   ll = "!f() { git log --color --decorate --oneline $1 | less --no-init --raw-control-chars --quit-if-one-screen ; }; f"
@@ -152,5 +155,6 @@
 	required = true
 [diff]
 	noprefix = true
+	tool = meld
 [delta]
   features = hoopoe
