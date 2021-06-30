@@ -1,13 +1,14 @@
 [machine-specific]
 {% if YADM_HOSTNAME == "desktop" %}
-modules-right = cpu eth backup-status sound date
+  modules-right = cpu eth wlan backup-status sound date
 
-eth-interface = enp3s0
+  eth-interface = enp3s0
+  wlan-interface = wlp0s20f0u5
 {% elif YADM_HOSTNAME == "lennaert-Precision-5530" %}
 modules-right = current-mpd-song bluetooth-headset mouse eth wlan battery sound date
 
-eth-interface = enx8c04ba6b821a
-wlan-interface = wlp59s0
+  eth-interface = enx8c04ba6b821a
+  wlan-interface = wlp59s0
 {% endif %}
 
 [colors]

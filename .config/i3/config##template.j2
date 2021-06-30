@@ -179,7 +179,11 @@ bindsym $mod+Control+Shift+r restart
 #   ShutdownModeInteractive = 3
 # };
 
-bindsym $mod+Shift+e exec qdbus org.kde.ksmserver /KSMServer logout -1 2 -1 # Poweroff
+{% if YADM_HOSTNAME == "desktop" %}
+  bindsym $mod+Shift+e exec xfce4-session-logout
+{% elif YADM_HOSTNAME == "lennaert-Precision-5530" %}
+  bindsym $mod+Shift+e exec qdbus org.kde.ksmserver /KSMServer logout -1 2 -1 # Poweroff
+{% endif %}
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
