@@ -26,3 +26,6 @@ if [ "$(lsusb | grep ErgoDox)" == "" ]; then
 
   /usr/bin/setxkbmap -option "caps:swapescape"
 fi
+
+# Make right alt the compose key
+setxkbmap -option 'compose:ralt'
