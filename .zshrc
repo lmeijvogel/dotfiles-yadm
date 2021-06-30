@@ -143,6 +143,21 @@ unsetopt nomatch
 
 alias -g D=$HOME/Downloads
 
+function cm() {
+  # Lists mounted volumes to cd to.
+
+  local mount_dir
+  if [[ -d /run/media/lennaert ]]; then
+    mount_dir=/run/media/lennaert
+  elif [[ -d /media/lennaert ]]; then
+    mount_dir=/media/lennaert
+  fi
+
+  result=$(/bin/ls $mount_dir | fzf)
+
+  cd "$mount_dir/$result"
+}
+
 # [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
