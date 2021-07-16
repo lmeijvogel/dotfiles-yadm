@@ -19,6 +19,9 @@ $HOME/bin/lib/start-polybar
 
 killall -q redshift-gtk ; sleep 10; redshift-gtk &
 
+# Clear previous xkbmap options
+setxkbmap -option
+
 # Only swap caps and escape if no ErgoDox is connected.
 if [ "$(lsusb | grep ErgoDox)" == "" ]; then
   # For some reason, this has to be run *after* start-polybar, otherwise,
