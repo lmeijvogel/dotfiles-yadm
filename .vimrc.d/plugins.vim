@@ -4,9 +4,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'sandeepcr529/Buffet.vim' " Buffer explorer
 Plug 'lmeijvogel/vim-yaml-helper' " Some helper methods for YAML files
 Plug 'andymass/vim-matchup' " Enhances the '%' key to match more patterns.
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdtree'
 Plug 'bogado/file-line' " Copy file/line to clipboard
-Plug 'scrooloose/nerdcommenter'
+Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-repeat'
 Plug 'duff/vim-scratch' " Scratch buffer
 Plug 'mbbill/undotree' " Undo history visualisation
