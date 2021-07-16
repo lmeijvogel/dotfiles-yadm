@@ -2,9 +2,12 @@
 alias npx='npx --no-install'
 
 alias orig='cd `git rev-parse --show-toplevel` ; git status --untracked --porcelain | grep "^\\?\\?" | awk -e "{ print \$2; }" | grep "\\(\\.orig$\\)\\|\\.\\(BACKUP\\|BASE\\|LOCAL\\|REMOTE\\)\\." | xargs rm'
+alias g='git'
 alias gti='git'
 alias igt='git'
 alias qgit='git'
+
+alias lg='lazygit'
 
 alias brrr='brr'
 alias brrrr='brr'
