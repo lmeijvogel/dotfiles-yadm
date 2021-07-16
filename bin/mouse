@@ -1,11 +1,21 @@
 #!/bin/bash
 
 state () {
-  FIRST_MOUSE_MAPPING=$(xmodmap -pp | grep -P '\d+\s+\d+' | awk '// { print $2; }' | head -1)
+  local left='3
+2
+1'
 
-  if [ "$FIRST_MOUSE_MAPPING" = "3" ]; then
+
+  local right='1
+2
+3'
+
+  local first_three_mouse_mappings=$(xmodmap -pp | grep -P '\d+\s+\d+' | awk '// { print $2; }' | head -3)
+
+  if [ "$first_three_mouse_mappings" = "$left" ]; then
     echo "left"
-  else
+  fi
+  if [ "$first_three_mouse_mappings" = "$right" ]; then
     echo "right"
   fi
 }
@@ -31,6 +41,16 @@ left () {
   xmodmap -e "pointer = 3 2 1"
 }
 
+swap () {
+  if [ "$(state)" = "left" ]; then
+    right
+  else
+    if [ "$(state)" = "right" ]; then
+      left
+    fi
+  fi
+}
+
 if [ "$1" = "state-polybar" ]; then
   format_for_polybar
 elif [ "$1" = "left" ]; then
@@ -38,13 +58,7 @@ elif [ "$1" = "left" ]; then
 elif [ "$1" = "right" ]; then
   right
 elif [ "$1" = "swap" ]; then
-  if [ "$(state)" = "left" ]; then
-    echo "now left" >/tmp/swap
-    right
-  else
-    echo "now right" >/tmp/swap
-    left
-  fi
+  swap
 else
   echo "Usage: $0 (left|right|swap|state-polybar)"
   exit 1
