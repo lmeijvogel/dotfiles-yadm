@@ -114,3 +114,11 @@ set autoread
 
 " Use the system clipboard by default
 set clipboard=unnamedplus
+
+" For neovide and neovim-qt
+set guifont=Cascadia\ Code:h14
+
+" For neovide
+
+" let g:neovide_cursor_vfx_mode = "torpedo"
+let g:neovide_cursor_animation_length=0

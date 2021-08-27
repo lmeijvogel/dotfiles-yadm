@@ -13,19 +13,24 @@ def main(lines)
       next if !file_contents_match?(dir, "idProduct", productId)
 
       puts "Found #{dir}: #{File.read(File.join(dir, "product")).strip}"
+      path = File.basename(dir)
+      puts "path: #{path}"
 
-      authorized_file_path = File.join(dir, "authorized")
+      # Unfortunately, this will not work since the Linux kernel doesn't
+      # allow setuid for scripts.
+      puts `/home/lennaert/bin/lib/reset_device #{path}`
+      # authorized_file_path = File.join(dir, "authorized")
 
-      if (!File.exist?(authorized_file_path))
-        puts "'authorized' file does not exist!"
-        exit 1
-      end
+      # if (!File.exist?(authorized_file_path))
+        # puts "'authorized' file does not exist!"
+        # exit 1
+      # end
 
-      [0, 1].each do |value|
-        File.open(authorized_file_path, "w") do |file|
-          file.write(value.to_s)
-        end
-      end
+      # [0, 1].each do |value|
+        # File.open(authorized_file_path, "w") do |file|
+          # file.write(value.to_s)
+        # end
+      # end
 
       found_any = true
     end
