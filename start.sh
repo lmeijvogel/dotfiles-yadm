@@ -1,3 +1,4 @@
+#!/bin/bash
 $HOME/bin/mouse left
 
 nitrogen --restore &
@@ -17,7 +18,7 @@ $HOME/bin/lib/start-polybar
 setxkbmap -option
 
 # Only swap caps and escape if no ErgoDox is connected.
-if [ "$(lsusb | grep ErgoDox)" == "" ]; then
+if [[ "$(lsusb | grep ErgoDox)" == "" ]]; then
   # For some reason, this has to be run *after* start-polybar, otherwise,
   # something in there will reset the caps lock keybinding to normal.
 
