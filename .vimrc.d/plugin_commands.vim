@@ -4,21 +4,10 @@ source ~/.vimrc.d/plugins/nerdtree.vim
 source ~/.vimrc.d/plugins/firenvim.vim
 
 " ALE
-let g:ale_linters = { 'scss': ['stylelint'],
-                    \ 'css': ['stylelint'],
-                    \ 'tsx': ['prettier'],
-                    \ 'ts': ['prettier'],
-                  \ }
+let g:ale_linters = {}
+let g:ale_fixers = {}
 
-let g:ale_fixers = { 'scss': ['stylelint', 'prettier'],
-                   \ 'css': ['stylelint', 'prettier']
-                 \ }
-
-nnoremap <leader>af :ALEFix<CR>
-"
-" GoTo code navigation.
-" nnoremap <silent> gd :ALEGoToDefinition<CR>
-" nnoremap <silent> gy :ALEGoToTypeDefinition<CR>
+let g:ale_enabled = 0
 
 let g:ale_lint_on_text_changed = 'never'
 
