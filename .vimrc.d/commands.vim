@@ -95,9 +95,6 @@ nnoremap <silent> <C-S-Tab> :bp<CR>
 " Easy delete buffer
 nnoremap <M-S-d> :BD<CR>
 
-inoremap <C-j> <C-o>j
-inoremap <C-k> <C-o>k
-
 if has('nvim')
   set inccommand=nosplit
 endif
