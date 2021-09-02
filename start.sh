@@ -5,14 +5,14 @@ nitrogen --restore &
 
 # The "sleep" is to (hopefully) ensure that compton is started long after all the monitor adjustments
 if [ -x /usr/bin/picom ]; then
-  (killall -q picom; sleep 10; /usr/bin/picom)&
+  (killall -wq picom; /usr/bin/picom)&
 elif [ -x /usr/bin/compton ]; then
-  (killall -q compton ; sleep 10 ; /usr/bin/compton --config ~/.config/compton/compton.conf)&
+  (killall -wq compton ; /usr/bin/compton --config ~/.config/compton/compton.conf)&
 fi
 
 $HOME/bin/lib/start-polybar
 
-(killall -q redshift-gtk ; sleep 10; redshift-gtk)&
+(killall -wq redshift-gtk ; redshift-gtk)&
 
 # Clear previous xkbmap options
 setxkbmap -option
