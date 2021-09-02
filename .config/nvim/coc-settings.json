@@ -1,5 +1,6 @@
 {
     "diagnostic.checkCurrentLine": true,
+    "diagnostic.maxWindowWidth": 140,
     "diagnostic.virtualText": true,
     "diagnostic.virtualTextPrefix": "   !!! ",
     "list.normalMappings": {
