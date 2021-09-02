@@ -7,7 +7,7 @@ nitrogen --restore &
 if [ -x /usr/bin/picom ]; then
   (killall -q picom; sleep 10; /usr/bin/picom)&
 elif [ -x /usr/bin/compton ]; then
-  (killall -q compton ; sleep 10 /usr/bin/compton --config ~/.config/compton/compton.conf)&
+  (killall -q compton ; sleep 10 ; /usr/bin/compton --config ~/.config/compton/compton.conf)&
 fi
 
 $HOME/bin/lib/start-polybar
