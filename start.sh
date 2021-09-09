@@ -1,11 +1,9 @@
 #!/bin/bash
 $HOME/bin/mouse left
 
-nitrogen --restore &
-
 # The "sleep" is to (hopefully) ensure that compton is started long after all the monitor adjustments
-if [ -x /usr/bin/picom ]; then
-  (killall -wq picom; /usr/bin/picom)&
+if [ -x /usr/sbin/picom ]; then
+  (killall -wq picom; /usr/sbin/picom)&
 elif [ -x /usr/bin/compton ]; then
   (killall -wq compton ; /usr/bin/compton --config ~/.config/compton/compton.conf)&
 fi
@@ -31,3 +29,5 @@ fi
 
 # Make right alt the compose key
 setxkbmap -option 'compose:ralt'
+
+nitrogen --restore &
