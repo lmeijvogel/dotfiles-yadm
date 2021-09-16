@@ -1,0 +1,25 @@
+#!/bin/bash
+kensington_id=$(xinput list | grep Kensington | gawk '// { match($0, /id=([0-9]+)/, arr); print arr[1]; }')
+
+# The last ( is there because there's also a `Natural Scrolling Enabled Default` field that
+# I don't want to touch just yet
+property=$(xinput list-props $kensington_id | grep "Natural Scrolling Enabled (")
+
+# An exampe of a line is
+#
+#  libinput Natural Scrolling enabled (281):      1
+
+# Match numbers between parens
+property_id=$(echo $property | gawk '{ match($0, /\(([0-9]+)\)/, arr); print arr[1]; }')
+
+property_value=$(echo $property | gawk '{ match($0, /:\s+([0-9]+)$/, arr); print arr[1]; }')
+
+if [[ "$property_value" = "1" ]]; then
+  echo "Natural scrolling was on, setting to off"
+  new_value=0
+else
+  echo "Natural scrolling was off, setting to on"
+  new_value=1
+fi
+
+xinput set-prop $kensington_id $property_id $new_value
