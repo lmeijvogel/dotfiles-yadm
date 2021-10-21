@@ -233,7 +233,4 @@ let g:prettier#quickfix_enabled = 0
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue PrettierAsync
 
-let g:alternateExtensions_{'tsx'} = "scss"
-let g:alternateExtensions_{'scss'} = "tsx"
-
 nnoremap <leader>si :SortImport<CR>

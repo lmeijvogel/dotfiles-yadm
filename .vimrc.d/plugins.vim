@@ -44,9 +44,9 @@ Plug 'jceb/vim-orgmode'
 Plug 'vim-scripts/utl.vim' " Universal Text Linking -- Needed for orgmode links between files
 Plug 'mattn/calendar-vim'
 Plug 'w0rp/ale'
+Plug 'elixir-editors/vim-elixir'
 
 Plug 'jeetsukumaran/vim-indentwise' " Easy navigation based on indent level
-Plug 'nacitar/a.vim'                  " Easily alternate between related files
 Plug 'rakr/vim-one' " Light color scheme
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Language Server Protocol client
 Plug 'ianks/vim-tsx' " Correctly set filetype for tsx files
