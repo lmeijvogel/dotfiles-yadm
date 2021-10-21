@@ -5,7 +5,7 @@
   eth-interface = enp3s0
   wlan-interface = wlp0s20f0u5
 {% elif YADM_HOSTNAME == "lennaert-Precision-5530" %}
-modules-right = current-mpd-song bluetooth-headset mouse eth wlan battery sound date
+  modules-right = current-mpd-song bluetooth-headset mouse eth wlan battery sound date
 
   eth-interface = enx8c04ba6b821a
   wlan-interface = wlp59s0
@@ -73,25 +73,13 @@ font-1 = FontAwesome:pixelsize=17;1
 font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-3 = siji:pixelsize=10;1
 
-[bar/left]
+[bar/bottom]
 inherit = bar/base
 
 modules-left = logo i3
 modules-right = ${machine-specific.modules-right}
 
-[bar/right]
-inherit = bar/base
-
-modules-left = logo i3
-modules-right = ${machine-specific.modules-right}
-
-tray-position = right
-tray-padding = 2
-
-[bar/focus]
-inherit = bar/base
-
-modules-center = focus-message
+tray-position = 
 
 [module/logo]
 type = custom/text
