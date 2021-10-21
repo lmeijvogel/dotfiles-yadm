@@ -75,7 +75,7 @@ nnoremap <silent> <F7> :call LMBackgroundLight()<CR>
 let g:molokayo#high_contrast#comments = 1
 
 " fugitive
-nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gb :call GitGuiBlame()<CR>
 
 " vim-buftabline
