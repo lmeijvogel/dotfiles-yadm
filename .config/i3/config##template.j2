@@ -342,8 +342,12 @@ bindsym Mod1+Shift+Tab $exec $ruby $HOME/bin/i3-cycle-windows.rb down
 # Move workspace to left and right monitors
 bindsym $mod+Shift+bracketleft move workspace to output left
 bindsym $mod+Shift+bracketright move workspace to output right
+bindsym $mod+Mod1+Shift+bracketleft move workspace to output down
+bindsym $mod+Mod1+Shift+bracketright move workspace to output up
 
 bindsym $hyper+h move workspace to output left
+bindsym $hyper+j move workspace to output down
+bindsym $hyper+k move workspace to output up
 bindsym $hyper+l move workspace to output right
 
 workspace $ws1 output $output_left
