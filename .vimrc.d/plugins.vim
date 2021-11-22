@@ -21,8 +21,6 @@ Plug 'tpope/vim-unimpaired' " Bracket commands: ]b, etc.
 Plug 'tpope/vim-rsi' " Readline style insertions
 Plug 'tpope/vim-fugitive'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'ntpeters/vim-better-whitespace' " Better whitespace highlighting
 Plug 'jgdavey/tslime.vim'
 Plug 'jgdavey/vim-turbux'
