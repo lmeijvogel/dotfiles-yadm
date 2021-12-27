@@ -18,11 +18,15 @@ $HOME/bin/lib/start-polybar
 setxkbmap -option
 
 # Only swap caps and escape if no ErgoDox is connected.
-if [[ "$(lsusb | grep ErgoDox)" == "" ]]; then
+# I don't know why, but the ErgoDox no longer identifies by name anymore.
+# This id here is what's reported by lsusb now.
+if [[ "$(lsusb | grep 3297:4976)" == "" ]]; then
   # For some reason, this has to be run *after* start-polybar, otherwise,
   # something in there will reset the caps lock keybinding to normal.
 
   /usr/bin/setxkbmap -option "caps:swapescape"
+else
+  /usr/bin/setxkbmap -option
 fi
 
 # Make right alt the compose key
