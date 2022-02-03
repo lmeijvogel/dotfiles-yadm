@@ -107,6 +107,8 @@ nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
 nmap <leader>m /^<<<<<<<\\|^=======\\|^>>>>>>>/<CR>
 vmap <leader>m /^<<<<<<<\\|^=======\\|^>>>>>>>/<CR>
 
+nnoremap <leader>si :call SortImports()<CR>
+
 " Only redraw screen _after_ a macro is finished
 set lazyredraw
 
@@ -119,4 +121,16 @@ function! UnformatXML()
     execute '%s/"/\\"/g'
     execute '%s/^\s*//g'
     execute '%join!'
+endfunction
+
+function! SortImports()
+  let l:path = expand("%:p")
+  let l:path = fnameescape(path)
+
+  let l:winview=winsaveview()
+
+  call system('npx import-sort --write ' . l:path)
+  silent exec "e"
+
+  call winrestview(l:winview)
 endfunction
