@@ -20,13 +20,6 @@ nmap <leader>F <Plug>Sneak_S
 nmap f <Plug>Sneak_f
 nmap F <Plug>Sneak_F
 
-" Tag list
-let Tlist_Ctags_Cmd = "/usr/bin/ctags"
-let Tlist_WinWidth = 50
-
-" Rebuild tag list
-command! LMGenerateTags ;!ctags-exuberant --format=2 -R --exclude=.git --exclude=log .
-
 nnoremap <F5> :UndotreeToggle<CR>
 
 " Yaml tools

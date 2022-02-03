@@ -83,8 +83,6 @@ set winfixwidth
 " Save all files when Vim loses focus
 au FocusLost * silent! :wa
 
-au BufRead,BufNewFile *.es6  set filetype=javascript
-
 " Statusline
 set laststatus=2 " Always show status line
 set statusline=[%n]\ %f\ %m\ %y%=%l,%c\ %P
@@ -99,14 +97,7 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-" Regard .es6 files as Javascript
-autocmd BufEnter *.es6 set ft=javascript
-
 " Work only: use 4 spaces when opening ts and tsx files
-autocmd BufEnter *.ts,*.tsx set ts=4 sw=4
-
-set tags+=gems.tags
-
 set encoding=utf-8
 
 " Don't ask to reload the file when it changes on disk
