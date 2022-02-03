@@ -285,10 +285,10 @@ client.background       #ffffff
 hide_edge_borders horizontal
 
 {% if YADM_HOSTNAME == "desktop" %}
-  set $output_left DP1
-  set $output_right HDMI1
+  set $output_side DP1
+  set $output_main HDMI1
 
-  set $output_right_or_laptop HDMI1
+  set $output_side_or_laptop HDMI1
 {% elif YADM_HOSTNAME == "lennaert-Precision-5530" %}
   $exec ~/bin/start_workrave
 
@@ -300,10 +300,10 @@ hide_edge_borders horizontal
 
   $exec firefox
 
-  set $output_left eDP-1
-  set $output_right DP-1-2
+  set $output_side eDP-1
+  set $output_main DP-1-2
 
-  set $output_right_or_laptop DP-1-2
+  set $output_side_or_laptop eDP-1
 
   for_window [title="^Windows 10 .*: 1"] move container to workspace $ws6
   for_window [title="^Windows 10 .*: 2"] move container to workspace $ws5
@@ -355,18 +355,19 @@ bindsym $hyper+l move workspace to output right
 bindsym $meh+bracketleft exec /bin/sh ~/bin/lib/position-zoom-meetings.sh $ws6 $ws5
 bindsym $meh+bracketright exec /bin/sh ~/bin/lib/position-zoom-meetings.sh $ws5 $ws6
 
-workspace $ws1 output $output_left
-workspace $ws3 output $output_left
-workspace $ws5 output $output_left
-workspace $ws7 output $output_left
+workspace $ws1 output $output_side
+workspace $ws3 output $output_side
+workspace $ws5 output $output_side
+workspace $ws7 output $output_side
+workspace $ws9 output $output_side
 
-workspace $ws2 output $output_right
-workspace $ws4 output $output_right
-workspace $ws6 output $output_right
-workspace $ws8 output $output_right
-workspace $ws10 output $output_right
+workspace $ws2 output $output_main
+workspace $ws4 output $output_main
+workspace $ws6 output $output_main
+workspace $ws8 output $output_main
 
-workspace $ws9 output $output_right_or_laptop
+workspace $ws10 output $output_side_or_laptop
+
 
 {% if YADM_HOSTNAME == "desktop" %}
   # For i3-gaps: No border
