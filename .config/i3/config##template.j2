@@ -284,12 +284,11 @@ client.background       #ffffff
 
 hide_edge_borders horizontal
 
+{# Apparently, it's not possible to interpolate YADM_HOSTNAME or yadm.hostname in the include file path #}
 {% if YADM_HOSTNAME == "desktop" %}
-  set $output_side DP1
-  set $output_main HDMI1
-
-  set $output_side_or_laptop HDMI1
+{% include ".config/yadm/i3_monitors.desktop.j2" %}
 {% elif YADM_HOSTNAME == "lennaert-Precision-5530" %}
+{% include ".config/yadm/i3_monitors.lennaert-Precision-5530.j2" %}
   $exec ~/bin/start_workrave
 
   for_window [class="Firefox"] floating enable, move to scratchpad, scratchpad show
@@ -300,18 +299,11 @@ hide_edge_borders horizontal
 
   $exec firefox
 
-  set $output_side eDP-1
-  set $output_main DP-1-2
-
-  set $output_side_or_laptop eDP-1
-
   for_window [title="^Windows 10 .*: 1"] move container to workspace $ws6
   for_window [title="^Windows 10 .*: 2"] move container to workspace $ws5
 
   bindsym Control+$mod+Mod1+Escape $exec $HOME/.lib/custom-commands/layouts/$(hostname)/laptop-only.sh
 {% endif %}
-
-
 
 # Pulse Audio controls
 bindsym $mod+F8        $exec pactl set-sink-mute   $default_sink toggle # mute/unmute sound
