@@ -377,12 +377,11 @@ workspace $ws10 output $output_side_or_laptop
   smart_gaps on
 {% endif %}
 
-# Screenshot selection
-bindsym --release Print exec spectacle --gui
+# Screenshot selection to clipboard
+bindsym --release Print exec spectacle --background --region --clipboard
 
-# Screenshot current window
-bindsym --release Shift+Print exec spectacle --region
-
+# Open screenshot tool
+bindsym --release Shift+Print exec spectacle --gui
 
 # Music bindings without the i3 mode
 bindsym $hyper+s        $exec pactl set-sink-mute   $default_sink toggle
