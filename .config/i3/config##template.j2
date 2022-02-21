@@ -29,12 +29,8 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec konsole
 
-{% if YADM_HOSTNAME == "desktop" %}
-  bindsym $mod+Control+q exec "xflock4"
-{% elif YADM_HOSTNAME == "lennaert-Precision-5530" %}
-  # lock the screen - The `sleep` ensures that locking is not cancelled by releasing the keys.
-  bindsym $mod+Control+q exec "sleep 0.3 ; /usr/bin/qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock"
-{% endif %}
+# lock the screen - The `sleep` ensures that locking is not cancelled by releasing the keys.
+bindsym $mod+Control+q exec "sleep 0.3 ; /usr/bin/qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock"
 
 # kill focused window
 bindsym $mod+q kill
@@ -182,11 +178,7 @@ bindsym $mod+Control+Shift+r restart
 #   ShutdownModeInteractive = 3
 # };
 
-{% if YADM_HOSTNAME == "desktop" %}
-  bindsym $mod+Shift+e exec xfce4-session-logout
-{% elif YADM_HOSTNAME == "lennaert-Precision-5530" %}
-  bindsym $mod+Shift+e exec qdbus org.kde.ksmserver /KSMServer logout -1 2 -1 # Poweroff
-{% endif %}
+bindsym $mod+Shift+e exec qdbus org.kde.ksmserver /KSMServer logout -1 2 -1 # Poweroff
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -358,7 +350,6 @@ workspace $ws6 output $output_main
 workspace $ws8 output $output_main
 
 workspace $ws10 output $output_side_or_laptop
-
 
 {% if YADM_HOSTNAME == "desktop" %}
   # For i3-gaps: No border
