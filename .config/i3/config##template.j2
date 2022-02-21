@@ -369,8 +369,7 @@ bindsym --release Shift+Print exec spectacle --gui
 bindsym $hyper+s        $exec pactl set-sink-mute   $default_sink toggle
 
 # Volume up/down with q/a
-bindsym $hyper+q       $exec pactl set-sink-volume $default_sink +5% # increase sound volume
-
+bindsym $hyper+q        $exec pactl set-sink-volume $default_sink +5% # increase sound volume
 bindsym $hyper+a        $exec pactl set-sink-volume $default_sink -5% # decrease sound volume
 
 bindsym $hyper+z        $exec $mpc cdprev
