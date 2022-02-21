@@ -98,6 +98,8 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 " Work only: use 4 spaces when opening ts and tsx files
+autocmd BufEnter *.ts,*.tsx set ts=4 sw=4
+
 set encoding=utf-8
 
 " Don't ask to reload the file when it changes on disk
