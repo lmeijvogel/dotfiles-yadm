@@ -142,6 +142,7 @@ alias gdc="_zsh_git_scripts_git_diff --cached"
 unsetopt nomatch
 
 alias -g D=$HOME/Downloads
+alias -g W="$HOME/Windows\\ 10\\ files"
 
 function cm() {
   # Lists mounted volumes to cd to.
