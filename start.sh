@@ -30,4 +30,4 @@ fi
 # Make right alt the compose key
 setxkbmap -option 'compose:ralt'
 
-nitrogen --restore &
+(sleep 3 ; nitrogen --restore)&
