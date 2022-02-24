@@ -76,6 +76,12 @@ nnoremap <leader>gb :call GitGuiBlame()<CR>
 " Show buffer number next to buffer name
 let g:buftabline_numbers = 1
 
+lua << BUFTABLINE
+require("buftabline").setup {}
+BUFTABLINE
+nnoremap <silent> <M-h> :BufPrev<CR>
+nnoremap <silent> <M-l> :BufNext<CR>
+
 " Open file from clipboard
 nnoremap <leader>ec :call OpenClipboardFile()<CR>
 

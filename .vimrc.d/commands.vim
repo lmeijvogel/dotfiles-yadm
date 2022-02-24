@@ -73,9 +73,9 @@ nmap Q @@
 " Disable K (man lookup)
 nmap K <Nop>
 
-" Easier next/prev buffer
-nnoremap <silent> <M-h> :bp<CR>
-nnoremap <silent> <M-l> :bn<CR>
+" Easier next/prev buffer => Now done with Buftabline
+" nnoremap <silent> <M-h> :bp<CR>
+" nnoremap <silent> <M-l> :bn<CR>
 
 " These work well in combination with 'delete buffer' <M-S-d>:
 " I don't have to press/lift Shift every time.
