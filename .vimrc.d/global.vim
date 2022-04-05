@@ -109,7 +109,7 @@ set autoread
 set clipboard=unnamedplus
 
 " For neovide and neovim-qt
-set guifont=Cascadia\ Code:h14
+set guifont=Cascadia\ Code:h12
 
 " For neovide
 

@@ -1,4 +1,4 @@
-GuiFont Cascadia Code:h14
+GuiFont Cascadia Code:h12
 GuiTabline 0
 
-set guifont=Cascadia\ Code:h14
+set guifont=Cascadia\ Code:h12
