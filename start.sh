@@ -14,13 +14,16 @@ $HOME/bin/lib/start-polybar
 
 (killall -wq redshift-gtk ; redshift-gtk)&
 
+# Set dvorak keyboard layout
+/usr/bin/setxkbmap dvorak
+
 # Clear previous xkbmap options
-setxkbmap -option
+/usr/bin/setxkbmap -option
 
 # Swap caps lock and escape
 /usr/bin/setxkbmap -option "caps:swapescape"
 
 # Make right alt the compose key
-setxkbmap -option 'compose:ralt'
+/usr/bin/setxkbmap -option 'compose:ralt'
 
 (sleep 3 ; nitrogen --restore)&
