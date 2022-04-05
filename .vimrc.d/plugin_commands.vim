@@ -198,20 +198,6 @@ if !exists('g:config_already_loaded')
   let g:config_already_loaded = 1
 
   call LMBackgroundLight()
-
-  " For nvim-qt, the font size is read from ~/.config/nvim/ginit.vim
-  if has("gui_running")
-    set guifont=Input\ Mono\ 10
-
-
-    if has('nvim')
-      GuiFont Input\ Mono:h10
-    endif
-  else
-    " Konsole does not support cursor shapes, which makes it
-    " print extraneous 'q' characters. Re-enable this if that is a problem
-    set guicursor=
-  endif
 endif
 
 " Completion: Used by nvim-typescript
