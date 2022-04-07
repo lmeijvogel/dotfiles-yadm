@@ -1,10 +1,11 @@
 # coding: utf-8
+require 'psych'
 require 'yaml'
 
 def main
   status_file = ARGV[0] || "#{ENV['HOME']}/backup/.backup_status"
 
-  status_file = YAML.safe_load(File.read(status_file), [Time])
+  status_file = Psych.safe_load_file(status_file, permitted_classes: [Time])
 
   if outdated?(status_file["date"])
     print(" backup-test-outdated", :pending)
