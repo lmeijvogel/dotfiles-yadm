@@ -1,6 +1,6 @@
 " vim-grepper
-nnoremap <leader>A :Grepper -tool rg -cword -noprompt<cr>
-nnoremap <leader>a :Grepper -tool rg<cr>
+nnoremap <leader>A :Grepper -tool ack -cword -noprompt<cr>
+nnoremap <leader>a :Grepper -tool ack<cr>
 
 runtime plugin/grepper.vim
 let g:grepper.ack.grepprg .= ' --smart-case'
