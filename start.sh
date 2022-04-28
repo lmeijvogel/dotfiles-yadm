@@ -3,11 +3,11 @@
 # Button config is now handled by Plasma
 # $HOME/bin/mouse left
 
-# The "sleep" is to (hopefully) ensure that compton is started long after all the monitor adjustments
 if [ -x /usr/sbin/picom ]; then
-  (killall -wq picom; /usr/sbin/picom)&
+  (killall -wq picom; sleep 2 ; /usr/sbin/picom)&
 elif [ -x /usr/bin/compton ]; then
-  (killall -wq compton ; /usr/bin/compton --config ~/.config/compton/compton.conf)&
+  # The "sleep" is to (hopefully) ensure that compton is started long after all the monitor adjustments
+  (killall -wq compton ; sleep 2 ; /usr/bin/compton --config ~/.config/compton/compton.conf)&
 fi
 
 $HOME/bin/lib/start-polybar
