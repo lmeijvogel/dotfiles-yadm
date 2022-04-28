@@ -10,8 +10,6 @@ elif [ -x /usr/bin/compton ]; then
   (killall -wq compton ; sleep 2 ; /usr/bin/compton --config ~/.config/compton/compton.conf)&
 fi
 
-$HOME/bin/lib/start-polybar
-
 (killall -wq redshift-gtk ; redshift-gtk)&
 
 # Clear previous xkbmap options
@@ -24,3 +22,15 @@ $HOME/bin/lib/start-polybar
 /usr/bin/setxkbmap -option 'compose:ralt'
 
 (sleep 3 ; nitrogen --restore)&
+
+if [[ "$(hostname)" = "lennaert-Precision-5530" ]]; then
+  # Set default output to built-in speakers
+  pactl set-default-sink alsa_output.pci-0000_00_1f.3.analog-stereo
+
+  # Set default source to Trust microphone, if it's connected.
+  if [[ "$(pactl list short sources | grep Trust_GXT)" != "" ]]; then
+    pactl set-default-source alsa_input.usb-MUSIC-BOOST_Trust_GXT_242_Microphone-00.mono-fallback
+  fi
+fi
+
+(sleep 2 ; $HOME/bin/lib/start-polybar &)
