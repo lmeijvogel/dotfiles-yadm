@@ -14,9 +14,6 @@ $HOME/bin/lib/start-polybar
 
 (killall -wq redshift-gtk ; redshift-gtk)&
 
-# Set dvorak keyboard layout
-/usr/bin/setxkbmap dvorak
-
 # Clear previous xkbmap options
 /usr/bin/setxkbmap -option
 
