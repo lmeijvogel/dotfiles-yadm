@@ -1,7 +1,7 @@
-source ~/.vimrc.d/plugins/vim-grepper.vim
-source ~/.vimrc.d/plugins/coc.nvim.vim
-source ~/.vimrc.d/plugins/nerdtree.vim
-source ~/.vimrc.d/plugins/firenvim.vim
+source ~/.config/nvim/plugins/vim-grepper.vim
+source ~/.config/nvim/plugins/coc.nvim.vim
+source ~/.config/nvim/plugins/nerdtree.vim
+source ~/.config/nvim/plugins/firenvim.vim
 
 " ALE
 let g:ale_linters = {}
