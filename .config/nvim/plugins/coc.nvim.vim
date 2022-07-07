@@ -71,11 +71,15 @@ nmap <leader>n <Plug>(coc-diagnostic-next-error)
 nmap <leader>p <Plug>(coc-diagnostic-prev-error)
 
 nmap <leader>rr <Plug>(coc-rename)
+
 nmap <leader>ra <Plug>(coc-codeaction-selected)
 vmap <leader>ra <Plug>(coc-codeaction-selected)
+nmap <leader>. <Plug>(coc-codeaction-selected)
+vmap <leader>. <Plug>(coc-codeaction-selected)
 
 nnoremap <silent> <leader>cr :CocRestart<CR>
 nnoremap <silent> <leader>lr :CocListResume<CR>
+nnoremap <silent> <leader>, :CocListResume<CR>
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
