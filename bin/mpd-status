@@ -50,6 +50,8 @@ def main
 
   albumartist, artist, title = description.strip.split(SEPARATOR)
 
+  title = truncate(title, 70)
+
   song_description = if albumartist == "Various Artists"
                        "#{artist} - #{title}"
                      else
@@ -59,6 +61,14 @@ def main
   puts "#{playing_mode} #{song_description} (#{current}/#{total})"
 rescue HostNotAvailable
   puts ""
+end
+
+def truncate(title, size)
+  if title.length > size
+    title[0..size - 3] + "..."
+  else
+    title
+  end
 end
 
 def read_player_state(song_status)
