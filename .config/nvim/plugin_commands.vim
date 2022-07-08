@@ -126,7 +126,7 @@ if has('nvim')
   let g:neoterm_automap_keys = '<leader>tt'
 
   let test#strategy = "neoterm"
-  let test#ruby#rspec#executable = 'sp'
+  let test#ruby#rspec#executable = 'rspec'
   let test#javascript#jest#executable = 'npm run test'
 
   nnoremap <silent> <leader>sa :TestSuite<CR>
