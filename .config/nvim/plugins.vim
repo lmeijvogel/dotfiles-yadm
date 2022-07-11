@@ -9,7 +9,6 @@ Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-repeat'
 Plug 'duff/vim-scratch' " Scratch buffer
 Plug 'mbbill/undotree' " Undo history visualisation
-Plug 'tpope/vim-surround'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'mileszs/ack.vim'
 Plug 'vim-scripts/bufkill.vim' " Commands for deleting the current buffer
@@ -56,6 +55,7 @@ Plug 'rbgrouleff/bclose.vim' " Close buffers while keeping windows open
 Plug 'leafgarland/typescript-vim' " Syntax files for typescript
 Plug 'ruanyl/vim-sort-imports' " Sort typescript imports
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+Plug 'machakann/vim-sandwich' " alternative to surround.vim
 
 call plug#end()
 

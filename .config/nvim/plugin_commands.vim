@@ -22,6 +22,9 @@ nmap F <Plug>Sneak_F
 
 nnoremap <F5> :UndotreeToggle<CR>
 
+" vim-sandwich
+runtime macros/sandwich/keymap/surround.vim
+
 " Yaml tools
 nnoremap <silent> <leader>u :YamlGoToParent<CR>
 nnoremap <leader>y :YamlGetFullPath<CR>
