@@ -4,7 +4,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'sandeepcr529/Buffet.vim' " Buffer explorer
 Plug 'lmeijvogel/vim-yaml-helper' " Some helper methods for YAML files
 Plug 'andymass/vim-matchup' " Enhances the '%' key to match more patterns.
-Plug 'preservim/nerdtree'
 Plug 'bogado/file-line' " Copy file/line to clipboard
 Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-repeat'
@@ -16,7 +15,6 @@ Plug 'mileszs/ack.vim'
 Plug 'vim-scripts/bufkill.vim' " Commands for deleting the current buffer
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-endwise' " Automatically close begin/end statements
-Plug 'tyok/nerdtree-ack'
 Plug 'tpope/vim-unimpaired' " Bracket commands: ]b, etc.
 Plug 'tpope/vim-rsi' " Readline style insertions
 Plug 'tpope/vim-fugitive'
@@ -33,7 +31,6 @@ Plug 'janko-m/vim-test'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'othree/yajs.vim'
 Plug 'mxw/vim-jsx'
-Plug 'lmeijvogel/nerdtree-copypaste'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'prettier/vim-prettier'
@@ -44,6 +41,12 @@ Plug 'vim-scripts/utl.vim' " Universal Text Linking -- Needed for orgmode links 
 Plug 'mattn/calendar-vim'
 Plug 'w0rp/ale'
 Plug 'elixir-editors/vim-elixir'
+
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'kyazdani42/nvim-web-devicons' " optional, for file icons
+" Plug 'preservim/nerdtree'
+" Plug 'tyok/nerdtree-ack'
+" Plug 'lmeijvogel/nerdtree-copypaste'
 
 Plug 'jeetsukumaran/vim-indentwise' " Easy navigation based on indent level
 Plug 'rakr/vim-one' " Light color scheme

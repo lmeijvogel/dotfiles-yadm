@@ -1,5 +1,5 @@
-nnoremap <silent> <leader>nt :NERDTreeToggle<CR>
-nnoremap <silent> <leader>nf :NERDTreeFind<CR>
+nnoremap <silent> <leader>nt :NvimTreeToggle<CR>
+nnoremap <silent> <leader>nf :NvimTreeFindFile<CR>
 
 let g:NERDTreeShowRelativeLineNumbers=1
 let g:NERDTreeQuitOnOpen=1
