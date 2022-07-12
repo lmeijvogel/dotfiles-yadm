@@ -1,0 +1,25 @@
+mode "yadm" {
+    bindsym y $exec bash $HOME/bin/lib/reload-i3-from-yadm
+    bindsym $mod+y $exec bash $HOME/bin/lib/reload-i3-from-yadm
+
+    bindsym i $exec bash $HOME/bin/lib/reload-i3-from-yadm
+    bindsym $mod+i $exec bash $HOME/bin/lib/reload-i3-from-yadm
+
+    bindsym b $exec bash $HOME/bin/lib/start-polybar
+    bindsym $mod+b $exec bash $HOME/bin/lib/start-polybar
+
+    bindsym p $exec bash $HOME/bin/lib/start-plasmashell
+    bindsym $mod+p $exec bash $HOME/bin/lib/start-plasmashell
+
+    bindsym s $exec bash $HOME/start.sh
+    bindsym $mod+s $exec bash $HOME/start.sh
+
+    bindsym m $exec bash $HOME/bin/mouse swap
+    bindsym $mod+m $exec bash $HOME/bin/mouse swap
+
+    bindsym n $exec nitrogen --restore &
+    bindsym $mod+n $exec nitrogen --restore &
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}

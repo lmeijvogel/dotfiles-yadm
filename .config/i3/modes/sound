@@ -1,0 +1,21 @@
+mode sound {
+    # Lots of duplication, since i3wm doesn't support recursive variables :(
+    bindsym s        $exec pactl set-sink-mute   $default_sink toggle
+
+    # Volume up/down with q/a
+    bindsym q       $exec pactl set-sink-volume $default_sink +5% # increase sound volume
+    bindsym Shift+q $exec pactl set-sink-volume $default_sink +1% # increase sound volume (small step)
+
+    bindsym a        $exec pactl set-sink-volume $default_sink -5% # decrease sound volume
+    bindsym Shift+a  $exec pactl set-sink-volume $default_sink -1% # decrease sound volume (small step)
+
+    bindsym z        $exec $mpc cdprev
+    bindsym x        $exec $ruby $HOME/bin/toggle-mpd-playing $mpd_host
+    bindsym c        $exec $mpc pause
+    bindsym v        $exec $mpc stop
+    bindsym b        $exec $mpc next
+
+    bindsym $mod+Shift+s mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}

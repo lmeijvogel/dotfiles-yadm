@@ -1,0 +1,8 @@
+mode "work" {
+      bindsym b $exec upload_mpk.sh /home/lennaert/projects/studio/itest/resources/mpks/webmodeler/Blank_App.mpk ; mode "default"
+      bindsym s $exec upload_mpk.sh /home/lennaert/projects/studio/itest/resources/mpks/The_Kitchen_Sink.mpk ; mode "default"
+
+      # back to normal: enter or escape
+      bindsym Return mode "default"
+      bindsym Escape mode "default"
+}
