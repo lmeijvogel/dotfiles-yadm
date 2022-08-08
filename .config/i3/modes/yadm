@@ -1,4 +1,4 @@
-mode "$yadm_mode" {
+mode "$system_mode" {
     bindsym y $exec bash $HOME/bin/lib/reload-i3-from-yadm
     bindsym $mod+y $exec bash $HOME/bin/lib/reload-i3-from-yadm
 
