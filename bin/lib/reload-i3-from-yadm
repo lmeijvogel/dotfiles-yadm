@@ -1,6 +1,7 @@
 #!/bin/bash
+PATH=$PATH:$HOME/.local/bin
 
-/home/lennaert/bin/yadm alt
+/usr/bin/yadm alt
 
 i3-msg reload
 i3-msg mode "default"
