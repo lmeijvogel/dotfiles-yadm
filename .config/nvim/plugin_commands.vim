@@ -223,11 +223,3 @@ let g:prettier#autoformat = 0
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue PrettierAsync
 
 nnoremap <leader>si :SortImport<CR>
-
-lua << NVIM_TREE
-require("nvim-tree").setup({
-    view = {
-        adaptive_size = true,
-    },
-})
-NVIM_TREE
