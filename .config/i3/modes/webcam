@@ -1,17 +1,17 @@
 mode "webcam" {
-      bindsym Shift+q $exec $HOME/bin/set-webcam-properties.rb brightness max
-      bindsym       q $exec $HOME/bin/set-webcam-properties.rb brightness up
-      bindsym       a $exec $HOME/bin/set-webcam-properties.rb brightness reset
-      bindsym Shift+a $exec $HOME/bin/set-webcam-properties.rb brightness reset
-      bindsym       z $exec $HOME/bin/set-webcam-properties.rb brightness down
-      bindsym Shift+z $exec $HOME/bin/set-webcam-properties.rb brightness min
+      bindsym Shift+q $exec $HOME/bin/set-webcam-properties.rb zoom_absolute max
+      bindsym       q $exec $HOME/bin/set-webcam-properties.rb zoom_absolute up
+      bindsym       a $exec $HOME/bin/set-webcam-properties.rb zoom_absolute reset
+      bindsym Shift+a $exec $HOME/bin/set-webcam-properties.rb zoom_absolute reset
+      bindsym       z $exec $HOME/bin/set-webcam-properties.rb zoom_absolute down
+      bindsym Shift+z $exec $HOME/bin/set-webcam-properties.rb zoom_absolute min
 
-      bindsym Shift+w $exec $HOME/bin/set-webcam-properties.rb contrast max
-      bindsym       w $exec $HOME/bin/set-webcam-properties.rb contrast up
-      bindsym       s $exec $HOME/bin/set-webcam-properties.rb contrast reset
-      bindsym Shift+s $exec $HOME/bin/set-webcam-properties.rb contrast reset
-      bindsym       x $exec $HOME/bin/set-webcam-properties.rb contrast down
-      bindsym Shift+x $exec $HOME/bin/set-webcam-properties.rb contrast min
+      bindsym Shift+w $exec $HOME/bin/set-webcam-properties.rb brightness max
+      bindsym       w $exec $HOME/bin/set-webcam-properties.rb brightness up
+      bindsym       s $exec $HOME/bin/set-webcam-properties.rb brightness reset
+      bindsym Shift+s $exec $HOME/bin/set-webcam-properties.rb brightness reset
+      bindsym       x $exec $HOME/bin/set-webcam-properties.rb brightness down
+      bindsym Shift+x $exec $HOME/bin/set-webcam-properties.rb brightness min
 
       bindsym Shift+e $exec $HOME/bin/set-webcam-properties.rb saturation max
       bindsym       e $exec $HOME/bin/set-webcam-properties.rb saturation up
@@ -19,6 +19,13 @@ mode "webcam" {
       bindsym Shift+d $exec $HOME/bin/set-webcam-properties.rb saturation reset
       bindsym       c $exec $HOME/bin/set-webcam-properties.rb saturation down
       bindsym Shift+c $exec $HOME/bin/set-webcam-properties.rb saturation min
+
+      bindsym Shift+r $exec $HOME/bin/set-webcam-properties.rb contrast max
+      bindsym       r $exec $HOME/bin/set-webcam-properties.rb contrast up
+      bindsym       f $exec $HOME/bin/set-webcam-properties.rb contrast reset
+      bindsym Shift+f $exec $HOME/bin/set-webcam-properties.rb contrast reset
+      bindsym       v $exec $HOME/bin/set-webcam-properties.rb contrast down
+      bindsym Shift+v $exec $HOME/bin/set-webcam-properties.rb contrast min
 
       # back to normal: enter or escape
       bindsym Return mode "default"
