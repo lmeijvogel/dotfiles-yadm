@@ -119,13 +119,15 @@ bindsym $mod+Control+Shift+r restart
 
 bindsym $mod+Shift+e exec qdbus org.kde.ksmserver /KSMServer logout -1 2 -1 # Poweroff
 
+set $yadm_mode [y] yadm alt & reload [i] reload i3 [b] polybar [p] plasmashell [m] mouse [n] nitrogen
+
 {% include ".config/i3/modes/resize" %}
 {% include ".config/i3/modes/yadm" %}
 {% include ".config/i3/modes/sound" %}
 {% include ".config/i3/modes/go_to_window" %}
 
 bindsym $mod+r mode "resize"
-bindsym $mod+y mode "yadm"
+bindsym $mod+y mode "$yadm_mode"
 bindsym $mod+Shift+s mode "sound"
 bindsym $mod+o mode "go to window"
 
