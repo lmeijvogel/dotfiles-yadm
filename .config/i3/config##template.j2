@@ -119,19 +119,22 @@ bindsym $mod+Control+Shift+r restart
 bindsym $mod+Shift+e exec qdbus org.kde.ksmserver /KSMServer logout -1 2 -1 # Poweroff
 
 set $system_mode [y] yadm alt & reload [i] reload i3 [b] polybar [p] plasmashell [m] mouse [n] nitrogen
+set $sound_mode [s] mute [q] volume up [a] volume down -- [z] prev [x] start [c] pause [v] stop [b] next
+set $go_to_mode [s] Slack [v] nvim [z] Zoom (start) [t] Thunderbird [w] webcam settings [m] work
+set $work_mode [b] Blank App [s] Kitchen Sink [w] Workflow Starter App
+set $webcam_mode [qaz] Zoom [wsx] Brightness [edc] Saturation [rfv] Contrast
 
 {% include ".config/i3/modes/resize" %}
 {% include ".config/i3/modes/yadm" %}
 {% include ".config/i3/modes/sound" %}
 {% include ".config/i3/modes/go_to_window" %}
+{% include ".config/i3/modes/webcam" %}
+{% include ".config/i3/modes/work" %}
 
 bindsym $mod+r mode "resize"
 bindsym $mod+y mode "$system_mode"
-bindsym $mod+Shift+s mode "sound"
-bindsym $mod+o mode "go to window"
-
-{% include ".config/i3/modes/webcam" %}
-{% include ".config/i3/modes/work" %}
+bindsym $mod+Shift+s mode "$sound_mode"
+bindsym $mod+o mode "$go_to_mode"
 
 {% include ".config/i3/window_specific" %}
 

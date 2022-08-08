@@ -1,4 +1,4 @@
-mode "work" {
+mode "$work_mode" {
       bindsym b $exec $HOME/bin/upload_mpk.sh /home/lennaert/projects/studio/itest/resources/mpks/webmodeler/Blank_App.mpk ; mode "default"
       bindsym s $exec $HOME/bin/upload_mpk.sh /home/lennaert/projects/studio/itest/resources/mpks/The_Kitchen_Sink.mpk ; mode "default"
       bindsym w $exec $HOME/bin/upload_mpk.sh /home/lennaert/projects/studio/itest/resources/mpks/workflow/WorkflowStarterApp.mpk ; mode "default"

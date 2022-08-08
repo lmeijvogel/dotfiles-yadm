@@ -1,4 +1,4 @@
-mode "webcam" {
+mode "$webcam_mode" {
       bindsym Shift+q $exec $HOME/bin/set-webcam-properties.rb zoom_absolute max
       bindsym       q $exec $HOME/bin/set-webcam-properties.rb zoom_absolute up
       bindsym       a $exec $HOME/bin/set-webcam-properties.rb zoom_absolute reset

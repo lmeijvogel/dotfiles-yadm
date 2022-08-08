@@ -119,6 +119,8 @@
   brc = branch --contains
   clena = clean
 
+  rl = reflog --date=iso
+
 [mergetool]
   keepBackup = false
 [advice]

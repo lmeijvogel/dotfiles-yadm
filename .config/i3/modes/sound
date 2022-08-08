@@ -1,4 +1,4 @@
-mode sound {
+mode "$sound_mode" {
     # Lots of duplication, since i3wm doesn't support recursive variables :(
     bindsym s        $exec pactl set-sink-mute   $default_sink toggle
 
