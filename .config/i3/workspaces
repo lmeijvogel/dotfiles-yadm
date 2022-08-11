@@ -1,0 +1,72 @@
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
+
+bindsym $mod+z workspace $ws1
+bindsym $mod+x workspace $ws3
+bindsym $mod+c workspace $ws2
+bindsym $mod+v workspace $ws4
+bindsym $mod+b workspace $ws6
+bindsym $mod+n workspace $ws5
+
+# Move focused container to predefined workspace
+bindsym $mod+Shift+z move container to workspace $ws1; workspace $ws1
+bindsym $mod+Shift+x move container to workspace $ws3; workspace $ws3
+bindsym $mod+Shift+c move container to workspace $ws2; workspace $ws2
+bindsym $mod+Shift+v move container to workspace $ws4; workspace $ws4
+bindsym $mod+Shift+b move container to workspace $ws6; workspace $ws6
+bindsym $mod+Shift+n move container to workspace $ws5; workspace $ws5
+
+# Cycle between workspaces on the current display
+bindsym Control+Mod1+Right $exec $ruby $HOME/bin/i3-cycle-workspaces.rb up
+bindsym Control+Mod1+l $exec $ruby $HOME/bin/i3-cycle-workspaces.rb up
+
+bindsym Control+Mod1+Left $exec $ruby $HOME/bin/i3-cycle-workspaces.rb down
+bindsym Control+Mod1+h $exec $ruby $HOME/bin/i3-cycle-workspaces.rb down
+
+# Move workspace to left and right monitors
+bindsym $mod+Shift+bracketleft move workspace to output left
+bindsym $mod+Shift+bracketright move workspace to output right
+bindsym $mod+Mod1+Shift+bracketleft move workspace to output down
+bindsym $mod+Mod1+Shift+bracketright move workspace to output up
+
+bindsym $hyper+h move workspace to output left
+bindsym $hyper+j move workspace to output down
+bindsym $hyper+k move workspace to output up
+bindsym $hyper+l move workspace to output right
+
+bindsym $meh+bracketleft exec /bin/sh ~/bin/lib/position-zoom-meetings.sh $ws6 $ws5
+bindsym $meh+bracketright exec /bin/sh ~/bin/lib/position-zoom-meetings.sh $ws5 $ws6
+
+workspace $ws1 output $output_side
+workspace $ws3 output $output_side
+workspace $ws5 output $output_side
+workspace $ws7 output $output_side
+workspace $ws9 output $output_side
+
+workspace $ws2 output $output_main
+workspace $ws4 output $output_main
+workspace $ws6 output $output_main
+workspace $ws8 output $output_main
+
+workspace $ws10 output $output_side_or_laptop
