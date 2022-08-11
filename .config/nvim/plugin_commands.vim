@@ -85,6 +85,17 @@ BUFTABLINE
 nnoremap <silent> <M-h> :BufPrev<CR>
 nnoremap <silent> <M-l> :BufNext<CR>
 
+" With shift - makes for easier buffer deletion (not having to release and press Shift every time)
+nnoremap <silent> <M-S-h> :BufPrev<CR>
+nnoremap <silent> <M-S-l> :BufNext<CR>
+
+" Easy delete buffer
+nnoremap <M-S-d> :BD<CR>
+
+" Same with ctrl-tab
+nnoremap <silent> <C-Tab> :BufNext<CR>
+nnoremap <silent> <C-S-Tab> :BufPrev<CR>
+
 " Open file from clipboard
 nnoremap <leader>ec :call OpenClipboardFile()<CR>
 

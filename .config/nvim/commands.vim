@@ -79,15 +79,12 @@ nmap K <Nop>
 
 " These work well in combination with 'delete buffer' <M-S-d>:
 " I don't have to press/lift Shift every time.
-nnoremap <silent> <M-S-h> :bp<CR>
-nnoremap <silent> <M-S-l> :bn<CR>
+" nnoremap <silent> <M-S-h> :bp<CR>
+" nnoremap <silent> <M-S-l> :bn<CR>
 
 " Same with ctrl-tab
-nnoremap <silent> <C-Tab> :bn<CR>
-nnoremap <silent> <C-S-Tab> :bp<CR>
-
-" Easy delete buffer
-nnoremap <M-S-d> :BD<CR>
+" nnoremap <silent> <C-Tab> :bn<CR>
+" nnoremap <silent> <C-S-Tab> :bp<CR>
 
 if has('nvim')
   set inccommand=nosplit
