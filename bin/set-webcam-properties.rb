@@ -3,7 +3,6 @@
 ALLOWED_PROPERTIES = %w[brightness saturation contrast zoom_absolute].freeze
 ALLOWED_CHANGES = %w[up down reset max min]
 
-DEVICE="/dev/video2"
 DELTA = 5
 
 #                      brightness 0x00980900 (int)    : min=0 max=255 step=1 default=128 value=163
@@ -72,13 +71,28 @@ def main(property, change)
 end
 
 def retrieve_value(property)
-  response = `v4l2-ctl -d #{DEVICE} --get-ctrl=#{property}`
+  response = `v4l2-ctl -d #{device} --get-ctrl=#{property}`
 
   Integer(response.split(": ")[1])
 end
 
 def set_value(property, value)
-  `v4l2-ctl -d #{DEVICE} --set-ctrl=#{property}=#{value}`
+  command = "v4l2-ctl -d #{device} --set-ctrl=#{property}=#{value}"
+  puts command
+
+  `#{command}`
+end
+
+def device
+  $device ||= begin
+                 lines = `v4l2-ctl --list-devices`.lines
+
+                 webcams = lines.slice_before { |line| line !~ /\A\s+/ }
+
+                 c920 = webcams.find { |group| group[0] =~ /C920/ }
+
+                 c920_device = c920[1].strip
+               end
 end
 
 def print_usage
