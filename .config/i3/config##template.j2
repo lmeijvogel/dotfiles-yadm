@@ -19,7 +19,7 @@ set $exec exec --no-startup-id
 set $ruby ruby --disable=gems
 set $mpd_host 192.168.2.5
 # set $mpc mpc -h 192.168.2.4
-set $mpc mpc -h 192.168.2.5
+set $mpc mpc -h $mpd_host
 
 set $ws1 "1: console"
 set $ws2 "2: code"
