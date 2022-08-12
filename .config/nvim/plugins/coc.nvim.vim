@@ -97,3 +97,6 @@ imap <C-l> <Plug>(coc-snippets-expand)
 " Highlight position of error black on red
 highlight CocErrorHighlight ctermbg=Red ctermfg=Black guifg=#000000 guibg=#ff0000
 
+" Tell vim to use CoC as a tag source. This allows navigating to definitions
+" and back through the regular vim tag stack.
+set tagfunc=CocTagFunc
