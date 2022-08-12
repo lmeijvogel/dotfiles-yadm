@@ -61,7 +61,7 @@ nnoremap <C-A-j> :bp<CR>
 " Disable preview window since it obscures the file basename
 let g:fzf_preview_window = ''
 nnoremap <silent> <C-p> :GFiles<CR>
-nnoremap <silent> <leader>h :History<CR>
+nnoremap <silent> <leader>hh :History<CR>
 nnoremap - :Buffers<CR>
 
 " Color schemes
