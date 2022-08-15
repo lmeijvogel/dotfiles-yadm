@@ -29,7 +29,16 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
 
-inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm() :"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>\<c-r>=EndwiseDiscretionary()\<CR>"
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+"
+" This is a rewritten "default" that I got from this vim-endwise issue
+"
+"   https://github.com/tpope/vim-endwise/issues/125#issuecomment-1076678001
+"
+" (the CoC API changed since that comment was written)
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                             \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>\<c-r>=EndwiseDiscretionary()\<CR>"
 
 " Keys from the coc.nvim github example config
 "
