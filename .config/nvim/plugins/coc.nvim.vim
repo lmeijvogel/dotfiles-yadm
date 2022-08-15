@@ -106,6 +106,9 @@ imap <C-l> <Plug>(coc-snippets-expand)
 " Highlight position of error black on red
 highlight CocErrorHighlight ctermbg=Red ctermfg=Black guifg=#000000 guibg=#ff0000
 
+" FIX: Unreadable selected entry in popup window -- added ctermfg and guifg
+highlight CocMenuSel ctermfg=231 ctermbg=237 guifg=#fafafa guibg=#13354a
+
 " Tell vim to use CoC as a tag source. This allows navigating to definitions
 " and back through the regular vim tag stack.
 set tagfunc=CocTagFunc
