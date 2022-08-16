@@ -50,8 +50,8 @@ nmap <silent> <leader>cd :CocList diagnostics<CR>
 
 " GoTo code navigation.
 
-" These two are handled by ALE since it provides tagstack support
-nmap <silent> gd <Plug>(coc-definition)
+" This triggers the tagstack navigation instead of the regular coc-definition
+nmap gd <C-]>
 nmap <silent> gy <Plug>(coc-type-definition)
 
 " do not use the "expected" gi shortcut, since that would replace the "continue
