@@ -37,8 +37,8 @@ inoremap <silent><expr> <c-space> coc#refresh()
 "   https://github.com/tpope/vim-endwise/issues/125#issuecomment-1076678001
 "
 " (the CoC API changed since that comment was written)
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                             \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>\<c-r>=EndwiseDiscretionary()\<CR>"
+" inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                             " \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>\<c-r>=EndwiseDiscretionary()\<CR>"
 
 " Keys from the coc.nvim github example config
 "
