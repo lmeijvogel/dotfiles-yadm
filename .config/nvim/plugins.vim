@@ -56,6 +56,7 @@ Plug 'leafgarland/typescript-vim' " Syntax files for typescript
 Plug 'ruanyl/vim-sort-imports' " Sort typescript imports
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'machakann/vim-sandwich' " alternative to surround.vim
+Plug 'kdheepak/lazygit.nvim'
 
 call plug#end()
 
