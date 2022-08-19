@@ -71,9 +71,6 @@ nmap <silent> gr <Plug>(coc-references)
 " For console usage
 nmap <silent> <F24> <Plug>(coc-references)
 
-" Perform the first quick fix
-nmap <silent> <leader>qf <Plug>(coc-fix-current)
-
 nmap <leader>n <Plug>(coc-diagnostic-next-error)
 nmap <leader>p <Plug>(coc-diagnostic-prev-error)
 
