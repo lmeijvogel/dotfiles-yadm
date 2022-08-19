@@ -28,8 +28,8 @@ Plug 'justinmk/vim-sneak'
 Plug 'kassio/neoterm'
 Plug 'janko-m/vim-test'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'othree/yajs.vim'
-Plug 'mxw/vim-jsx'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'MaxMEllon/vim-jsx-pretty' " Syntax highlighting jsx/tsx
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'prettier/vim-prettier'
@@ -50,7 +50,6 @@ Plug 'kyazdani42/nvim-web-devicons' " optional, for file icons
 Plug 'jeetsukumaran/vim-indentwise' " Easy navigation based on indent level
 Plug 'rakr/vim-one' " Light color scheme
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Language Server Protocol client
-Plug 'ianks/vim-tsx' " Correctly set filetype for tsx files
 Plug 'rbgrouleff/bclose.vim' " Close buffers while keeping windows open
 Plug 'leafgarland/typescript-vim' " Syntax files for typescript
 Plug 'ruanyl/vim-sort-imports' " Sort typescript imports
