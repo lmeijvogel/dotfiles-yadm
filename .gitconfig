@@ -111,7 +111,7 @@
   bg = bisect good
   bb = bisect bad
 
-  cif  = "!f() { git log --oneline | fzf --layout=reverse | awk '{ print $1; }' | xargs git commit --fixup; }; f"
+  cif  = "!f() { git commit --fixup ${1:-HEAD}; }; f"
   cif1 = commit --fixup HEAD~1
   cif2 = commit --fixup HEAD~2
   cif3 = commit --fixup HEAD~3
