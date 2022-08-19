@@ -17,6 +17,14 @@ require('ayu').setup(
 {
     mirage = false, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
     overrides = {
+      Normal = {
+        fg = "#000000",
+        bg = "#ffffff"
+      },
+      NormalNC = {
+        fg = "#444444",
+        bg = "#f4f4f4"
+      },
       CocMenuSel = {
         fg = "#fafafa",
         bg = "#13354a"
