@@ -22,7 +22,6 @@ Plug 'ntpeters/vim-better-whitespace' " Better whitespace highlighting
 Plug 'jgdavey/tslime.vim'
 Plug 'jgdavey/vim-turbux'
 Plug 'buztard/vim-rel-jump' " Store relative jumps (5j, 3k) in the jump list
-" Plug 'ap/vim-buftabline' " Buffer list at top of screen
 Plug 'jose-elias-alvarez/buftabline.nvim',  {'branch': 'main'} " Buffer list at top of screen
 Plug 'justinmk/vim-sneak'
 Plug 'kassio/neoterm'
@@ -43,9 +42,6 @@ Plug 'elixir-editors/vim-elixir'
 
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'kyazdani42/nvim-web-devicons' " optional, for file icons
-" Plug 'preservim/nerdtree'
-" Plug 'tyok/nerdtree-ack'
-" Plug 'lmeijvogel/nerdtree-copypaste'
 
 Plug 'jeetsukumaran/vim-indentwise' " Easy navigation based on indent level
 Plug 'rakr/vim-one' " Light color scheme
