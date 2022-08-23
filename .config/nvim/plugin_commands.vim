@@ -51,7 +51,11 @@ require('ayu').setup(
       },
       CocFloating = {
         bg = "#e0e0e0"
+      },
+      CursorLine = {
+        bg = "#dfe0e1"
       }
+
     }, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
 })
 AYU
