@@ -103,3 +103,11 @@ imap <C-l> <Plug>(coc-snippets-expand)
 " Tell vim to use CoC as a tag source. This allows navigating to definitions
 " and back through the regular vim tag stack.
 set tagfunc=CocTagFunc
+
+nnoremap <silent> gH :call LMHoverToClipboard()<CR>
+
+function! LMHoverToClipboard()
+    let hover = CocAction('getHover')
+
+    call setreg("+", hover[0])
+endfunction
