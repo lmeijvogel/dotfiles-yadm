@@ -11,7 +11,7 @@ set $meh Control+Mod1+Shift
 
 {% if YADM_HOSTNAME == "desktop" %}
   set $default_sink @DEFAULT_SINK@
-{% elif YADM_HOSTNAME == "lennaert-Precision-5530" %}
+{% elif YADM_HOSTNAME == "mendix" %}
   set $default_sink 2
 {% endif %}
 
@@ -28,7 +28,7 @@ set $ws4 "4: www"
 
 {% if YADM_HOSTNAME == "desktop" %}
   set $ws5 "5: windows"
-{% elif YADM_HOSTNAME == "lennaert-Precision-5530" %}
+{% elif YADM_HOSTNAME == "mendix" %}
   set $ws5 "5: zoom"
 {% endif %}
 
@@ -151,8 +151,8 @@ hide_edge_borders horizontal
 {# Apparently, it's not possible to interpolate YADM_HOSTNAME or yadm.hostname in the include file path #}
 {% if YADM_HOSTNAME == "desktop" %}
 {% include ".config/yadm/i3_monitors.desktop.j2" %}
-{% elif YADM_HOSTNAME == "lennaert-Precision-5530" %}
-{% include ".config/yadm/i3_monitors.lennaert-Precision-5530.j2" %}
+{% elif YADM_HOSTNAME == "mendix" %}
+{% include ".config/yadm/i3_monitors.mendix.j2" %}
   $exec ~/bin/start_workrave
 
   for_window [class="firefox"] floating enable, move to scratchpad, scratchpad show
