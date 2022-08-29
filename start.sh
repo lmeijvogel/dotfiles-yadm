@@ -6,8 +6,8 @@
 # The "sleep" is to (hopefully) ensure that compton is started long after all the monitor adjustments
 if [ -x /usr/sbin/picom ]; then
   (killall -wq picom; sleep 5 ; /usr/sbin/picom)&
-elif [ -x /usr/bin/compton ]; then
-  (killall -wq compton ; sleep 5 ; /usr/bin/compton --config ~/.config/compton/compton.conf)&
+elif [ -x /usr/bin/picom ]; then
+  (killall -wq picom; sleep 5 ; /usr/bin/picom)&
 fi
 
 (killall -wq redshift-gtk ; redshift-gtk)&
