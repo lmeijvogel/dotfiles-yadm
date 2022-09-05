@@ -15,7 +15,7 @@ class BluetoothDevice
   end
 
   def toggle
-    new_profile = profile_id == "headset_head_unit" ? "a2dp_sink" : "headset_head_unit"
+    new_profile = profile_id == "handsfree_head_unit" ? "a2dp_sink" : "handsfree_head_unit"
 
     system("pacmd", "set-card-profile", pa_device_index, new_profile)
   rescue NotConnected => e
@@ -63,7 +63,7 @@ class BluetoothDevice
 
   def profile_description
     {
-      'headset_head_unit' => "Headset",
+      'handsfree_head_unit' => "Headset",
       'a2dp_sink' => "HiFi Playback"
     }[profile_id]
   end
