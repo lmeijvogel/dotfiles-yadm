@@ -2,6 +2,9 @@
 
 class NotConnected < StandardError ; end
 
+HEADSET = "handsfree_head_unit"
+HIFI = "a2dp_sink"
+
 class BluetoothDevice
   def initialize(name)
     @name = name
@@ -15,7 +18,7 @@ class BluetoothDevice
   end
 
   def toggle
-    new_profile = profile_id == "handsfree_head_unit" ? "a2dp_sink" : "handsfree_head_unit"
+    new_profile = profile_id == HEADSET ? HIFI : HEADSET
 
     system("pacmd", "set-card-profile", pa_device_index, new_profile)
   rescue NotConnected => e
@@ -63,8 +66,8 @@ class BluetoothDevice
 
   def profile_description
     {
-      'handsfree_head_unit' => "Headset",
-      'a2dp_sink' => "HiFi Playback"
+      HEADSET => "Headset",
+      HIFI => "HiFi Playback"
     }[profile_id]
   end
 
