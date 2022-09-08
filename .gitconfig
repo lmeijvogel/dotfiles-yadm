@@ -129,6 +129,7 @@
   detachedHead = false
 [interactive]
   singlekey = true
+  diffFilter = delta --color-only
 [help]
   autocorrect = 10
 [push]
@@ -158,4 +159,4 @@
 	noprefix = true
 	tool = meld
 [delta]
-  features = hoopoe
+  features = tangara-chilensis
