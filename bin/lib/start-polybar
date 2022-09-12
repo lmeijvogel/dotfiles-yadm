@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env /bin/bash
 
 sh $HOME/.config/polybar/launch.sh $1
 

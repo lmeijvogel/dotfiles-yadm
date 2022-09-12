@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env /bin/bash
 
 # Button config is now handled by Plasma
 # $HOME/bin/mouse left
