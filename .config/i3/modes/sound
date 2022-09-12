@@ -15,7 +15,6 @@ mode "$sound_mode" {
     bindsym v        $exec $mpc stop
     bindsym b        $exec $mpc next
 
-    bindsym $mod+Shift+s mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
