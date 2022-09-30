@@ -24,7 +24,6 @@ no_focus [class="zoom"]
 # /KDE integration
 
 for_window [title="data:, - Google Chrome"] move container to workspace $ws_itest, fullscreen enable
-for_window [title="React App"] move container to workspace $ws3
 for_window [title="^emacs"] move container to workspace $ws2; workspace $ws2
 for_window [title="^New Tab - Google Chrome"] move container to workspace $ws4; workspace $ws4; layout stacking
 for_window [title="^Slack \\| .* \\| Mendix$"] move container to workspace $ws4; workspace $ws4; layout stacking
