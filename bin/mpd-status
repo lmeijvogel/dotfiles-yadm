@@ -1,6 +1,11 @@
 #!/usr/bin/env ruby
 
+require 'ipaddr'
+require 'socket'
+
 MPD_HOST = "192.168.2.5"
+NETWORK_MASK = "24"
+
 SEPARATOR = "-@*@%@*-"
 
 require 'open3'
@@ -80,6 +85,17 @@ def read_player_state(song_status)
 
   matches[1, 3]
 end
+
+mpd_network = IPAddr.new("#{MPD_HOST}/#{NETWORK_MASK}")
+ip_addresses = Socket.ip_address_list.select(&:ipv4?).map(&:ip_address)
+
+# If we're not on the same network, I don't want to
+# create a useless entry on the bottom bar.
+if ip_addresses.none? { |ip_address| mpd_network.include?(ip_address) }
+  puts # If there is no output, the bottom bar won't be updated. This forces the update.
+
+  exit
+ end
 
 if ARGV.any?("--status-only")
   _, song_status, _ = query_mpd_status
