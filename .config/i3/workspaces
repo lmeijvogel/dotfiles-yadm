@@ -55,8 +55,8 @@ bindsym $hyper+j move workspace to output down
 bindsym $hyper+k move workspace to output up
 bindsym $hyper+l move workspace to output right
 
-bindsym $meh+bracketleft exec /bin/sh ~/bin/lib/position-zoom-meetings.sh $ws6 $ws5
-bindsym $meh+bracketright exec /bin/sh ~/bin/lib/position-zoom-meetings.sh $ws5 $ws6
+bindsym $meh+bracketleft exec /bin/sh ~/bin/lib/position-zoom-meetings.sh $ws6 $output_main $ws5 $output_side_or_laptop
+bindsym $meh+bracketright exec /bin/sh ~/bin/lib/position-zoom-meetings.sh $ws5 $output_side_or_laptop $ws6 $output_main
 
 workspace $ws1 output $output_side
 workspace $ws3 output $output_side
