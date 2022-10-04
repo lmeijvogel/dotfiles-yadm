@@ -149,7 +149,7 @@ type = internal/network
 interface = ${machine-specific.eth-interface}
 interval = 5.0
 
-label-connected = 
+label-connected =  (%downspeed%)
 format-connected-overline = ${colors.overline-green}
 
 label-disconnected = ""
