@@ -134,6 +134,7 @@
   autocorrect = 10
 [push]
   default = current
+  autoSetupRemote = true
 [rebase]
   autoStash  = true
   autoSquash = true
@@ -160,3 +161,4 @@
 	tool = meld
 [delta]
   features = tangara-chilensis
+  side-by-side = false
