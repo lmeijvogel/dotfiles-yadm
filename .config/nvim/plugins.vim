@@ -58,6 +58,8 @@ Plug 'Shatur/neovim-ayu' " Color scheme
 
 Plug 'kdheepak/lazygit.nvim'
 
+Plug 'ggandor/leap.nvim'
+
 call plug#end()
 
 call yankstack#setup()

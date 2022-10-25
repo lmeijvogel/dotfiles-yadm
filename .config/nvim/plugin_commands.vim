@@ -288,3 +288,10 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 nnoremap <leader>si :SortImport<CR>
 
 nnoremap <leader>gg :LazyGit<CR>
+
+nunmap s
+nunmap S
+
+lua << LEAP
+  require('leap').add_default_mappings()
+LEAP
