@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [[ "$1" = "" ]]; then
+  echo "Please add time"
+fi
+
+echo aplay $HOME/Music/front_desk_bell.wav | at $1
