@@ -109,11 +109,7 @@ fi
 bindkey '^U' backward-kill-line
 bindkey '^Y' yank
 
-alias gs="_zsh_git_scripts_git_status"
 alias gl="_zsh_git_scripts_git_log"
-alias gll="_zsh_git_scripts_git_log_all"
-alias ga="$HOME/.zsh_custom/plugins/zsh-git-scripts/git-choose-files-from-status.zsh | xargs -t -o git add $@"
-alias gr="$HOME/.zsh_custom/plugins/zsh-git-scripts/git-choose-files-from-status.zsh | xargs -t -o git reset $@"
 # These bindings also seem to bind <M-...>, which is what I was after
 
 # Bind <Esc>s (and alt-s) to show the numbered git status
@@ -129,16 +125,6 @@ bindkey '\er' _zsh_git_scripts_git_choose_branch
 # Bind <Esc>R to 'gbrr' (git branch --remote)
 bindkey '\eR' _zsh_git_scripts_git_choose_remote_branch
 
-# Bind <Esc>c to 'git diff' (Previously: Uppercase sentence and move to next sentence)
-bindkey -s '\ec' 'git diff\n'
-
-# Bind <Esc>C to 'git diff'
-bindkey -s '\eC' 'git diff --cached\n'
-
-bindkey '\ex' _zsh_git_scripts_expand_indices
-
-alias gd=_zsh_git_scripts_git_diff
-alias gdc="_zsh_git_scripts_git_diff --cached"
 unsetopt nomatch
 
 alias -g D=$HOME/Downloads
