@@ -53,6 +53,7 @@
   rup5   = rebase --interactive --autosquash HEAD~5
 
   rom    = rebase origin/master
+  from   = "!f() { git fetch ; git rebase origin/master; }; f"
   roo    = "!f() { base_branch=$(git symbolic-ref --short HEAD); git rebase origin/${1:-$base_branch}; }; f"
 
   cia = commit --amend --no-edit
@@ -120,6 +121,9 @@
   clena = clean
 
   rl = reflog --date=iso
+
+  find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
+  show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
 
 [mergetool]
   keepBackup = false
