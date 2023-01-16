@@ -107,7 +107,7 @@ nnoremap <C-A-j> :bp<CR>
 
 " Disable preview window since it obscures the file basename
 let g:fzf_preview_window = ''
-nnoremap <silent> <C-p> :GFiles<CR>
+nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <leader>hh :History<CR>
 nnoremap - :Buffers<CR>
 
@@ -172,9 +172,12 @@ if has('nvim')
   let g:neoterm_default_mod = 'horizontal'
   let g:neoterm_automap_keys = '<leader>tt'
 
-  let test#strategy = "neoterm"
+  let test#strategy = "asyncrun_background"
   let test#ruby#rspec#executable = 'rspec'
   let test#javascript#jest#executable = 'npm run test'
+  "
+  " Do not build by default since it's slow
+  let test#csharp#dotnettest#executable = 'dotnet test --no-build -l "console;verbosity=normal"'
 
   nnoremap <silent> <leader>sa :TestSuite<CR>
   nnoremap <silent> <leader>sf :w<CR>:TestFile<CR>
