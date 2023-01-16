@@ -89,6 +89,9 @@ nnoremap <silent> <leader>, :CocListResume<CR>
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 nnoremap <silent> gh :call <SID>show_documentation()<CR>
 
+" ESLint
+nnoremap <silent> <leader>si :CocCommand eslint.executeAutofix<CR>
+
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
