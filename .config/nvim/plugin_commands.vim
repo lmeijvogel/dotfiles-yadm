@@ -77,11 +77,6 @@ nnoremap <F5> :UndotreeToggle<CR>
 " vim-sandwich
 runtime macros/sandwich/keymap/surround.vim
 
-" Yaml tools
-nnoremap <silent> <leader>u :YamlGoToParent<CR>
-nnoremap <leader>y :YamlGetFullPath<CR>
-nnoremap <leader>Y :YamlGoToKey 
-
 " Buffet
 nnoremap <silent> <leader>bb :Bufferlist<CR>
 nnoremap <silent> <leader>be :Bufferlist<CR>
