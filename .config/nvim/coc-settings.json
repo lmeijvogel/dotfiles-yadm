@@ -13,6 +13,7 @@
         "<C-t>": "action:tabe",
         "<C-w>": "command:wincmd k"
     },
+    "suggest.virtualText": true,
     "rust-client.rustupPath": "/home/lennaert/.cargo/bin/rustup",
 
     "languageserver": {
@@ -32,6 +33,7 @@
             "rootPatterns": ["elm.json"]
         }
     },
+
     // If you use neovim you can enable codelenses with this
     "codeLens.enable": false
 }
