@@ -1,6 +1,6 @@
 " Quickly edit/reload the vimrc file
-nnoremap <silent> <leader>ev :e $MYVIMRC<CR>
-nnoremap <leader>lv :so $MYVIMRC<CR>
+" nnoremap <silent> <leader>ev :e $MYVIMRC<CR>
+" nnoremap <leader>lv :so $MYVIMRC<CR>
 
 " Quickly clear search history
 nnoremap <silent> <leader>/ :nohlsearch<CR>
@@ -37,10 +37,6 @@ nmap <silent> <C-h> <C-w>h
 nmap <silent> <C-j> <C-w>j
 nmap <silent> <C-k> <C-w>k
 nmap <silent> <C-l> <C-w>l
-
-" Copy filename:line_number to clipboard
-nnoremap <silent> <leader>fl :let @+ = expand("%:p").':'.line('.')<CR>
-nnoremap <silent> <leader>ff :let @+ = expand("%:p")<CR>
 
 " Easily create splits
 nmap <silent> <leader>ss <C-w>s

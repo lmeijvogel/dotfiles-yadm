@@ -143,8 +143,8 @@ nnoremap <M-S-d> :BD<CR>
 nnoremap <silent> <C-Tab> :BufNext<CR>
 nnoremap <silent> <C-S-Tab> :BufPrev<CR>
 
-" Open file from clipboard
-nnoremap <leader>ec :call OpenClipboardFile()<CR>
+" Open file from clipboard - I never use this
+" nnoremap <leader>ec :call OpenClipboardFile()<CR>
 
 " NERDCommenter - space after comment delimiters
 let g:NERDSpaceDelims = 1
@@ -225,19 +225,19 @@ function! AckCurrentFile()
   exec "Ack \"". withoutExtension ."\""
 endfunction
 
-function! OpenClipboardFile()
-  let path=system("xsel -bo")
+" function! OpenClipboardFile()
+" let path=system("xsel -bo")
 
-  let stripped_path = substitute(path, '\n\+$', '', '')
+" let stripped_path = substitute(path, '\n\+$', '', '')
 
-  if filereadable(stripped_path)
-    exec("e ". stripped_path)
-  else
-    echo "File"
-    echo "  ". stripped_path
-    echo "does not exist!"
-  endif
-endfunction
+" if filereadable(stripped_path)
+" exec("e ". stripped_path)
+" else
+" echo "File"
+" echo "  ". stripped_path
+" echo "does not exist!"
+" endif
+" endfunction
 
 let g:prettier#exec_cmd_path = getcwd() . "/node_modules/.bin/prettier-eslint"
 
@@ -291,3 +291,41 @@ nunmap S
 lua << LEAP
   require('leap').add_default_mappings()
 LEAP
+
+" vim-which-key
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+
+lua << WHICH_KEY
+local wk = require('whichkey_setup')
+
+local keymap = {
+    [','] = { '<Cmd>CocListResume<CR>', 'Re-show CoC list' },
+    f = {
+        l = {'<Cmd>:let @+ = expand(\"%:p\").\':\'.line(\'.\')<CR>', 'Copy filename + line to clipboard' },
+        f = {'<Cmd>:let @+ = expand(\"%:p\")<CR>', 'Copy filename to clipboard' }
+    },
+    e = {
+        v     = { '<Cmd>:e $MYVIMRC<CR>', 'Load init.vim' },
+        ['1'] = { '<Cmd>:e $HOME/.vimrc<CR>', 'Load .vimrc' },
+        ['2'] = { '<Cmd>:e $HOME/.config/nvim/commands.vim<CR>', 'Load commands.vim' },
+        ['3'] = { '<Cmd>:e $HOME/.config/nvim/plugins.vim<CR>', 'Load plugins.vim' },
+        ['4'] = { '<Cmd>:e $HOME/.config/nvim/plugin_commands.vim<CR>', 'Load plugin_commands.vim' },
+        ['5'] = { '<Cmd>:CocConfig<CR>', 'Load CoC config' }
+    },
+    l = {
+        r = {'Plug>(coc-rename)', 'Rename'},
+        a = {'<Plug>(coc-codeaction-selected)', 'Code action'},
+        ['.'] = {'<Plug>(coc-codeaction-selected)', 'Code action'},
+        r = {'<Cmd>CocRestart<CR>', 'Restart CoC'},
+        I = {'<Plug>(coc-implementation)', 'Go to Implementation'},
+        r = {'<Plug>(coc-references)', 'Find references' },
+        d = {'<C-]>', 'Go to definition' },
+        V = {'<Cmd>:so $MYVIMRC<CR>', 'Reload configuration' }
+    }
+}
+
+-- By default timeoutlen is 1000 ms
+vim.o.timeout = true
+vim.o.timeoutlen = 500
+wk.register_keymap('leader', keymap)
+WHICH_KEY

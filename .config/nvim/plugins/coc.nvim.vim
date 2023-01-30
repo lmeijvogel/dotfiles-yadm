@@ -56,8 +56,8 @@ nmap <silent> gy <Plug>(coc-type-definition)
 
 " do not use the "expected" gi shortcut, since that would replace the "continue
 " last insert" command.
-nmap <silent> gm <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+" nmap <silent> gm <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
 
 " Remap keys for gotos
 nmap <silent> <F12> <Plug>(coc-definition)
@@ -74,16 +74,16 @@ nmap <silent> <F24> <Plug>(coc-references)
 nmap <leader>n <Plug>(coc-diagnostic-next-error)
 nmap <leader>p <Plug>(coc-diagnostic-prev-error)
 
-nmap <leader>rr <Plug>(coc-rename)
+" nmap <leader>rr <Plug>(coc-rename)
 
-nmap <leader>ra <Plug>(coc-codeaction-selected)
-vmap <leader>ra <Plug>(coc-codeaction-selected)
-nmap <leader>. <Plug>(coc-codeaction-selected)
-vmap <leader>. <Plug>(coc-codeaction-selected)
+" nmap <leader>ra <Plug>(coc-codeaction-selected)
+" vmap <leader>ra <Plug>(coc-codeaction-selected)
+" nmap <leader>. <Plug>(coc-codeaction-selected)
+" vmap <leader>. <Plug>(coc-codeaction-selected)
 
-nnoremap <silent> <leader>cr :CocRestart<CR>
-nnoremap <silent> <leader>lr :CocListResume<CR>
-nnoremap <silent> <leader>, :CocListResume<CR>
+" nnoremap <silent> <leader>cr :CocRestart<CR>
+" nnoremap <silent> <leader>lr :CocListResume<CR>
+" nnoremap <silent> <leader>, :CocListResume<CR>
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>

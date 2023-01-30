@@ -58,10 +58,12 @@ Plug 'Shatur/neovim-ayu' " Color scheme
 
 Plug 'kdheepak/lazygit.nvim'
 Plug 'azabiong/vim-highlighter'
-
-Plug 'ggandor/leap.nvim'
+Plug 'ggandor/leap.nvim' " Quick navigation
 "
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
+Plug 'liuchengxu/vim-which-key'
+Plug 'AckslD/nvim-whichkey-setup.lua'
 " Context.vim => Show context at top of window
 " Plug 'nvim-treesitter/nvim-treesitter'
 " Plug 'nvim-treesitter/nvim-treesitter-context'
