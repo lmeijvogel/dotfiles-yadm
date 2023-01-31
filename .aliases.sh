@@ -35,9 +35,6 @@ alias aptup='sudo apt-get update && sudo apt-get upgrade'
 # Select package.json script with fzf
 alias y="jq '.scripts | keys | .[]' package.json | fzf --exit-0 --prompt=\"yarn> \" --preview \"jq '.scripts | .\\\"{}\\\"' package.json\" --preview-window down:1:noborder --color 'preview-bg:#223344,border:#778899' | xargs --no-run-if-empty yarn"
 
-# File browser: broot
-alias d=br
-
 cl() { if [ -d "$1" ]; then cd "$1"; ls -l; else echo "*** Directory not found ***" ; fi; }
 
 alias yas='yadm status'
