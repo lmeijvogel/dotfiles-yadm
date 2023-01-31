@@ -293,6 +293,9 @@ lua << LEAP
 LEAP
 
 " vim-which-key
+
+let g:which_key_use_floating_win = 1
+
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
 lua << WHICH_KEY
@@ -313,14 +316,16 @@ local keymap = {
         ['5'] = { '<Cmd>:CocConfig<CR>', 'Load CoC config' }
     },
     l = {
-        r = {'Plug>(coc-rename)', 'Rename'},
         a = {'<Plug>(coc-codeaction-selected)', 'Code action'},
         ['.'] = {'<Plug>(coc-codeaction-selected)', 'Code action'},
-        r = {'<Cmd>CocRestart<CR>', 'Restart CoC'},
+        R = {'<Cmd>CocRestart<CR>', 'Restart CoC'},
         I = {'<Plug>(coc-implementation)', 'Go to Implementation'},
         r = {'<Plug>(coc-references)', 'Find references' },
         d = {'<C-]>', 'Go to definition' },
         V = {'<Cmd>:so $MYVIMRC<CR>', 'Reload configuration' }
+    },
+    r = {
+        r = {'<Plug>(coc-rename)', 'Rename'},
     }
 }
 

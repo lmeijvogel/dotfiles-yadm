@@ -77,9 +77,9 @@ nmap <leader>p <Plug>(coc-diagnostic-prev-error)
 " nmap <leader>rr <Plug>(coc-rename)
 
 " nmap <leader>ra <Plug>(coc-codeaction-selected)
-" vmap <leader>ra <Plug>(coc-codeaction-selected)
+vmap <leader>ra <Plug>(coc-codeaction-selected)
 " nmap <leader>. <Plug>(coc-codeaction-selected)
-" vmap <leader>. <Plug>(coc-codeaction-selected)
+vmap <leader>. <Plug>(coc-codeaction-selected)
 
 " nnoremap <silent> <leader>cr :CocRestart<CR>
 " nnoremap <silent> <leader>lr :CocListResume<CR>
