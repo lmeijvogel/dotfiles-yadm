@@ -58,7 +58,6 @@ Plug 'Shatur/neovim-ayu' " Color scheme
 
 Plug 'kdheepak/lazygit.nvim'
 Plug 'azabiong/vim-highlighter'
-Plug 'ggandor/leap.nvim' " Quick navigation
 "
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 

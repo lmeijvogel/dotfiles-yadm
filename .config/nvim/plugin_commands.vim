@@ -285,13 +285,6 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 
 nnoremap <leader>gg :LazyGit<CR>
 
-nunmap s
-nunmap S
-
-lua << LEAP
-  require('leap').add_default_mappings()
-LEAP
-
 " vim-which-key
 
 let g:which_key_use_floating_win = 1
