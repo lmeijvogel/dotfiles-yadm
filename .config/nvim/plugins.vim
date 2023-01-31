@@ -60,7 +60,7 @@ Plug 'kdheepak/lazygit.nvim'
 Plug 'azabiong/vim-highlighter'
 "
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
-
+Plug 'ray-x/aurora' " Color scheme
 Plug 'liuchengxu/vim-which-key'
 Plug 'AckslD/nvim-whichkey-setup.lua'
 " Context.vim => Show context at top of window

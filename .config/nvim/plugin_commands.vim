@@ -11,58 +11,6 @@ let g:ale_enabled = 0
 
 let g:ale_lint_on_text_changed = 'never'
 
-" Ayu (color scheme)
-lua << AYU
-require('ayu').setup(
-{
-    mirage = false, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
-    overrides = {
-      Comment = {
-        fg = "#0ecf00"
-      },
-      Normal = {
-        fg = "#000000",
-        bg = "#ffffff"
-      },
-      NormalNC = {
-        fg = "#444444",
-        bg = "#f4f4f4"
-      },
-      CocMenuSel = {
-        fg = "#fafafa",
-        bg = "#13354a"
-      },
-      LineNr = {
-        fg = "#a2a2a2"
-      },
-      -- Highlight position of error black on red
-      CocErrorHighlight = {
-        fg = "#000000",
-        bg = "#ff0000"
-      },
-      TabLineFill = {
-        fg = "#303137",
-        bg = "#c0c0c0"
-      },
-      StatusLine = {
-        fg = "#494b53",
-        bg = "#c0c0c0"
-      },
-      StatusLineNC = {
-        fg = "#494b53",
-        bg = "#c0c0c0"
-      },
-      CocFloating = {
-        bg = "#e0e0e0"
-      },
-      CursorLine = {
-        bg = "#dfe0e1"
-      }
-
-    }, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
-})
-AYU
-
 " Vim-sneak
 let g:sneak#label = 1 " Emulate easymotion (show label for navigation). Otherwise, it would navigate with ;,
 
@@ -129,6 +77,7 @@ let g:buftabline_numbers = 1
 lua << BUFTABLINE
 require("buftabline").setup {}
 BUFTABLINE
+
 nnoremap <silent> <M-h> :BufPrev<CR>
 nnoremap <silent> <M-l> :BufNext<CR>
 
@@ -243,14 +192,62 @@ let g:prettier#exec_cmd_path = getcwd() . "/node_modules/.bin/prettier-eslint"
 
 function! LMBackgroundLight()
   set background=light
+  lua << AYU
+    require('ayu').setup(
+    {
+        overrides = {
+          Comment = {
+            fg = "#0ecf00"
+          },
+          Normal = {
+            fg = "#000000",
+            bg = "#ffffff"
+          },
+          NormalNC = {
+            fg = "#444444",
+            bg = "#f4f4f4"
+          },
+          CocMenuSel = {
+            fg = "#fafafa",
+            bg = "#13354a"
+          },
+          LineNr = {
+            fg = "#a2a2a2"
+          },
+          -- Highlight position of error black on red
+          CocErrorHighlight = {
+            fg = "#000000",
+            bg = "#ff0000"
+          },
+          TabLineFill = {
+            fg = "#303137",
+            bg = "#c0c0c0"
+          },
+          StatusLine = {
+            fg = "#494b53",
+            bg = "#c0c0c0"
+          },
+          StatusLineNC = {
+            fg = "#494b53",
+            bg = "#c0c0c0"
+          },
+          CocFloating = {
+            bg = "#e0e0e0"
+          },
+          CursorLine = {
+            bg = "#dfe0e1"
+          }
 
-  colorscheme ayu
+        }, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
+    })
+AYU
+
+  colorscheme ayu-light
 endfunction
 
 function! LMBackgroundDark()
-  colorscheme one
-
   set background=dark
+  colorscheme aurora
 
   if (has("termguicolors"))
     set termguicolors
