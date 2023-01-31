@@ -5,5 +5,5 @@ if [[ `git symbolic-ref HEAD` =~ master ]]; then
 else
   git show --no-patch --pretty="format:Current HEAD: %h %s"
 
-  git push $@ --set-upstream --force-with-lease
+  git push $@ --force-with-lease
 fi
