@@ -1,8 +1,7 @@
 mode "$go_to_mode" {
       bindsym s $exec i3-msg [class=Slack] focus ; mode "default"
       bindsym v $exec i3-msg [class=nvim-qt] focus ; mode "default"
-      bindsym x $exec $HOME/bin/start-zoom bux ; mode "default"
-      bindsym z $exec $HOME/bin/start-zoom se ; mode "default"
+      bindsym z $exec $HOME/bin/start-zoom lfx ; mode "default"
       bindsym t $exec i3-msg [class=Thunderbird] focus ; mode "default"
       bindsym e $exec i3-msg [class=Evolution] focus ; mode "default"
       bindsym w mode "$webcam_mode"
