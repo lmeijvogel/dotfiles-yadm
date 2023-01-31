@@ -124,11 +124,13 @@ bindkey -s '\eG' 'gll\n'
 bindkey '\er' _zsh_git_scripts_git_choose_branch
 # Bind <Esc>R to 'gbrr' (git branch --remote)
 bindkey '\eR' _zsh_git_scripts_git_choose_remote_branch
+# Bind <Esc>v to choose file from status, edit if conflict, add if untracked
+bindkey '\ev' _zsh_git_scripts_git_choose_file
 
 unsetopt nomatch
 
 alias -g D=$HOME/Downloads
-alias -g W="$HOME/Windows\\ 10\\ files"
+alias -g W="$HOME/windows-files"
 
 function cm() {
   # Lists mounted volumes to cd to.
