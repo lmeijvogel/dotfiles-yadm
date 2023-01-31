@@ -3,7 +3,6 @@ let g:snippets_dir="~/.vim/snippets"
 
 set mouse=a
 
-" Hide menubar and toolbar in gvim
 let mapleader=" "
 
 " No beeps or flashes on errors
