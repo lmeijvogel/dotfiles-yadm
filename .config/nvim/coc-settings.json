@@ -35,5 +35,8 @@
     },
 
     // If you use neovim you can enable codelenses with this
-    "codeLens.enable": false
+    "codeLens.enable": false,
+    // This is broken at the moment: For import errors, it will
+    // fix them, but then the change is reverted.
+    "eslint.autoFixOnSave": false
 }
