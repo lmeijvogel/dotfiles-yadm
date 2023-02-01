@@ -174,20 +174,6 @@ function! AckCurrentFile()
   exec "Ack \"". withoutExtension ."\""
 endfunction
 
-" function! OpenClipboardFile()
-" let path=system("xsel -bo")
-
-" let stripped_path = substitute(path, '\n\+$', '', '')
-
-" if filereadable(stripped_path)
-" exec("e ". stripped_path)
-" else
-" echo "File"
-" echo "  ". stripped_path
-" echo "does not exist!"
-" endif
-" endfunction
-
 let g:prettier#exec_cmd_path = getcwd() . "/node_modules/.bin/prettier-eslint"
 
 function! LMBackgroundLight()
