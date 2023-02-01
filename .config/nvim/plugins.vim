@@ -63,6 +63,9 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'ray-x/aurora' " Color scheme
 Plug 'liuchengxu/vim-which-key'
 Plug 'AckslD/nvim-whichkey-setup.lua'
+Plug 'kevinhwang91/nvim-ufo' " Improved folding
+Plug 'kevinhwang91/promise-async' " Required by nvim-ufo
+
 " Context.vim => Show context at top of window
 " Plug 'nvim-treesitter/nvim-treesitter'
 " Plug 'nvim-treesitter/nvim-treesitter-context'

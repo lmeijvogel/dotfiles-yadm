@@ -226,6 +226,7 @@ function! LMBackgroundLight()
 
         }, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
     })
+    require('ufo').setup()
 AYU
 
   colorscheme ayu-light
@@ -238,6 +239,9 @@ function! LMBackgroundDark()
   if (has("termguicolors"))
     set termguicolors
   endif
+
+  lua require('ufo').setup()
+
 endfunction
 
 if !exists('g:config_already_loaded')
@@ -310,3 +314,18 @@ vim.o.timeout = true
 vim.o.timeoutlen = 500
 wk.register_keymap('leader', keymap)
 WHICH_KEY
+
+" vim-ufo
+
+lua <<UFO
+ufo = require('ufo')
+vim.keymap.set('n', 'zR', ufo.openAllFolds)
+vim.keymap.set('n', 'zM', ufo.closeAllFolds)
+
+vim.o.foldcolumn = '1'
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+
+ufo.setup()
+UFO
