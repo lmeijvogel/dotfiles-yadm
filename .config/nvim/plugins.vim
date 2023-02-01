@@ -12,7 +12,7 @@ Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'mileszs/ack.vim'
 Plug 'vim-scripts/bufkill.vim' " Commands for deleting the current buffer
 Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-endwise' " Automatically close begin/end statements
+Plug 'tpope/vim-endwise', { 'for': 'ruby' } " Automatically close begin/end statements
 Plug 'tpope/vim-unimpaired' " Bracket commands: ]b, etc.
 Plug 'tpope/vim-rsi' " Readline style insertions
 Plug 'tpope/vim-fugitive'
