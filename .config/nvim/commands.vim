@@ -94,8 +94,6 @@ nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
 nmap <leader>m /^<<<<<<<\\|^=======\\|^>>>>>>>/<CR>
 vmap <leader>m /^<<<<<<<\\|^=======\\|^>>>>>>>/<CR>
 
-nnoremap <leader>si :call SortImports()<CR>
-
 " Only redraw screen _after_ a macro is finished
 set lazyredraw
 
