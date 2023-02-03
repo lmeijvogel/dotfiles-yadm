@@ -77,7 +77,7 @@ nmap <leader>p <Plug>(coc-diagnostic-prev-error)
 " nmap <leader>rr <Plug>(coc-rename)
 
 " nmap <leader>ra <Plug>(coc-codeaction-selected)
-vmap <leader>ra <Plug>(coc-codeaction-selected)
+vmap <leader>la <Plug>(coc-codeaction-selected)
 " nmap <leader>. <Plug>(coc-codeaction-selected)
 vmap <leader>. <Plug>(coc-codeaction-selected)
 
