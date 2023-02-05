@@ -200,11 +200,6 @@ function! LMBackgroundLight()
           LineNr = {
             fg = "#a2a2a2"
           },
-          -- Highlight position of error black on red
-          CocErrorHighlight = {
-            fg = "#000000",
-            bg = "#ff0000"
-          },
           TabLineFill = {
             fg = "#303137",
             bg = "#c0c0c0"
