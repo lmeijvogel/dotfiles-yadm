@@ -324,3 +324,7 @@ vim.o.foldenable = true
 
 ufo.setup()
 UFO
+
+lua <<LUALINE
+require('lualine').setup()
+LUALINE

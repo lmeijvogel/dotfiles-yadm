@@ -66,6 +66,10 @@ Plug 'AckslD/nvim-whichkey-setup.lua'
 Plug 'kevinhwang91/nvim-ufo' " Improved folding
 Plug 'kevinhwang91/promise-async' " Required by nvim-ufo
 
+Plug 'nvim-lualine/lualine.nvim'
+" If you want to have icons in your statusline choose one of these
+Plug 'kyazdani42/nvim-web-devicons'
+
 " Context.vim => Show context at top of window
 " Plug 'nvim-treesitter/nvim-treesitter'
 " Plug 'nvim-treesitter/nvim-treesitter-context'
