@@ -70,27 +70,27 @@ let g:molokayo#high_contrast#comments = 1
 nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gb :call GitGuiBlame()<CR>
 
-" vim-buftabline
-" Show buffer number next to buffer name
-let g:buftabline_numbers = 1
+" " vim-buftabline
+" " Show buffer number next to buffer name
+" let g:buftabline_numbers = 1
 
-lua << BUFTABLINE
-require("buftabline").setup {}
-BUFTABLINE
+" lua << BUFTABLINE
+" require("buftabline").setup {}
+" BUFTABLINE
 
-nnoremap <silent> <M-h> :BufPrev<CR>
-nnoremap <silent> <M-l> :BufNext<CR>
+nnoremap <silent> <M-h> :bp<CR>
+nnoremap <silent> <M-l> :bn<CR>
 
 " With shift - makes for easier buffer deletion (not having to release and press Shift every time)
-nnoremap <silent> <M-S-h> :BufPrev<CR>
-nnoremap <silent> <M-S-l> :BufNext<CR>
+nnoremap <silent> <M-S-h> :bp<CR>
+nnoremap <silent> <M-S-l> :bn<CR>
 
 " Easy delete buffer
 nnoremap <M-S-d> :BD<CR>
 
 " Same with ctrl-tab
-nnoremap <silent> <C-Tab> :BufNext<CR>
-nnoremap <silent> <C-S-Tab> :BufPrev<CR>
+nnoremap <silent> <C-Tab> :bn<CR>
+nnoremap <silent> <C-S-Tab> :bp<CR>
 
 " Open file from clipboard - I never use this
 " nnoremap <leader>ec :call OpenClipboardFile()<CR>
