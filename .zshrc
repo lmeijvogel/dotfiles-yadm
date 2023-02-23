@@ -165,6 +165,15 @@ export SAVEHIST=10000000
 export PATH="$HOME/.cargo/bin:$PATH"
 
 export BAT_THEME="Solarized (dark)"
-
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+if type atuin >/dev/null; then
+    # Ideally, I'd pass in the --disable-up-arrow flag, but that's not supported yet in
+    # version 12.0.0, so this is a workaround where I manually bind the C-r key.
+    export ATUIN_NOBIND="true"
+
+    eval "$(atuin init zsh)"
+
+    bindkey '^r' _atuin_search_widget
+fi
