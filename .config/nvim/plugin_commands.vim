@@ -328,3 +328,8 @@ UFO
 lua <<LUALINE
 require('lualine').setup()
 LUALINE
+
+" MarkdownPreview
+
+" Do not close preview window when the buffer is closed
+let g:mkdp_auto_close = 0
