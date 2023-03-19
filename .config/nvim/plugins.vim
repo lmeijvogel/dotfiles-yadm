@@ -44,7 +44,7 @@ Plug 'kyazdani42/nvim-web-devicons' " optional, for file icons
 
 Plug 'jeetsukumaran/vim-indentwise' " Easy navigation based on indent level
 Plug 'rakr/vim-one' " Light color scheme
-Plug 'neoclide/coc.nvim', {'branch': 'release'} " Language Server Protocol client
+" Plug 'neoclide/coc.nvim', {'branch': 'release'} " Language Server Protocol client
 Plug 'rbgrouleff/bclose.vim' " Close buffers while keeping windows open
 Plug 'leafgarland/typescript-vim' " Syntax files for typescript
 Plug 'ruanyl/vim-sort-imports' " Sort typescript imports
@@ -74,6 +74,15 @@ Plug 'kyazdani42/nvim-web-devicons'
 " Plug 'nvim-treesitter/nvim-treesitter'
 " Plug 'nvim-treesitter/nvim-treesitter-context'
 " Plug 'wellle/context.vim'
+
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
 call plug#end()
 
 call yankstack#setup()

@@ -174,69 +174,36 @@ function! AckCurrentFile()
   exec "Ack \"". withoutExtension ."\""
 endfunction
 
+function! OpenClipboardFile()
+  let path=system("xsel -bo")
+
+  let stripped_path = substitute(path, '\n\+$', '', '')
+
+  if filereadable(stripped_path)
+    exec("e ". stripped_path)
+  else
+    echo "File"
+    echo "  ". stripped_path
+    echo "does not exist!"
+  endif
+endfunction
+
 let g:prettier#exec_cmd_path = getcwd() . "/node_modules/.bin/prettier-eslint"
 
 function! LMBackgroundLight()
   set background=light
-  lua << AYU
-    require('ayu').setup(
-    {
-        overrides = {
-          Comment = {
-            fg = "#0ecf00"
-          },
-          Normal = {
-            fg = "#000000",
-            bg = "#ffffff"
-          },
-          NormalNC = {
-            fg = "#444444",
-            bg = "#f4f4f4"
-          },
-          CocMenuSel = {
-            fg = "#fafafa",
-            bg = "#13354a"
-          },
-          LineNr = {
-            fg = "#a2a2a2"
-          },
-          TabLineFill = {
-            fg = "#303137",
-            bg = "#c0c0c0"
-          },
-          StatusLine = {
-            fg = "#494b53",
-            bg = "#c0c0c0"
-          },
-          StatusLineNC = {
-            fg = "#494b53",
-            bg = "#c0c0c0"
-          },
-          CocFloating = {
-            bg = "#e0e0e0"
-          },
-          CursorLine = {
-            bg = "#dfe0e1"
-          }
 
-        }, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
-    })
-    require('ufo').setup()
-AYU
-
-  colorscheme ayu-light
+  colorscheme ayu
 endfunction
 
 function! LMBackgroundDark()
+  colorscheme one
+
   set background=dark
-  colorscheme aurora
 
   if (has("termguicolors"))
     set termguicolors
   endif
-
-  lua require('ufo').setup()
-
 endfunction
 
 if !exists('g:config_already_loaded')
@@ -247,7 +214,7 @@ if !exists('g:config_already_loaded')
 endif
 
 " Completion: Used by nvim-typescript
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 
 let g:nvim_typescript#signature_complete = 1
 let g:nvim_typescript#max_completion_detail = 25
@@ -267,69 +234,4 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 
 nnoremap <leader>gg :LazyGit<CR>
 
-" vim-which-key
-
-let g:which_key_use_floating_win = 1
-
-nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
-
-lua << WHICH_KEY
-local wk = require('whichkey_setup')
-
-local keymap = {
-    [','] = { '<Cmd>CocListResume<CR>', 'Re-show CoC list' },
-    f = {
-        l = {'<Cmd>:let @+ = expand(\"%:p\").\':\'.line(\'.\')<CR>', 'Copy filename + line to clipboard' },
-        f = {'<Cmd>:let @+ = expand(\"%:p\")<CR>', 'Copy filename to clipboard' }
-    },
-    e = {
-        v     = { '<Cmd>:e $MYVIMRC<CR>', 'Load init.vim' },
-        ['1'] = { '<Cmd>:e $HOME/.vimrc<CR>', 'Load .vimrc' },
-        ['2'] = { '<Cmd>:e $HOME/.config/nvim/commands.vim<CR>', 'Load commands.vim' },
-        ['3'] = { '<Cmd>:e $HOME/.config/nvim/plugins.vim<CR>', 'Load plugins.vim' },
-        ['4'] = { '<Cmd>:e $HOME/.config/nvim/plugin_commands.vim<CR>', 'Load plugin_commands.vim' },
-        ['5'] = { '<Cmd>:CocConfig<CR>', 'Load CoC config' }
-    },
-    l = {
-        a = {'<Plug>(coc-codeaction-selected)', 'Code action'},
-        ['.'] = {'<Plug>(coc-codeaction-selected)', 'Code action'},
-        R = {'<Cmd>CocRestart<CR>', 'Restart CoC'},
-        I = {'<Plug>(coc-implementation)', 'Go to Implementation'},
-        r = {'<Plug>(coc-references)', 'Find references' },
-        d = {'<C-]>', 'Go to definition' },
-        V = {'<Cmd>:so $MYVIMRC<CR>', 'Reload configuration' }
-    },
-    r = {
-        r = {'<Plug>(coc-rename)', 'Rename'},
-    }
-}
-
--- By default timeoutlen is 1000 ms
-vim.o.timeout = true
-vim.o.timeoutlen = 500
-wk.register_keymap('leader', keymap)
-WHICH_KEY
-
-" vim-ufo
-
-lua <<UFO
-ufo = require('ufo')
-vim.keymap.set('n', 'zR', ufo.openAllFolds)
-vim.keymap.set('n', 'zM', ufo.closeAllFolds)
-
-vim.o.foldcolumn = '0'
-vim.o.foldlevel = 99
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
-
-ufo.setup()
-UFO
-
-lua <<LUALINE
-require('lualine').setup()
-LUALINE
-
-" MarkdownPreview
-
-" Do not close preview window when the buffer is closed
-let g:mkdp_auto_close = 0
+source ~/.config/nvim/plugin_commands.lua
