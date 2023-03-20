@@ -68,6 +68,7 @@ let g:molokayo#high_contrast#comments = 1
 
 " fugitive
 nnoremap <leader>gs :Git<CR>
+nnoremap <leader>ga :Git add %<CR>
 nnoremap <leader>gb :call GitGuiBlame()<CR>
 
 " " vim-buftabline
