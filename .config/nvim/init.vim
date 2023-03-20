@@ -12,4 +12,12 @@ nnoremap <silent> <leader>e5 :CocConfig<CR>
 " For neovide and neovim-qt
 set guifont=Cascadia\ Code:h12
 
+lua << NEOVIDE
+if vim.g.neovide then
+  vim.g.neovide_scroll_animation_length = 0.1
+  vim.g.neovide_cursor_animation_length = 0.02
+  vim.g.neovide_cursor_vfx_mode = "pixiedust"
+end
+NEOVIDE
+
 source $HOME/.config/nvim/absolute_import_to_relative.vim
