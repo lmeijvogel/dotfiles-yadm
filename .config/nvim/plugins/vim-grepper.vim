@@ -4,6 +4,7 @@ nnoremap <leader>a :Grepper -tool rg<cr>
 
 runtime plugin/grepper.vim
 let g:grepper.ack.grepprg .= ' --smart-case'
+let g:grepper.rg.grepprg .= ' --smart-case'
 
 " Ack visual selection
 vmap <leader>a "vy:Ack! "<C-r>v"
