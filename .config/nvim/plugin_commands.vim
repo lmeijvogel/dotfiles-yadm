@@ -135,6 +135,9 @@ if has('nvim')
   nnoremap <silent> <leader>S  :w<CR>:TestLast<CR>
   nnoremap <silent> <leader>s <Nop>
 
+  nnoremap <silent> <leader>sw :copen<CR>
+  nnoremap <silent> <leader>sb :make<CR>
+
   " Automatically enter insert mode in the terminal
   autocmd BufWinEnter,WinEnter term://* startinsert
   autocmd BufLeave term://* stopinsert
