@@ -202,10 +202,6 @@ let g:prettier#config#trailing_comma = 'none'
 
 let g:prettier#quickfix_enabled = 0
 
-" Run prettier on all specified files at save.
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue PrettierAsync
-
 nnoremap <leader>gg :LazyGit<CR>
 
 source ~/.config/nvim/plugin_commands.lua

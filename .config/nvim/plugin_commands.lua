@@ -82,7 +82,7 @@ vim.keymap.set('n', '<F7>', ':lua LMBackgroundLight()<CR>', { noremap = true, si
 require('mason').setup()
 
 require('mason-lspconfig').setup {
-  ensure_installed = { 'tsserver' }
+  ensure_installed = { 'tsserver', 'eslint' }
 }
 
 -- Mappings.
@@ -113,7 +113,18 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>la', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', '<space>lf', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
+
+local eslint_on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+
+    vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = bufnr,
+        command = "EslintFixAll",
+    })
+end
+
 require('lspconfig')['tsserver'].setup({ on_attach = on_attach })
+require('lspconfig')['eslint'].setup({ on_attach = eslint_on_attach })
 
 -- Set up nvim-cmp.
 local cmp = require'cmp'
