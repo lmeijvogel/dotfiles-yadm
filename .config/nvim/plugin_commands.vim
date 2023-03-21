@@ -59,10 +59,6 @@ nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <leader>hh :History<CR>
 nnoremap - :Buffers<CR>
 
-" Color schemes
-nnoremap <silent> <F6> :call LMBackgroundDark()<CR>
-nnoremap <silent> <F7> :call LMBackgroundLight()<CR>
-
 " Make comments actually visible
 let g:molokayo#high_contrast#comments = 1
 
@@ -193,32 +189,6 @@ function! OpenClipboardFile()
 endfunction
 
 let g:prettier#exec_cmd_path = getcwd() . "/node_modules/.bin/prettier-eslint"
-
-function! LMBackgroundLight()
-  set background=light
-
-  colorscheme ayu
-endfunction
-
-function! LMBackgroundDark()
-  colorscheme one
-
-  set background=dark
-
-  if (has("termguicolors"))
-    set termguicolors
-  endif
-endfunction
-
-if !exists('g:config_already_loaded')
-  " Do not reset color scheme when reloading the configuration
-  let g:config_already_loaded = 1
-
-  call LMBackgroundLight()
-endif
-
-" Completion: Used by nvim-typescript
-" let g:deoplete#enable_at_startup = 1
 
 let g:nvim_typescript#signature_complete = 1
 let g:nvim_typescript#max_completion_detail = 25

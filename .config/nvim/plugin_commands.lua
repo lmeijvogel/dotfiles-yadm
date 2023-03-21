@@ -7,7 +7,7 @@ map('n', '<leader>F', '<Plug>Sneak_S', {})
 map('n', 'f', '<Plug>Sneak_f', {})
 map('n', 'F', '<Plug>Sneak_F', {})
 
--- Ayu (color scheme)
+-- Color schemes
 require('ayu').setup(
 {
     mirage = false, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
@@ -56,6 +56,28 @@ require('ayu').setup(
 
     }, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
 })
+
+function LMBackgroundLight()
+  vim.o.background = 'light'
+
+  vim.cmd.colorscheme('ayu')
+end
+
+function LMBackgroundDark()
+  vim.cmd.colorscheme('one')
+
+  vim.o.background = 'dark'
+end
+
+if not vim.g['config_already_loaded'] then
+  vim.g['config_already_loaded'] = true
+
+  LMBackgroundLight()
+end
+
+-- map('n', '<F6>', ':lua LMBackgroundDark()<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<F6>', ':lua LMBackgroundDark()<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<F7>', ':lua LMBackgroundLight()<CR>', { noremap = true, silent = true })
 
 require('mason').setup()
 
