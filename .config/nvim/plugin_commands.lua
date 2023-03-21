@@ -110,6 +110,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', '<space>rr', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>la', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('v', '<space>la', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', '<space>lf', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
