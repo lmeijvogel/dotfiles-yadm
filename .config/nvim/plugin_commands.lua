@@ -82,7 +82,7 @@ vim.keymap.set('n', '<F7>', ':lua LMBackgroundLight()<CR>', { noremap = true, si
 require('mason').setup()
 
 require('mason-lspconfig').setup {
-  ensure_installed = { 'tsserver', 'eslint', 'lua_ls' }
+  ensure_installed = { 'tsserver', 'eslint', 'lua_ls', 'cssls' }
 }
 
 -- Mappings.
@@ -147,6 +147,7 @@ require'lspconfig'.lua_ls.setup {
   on_attach = on_attach
 }
 require('lspconfig')['tsserver'].setup({ on_attach = on_attach })
+require('lspconfig')['cssls'].setup({ on_attach = on_attach })
 require('lspconfig')['eslint'].setup({ on_attach = eslint_on_attach })
 
 -- Set up nvim-cmp.
