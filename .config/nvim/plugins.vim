@@ -70,9 +70,10 @@ Plug 'nvim-lualine/lualine.nvim'
 " If you want to have icons in your statusline choose one of these
 Plug 'kyazdani42/nvim-web-devicons'
 
+Plug 'echasnovski/mini.align' " Align statements
 " Context.vim => Show context at top of window
-" Plug 'nvim-treesitter/nvim-treesitter'
-" Plug 'nvim-treesitter/nvim-treesitter-context'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter-context'
 " Plug 'wellle/context.vim'
 
 Plug 'williamboman/mason.nvim'
