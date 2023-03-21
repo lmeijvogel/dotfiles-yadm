@@ -1,84 +1,5 @@
 local map = vim.api.nvim_set_keymap
 
--- Sneak
-map('n', '<leader>f', '<Plug>Sneak_s', {})
-map('n', '<leader>F', '<Plug>Sneak_S', {})
-
-map('n', 'f', '<Plug>Sneak_f', {})
-map('n', 'F', '<Plug>Sneak_F', {})
-
--- Color schemes
-require('ayu').setup(
-{
-    mirage = false, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
-    overrides = {
-      Comment = {
-        fg = "#0ecf00"
-      },
-      Normal = {
-        fg = "#000000",
-        bg = "#ffffff"
-      },
-      NormalNC = {
-        fg = "#444444",
-        bg = "#f4f4f4"
-      },
-      CocMenuSel = {
-        fg = "#fafafa",
-        bg = "#13354a"
-      },
-      LineNr = {
-        fg = "#a2a2a2"
-      },
-      -- Highlight position of error black on red
-      CocErrorHighlight = {
-        fg = "#000000",
-        bg = "#ff0000"
-      },
-      TabLineFill = {
-        fg = "#303137",
-        bg = "#c0c0c0"
-      },
-      StatusLine = {
-        fg = "#494b53",
-        bg = "#c0c0c0"
-      },
-      StatusLineNC = {
-        fg = "#494b53",
-        bg = "#c0c0c0"
-      },
-      CocFloating = {
-        bg = "#e0e0e0"
-      },
-      CursorLine = {
-        bg = "#dfe0e1"
-      }
-
-    }, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
-})
-
-function LMBackgroundLight()
-  vim.o.background = 'light'
-
-  vim.cmd.colorscheme('ayu')
-end
-
-function LMBackgroundDark()
-  vim.cmd.colorscheme('one')
-
-  vim.o.background = 'dark'
-end
-
-if not vim.g['config_already_loaded'] then
-  vim.g['config_already_loaded'] = true
-
-  LMBackgroundLight()
-end
-
--- map('n', '<F6>', ':lua LMBackgroundDark()<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<F6>', ':lua LMBackgroundDark()<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<F7>', ':lua LMBackgroundLight()<CR>', { noremap = true, silent = true })
-
 require('mason').setup()
 
 require('mason-lspconfig').setup {
@@ -146,9 +67,27 @@ require'lspconfig'.lua_ls.setup {
   },
   on_attach = on_attach
 }
-require('lspconfig')['tsserver'].setup({ on_attach = on_attach })
+-- require('lspconfig')['tsserver'].setup({ on_attach = on_attach })
 require('lspconfig')['cssls'].setup({ on_attach = on_attach })
 require('lspconfig')['eslint'].setup({ on_attach = eslint_on_attach })
+
+local tsserver_on_attach = function (client, bufnr)
+    on_attach(client, bufnr)
+
+    map('n', '<leader>li', ":TypescriptAddMissingImports<CR>", {})
+end
+
+-- use typescript.nvim to initialize tsserver to add extra options.
+require("typescript").setup({
+    disable_commands = false, -- prevent the plugin from creating Vim commands
+    debug = false, -- enable debug logging for commands
+    go_to_source_definition = {
+        fallback = true, -- fall back to standard LSP definition on failure
+    },
+    server = { -- pass options to lspconfig's setup method
+        on_attach = tsserver_on_attach,
+    },
+})
 
 -- Set up nvim-cmp.
 local cmp = require'cmp'
@@ -247,12 +186,3 @@ cmp.setup({
   }
 })
 vim.api.nvim_set_keymap('i', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', {})
-
-require('mini.align').setup()
-require('lualine').setup({})
-require'treesitter-context'.setup{
-    enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-    max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
-    trim_scope = 'outer', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
-}
-

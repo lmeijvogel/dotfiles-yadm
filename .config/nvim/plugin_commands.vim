@@ -208,4 +208,4 @@ let g:prettier#quickfix_enabled = 0
 
 nnoremap <leader>gg :LazyGit<CR>
 
-source ~/.config/nvim/plugin_commands.lua
+source ~/.config/nvim/lua/plugin_commands.lua
