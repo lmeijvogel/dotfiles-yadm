@@ -17,9 +17,6 @@ let g:sneak#label = 1 " Emulate easymotion (show label for navigation). Otherwis
 nmap <leader>f <Plug>Sneak_s
 nmap <leader>F <Plug>Sneak_S
 
-nmap f <Plug>Sneak_f
-nmap F <Plug>Sneak_F
-
 nnoremap <F5> :UndotreeToggle<CR>
 
 " vim-sandwich
