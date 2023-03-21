@@ -140,6 +140,13 @@ if has('nvim')
   tnoremap <C-k> <C-\><C-n><C-w>k
 
   nnoremap <silent> <leader>sr :call SwitchTestRunner()<CR>
+  lua << LUA
+  vim.cmd [[
+    augroup strdr4605
+      autocmd FileType typescript,typescriptreact compiler tsc | setlocal makeprg=npx\ tsc
+    augroup END
+  ]]
+LUA
 else
   let g:no_turbux_mappings = 1
   let g:turbux_command_rspec  = "$HOME/bin/sp"
