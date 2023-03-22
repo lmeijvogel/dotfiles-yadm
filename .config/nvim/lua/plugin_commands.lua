@@ -7,7 +7,17 @@ map('n', 'f', '<Plug>Sneak_f', {})
 map('n', 'F', '<Plug>Sneak_F', {})
 
 require('mini.align').setup()
-require('lualine').setup({})
+require('lualine').setup({
+  -- The default sections, except mentioned below
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'filetype'}, -- Removed 'encoding' and 'fileformat' here
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+})
 require('dressing').setup({})
 
 
