@@ -88,6 +88,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 
 Plug 'stevearc/dressing.nvim' " Nicer select and input behavior
+Plug 'lukas-reineke/indent-blankline.nvim' " Show indentation guides
 call plug#end()
 
 call yankstack#setup()
