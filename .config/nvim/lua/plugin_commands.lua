@@ -8,3 +8,4 @@ map('n', 'F', '<Plug>Sneak_F', {})
 
 require('mini.align').setup()
 require('lualine').setup({})
+require('dressing').setup({})
