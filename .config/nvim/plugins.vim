@@ -89,6 +89,8 @@ Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 
 Plug 'stevearc/dressing.nvim' " Nicer select and input behavior
 Plug 'lukas-reineke/indent-blankline.nvim' " Show indentation guides
+
+Plug 'nvchad/nvim-colorizer.lua' " Show colors visually
 call plug#end()
 
 call yankstack#setup()
