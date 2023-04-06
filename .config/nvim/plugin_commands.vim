@@ -205,5 +205,3 @@ let g:prettier#config#trailing_comma = 'none'
 let g:prettier#quickfix_enabled = 0
 
 nnoremap <leader>gg :LazyGit<CR>
-
-source ~/.config/nvim/lua/plugin_commands.lua
