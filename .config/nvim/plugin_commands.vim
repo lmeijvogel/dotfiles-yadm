@@ -1,4 +1,3 @@
-source ~/.config/nvim/plugins/vim-grepper.vim
 source ~/.config/nvim/plugins/nerdtree.vim
 source ~/.config/nvim/plugins/firenvim.vim
 

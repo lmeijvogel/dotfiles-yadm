@@ -91,6 +91,10 @@ Plug 'stevearc/dressing.nvim' " Nicer select and input behavior
 Plug 'lukas-reineke/indent-blankline.nvim' " Show indentation guides
 
 Plug 'nvchad/nvim-colorizer.lua' " Show colors visually
+
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-lua/plenary.nvim' " Required by telescope
+Plug 'BurntSushi/ripgrep' " Optional for telescope.nvim
 call plug#end()
 
 call yankstack#setup()
