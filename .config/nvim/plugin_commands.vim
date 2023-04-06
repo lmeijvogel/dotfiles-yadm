@@ -142,11 +142,6 @@ if has('nvim')
     augroup END
   ]]
 LUA
-else
-  let g:no_turbux_mappings = 1
-  let g:turbux_command_rspec  = "$HOME/bin/sp"
-  nmap <leader>sf <Plug>SendTestToTmux
-  nmap <leader>sl <Plug>SendFocusedTestToTmux
 end
 
 nmap <leader><C-s> <Plug>SetTmuxVars
