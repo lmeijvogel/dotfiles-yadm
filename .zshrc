@@ -164,9 +164,12 @@ export SAVEHIST=10000000
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
-export BAT_THEME="Solarized (dark)"
 export VOLTA_HOME="$HOME/.volta"
+
 export PATH="$VOLTA_HOME/bin:$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+[ -s "/home/lennaert/.scm_breeze/scm_breeze.sh" ] && source "/home/lennaert/.scm_breeze/scm_breeze.sh"
 
 if type atuin >/dev/null; then
     # Ideally, I'd pass in the --disable-up-arrow flag, but that's not supported yet in
