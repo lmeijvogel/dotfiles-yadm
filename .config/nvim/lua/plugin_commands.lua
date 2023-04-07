@@ -21,8 +21,24 @@ require('lualine').setup({
 require('dressing').setup({})
 
 -- Telescope
+require('telescope').setup({
+  defaults = {
+    mappings = {
+      i = {
+        ["<C-u>"] = false
+      }
+    },
+    layout_config = {
+      vertical = { width = 0.5 }
+      -- other layout configuration here
+    },
+    -- other defaults configuration here
+  },
+  -- other configuration values here
+})
+
 map('n', '<leader>a', ':Telescope live_grep<CR>', {})
-map('n', '<leader>A', ':Telescope grep_string initial_mode="normal"<CR>', {})
+map('n', '<leader>A', ':Telescope grep_string initial_mode=normal<CR>', {})
 
 -- Treesitter
 require("nvim-treesitter.configs").setup({
