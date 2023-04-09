@@ -46,14 +46,6 @@ nnoremap <leader>st :SyntasticToggleMode<CR>
 nnoremap <C-A-k> :bn<CR>
 nnoremap <C-A-j> :bp<CR>
 
-" FZF
-
-" Disable preview window since it obscures the file basename
-let g:fzf_preview_window = ''
-nnoremap <silent> <C-p> :Files<CR>
-nnoremap <silent> <leader>hh :History<CR>
-nnoremap - :Buffers<CR>
-
 " Make comments actually visible
 let g:molokayo#high_contrast#comments = 1
 

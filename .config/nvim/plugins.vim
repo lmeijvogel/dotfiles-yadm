@@ -95,6 +95,12 @@ Plug 'nvchad/nvim-colorizer.lua' " Show colors visually
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-lua/plenary.nvim' " Required by telescope
 Plug 'BurntSushi/ripgrep' " Optional for telescope.nvim
+
+Plug 'nvim-telescope/telescope-smart-history.nvim'
+Plug 'kkharji/sqlite.lua' " Required by telescope-smart-history
+
+" Faster sorting of results in Telescope
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 call plug#end()
 
 call yankstack#setup()

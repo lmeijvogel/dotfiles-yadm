@@ -20,25 +20,37 @@ require('lualine').setup({
 })
 require('dressing').setup({})
 
+local actions = require('telescope.actions')
+
 -- Telescope
 require('telescope').setup({
   defaults = {
+    file_ignore_patterns = {"node_modules"},
     mappings = {
       i = {
-        ["<C-u>"] = false
+        ["<C-u>"] = false,
+        ["<C-Down>"] = actions.cycle_history_next,
+        ["<C-Up>"] = actions.cycle_history_prev,
       }
     },
     layout_config = {
       vertical = { width = 0.5 }
-      -- other layout configuration here
     },
-    -- other defaults configuration here
   },
-  -- other configuration values here
+  history = {
+    path = '~/.local/share/nvim/databases/telescope_history.sqlite3',
+    limit = 100,
+  }
 })
+
+require('telescope').load_extension('smart_history')
+require('telescope').load_extension('fzf')
 
 map('n', '<leader>a', ':Telescope live_grep<CR>', {})
 map('n', '<leader>A', ':Telescope grep_string initial_mode=normal<CR>', {})
+map('n', '<C-p>', '<cmd>Telescope find_files<CR>', {})
+map('n', '<leader>hh', '<cmd>Telescope oldfiles<CR>', {})
+map('n', '-', '<cmd>Telescope buffers<CR>', {})
 
 -- Treesitter
 require("nvim-treesitter.configs").setup({
