@@ -36,7 +36,6 @@ Plug 'mhinz/vim-grepper'
 Plug 'jceb/vim-orgmode'
 Plug 'vim-scripts/utl.vim' " Universal Text Linking -- Needed for orgmode links between files
 Plug 'mattn/calendar-vim'
-Plug 'w0rp/ale'
 Plug 'elixir-editors/vim-elixir'
 
 Plug 'kyazdani42/nvim-tree.lua'

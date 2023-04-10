@@ -1,14 +1,6 @@
 source ~/.config/nvim/plugins/nerdtree.vim
 source ~/.config/nvim/plugins/firenvim.vim
 
-" ALE
-let g:ale_linters = {}
-let g:ale_fixers = {}
-
-let g:ale_enabled = 0
-
-let g:ale_lint_on_text_changed = 'never'
-
 " Vim-sneak
 let g:sneak#label = 1 " Emulate easymotion (show label for navigation). Otherwise, it would navigate with ;,
 
