@@ -3,7 +3,7 @@ local map = vim.api.nvim_set_keymap
 require('mason').setup()
 
 require('mason-lspconfig').setup {
-  ensure_installed = { 'tsserver', 'eslint', 'lua_ls', 'cssls' }
+  ensure_installed = { 'tsserver', 'eslint', 'cssls' }
 }
 
 -- Mappings.
@@ -44,30 +44,6 @@ local eslint_on_attach = function(client, bufnr)
     })
 end
 
-require'lspconfig'.lua_ls.setup {
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-  on_attach = on_attach
-}
--- require('lspconfig')['tsserver'].setup({ on_attach = on_attach })
 require('lspconfig')['cssls'].setup({ on_attach = on_attach })
 require('lspconfig')['eslint'].setup({ on_attach = eslint_on_attach })
 
