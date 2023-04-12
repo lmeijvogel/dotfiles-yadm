@@ -50,7 +50,7 @@ map('n', '<leader>a', ':Telescope live_grep<CR>', {})
 map('n', '<leader>A', ':Telescope grep_string initial_mode=normal<CR>', {})
 map('n', '<C-p>', '<cmd>Telescope find_files<CR>', {})
 map('n', '<leader>hh', '<cmd>Telescope oldfiles<CR>', {})
-map('n', '-', '<cmd>Telescope buffers<CR>', {})
+map('n', '-', '<cmd>Telescope buffers sort_mru=true ignore_current_buffer=true<CR>', {})
 
 -- Treesitter
 require("nvim-treesitter.configs").setup({
