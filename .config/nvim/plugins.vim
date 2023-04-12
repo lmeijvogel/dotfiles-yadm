@@ -82,7 +82,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
+" Plug 'hrsh7th/cmp-cmdline' -- I can't find a way to get completion in the cmdline without having to confirm with <CR>
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
 
