@@ -46,9 +46,13 @@ end
 local eslint_on_attach = function(client, bufnr)
     on_attach(client, bufnr)
 
+    client.server_capabilities.document_formatting = true
+
     vim.api.nvim_create_autocmd("BufWritePre", {
         buffer = bufnr,
-        command = "EslintFixAll",
+        callback = function ()
+                     vim.lsp.buf.format { async = false }
+                   end
     })
 end
 
