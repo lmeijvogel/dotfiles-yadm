@@ -9,6 +9,8 @@ nnoremap <silent> <leader>e4 :e $HOME/.config/nvim/plugin_commands.vim<CR>
 source $HOME/.config/nvim/lua/plugin_commands.lua
 nnoremap <silent> <leader>e5 :e $HOME/.config/nvim/lua/plugin_commands.lua<CR>
 
+nnoremap <silent> <leader>e6 :e $HOME/.config/nvim/lua/language_server/init.lua<CR>
+
 " For neovide and neovim-qt
 set guifont=Cascadia\ Code:h12
 
