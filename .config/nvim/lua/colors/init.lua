@@ -57,6 +57,11 @@ function LMBackgroundDark()
   vim.cmd.colorscheme('one')
 
   vim.o.background = 'dark'
+
+  -- Make relative line numbers and comments easier to see
+  -- on dimmed screen in the evening.
+  vim.fn["one#highlight"]('LineNr', 's:syntax_fg', '', 'none')
+  vim.fn["one#highlight"]('Comment', '8f96a4', '', 'none')
 end
 
 if not vim.g['config_already_loaded'] then
