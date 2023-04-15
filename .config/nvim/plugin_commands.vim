@@ -1,3 +1,6 @@
+source ~/.config/nvim/plugins/nerdtree.vim
+source ~/.config/nvim/plugins/firenvim.vim
+
 " Vim-sneak
 let g:sneak#label = 1 " Emulate easymotion (show label for navigation). Otherwise, it would navigate with ;,
 
