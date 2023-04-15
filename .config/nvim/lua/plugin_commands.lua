@@ -3,6 +3,16 @@ require('language_server')
 
 local map = vim.api.nvim_set_keymap
 
+require("nvim-tree").setup({
+  view = {
+    adaptive_size = true,
+    relativenumber = true
+  },
+})
+
+map('n', '<leader>nt', ':NvimTreeToggle<CR>', {})
+map('n', '<leader>nf', ':NvimTreeFindFile<CR>', {})
+
 map('n', 'f', '<Plug>Sneak_f', {})
 map('n', 'F', '<Plug>Sneak_F', {})
 
