@@ -111,15 +111,3 @@ function! UnformatXML()
     execute '%s/^\s*//g'
     execute '%join!'
 endfunction
-
-function! SortImports()
-  let l:path = expand("%:p")
-  let l:path = fnameescape(path)
-
-  let l:winview=winsaveview()
-
-  call system('npx import-sort --write ' . l:path)
-  silent exec "e"
-
-  call winrestview(l:winview)
-endfunction
