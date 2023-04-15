@@ -25,9 +25,14 @@ require("lazy").setup({
   "junegunn/fzf",
   "junegunn/fzf.vim",
   "mhinz/vim-grepper",
-  "kyazdani42/nvim-tree.lua",
-  "kyazdani42/nvim-web-devicons", -- optional, for file icons
-  "rbgrouleff/bclose.vim",        -- Close buffers while keeping windows open
+  {
+    "kyazdani42/nvim-tree.lua",
+    lazy = false,
+    dependencies = {
+      "kyazdani42/nvim-web-devicons", -- optional, for file icons
+    }
+  },
+  "rbgrouleff/bclose.vim", -- Close buffers while keeping windows open
   {
     "liuchengxu/vim-which-key",
     dependencies = {
@@ -141,6 +146,12 @@ require("lazy").setup({
     dependencies = {
       "nvim-lua/plenary.nvim",
       "BurntSushi/ripgrep", -- Optional
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build =
+        "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
+      },
+
     }
   },
 
@@ -152,9 +163,4 @@ require("lazy").setup({
   },
 
   -- Faster sorting of results in Telescope
-  {
-    "nvim-telescope/telescope-fzf-native.nvim",
-    build =
-    "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
-  },
 });
