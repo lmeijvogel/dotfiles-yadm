@@ -23,6 +23,15 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+  -- Format on save
+    vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = bufnr,
+        callback = function ()
+                     vim.lsp.buf.format { async = false }
+                   end
+    })
+
+
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -45,15 +54,7 @@ end
 
 local eslint_on_attach = function(client, bufnr)
     on_attach(client, bufnr)
-
-    client.server_capabilities.document_formatting = true
-
-    vim.api.nvim_create_autocmd("BufWritePre", {
-        buffer = bufnr,
-        callback = function ()
-                     vim.lsp.buf.format { async = false }
-                   end
-    })
+    client.server_capabilities.documentFormattingProvider = true
 end
 
 require('lspconfig')['cssls'].setup({ on_attach = on_attach })
