@@ -20,12 +20,12 @@ require('mini.align').setup()
 require('lualine').setup({
   -- The default sections, except mentioned below
   sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
-    lualine_x = {'filetype'}, -- Removed 'encoding' and 'fileformat' here
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_a = { 'mode' },
+    lualine_b = { 'branch', 'diff', 'diagnostics' },
+    lualine_c = { 'filename' },
+    lualine_x = { 'filetype' }, -- Removed 'encoding' and 'fileformat' here
+    lualine_y = { 'progress' },
+    lualine_z = { 'location' }
   },
 })
 require('dressing').setup({})
@@ -35,7 +35,7 @@ local actions = require('telescope.actions')
 -- Telescope
 require('telescope').setup({
   defaults = {
-    file_ignore_patterns = {"node_modules"},
+    file_ignore_patterns = { "node_modules" },
     mappings = {
       i = {
         ["<C-u>"] = false,
@@ -73,9 +73,9 @@ require("nvim-treesitter.configs").setup({
 vim.opt.list = true
 
 require("indent_blankline").setup {
-    space_char_blankline = " ",
-    show_current_context = true,
-    show_current_context_start = false, -- The start marker resembles an LSP diagnostic
+  space_char_blankline = " ",
+  show_current_context = true,
+  show_current_context_start = false, -- The start marker resembles an LSP diagnostic
 }
 
 require('colorizer').setup({})
