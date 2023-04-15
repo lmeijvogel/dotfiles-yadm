@@ -42,14 +42,16 @@ local on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+    local telescope = require('telescope.builtin')
+
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-    vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<CR>')
-    vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<CR>')
-    vim.keymap.set('n', 'gm', '<cmd>Telescope lsp_implementations<CR>')
+    vim.keymap.set('n', 'gd', telescope.lsp_definitions, bufopts)
+    vim.keymap.set('n', 'gr', telescope.lsp_references, bufopts)
+    vim.keymap.set('n', 'gm', telescope.lsp_implementations, bufopts)
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set('n', '<space>rr', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', '<space>la', vim.lsp.buf.code_action, bufopts)
