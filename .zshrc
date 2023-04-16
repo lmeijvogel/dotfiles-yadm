@@ -147,8 +147,6 @@ function cm() {
   cd "$mount_dir/$result"
 }
 
-# [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
-
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 
 export NVM_DIR="$HOME/.nvm"
@@ -170,13 +168,3 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 [ -s "/home/lennaert/.scm_breeze/scm_breeze.sh" ] && source "/home/lennaert/.scm_breeze/scm_breeze.sh"
-
-if type atuin >/dev/null; then
-    # Ideally, I'd pass in the --disable-up-arrow flag, but that's not supported yet in
-    # version 12.0.0, so this is a workaround where I manually bind the C-r key.
-    export ATUIN_NOBIND="true"
-
-    eval "$(atuin init zsh)"
-
-    bindkey '^r' _atuin_search_widget
-fi
