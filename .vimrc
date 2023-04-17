@@ -15,20 +15,16 @@ set nowrap
 set expandtab
 set tabstop=2
 set shiftwidth=2
-set smarttab " Insert tabs at start of a line according to shiftwidth instead of tabstop
 
 set backspace=indent,eol,start " Allow backspace over anything
 
 set ignorecase " Ignore case when searching
 set smartcase " Except when uppercase characters are given
 
-set showmode " Show in which mode (command/insert/... vim is operating)
-
 set foldenable
 set fdm=indent
 set foldlevelstart=99 " Start with all files unfolded
 
-syntax on
 " Syntax coloring lines that are too long just slows down the world
 set synmaxcol=600
 
@@ -38,17 +34,9 @@ set list
 set scrolloff=3 " Always show 3 lines above and below cursor
 
 set sidescrolloff=20
-set sidescroll=1 " Sidescroll per single column
-
-" Add WildMenu for easier tab completion of filenames
-set wildmenu
-
-set incsearch " Incremental search
-set hlsearch " Highlight search terms
 
 set showmatch " Show matching parentheses
 
-set autoindent " Always enable autoindent
 set copyindent " Copy the previous indentation on autoindenting
 
 " Disable error bells
@@ -64,14 +52,10 @@ set wildignore+=*.gif,*.png,*.jpg,*.jpeg
 set history=1000
 set undolevels=1000
 
-set nobackup
 set noswapfile
-set hidden " Allow hidden unsaved buffers
-
 filetype plugin indent on
 
 set cursorline
-set ruler
 set relativenumber " Relative line numbers for easier navigation
 set number " Still show the current line number instead of '0'
 
@@ -98,12 +82,27 @@ autocmd BufWinLeave * call clearmatches()
 " Work only: use 4 spaces when opening ts and tsx files
 autocmd BufEnter *.ts,*.tsx set ts=4 sw=4
 
-set encoding=utf-8
-
-" Don't ask to reload the file when it changes on disk
-set autoread
-
 " Use the system clipboard by default
 set clipboard=unnamedplus
 
 set colorcolumn=120,140 " Draw a line at these line lengths
+
+"" These are neovim defaults
+" Add WildMenu for easier tab completion of filenames
+" set wildmenu
+
+" set incsearch " Incremental search
+" set hlsearch " Highlight search terms
+" set smarttab " Insert tabs at start of a line according to shiftwidth instead of tabstop
+" syntax on
+" set autoindent " Always enable autoindent
+
+" set encoding=utf-8
+
+" Don't ask to reload the file when it changes on disk
+" set autoread
+" set hidden " Allow hidden unsaved buffers
+" set ruler
+" set showmode " Show in which mode (command/insert/... vim is operating)
+" set sidescroll=1 " Sidescroll per single column
+" set nobackup
