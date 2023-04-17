@@ -105,3 +105,5 @@ set autoread
 
 " Use the system clipboard by default
 set clipboard=unnamedplus
+
+set colorcolumn=120,140 " Draw a line at these line lengths
