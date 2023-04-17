@@ -58,37 +58,11 @@ nmap <silent> <M-Right> <C-w>8>
 
 nnoremap <silent> <leader>gb :!git gui blame %
 
-" Replace Ruby rocket syntax with keyvalue syntax
-command! LMRewriteRockets %s/:\([a-z3-9_]\{1,\}[!?]\?\) \?=>/\1:/g
-
-" Delete trailing whitespace
-command! LMDeleteTrailing %s/\s*$//<CR>;noh
-
-" Easy toggling of word wrap
-command! LMToggleWrap set wrap!
-
 " Remap Q to 'run last macro'
 nmap Q @@
 
 " Disable K (man lookup)
 nmap K <Nop>
-
-" Easier next/prev buffer => Now done with Buftabline
-" nnoremap <silent> <M-h> :bp<CR>
-" nnoremap <silent> <M-l> :bn<CR>
-
-" These work well in combination with 'delete buffer' <M-S-d>:
-" I don't have to press/lift Shift every time.
-" nnoremap <silent> <M-S-h> :bp<CR>
-" nnoremap <silent> <M-S-l> :bn<CR>
-
-" Same with ctrl-tab
-" nnoremap <silent> <C-Tab> :bn<CR>
-" nnoremap <silent> <C-S-Tab> :bp<CR>
-
-if has('nvim')
-  set inccommand=nosplit
-endif
 
 " Add "large" jumps to the jump list
 nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'

@@ -38,21 +38,10 @@ nnoremap <leader>st :SyntasticToggleMode<CR>
 nnoremap <C-A-k> :bn<CR>
 nnoremap <C-A-j> :bp<CR>
 
-" Make comments actually visible
-let g:molokayo#high_contrast#comments = 1
-
 " fugitive
 nnoremap <leader>gs :Git<CR>
 nnoremap <leader>ga :Git add %<CR>
 nnoremap <leader>gb :call GitGuiBlame()<CR>
-
-" " vim-buftabline
-" " Show buffer number next to buffer name
-" let g:buftabline_numbers = 1
-
-" lua << BUFTABLINE
-" require("buftabline").setup {}
-" BUFTABLINE
 
 nnoremap <silent> <M-h> :bp<CR>
 nnoremap <silent> <M-l> :bn<CR>
@@ -142,14 +131,6 @@ endfunction
 
 function! GitGuiBlame()
   exec("!git gui blame --line=". line('.') ." \"%\"")
-endfunction
-
-function! AckCurrentFile()
-  let name = expand('%:t')
-  let withoutUnderscore = substitute(name, "^_", "", "")
-  let withoutExtension = substitute(withoutUnderscore, "\\..*$", "", "")
-
-  exec "Ack \"". withoutExtension ."\""
 endfunction
 
 let g:prettier#exec_cmd_path = getcwd() . "/node_modules/.bin/prettier-eslint"

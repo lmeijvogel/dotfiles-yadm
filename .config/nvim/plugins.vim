@@ -21,7 +21,6 @@ Plug 'ntpeters/vim-better-whitespace' " Better whitespace highlighting
 Plug 'jgdavey/tslime.vim'
 Plug 'jgdavey/vim-turbux'
 Plug 'buztard/vim-rel-jump' " Store relative jumps (5j, 3k) in the jump list
-" Plug 'jose-elias-alvarez/buftabline.nvim',  {'branch': 'main'} " Buffer list at top of screen
 Plug 'justinmk/vim-sneak'
 Plug 'kassio/neoterm'
 Plug 'janko-m/vim-test'
