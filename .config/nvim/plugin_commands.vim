@@ -50,8 +50,6 @@ nmap <C-_>   <Plug>NERDCommenterToggle
 vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
 
 " vim-indentwise
-nmap <M-k> <Plug>(IndentWisePreviousLesserIndent)
-nmap <M-j> <Plug>(IndentWiseNextLesserIndent)
 
 " These aren't mapped by default
 nmap <silent> [- <Plug>(IndentWisePreviousLesserIndent)
