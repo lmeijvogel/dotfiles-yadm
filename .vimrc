@@ -51,6 +51,7 @@ set history=1000
 set undolevels=1000
 
 set noswapfile
+filetype off
 filetype plugin indent on
 
 set cursorline

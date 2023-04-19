@@ -106,8 +106,3 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCM
 Plug 'folke/trouble.nvim'
 
 call plug#end()
-
-call yankstack#setup()
-
-filetype off
-filetype plugin indent on
