@@ -96,6 +96,9 @@ Plug 'BurntSushi/ripgrep' " Optional for telescope.nvim
 Plug 'nvim-telescope/telescope-smart-history.nvim'
 Plug 'kkharji/sqlite.lua' " Required by telescope-smart-history
 
+Plug 'dcampos/nvim-snippy' " Snippet engine to hopefully make cmp not crash
+Plug 'dcampos/cmp-snippy'
+
 " Faster sorting of results in Telescope
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 call plug#end()

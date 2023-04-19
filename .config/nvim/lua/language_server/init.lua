@@ -29,7 +29,7 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
   -- Format on save
   vim.api.nvim_create_autocmd("BufWritePre", {
     buffer = bufnr,
@@ -102,7 +102,7 @@ cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine
     expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      require('snippy').expand_snippet(args.body)
     end,
   },
   window = {

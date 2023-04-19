@@ -69,3 +69,5 @@ require("indent_blankline").setup {
 }
 
 require('colorizer').setup({})
+
+require('snippy').setup({})
