@@ -68,6 +68,10 @@ nmap K <Nop>
 nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
 nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
 
+" Center cursor after page up/down
+nnoremap <C-u> <C-u>zz
+nnoremap <C-d> <C-d>zz
+
 " Navigate through git conflict markers a bit more easily
 nmap <leader>m /^<<<<<<<\\|^=======\\|^>>>>>>>/<CR>
 vmap <leader>m /^<<<<<<<\\|^=======\\|^>>>>>>>/<CR>
