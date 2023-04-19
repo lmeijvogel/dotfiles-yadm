@@ -52,6 +52,9 @@ map('n', '<C-p>', '<cmd>Telescope find_files<CR>', {})
 map('n', '<leader>hh', '<cmd>Telescope oldfiles<CR>', {})
 map('n', '-', '<cmd>Telescope buffers sort_mru=true ignore_current_buffer=true<CR>', {})
 
+map('n', '<leader>tp', '<cmd>Telescope project<CR>', {})
+map('n', '<leader>tr', '<cmd>Telescope resume<CR>', {})
+
 -- Treesitter
 require("nvim-treesitter.configs").setup({
   -- this can also be a list of languages
@@ -69,5 +72,7 @@ require("indent_blankline").setup {
 }
 
 require('colorizer').setup({})
+
+require 'telescope'.load_extension('project')
 
 require('snippy').setup({})

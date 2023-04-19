@@ -96,6 +96,7 @@ Plug 'BurntSushi/ripgrep' " Optional for telescope.nvim
 Plug 'nvim-telescope/telescope-smart-history.nvim'
 Plug 'kkharji/sqlite.lua' " Required by telescope-smart-history
 
+Plug 'nvim-telescope/telescope-project.nvim'
 Plug 'dcampos/nvim-snippy' " Snippet engine to hopefully make cmp not crash
 Plug 'dcampos/cmp-snippy'
 
