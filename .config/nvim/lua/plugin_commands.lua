@@ -76,3 +76,5 @@ require('colorizer').setup({})
 require 'telescope'.load_extension('project')
 
 require('snippy').setup({})
+
+require("trouble").setup({})

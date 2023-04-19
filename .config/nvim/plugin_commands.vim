@@ -76,7 +76,8 @@ if has('nvim')
   nnoremap <silent> <leader>S  :w<CR>:TestLast<CR>
   nnoremap <silent> <leader>s <Nop>
 
-  nnoremap <silent> <leader>sw :copen<CR>
+  nnoremap <silent> <leader>sd :Trouble document_diagnostics<CR>
+  nnoremap <silent> <leader>sw :Trouble quickfix<CR>
   nnoremap <silent> <leader>sb :make<CR>
 
   " Automatically enter insert mode in the terminal
