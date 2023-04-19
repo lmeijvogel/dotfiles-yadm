@@ -1,4 +1,4 @@
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 
 " Load all plugins
 Plug 'sandeepcr529/Buffet.vim' " Buffer explorer
