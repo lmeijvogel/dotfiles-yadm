@@ -3,8 +3,6 @@ let g:snippets_dir="~/.vim/snippets"
 
 set mouse=a
 
-let mapleader=" "
-
 " No beeps or flashes on errors
 set noerrorbells
 set novisualbell

@@ -1,7 +1,3 @@
-" Quickly edit/reload the vimrc file
-nnoremap <silent> <leader>ev :e $MYVIMRC<CR>
-nnoremap <leader>lv :so $MYVIMRC<CR>
-
 " Quickly clear search history
 nnoremap <silent> <leader>/ :nohlsearch<CR>
 
