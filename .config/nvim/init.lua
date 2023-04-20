@@ -10,8 +10,8 @@ map('n', '<leader>lv', ':so $MYVIMRC<CR>', {})
 vim.cmd([[source $HOME/.vimrc]])
 map('n', '<leader>e1', ':e $HOME/.vimrc<CR>', {})
 
-vim.cmd([[source $HOME/.config/nvim/commands.vim]])
-map('n', '<leader>e2', ':e $HOME/.config/nvim/commands.vim<CR>', {})
+require("commands")
+map('n', '<leader>e2', ':e $HOME/.config/nvim/lua/commands.lua<CR>', {})
 
 vim.cmd([[source $HOME/.config/nvim/plugins.vim]])
 map('n', '<leader>e3', ':e $HOME/.config/nvim/plugins.vim<CR>', {})
