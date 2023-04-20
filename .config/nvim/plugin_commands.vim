@@ -57,9 +57,6 @@ vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
 nmap <silent> [- <Plug>(IndentWisePreviousLesserIndent)
 nmap <silent> ]- <Plug>(IndentWiseNextLesserIndent)
 
-" vim-matchup
-let g:matchup_matchparen_offscreen = {}
-
 if has('nvim')
   " NeoTerm
   let g:neoterm_default_mod = 'horizontal'
@@ -99,6 +96,8 @@ if has('nvim')
   ]]
 LUA
 end
+
+nmap <leader>db :!dotnet build<CR>
 
 nmap <leader><C-s> <Plug>SetTmuxVars
 

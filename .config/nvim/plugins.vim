@@ -103,6 +103,9 @@ Plug 'dcampos/cmp-snippy'
 " Faster sorting of results in Telescope
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
+Plug 'stevearc/overseer.nvim' " Task runner (e.g. VSCode tasks)
+
+" Nicer error splits
 Plug 'folke/trouble.nvim'
 
 call plug#end()

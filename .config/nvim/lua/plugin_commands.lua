@@ -58,7 +58,7 @@ map('n', '<leader>tr', '<cmd>Telescope resume<CR>', {})
 -- Treesitter
 require("nvim-treesitter.configs").setup({
   -- this can also be a list of languages
-  ensure_installed = { "c", "javascript", "typescript", "ruby" },
+  ensure_installed = { "c", "javascript", "typescript", "tsx", "lua", "ruby" },
   auto_install = true,
   highlight = { enable = true },
 })
@@ -78,3 +78,5 @@ require 'telescope'.load_extension('project')
 require('snippy').setup({})
 
 require("trouble").setup({})
+
+require('overseer').setup()
