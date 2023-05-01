@@ -57,20 +57,27 @@ map('n', '<leader>tr', '<cmd>Telescope resume<CR>', {})
 
 -- Treesitter
 require("nvim-treesitter.configs").setup({
-  -- this can also be a list of languages
-  ensure_installed = { "c", "javascript", "typescript", "tsx", "lua", "ruby" },
-  auto_install = true,
-  highlight = { enable = true },
+    -- this can also be a list of languages
+    ensure_installed = { "c", "javascript", "typescript", "tsx", "lua", "ruby" },
+    auto_install = true,
+    highlight = { enable = true },
 })
 
 vim.opt.list = true
 
 require("indent_blankline").setup {
-  space_char_blankline = " ",
-  show_current_context = true,
-  show_current_context_start = false, -- The start marker resembles an LSP diagnostic
+    space_char_blankline = " ",
+    show_current_context = true,
+    show_current_context_start = false, -- The start marker resembles an LSP diagnostic
 }
 
+require 'treesitter-context'.setup {
+    enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+    mode = 'cursor', -- Line used to calculate context. Choices: 'cursor', 'topline'
+    -- Separator between context and content. Should be a single character string, like '-'.
+    -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
+    separator = "-",
+}
 require('colorizer').setup({})
 
 require 'telescope'.load_extension('project')
