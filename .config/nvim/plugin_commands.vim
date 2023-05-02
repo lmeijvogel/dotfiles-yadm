@@ -97,8 +97,6 @@ if has('nvim')
 LUA
 end
 
-nmap <leader>db :!dotnet build<CR>
-
 nmap <leader><C-s> <Plug>SetTmuxVars
 
 function! SwitchTestRunner()
