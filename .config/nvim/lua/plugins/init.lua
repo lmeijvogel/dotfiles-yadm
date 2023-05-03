@@ -82,6 +82,8 @@ return {
   {
     "justinmk/vim-sneak",
     init = function()
+      vim.g["sneak#label"] = 1 -- Emulate easymotion (show label for navigation). Otherwise, it would navigate with ;,
+
       map('n', 'f', '<Plug>Sneak_f', {})
       map('n', 'F', '<Plug>Sneak_F', {})
     end

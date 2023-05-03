@@ -2,12 +2,6 @@ source ~/.config/nvim/plugins/nerdtree.vim
 
 call yankstack#setup()
 
-" Vim-sneak
-let g:sneak#label = 1 " Emulate easymotion (show label for navigation). Otherwise, it would navigate with ;,
-
-nmap <leader>f <Plug>Sneak_s
-nmap <leader>F <Plug>Sneak_S
-
 nnoremap <F5> :UndotreeToggle<CR>
 
 " vim-sandwich
