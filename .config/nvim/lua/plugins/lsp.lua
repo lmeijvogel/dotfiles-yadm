@@ -54,7 +54,7 @@ end
 local tsserver_on_attach = function(client, bufnr)
   on_attach(client, bufnr)
 
-  map('n', '<leader>li', ":TypescriptAddMissingImports<CR>", {})
+  map('n', '<leader>li', ":TypescriptAddMissingImports<CR>", { desc = "Add missing imports [TS]" })
 end
 
 vim.api.nvim_set_keymap('i', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', {})

@@ -66,8 +66,9 @@ if has('nvim')
   nnoremap <silent> <leader>sa :TestSuite<CR>
   nnoremap <silent> <leader>sf :w<CR>:TestFile<CR>
   nnoremap <silent> <leader>sl :w<CR>:TestNearest<CR>
-  nnoremap <silent> <leader>S  :w<CR>:TestLast<CR>
-  nnoremap <silent> <leader>s <Nop>
+  nnoremap <silent> <leader>st :w<CR>:TestLast<CR>
+  nnoremap <silent> <leader>sr :call SwitchTestRunner()<CR>
+  nnoremap <silent> <leader>si <Plug>SetTmuxVars
 
   nnoremap <silent> <leader>sd :Trouble document_diagnostics<CR>
   nnoremap <silent> <leader>sw :Trouble quickfix<CR>
@@ -81,7 +82,6 @@ if has('nvim')
   tnoremap <C-j> <C-\><C-n><C-w>j
   tnoremap <C-k> <C-\><C-n><C-w>k
 
-  nnoremap <silent> <leader>sr :call SwitchTestRunner()<CR>
   lua << LUA
   vim.cmd [[
     augroup strdr4605
@@ -90,8 +90,6 @@ if has('nvim')
   ]]
 LUA
 end
-
-nmap <leader><C-s> <Plug>SetTmuxVars
 
 function! SwitchTestRunner()
   if g:test#strategy  == "neoterm"

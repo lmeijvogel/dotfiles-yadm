@@ -20,13 +20,7 @@ return {
       "kyazdani42/nvim-web-devicons", -- optional, for file icons
     }
   },
-  "rbgrouleff/bclose.vim", -- Close buffers while keeping windows open
-  {
-    "liuchengxu/vim-which-key",
-    dependencies = {
-      "AckslD/nvim-whichkey-setup.lua",
-    }
-  },
+  "rbgrouleff/bclose.vim",   -- Close buffers while keeping windows open
   {
     "kevinhwang91/nvim-ufo", -- Improved folding
     dependencies = {

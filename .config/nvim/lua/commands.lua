@@ -1,7 +1,7 @@
 local map = vim.api.nvim_set_keymap
 
 -- Quickly clear search history
-map('n', '<leader>/', ':nohlsearch<CR>', {})
+map('n', '<leader>/', ':nohlsearch<CR>', { desc = "Clear search highlight" })
 
 -- Quickly select next and previous search results
 map('n', '<C-A-n>', ':cn<CR>', {})
@@ -37,12 +37,12 @@ map('n', '<C-k>', '<C-w>k', {})
 map('n', '<C-l>', '<C-w>l', {})
 
 -- Copy filename:line_number to clipboard
-map('n', '<leader>fl', ':let @+ = expand("%:p").\':\'.line(\'.\')<CR>', {})
-map('n', '<leader>ff', ':let @+ = expand("%:p")<CR>', {})
+map('n', '<leader>fl', ':let @+ = expand("%:p").\':\'.line(\'.\')<CR>', { desc = "Copy file+line to clipboard" })
+map('n', '<leader>ff', ':let @+ = expand("%:p")<CR>', { desc = "Copy file to clipboard" })
 
 -- Easily create splits
-map('n', '<leader>ss', '<C-w>s', {})
-map('n', '<leader>vv', '<C-w>v', {})
+map('n', '<leader>ss', '<C-w>s', { desc = "Split window" })
+map('n', '<leader>sv', '<C-w>v', { desc = "Split window vertically" })
 
 -- Easily resize splits
 map('n', '<M-S-Up>', '<C-w>+', {})
@@ -54,7 +54,7 @@ map('n', '<M-Down>', '<C-w>8-', {})
 map('n', '<M-Left>', '<C-w>8<', {})
 map('n', '<M-Right>', '<C-w>8>', {})
 
-map('n', '<leader>gb', ':!git gui blame %', {})
+map('n', '<leader>gb', ':!git gui blame %', { desc = "Blame" })
 
 -- Remap Q to 'run last macro'
 map('n', 'Q', '@@', {})
@@ -71,5 +71,5 @@ map('n', '<C-u>', '<C-u>zz', {})
 map('n', '<C-d>', '<C-d>zz', {})
 
 -- Navigate through git conflict markers a bit more easily
-map('n', '<leader>m', '/^<<<<<<<\\|^=======\\|^>>>>>>>/<CR>', {})
-map('x', '<leader>m', '/^<<<<<<<\\|^=======\\|^>>>>>>>/<CR>', {})
+map('n', '<leader>m', '/^<<<<<<<\\|^=======\\|^>>>>>>>/<CR>', { desc = "Find conflict markers" })
+map('x', '<leader>m', '/^<<<<<<<\\|^=======\\|^>>>>>>>/<CR>', { desc = "Find conflict markers" })
