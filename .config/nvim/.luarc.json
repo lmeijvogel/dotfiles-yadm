@@ -1,6 +1,7 @@
 { 
   "Lua.format.defaultConfig":{
-    "indent_style":"space",
-    "indent_size":"2"
+    "indent_style": "space",
+    "indent_size": "2",
+    "workspace.checkThirdParty": false
   }
 }
