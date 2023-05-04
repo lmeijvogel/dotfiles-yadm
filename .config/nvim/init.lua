@@ -16,13 +16,14 @@ map('n', '<leader>e2', ':e $HOME/.config/nvim/lua/commands.lua<CR>', {})
 require("plugins")
 map('n', '<leader>e3', ':e $HOME/.config/nvim/lua/plugins.lua<CR>', {})
 
-vim.cmd([[source $HOME/.config/nvim/plugin_commands.vim]])
-map('n', '<leader>e4', ':e $HOME/.config/nvim/plugin_commands.vim<CR>', {})
+require("plugin_commands")
+map('n', '<leader>e4', ':e $HOME/.config/lua/plugin_commands.lua<CR>', {})
 
 require("plugin_commands")
 map('n', '<leader>e5', ':e $HOME/.config/nvim/lua/plugin_commands.lua<CR>', {})
-map('n', '<leader>ep',
-  ':lua require("telescope.builtin").find_files({ cwd = "/home/lennaert/.config/nvim/lua/plugins" })<CR>', {})
+map('n', '<leader>ee',
+  ':lua require("telescope.builtin").find_files({ cwd = "/home/lennaert/.config/nvim/lua" })<CR>',
+  { desc = "Fuzzy find config file" })
 
 
 -- For neovide and neovim-qt

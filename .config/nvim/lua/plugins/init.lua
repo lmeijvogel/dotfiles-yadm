@@ -2,11 +2,29 @@ local map = vim.api.nvim_set_keymap
 
 return {
   -- Editor-wide (not buffer-bound)
-  "sandeepcr529/Buffet.vim", -- Buffer explorer
-  "mbbill/undotree",         -- Undo history visualisation
-  "duff/vim-scratch",        -- Scratch buffer
+  {
+    "sandeepcr529/Buffet.vim", -- Buffer explorer
+    config = function()
+      map('n', '<leader>bb', '<cmd>Bufferlist<CR>', { desc = "Open Bufferlist" })
+      map('n', '<leader>be', '<cmd>Bufferlist<CR>', { desc = "Open Bufferlist" })
+    end
+  },
+  {
+    "mbbill/undotree", -- Undo history visualisation
+    config = function()
+      map('n', '<F5>', '<cmd>UndotreeToggle<CR>', { desc = "UndoTree" })
+    end
+  },
+  "duff/vim-scratch", -- Scratch buffer
   "mileszs/ack.vim",
-  "tpope/vim-fugitive",
+  {
+    "tpope/vim-fugitive",
+    config = function()
+      map('n', '<leader>gs', '<cmd>Git<CR>', { desc = "Status" })
+      map('n', '<leader>ga', '<cmd>Git add %<CR>', { desc = "Add current file" })
+      map('n', '<leader>gb', '<cmd>call GitGuiBlame()<CR>', { desc = "git gui blame" })
+    end
+  },
   "jgdavey/tslime.vim",
   "jgdavey/vim-turbux",
   "kassio/neoterm",
@@ -15,6 +33,19 @@ return {
   "mhinz/vim-grepper",
   {
     "kyazdani42/nvim-tree.lua",
+    opts = {
+      view = {
+        adaptive_size = true,
+        relativenumber = true
+      },
+    },
+    config = function()
+      map('n', '<leader>nt', '<cmd>NvimTreeToggle<CR>', { desc = "Toggle tree" })
+      map('n', '<leader>nf', '<cmd>NvimTreeFindFile<CR>', { desc = "Open tree at current file" })
+
+      vim.g["NERDTreeShowRelativeLineNumbers"] = 1
+      vim.g["NERDTreeQuitOnOpen"] = 1
+    end,
     lazy = false,
     dependencies = {
       "kyazdani42/nvim-web-devicons", -- optional, for file icons
@@ -57,7 +88,20 @@ return {
 
   "NLKNguyen/papercolor-theme", -- Light color scheme (and dark, but I only use light)
   "bogado/file-line",           -- Copy file/line to clipboard
-  "preservim/nerdcommenter",
+  {
+    "preservim/nerdcommenter",
+    config = function()
+      -- Space after comment delimiters
+      vim.g["NERDSpaceDelims"] = 1
+
+      -- Use compact syntax for prettified multi-line comments
+      vim.g["NERDCompactSexyComs"] = 1
+
+      -- Use C-/ for toggling comments (for some reason <C-/> is transmitted as <C-_> in vim)
+      map('n', '<C-_>', '  <Plug>NERDCommenterToggle', { desc = "" })
+      map('v', '<C-_>', '  <Plug>NERDCommenterToggle<CR>gv', { desc = "" })
+    end
+  },
   "tpope/vim-repeat",
   {
     "maxbrunsfeld/vim-yankstack",
@@ -96,13 +140,25 @@ return {
   },
   "elixir-editors/vim-elixir",
 
-  "jeetsukumaran/vim-indentwise", -- Easy navigation based on indent level
-  "leafgarland/typescript-vim",   -- Syntax files for typescript
-  "ruanyl/vim-sort-imports",      -- Sort typescript imports
+  {
+    "jeetsukumaran/vim-indentwise", -- Easy navigation based on indent level
+    config = function()
+      -- These aren't mapped by default
+      map('n', '<silent>', '[- <Plug>(IndentWisePreviousLesserIndent)', { desc = "" })
+      map('n', '<silent>', ']- <Plug>(IndentWiseNextLesserIndent)', { desc = "" })
+    end
+  },
+  "leafgarland/typescript-vim", -- Syntax files for typescript
+  "ruanyl/vim-sort-imports",    -- Sort typescript imports
 
-  "wellle/targets.vim",           -- New text objects, like cI,
+  "wellle/targets.vim",         -- New text objects, like cI,
 
-  "machakann/vim-sandwich",       -- alternative to surround.vim
+  {
+    "machakann/vim-sandwich", -- alternative to surround.vim
+    config = function()
+      vim.cmd [[runtime macros/sandwich/keymap/surround.vim]]
+    end
+  },
 
   "kdheepak/lazygit.nvim",
   "azabiong/vim-highlighter",

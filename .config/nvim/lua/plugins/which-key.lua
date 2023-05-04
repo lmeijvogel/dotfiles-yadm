@@ -13,22 +13,9 @@ return {
       },
       g = { name = "git" },
       e = { name = "Neovim config" },
-      n = {
-        name = "Nvim-tree",
-        t = "Open",
-        f = "Find current in tree",
-      },
+      n = { name = "Nvim-tree" },
       r = "Rename",
-      s = {
-        name = "Tasks",
-
-        a = "Test - all",
-        f = "Test - file",
-        l = "Test - nearest",
-        t = "Test - last",
-        r = "Test - Switch runner",
-        i = "Test - Reset tmux vars"
-      },
+      s = { name = "Tasks", },
       t = { name = "Telescope" },
     },
   },
