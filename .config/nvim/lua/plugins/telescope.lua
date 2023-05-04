@@ -9,15 +9,15 @@ return {
         path_display = { "truncate" },
         mappings = {
           i = {
-            ["<C-u>"] = false, -- Clear input
+            ["<C-u>"] = false,     -- Clear input
             ["<C-Down>"] = require('telescope.actions').cycle_history_next,
             ["<C-Up>"] = require('telescope.actions').cycle_history_prev,
           }
+        },
+        history = {
+          path = '~/.local/share/nvim/databases/telescope_history.sqlite3',
+          limit = 100,
         }
-      },
-      history = {
-        path = '~/.local/share/nvim/databases/telescope_history.sqlite3',
-        limit = 100,
       }
     },
     init = function()
@@ -57,7 +57,7 @@ return {
   -- Faster sorting of results in Telescope
   {
     "nvim-telescope/telescope-smart-history.nvim",
-    config = function()
+    init = function()
       require('telescope').load_extension('smart_history')
     end,
     dependencies = {
