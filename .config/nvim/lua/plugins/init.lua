@@ -39,12 +39,11 @@ return {
         relativenumber = true
       },
     },
-    config = function()
+    config = function(_, opts)
+      require('nvim-tree').setup(opts)
+
       map('n', '<leader>nt', '<cmd>NvimTreeToggle<CR>', { desc = "Toggle tree" })
       map('n', '<leader>nf', '<cmd>NvimTreeFindFile<CR>', { desc = "Open tree at current file" })
-
-      vim.g["NERDTreeShowRelativeLineNumbers"] = 1
-      vim.g["NERDTreeQuitOnOpen"] = 1
     end,
     lazy = false,
     dependencies = {
