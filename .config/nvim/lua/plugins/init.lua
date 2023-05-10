@@ -196,4 +196,40 @@ return {
   "nvchad/nvim-colorizer.lua", -- Show colors visually
   'folke/trouble.nvim',
   "stevearc/overseer.nvim",    -- Task runner (e.g. VSCode tasks)
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require('gitsigns').setup({
+        current_line_blame = true,
+        on_attach = function()
+          local gs = package.loaded.gitsigns
+          vim.keymap.set('n', ']c', function()
+            if vim.wo.diff then return ']c' end
+            vim.schedule(function() gs.next_hunk() end)
+            return '<Ignore>'
+          end, { expr = true })
+
+          vim.keymap.set('n', '[c', function()
+            if vim.wo.diff then return '[c' end
+            vim.schedule(function() gs.prev_hunk() end)
+            return '<Ignore>'
+          end, { expr = true })
+
+          vim.keymap.set('n', '<leader>g=', gs.stage_hunk, { desc = "Stage hunk" })
+          vim.keymap.set('n', '<leader>g-', gs.undo_stage_hunk, { desc = "Undo stage hunk" })
+          vim.keymap.set('v', '<leader>g=', function() gs.stage_hunk { vim.fn.line("."), vim.fn.line("v") } end,
+            { desc = "Stage hunk" })
+          vim.keymap.set('v', '<leader>g-',
+            function() gs.undo_stage_hunk { vim.fn.line("."), vim.fn.line("v") } end, { desc = "Undo stage hunk" })
+
+          -- Use a nicer color
+          vim.cmd [[hi! link GitSignsCurrentLineBlame Conceal]]
+        end,
+        yadm = {
+          enable = true
+        },
+
+      })
+    end
+  }
 }
