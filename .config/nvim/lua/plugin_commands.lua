@@ -59,10 +59,6 @@ function SwitchTestRunner()
   end
 end
 
-function GitGuiBlame()
-  vim.exec("!git gui blame --line=" .. vim.fn.line('.') .. " \"%\"")
-end
-
 vim.g["prettier#exec_cmd_path"] = vim.fn.getcwd() .. "/node_modules/.bin/prettier-eslint"
 
 vim.g["nvim_typescript#signature_complete"] = 1

@@ -3,26 +3,26 @@ local map = vim.api.nvim_set_keymap
 return {
   -- Editor-wide (not buffer-bound)
   {
-    "sandeepcr529/Buffet.vim", -- Buffer explorer
+    "sandeepcr529/Buffet.vim",     -- Buffer explorer
     config = function()
       map('n', '<leader>bb', '<cmd>Bufferlist<CR>', { desc = "Open Bufferlist" })
       map('n', '<leader>be', '<cmd>Bufferlist<CR>', { desc = "Open Bufferlist" })
     end
   },
   {
-    "mbbill/undotree", -- Undo history visualisation
+    "mbbill/undotree",     -- Undo history visualisation
     config = function()
       map('n', '<F5>', '<cmd>UndotreeToggle<CR>', { desc = "UndoTree" })
     end
   },
-  "duff/vim-scratch", -- Scratch buffer
+  "duff/vim-scratch",   -- Scratch buffer
   "mileszs/ack.vim",
   {
     "tpope/vim-fugitive",
     config = function()
       map('n', '<leader>gs', '<cmd>Git<CR>', { desc = "Status" })
       map('n', '<leader>ga', '<cmd>Git add %<CR>', { desc = "Add current file" })
-      map('n', '<leader>gb', '<cmd>call GitGuiBlame()<CR>', { desc = "git gui blame" })
+      vim.keymap.set('n', '<leader>gb', '<cmd>Git blame<CR>', { desc = "Git blame" })
     end
   },
   "jgdavey/tslime.vim",
