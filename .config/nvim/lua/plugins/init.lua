@@ -25,8 +25,6 @@ return {
       vim.keymap.set('n', '<leader>gb', '<cmd>Git blame<CR>', { desc = "Git blame" })
     end
   },
-  "jgdavey/tslime.vim",
-  "jgdavey/vim-turbux",
   "kassio/neoterm",
   "junegunn/fzf",
   "junegunn/fzf.vim",

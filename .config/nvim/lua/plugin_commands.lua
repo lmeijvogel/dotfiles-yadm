@@ -32,12 +32,7 @@ vim.cmd [[let test#javascript#jest#executable = 'npm run test']]
 -- Do not build by default since it's slow
 vim.cmd [[let test#csharp#dotnettest#executable = 'dotnet test --no-build -l "console;verbosity=normal"']]
 
-map('n', '<leader>sa', '<cmd>TestSuite<CR>', { desc = "Test - all" })
-map('n', '<leader>sf', '<cmd>w<CR><cmd>TestFile<CR>', { desc = "Test - file" })
-map('n', '<leader>sn', '<cmd>w<CR><cmd>TestNearest<CR>', { desc = "Test - nearest" })
-map('n', '<leader>sl', '<cmd>w<CR><cmd>TestLast<CR>', { desc = "Test - last" })
 map('n', '<leader>sr', '<cmd>call SwitchTestRunner()<CR>', { desc = "Switch test runner" })
-map('n', '<leader>si', '<Plug>SetTmuxVars', { desc = "Reset tmux vars" })
 
 map('n', '<leader>sd', '<cmd>Trouble document_diagnostics<CR>', { desc = "Document diagnostics" })
 map('n', '<leader>sw', '<cmd>Trouble quickfix<CR>', { desc = "Project diagnostics (after build)" })
@@ -51,8 +46,8 @@ vim.cmd [[
 
 function SwitchTestRunner()
   if vim.g["test#strategy"] == "neoterm" then
-    vim.g["test#strategy"] = "tslime"
-    print "Sending tests to tslime"
+    vim.g["test#strategy"] = "asyncrun_background"
+    print "Using asyncrun for tests"
   else
     vim.g["test#strategy"] = "neoterm"
     print "Sending tests to neoterm"
