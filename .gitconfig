@@ -147,6 +147,7 @@
   rebase = merges
 [merge]
   tool = kdiff3
+  conflictstyle = diff3
 [core]
   pager = delta
   editor = nvim
