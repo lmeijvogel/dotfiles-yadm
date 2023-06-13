@@ -224,10 +224,6 @@ type = custom/script
 exec = /usr/bin/env ruby $HOME/bin/mpd-status
 interval = 1
 
-[module/focus-message]
-type = custom/text
-content = "Focus mode"
-
 [settings]
 screenchange-reload = true
 
