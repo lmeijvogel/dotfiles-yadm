@@ -24,11 +24,7 @@ format_for_polybar () {
   local click_action="$0 swap"
   local icon
 
-  if [[ "$(state)" == "left" ]]; then
-    icon=""
-  else
-    icon=""
-  fi
+  icon=""
 
   echo "%{A1:$click_action:}%{A3:$click_action:}$icon $(state)%{A}%{A}"
 }

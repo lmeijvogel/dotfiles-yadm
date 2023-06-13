@@ -63,10 +63,8 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = Deja Vu Sans:pixelsize=16;1
-font-1 = FontAwesome:pixelsize=17;1
-font-2 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-3 = siji:pixelsize=10;1
+font-0 = Deja Vu Sans:pixelsize=16;2
+font-1 = Material Icons:style=Regular:pixelsize=17;5
 
 [bar/bottom]
 inherit = bar/base
@@ -74,11 +72,11 @@ inherit = bar/base
 modules-left = logo i3
 modules-right = ${machine-specific.modules-right}
 
-tray-position = 
+tray-position = right
 
 [module/logo]
 type = custom/text
-content = ""
+content = ""
 content-padding = 1
 
 [module/i3]
@@ -149,10 +147,10 @@ type = internal/network
 interface = ${machine-specific.eth-interface}
 interval = 5.0
 
-label-connected =  (%downspeed%)
+label-connected =  (%downspeed%)
 format-connected-overline = ${colors.overline-green}
 
-label-disconnected = ""
+label-disconnected = ""
 format-disconnected-foreground = ${colors.foreground-dimmed}
 
 [module/date]
@@ -171,9 +169,9 @@ label = %date% %time%
 type = internal/pulseaudio
 
 format-volume = <label-volume>
-label-volume =  %percentage%%
+label-volume =  %percentage%%
 
-label-muted = 
+label-muted = 
 label-muted-foreground = ${colors.foreground-dimmed}
 
 [module/battery]
@@ -182,18 +180,18 @@ battery = BAT0
 adapter = AC
 full-at = 98
 
-format-charging =  <label-charging>
+format-charging =  <label-charging>
 format-charging-overline = ${colors.overline-green}
 
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-overline = ${colors.overline-orange}
 
-format-full = 
+format-full = 
 format-full-overline = ${colors.overline-green}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
+ramp-capacity-2 = 
+ramp-capacity-1 = 
+ramp-capacity-0 = 
 
 [module/ssl-status]
 type = custom/script

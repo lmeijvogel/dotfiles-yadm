@@ -41,7 +41,7 @@ def main
   mpd_status = query_mpd_status
 
   if mpd_status.length <= 1
-    puts ""
+    puts ""
     exit
   end
 
@@ -50,9 +50,9 @@ def main
   playing_state, current, total = read_player_state(song_status)
 
   playing_mode = case playing_state
-                 when "paused" then ""
-                 when "playing" then ""
-                 when "stopped" then puts ""; return
+                 when "paused" then ""
+                 when "playing" then ""
+                 when "stopped" then puts ""; return
   end
 
   albumartist, artist, title = description.strip.split(SEPARATOR)

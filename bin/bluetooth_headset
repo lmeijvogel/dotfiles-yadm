@@ -12,7 +12,7 @@ class BluetoothDevice
 
   def show
     click_action = "#{$0} --toggle"
-    puts "%{A1:#{click_action}:} #{profile_description}%{A}"
+    puts "%{A1:#{click_action}:} #{profile_description}%{A}"
   rescue NotConnected => e
     puts ""
   end
@@ -67,7 +67,7 @@ class BluetoothDevice
   def profile_description
     {
       HEADSET => "Headset",
-      HIFI => "HiFi Playback"
+      HIFI => "HiFi"
     }[profile_id]
   end
 
