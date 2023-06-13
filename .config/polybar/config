@@ -1,6 +1,6 @@
 [machine-specific]
 
-  modules-right = current-mpd-song bluetooth-headset mouse eth wlan battery sound date
+  modules-right = current-mpd-song bluetooth-headset mouse eth wlan battery output-sink sound date
 
   eth-interface = enx00be43626b61
   wlan-interface = wlp59s0
@@ -206,6 +206,12 @@ interval = 60
 [module/mouse]
 type = custom/script
 exec = $HOME/bin/mouse state-polybar
+interval = 1
+
+[module/output-sink]
+type = custom/script
+exec = /usr/bin/env ruby $HOME/bin/sound_outputs.rb
+font = 0
 interval = 1
 
 [module/bluetooth-headset]
