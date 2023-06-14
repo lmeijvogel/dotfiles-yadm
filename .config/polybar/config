@@ -211,6 +211,9 @@ interval = 1
 [module/output-sink]
 type = custom/script
 exec = /usr/bin/env ruby $HOME/bin/sound_outputs.rb
+click-left = /usr/bin/env ruby $HOME/bin/sound_outputs.rb --cycle
+click-right = /usr/bin/env ruby $HOME/bin/sound_outputs.rb --move-sources-to-current
+
 font = 0
 interval = 1
 

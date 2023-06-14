@@ -2,31 +2,39 @@
 
 require 'json'
 
-VALID_DEVICES = [
+TEST_MODE = false
+VALID_SINKS = [
   "sof-soundwire Headphones",
   "sof-soundwire Speaker",
   "soundcore Space Q45"
 ]
 
 def cycle
-  default_sink_name = `pactl get-default-sink`.strip
+  puts "Current port: #{current_port["description"]}"
 
-  default_sink = sinks.find { |o| o["name"] == default_sink_name }
+  available_ports = ports_and_sinks.select {|port_and_sink| sink_allowed?(port_and_sink[:sink]) && port_available?(port_and_sink[:port]) }
 
-  puts "Current sink: #{default_sink["description"]}"
+  index = available_ports.find_index {|port_and_sink| port_and_sink[:port]["name"] == current_port["name"] } || -1
 
-  available_sinks = VALID_DEVICES.select {|sink_name| available?(sink_name) }
+  next_port_and_sink = available_ports.cycle(2).to_a[index + 1]
+  next_port = next_port_and_sink[:port]
+  next_sink = next_port_and_sink[:sink]
 
-  index = (available_sinks.index(default_sink["description"]) || -1) + 1
+  puts "Next port: #{next_port["description"]}"
 
-  next_description = available_sinks.cycle(2).to_a[index]
-  puts "Next sink: #{next_description}"
+  puts next_port_and_sink[:sink]["name"]
+  puts default_sink["name"]
+  if next_sink["name"] != default_sink["name"]
+    command = %[pactl set-default-sink #{next_sink["index"]}]
 
-  next_sink = sinks.find { |sink| sink["description"] == next_description }
+    `#{command}`
+  end
 
-  command = %[pactl set-default-sink #{next_sink["index"]}]
+  if next_port_and_sink[:sink]["ports"].count > 1
+    command = %[pactl set-sink-port #{next_sink["index"]} "#{next_port["name"]}"]
 
-  `#{command}`
+    `#{command}`
+  end
 end
 
 def sinks
@@ -36,7 +44,7 @@ def sinks
     #
     # I don't know if there's a workaround, so I'm just setting my regional settings to us_EN.
 
-    json = `pactl --format json list sinks`
+    json = TEST_MODE ? File.read("#{ENV["HOME"]}/sinks_no_headphone.json") : `pactl --format json list sinks`
 
     json.gsub!("0,00", "0.00")
 
@@ -44,36 +52,62 @@ def sinks
   end
 end
 
-def available?(sink_name)
-  matching_sink = sinks.find {|sink| sink["description"] === sink_name }
+def ports_and_sinks
+  sinks.flat_map do |sink|
+    sink["ports"].select {|port| port_available?(port) }.map do |port|
+      {
+        port: port,
+        sink: sink
+      }
+    end
 
-  return false if !matching_sink
-  matching_sink["ports"].any? do |port|
-    ["availability unknown", "available"].include?(port["availability"])
   end
 end
 
+def available?(sink_name)
+  matching_sink = sinks.find {|sink| sink["description"] == sink_name }
+
+  return false if !matching_sink
+  matching_sink["ports"].any? do |port| port_available?(port) end
+end
+
+def sink_allowed?(sink)
+  available_sinks = VALID_SINKS.select {|sink_name| available?(sink_name) }
+
+  available_sinks.include? sink["description"]
+end
+
+def port_available?(port)
+  ["availability unknown", "available"].include?(port["availability"])
+end
+
 def show
-  default_sink_name = `pactl get-default-sink`.strip
+  puts shorten_for_bar(current_port)
+end
 
-  default_sink = sinks.find {|sink| sink["name"] == default_sink_name }
+def default_sink
+  @_default_sink ||= begin
+                       default_sink_name = `pactl get-default-sink`.strip
 
-  short_name = shorten_for_bar(default_sink)
+                       sinks.find { |sink| sink["name"] == default_sink_name }
+                     end
+end
 
-  click_action = "#{$0} --cycle"
-
-  puts "%{A1:#{click_action}:}#{short_name}%{A}"
+def current_port
+  @_current_port ||= begin
+                       default_sink["ports"].find {|port| port["name"] == default_sink["active_port"] }
+                     end
 end
 
 def shorten_for_bar(sink)
   description = sink["description"]
 
-  if description =~ /Q45/
+  if description =~ /Headset/
     return ""
-  elsif description =~ /sof-soundwire Speaker/
+  elsif description =~ /Speaker/
     return ""
 
-  elsif description =~ /sof-soundwire Headphones/
+  elsif description =~ /Headphones/
     return ""
   end
 
@@ -81,8 +115,22 @@ def shorten_for_bar(sink)
   return description.gsub(/sof-soundwire /, "").gsub(/DisplayPort (\d+) Output/, "DP \\1")
 end
 
-if ARGV.include?("--cycle")
+def move_sources_to_current
+  sound_providers.each do |provider|
+    `pactl move-sink-input #{provider["index"]} #{default_sink["index"]}`
+  end
+end
+
+def sound_providers
+  @_sound_providers ||= begin
+                          JSON.parse(`pactl --format=json list sink-inputs`)
+                        end
+end
+
+if ARGV[0] == "--cycle"
   cycle
+elsif ARGV[0] == "--move-sources-to-current"
+  move_sources_to_current
 else
   show
 end
