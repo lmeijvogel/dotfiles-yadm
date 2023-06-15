@@ -71,5 +71,5 @@ map('n', '<C-u>', '<C-u>zz', {})
 map('n', '<C-d>', '<C-d>zz', {})
 
 -- Navigate through git conflict markers a bit more easily
-map('n', '<leader>m', '/^<<<<<<<\\|^=======\\|^>>>>>>>/<CR>', { desc = "Find conflict markers" })
-map('x', '<leader>m', '/^<<<<<<<\\|^=======\\|^>>>>>>>/<CR>', { desc = "Find conflict markers" })
+map('n', '<leader>m', '/^<<<<<<<\\|^|||||||\\|^=======\\|^>>>>>>>/<CR>', { desc = "Find conflict markers" })
+map('x', '<leader>m', '/^<<<<<<<\\|^|||||||\\|^=======\\|^>>>>>>>/<CR>', { desc = "Find conflict markers" })
