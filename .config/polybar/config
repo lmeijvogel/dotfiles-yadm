@@ -1,10 +1,4 @@
-[machine-specific]
-
-  modules-right = current-mpd-song bluetooth-headset mouse eth wlan battery output-sink sound date
-
-  eth-interface = enx00be43626b61
-  wlan-interface = wlp59s0
-
+include-file=~/.config/polybar/machine-specific.ini
 
 [colors]
 primary = #ffb52a
@@ -70,9 +64,9 @@ font-1 = Material Icons:style=Regular:pixelsize=17;5
 inherit = bar/base
 
 modules-left = logo i3
-modules-right = ${machine-specific.modules-right}
+modules-right = current-mpd-song bluetooth-headset mouse eth wlan battery output-sink sound date
 
-tray-position = right
+tray-position = none
 
 [module/logo]
 type = custom/text
