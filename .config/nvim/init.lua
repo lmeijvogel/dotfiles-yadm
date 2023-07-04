@@ -14,12 +14,10 @@ require("commands")
 map('n', '<leader>e2', ':e $HOME/.config/nvim/lua/commands.lua<CR>', {})
 
 require("plugins")
-map('n', '<leader>e3', ':e $HOME/.config/nvim/lua/plugins.lua<CR>', {})
+map('n', '<leader>e3', ':e $HOME/.config/nvim/lua/plugins/init.lua<CR>', {})
 
 require("plugin_commands")
 map('n', '<leader>e4', ':e $HOME/.config/nvim/lua/plugin_commands.lua<CR>', {})
-
-map('n', '<leader>e5', ':e $HOME/.config/nvim/lua/plugins/init.lua<CR>', {})
 
 map('n', '<leader>ee',
   ':lua require("telescope.builtin").find_files({ cwd = "/home/lennaert/.config/nvim/lua" })<CR>',
