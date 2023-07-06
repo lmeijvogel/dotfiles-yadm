@@ -65,7 +65,7 @@ def main
                        title
                      end
 
-  puts "#{playing_mode} #{song_description} (#{current}/#{total})"
+  "#{playing_mode} #{song_description} (#{current}/#{total})"
 rescue HostNotAvailable
   puts ""
 rescue StatusUnknown
@@ -91,6 +91,10 @@ def read_player_state(song_status)
   matches[1, 3]
 end
 
+def toggle_play_paused
+  `ruby --disable-gems #{ENV["HOME"]}/bin/toggle-mpd-playing #{MPD_HOST}`
+end
+
 mpd_network = IPAddr.new("#{MPD_HOST}/#{NETWORK_MASK}")
 ip_addresses = Socket.ip_address_list.select(&:ipv4?).map(&:ip_address)
 
@@ -100,7 +104,7 @@ if ip_addresses.none? { |ip_address| mpd_network.include?(ip_address) }
   puts # If there is no output, the bottom bar won't be updated. This forces the update.
 
   exit
- end
+end
 
 if ARGV.any?("--status-only")
   _, song_status, _ = query_mpd_status
@@ -112,8 +116,10 @@ if ARGV.any?("--status-only")
   else
     puts "stopped"
   end
+elsif ARGV.any?("--toggle")
+  toggle_play_paused
 else
-  main
+  puts "%{A1:#{$0} --toggle:}#{main}%{A}"
 end
 
 # vim: set ft=ruby
