@@ -11,22 +11,46 @@ class BluetoothDevice
   end
 
   def show
-    click_action = "#{$0} --toggle"
-    puts "%{A1:#{click_action}:} #{profile_description}%{A}"
-  rescue NotConnected => e
-    puts ""
+    if connected?
+      disconnect_action = "#{$0} --disconnect"
+      toggle_action = "#{$0} --toggle"
+
+      puts "%{A1:#{disconnect_action}:} %{A}%{A1:#{toggle_action}:}#{profile_description}%{A}"
+    else
+      connect_action = "#{$0} --connect"
+      puts "%{A1:#{connect_action}:}%{A}"
+    end
   end
 
   def toggle
+    return if !connected
+
     new_profile = profile_id == HEADSET ? HIFI : HEADSET
 
     system("pacmd", "set-card-profile", pa_device_index, new_profile)
-  rescue NotConnected => e
-    puts ""
   rescue StandardError => e
     puts "Error! #{e.message}"
     exit 1
   end
+
+  def connect
+    if connected?
+      puts "Already connected!"
+      exit 1
+    end
+
+    `bluetoothctl connect #{mac_address}`
+  end
+
+  def disconnect
+    if !connected?
+      puts "Not connected!"
+      exit 1
+    end
+
+    `bluetoothctl disconnect #{mac_address}`
+  end
+
 
   def profile_id
     @profile_id ||= begin
@@ -64,6 +88,24 @@ class BluetoothDevice
                       end
   end
 
+  private def connected?
+    output = `pacmd list-cards`
+
+    entries = output.each_line.map(&:strip).slice_before(/\A\s*index:/)
+
+    return entries.any? do |entry|
+      entry.any? { |line| line =~ /device.description = "#{@name}"/ }
+    end
+  end
+
+  private def mac_address
+    @_mac_address ||= begin
+                        devices = `bluetoothctl devices`
+
+                        devices.lines.grep(/#{@name}/)[0].split(/\s+/)[1]
+                      end
+  end
+
   def profile_description
     {
       HEADSET => "Headset",
@@ -75,13 +117,17 @@ end
 
 action = ARGV.fetch(0)
 
-device = BluetoothDevice.new("Sudio Tre")
+device = BluetoothDevice.new("soundcore Space Q45")
 
 case action
 when "--toggle"
   device.toggle
+when "--connect"
+  device.connect
+when "--disconnect"
+  device.disconnect
 when "--show"
   device.show
 else
-  puts "Invalid arguement #{action}"
+  puts "Invalid argument #{action}"
 end
