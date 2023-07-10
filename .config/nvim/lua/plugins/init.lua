@@ -3,19 +3,19 @@ local map = vim.api.nvim_set_keymap
 return {
   -- Editor-wide (not buffer-bound)
   {
-    "sandeepcr529/Buffet.vim",     -- Buffer explorer
+    "sandeepcr529/Buffet.vim", -- Buffer explorer
     config = function()
       map('n', '<leader>bb', '<cmd>Bufferlist<CR>', { desc = "Open Bufferlist" })
       map('n', '<leader>be', '<cmd>Bufferlist<CR>', { desc = "Open Bufferlist" })
     end
   },
   {
-    "mbbill/undotree",     -- Undo history visualisation
+    "mbbill/undotree", -- Undo history visualisation
     config = function()
       map('n', '<F5>', '<cmd>UndotreeToggle<CR>', { desc = "UndoTree" })
     end
   },
-  "duff/vim-scratch",   -- Scratch buffer
+  "duff/vim-scratch", -- Scratch buffer
   "mileszs/ack.vim",
   {
     "tpope/vim-fugitive",
@@ -214,12 +214,14 @@ return {
             return '<Ignore>'
           end, { expr = true })
 
+          vim.keymap.set('n', '<leader>gd', gs.toggle_deleted, { desc = "Show deleted hunks" })
           vim.keymap.set('n', '<leader>g=', gs.stage_hunk, { desc = "Stage hunk" })
           vim.keymap.set('n', '<leader>g-', gs.undo_stage_hunk, { desc = "Undo stage hunk" })
           vim.keymap.set('v', '<leader>g=', function() gs.stage_hunk { vim.fn.line("."), vim.fn.line("v") } end,
             { desc = "Stage hunk" })
           vim.keymap.set('v', '<leader>g-',
-            function() gs.undo_stage_hunk { vim.fn.line("."), vim.fn.line("v") } end, { desc = "Undo stage hunk" })
+            function() gs.undo_stage_hunk { vim.fn.line("."), vim.fn.line("v") } end,
+            { desc = "Undo stage hunk" })
 
           -- Use a nicer color
           vim.cmd [[hi! link GitSignsCurrentLineBlame Conceal]]
