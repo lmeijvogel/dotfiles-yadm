@@ -193,6 +193,7 @@ return {
   },
   "nvchad/nvim-colorizer.lua", -- Show colors visually
   'folke/trouble.nvim',
+  'folke/neodev.nvim',         -- dev configuration for lua scripting in nvim
   "stevearc/overseer.nvim",    -- Task runner (e.g. VSCode tasks)
   {
     "lewis6991/gitsigns.nvim",
