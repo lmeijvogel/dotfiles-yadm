@@ -3,24 +3,26 @@ local map = vim.api.nvim_set_keymap
 return {
   {
     "nvim-telescope/telescope.nvim",
-    opts = {
-      defaults = {
-        file_ignore_patterns = { "node_modules" },
-        path_display = { "truncate" },
-        mappings = {
-          i = {
-            ["<C-u>"] = false,     -- Clear input
-            ["<C-Down>"] = require('telescope.actions').cycle_history_next,
-            ["<C-Up>"] = require('telescope.actions').cycle_history_prev,
-          }
-        },
-        history = {
-          path = '~/.local/share/nvim/databases/telescope_history.sqlite3',
-          limit = 100,
-        }
-      }
-    },
     init = function()
+      -- Having these options in the `opts` argument causes errors on one of my machines,
+      -- where it can't find `telescope.actions.
+      require('telescope').setup({
+        defaults = {
+          file_ignore_patterns = { "node_modules" },
+          path_display = { "smart" },
+          mappings = {
+            i = {
+              ["<C-u>"] = false, -- Clear input
+              ["<C-Down>"] = require('telescope.actions').cycle_history_next,
+              ["<C-Up>"] = require('telescope.actions').cycle_history_prev,
+            }
+          },
+          history = {
+            path = '~/.local/share/nvim/databases/telescope_history.sqlite3',
+            limit = 100,
+          }
+        }
+      })
       map('n', '<leader>a', ':Telescope live_grep<CR>', { desc = "Find" })
       map('n', '<leader>A', ':Telescope grep_string initial_mode=normal<CR>', { desc = "Find word under cursor" })
       map('n', '<C-p>', '<cmd>Telescope find_files<CR>', {})
