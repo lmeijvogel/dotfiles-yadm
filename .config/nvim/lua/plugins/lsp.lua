@@ -51,12 +51,6 @@ local eslint_on_attach = function(client, bufnr)
   client.server_capabilities.documentFormattingProvider = true
 end
 
-local tsserver_on_attach = function(client, bufnr)
-  on_attach(client, bufnr)
-
-  map('n', '<leader>li', ":TypescriptAddMissingImports<CR>", { desc = "Add missing imports [TS]" })
-end
-
 vim.api.nvim_set_keymap('i', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', {})
 
 return {
@@ -64,7 +58,7 @@ return {
     {
       "neovim/nvim-lspconfig",
       config = function()
-        require('lspconfig')['tsserver'].setup({ on_attach = tsserver_on_attach })
+        require('lspconfig')['vtsls'].setup({ on_attach = on_attach })
         require('lspconfig')['cssls'].setup({ on_attach = on_attach })
         require('lspconfig')['eslint'].setup({ on_attach = eslint_on_attach })
         require('lspconfig')['lua_ls'].setup({
@@ -99,7 +93,7 @@ return {
           fallback = true,        -- fall back to standard LSP definition on failure
         },
         server = {                -- pass options to lspconfig's setup method
-          on_attach = tsserver_on_attach,
+          on_attach = on_attach,
         },
       },
       dependencies = {
