@@ -64,7 +64,7 @@ font-1 = Material Icons:style=Regular:pixelsize=17;5
 inherit = bar/base
 
 modules-left = logo i3
-modules-right = current-mpd-song bluetooth-headset mouse eth wlan battery output-sink sound date
+modules-right = current-dev-branch current-mpd-song bluetooth-headset mouse eth wlan battery output-sink sound date
 
 tray-position = none
 
@@ -220,6 +220,11 @@ interval = 1
 type = custom/script
 exec = /usr/bin/env ruby --disable-gems $HOME/bin/mpd-status
 interval = 1
+
+[module/current-dev-branch]
+type = custom/script
+exec = /usr/bin/env ruby --disable-gems $HOME/bin/lib/current-dev-branch.rb
+interval = 5
 
 [settings]
 screenchange-reload = true
