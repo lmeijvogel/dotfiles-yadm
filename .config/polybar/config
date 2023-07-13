@@ -189,12 +189,12 @@ ramp-capacity-0 = 
 
 [module/ssl-status]
 type = custom/script
-exec = /usr/bin/env ruby $HOME/.config/polybar/scripts/check_ssl_validity.rb
+exec = /usr/bin/env ruby --disable-gems $HOME/.config/polybar/scripts/check_ssl_validity.rb
 interval = 15
 
 [module/backup-status]
 type = custom/script
-exec = /usr/bin/env ruby $HOME/.config/polybar/scripts/check_backup_status.rb
+exec = /usr/bin/env ruby --disable-gems $HOME/.config/polybar/scripts/check_backup_status.rb
 interval = 60
 
 [module/mouse]
@@ -204,21 +204,21 @@ interval = 1
 
 [module/output-sink]
 type = custom/script
-exec = /usr/bin/env ruby $HOME/bin/sound_outputs.rb
-click-left = /usr/bin/env ruby $HOME/bin/sound_outputs.rb --cycle
-click-right = /usr/bin/env ruby $HOME/bin/sound_outputs.rb --move-sources-to-current
+exec = /usr/bin/env ruby --disable-gems $HOME/bin/sound_outputs.rb
+click-left = /usr/bin/env ruby --disable-gems $HOME/bin/sound_outputs.rb --cycle
+click-right = /usr/bin/env ruby --disable-gems $HOME/bin/sound_outputs.rb --move-sources-to-current
 
 font = 0
 interval = 1
 
 [module/bluetooth-headset]
 type = custom/script
-exec = /usr/bin/env ruby $HOME/bin/bluetooth_headset --show
+exec = /usr/bin/env ruby --disable-gems $HOME/bin/bluetooth_headset --show
 interval = 1
 
 [module/current-mpd-song]
 type = custom/script
-exec = /usr/bin/env ruby $HOME/bin/mpd-status
+exec = /usr/bin/env ruby --disable-gems $HOME/bin/mpd-status
 interval = 1
 
 [settings]
