@@ -199,7 +199,7 @@ interval = 60
 
 [module/mouse]
 type = custom/script
-exec = $HOME/bin/mouse state-polybar
+exec = $HOME/bin/mouse.sh state-polybar
 interval = 1
 
 [module/output-sink]
