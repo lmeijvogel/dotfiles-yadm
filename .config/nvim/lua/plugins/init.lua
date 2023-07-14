@@ -77,12 +77,17 @@ return {
   "andymass/vim-matchup",    -- Enhances the "%" key to match more patterns.
 
   -- Color schemes
-  "ray-x/aurora",               -- Color scheme
-  "Shatur/neovim-ayu",          -- Color scheme
+  "ray-x/aurora",            -- Color scheme
+  "Shatur/neovim-ayu",       -- Color scheme
 
-  "fmoralesc/molokayo",         -- Dark color scheme
-  "rakr/vim-one",               -- Light color scheme
-
+  "fmoralesc/molokayo",      -- Dark color scheme
+  "rakr/vim-one",            -- Light color scheme
+  {
+    "folke/tokyonight.nvim", -- Color scheme
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
   "NLKNguyen/papercolor-theme", -- Light color scheme (and dark, but I only use light)
   "bogado/file-line",           -- Copy file/line to clipboard
   {

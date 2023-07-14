@@ -48,9 +48,9 @@ require('ayu').setup(
   })
 
 function LMBackgroundLight()
-  vim.o.background = 'light'
+  vim.cmd.colorscheme('tokyonight-day')
 
-  vim.cmd.colorscheme('ayu')
+  vim.o.background = 'light'
 end
 
 function LMBackgroundDark()
