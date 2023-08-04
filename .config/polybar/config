@@ -64,8 +64,9 @@ font-1 = Material Icons:style=Regular:pixelsize=17;5
 inherit = bar/base
 
 modules-left = logo i3
+
 # Use separate modules for dev-branch icon and name, so the name can stay even when it's not known
-modules-right = current-dev-branch-icon current-dev-branch-name current-mpd-song bluetooth-headset mouse eth wlan battery output-sink sound date
+modules-right = eth wlan current-dev-branch-icon current-dev-branch-name current-mpd-song bluetooth-headset mouse battery output-sink sound date
 
 tray-position = none
 
