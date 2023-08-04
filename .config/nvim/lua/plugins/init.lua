@@ -116,7 +116,6 @@ return {
   "tpope/vim-unimpaired",                          -- Bracket commands: ]b, etc.
   "tpope/vim-rsi",                                 -- Readline style insertions
   "editorconfig/editorconfig-vim",
-  "ntpeters/vim-better-whitespace",                -- Better whitespace highlighting
   "buztard/vim-rel-jump",                          -- Store relative jumps (5j, 3k) in the jump list
   -- "jose-elias-alvarez/buftabline.nvim",  {"branch": "main"} ",Buffer list at top of screen
   {

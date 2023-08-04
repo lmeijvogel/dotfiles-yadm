@@ -60,7 +60,6 @@
   "typescript.nvim": { "branch": "main", "commit": "de304087e6e49981fde01af8ccc5b21e8519306f" },
   "undotree": { "branch": "master", "commit": "0e11ba7325efbbb3f3bebe06213afa3e7ec75131" },
   "utl.vim": { "branch": "master", "commit": "67a6506a7a8a3847d00d3af3e2ed9707460d5ce5" },
-  "vim-better-whitespace": { "branch": "master", "commit": "1b22dc57a2751c7afbc6025a7da39b7c22db635d" },
   "vim-elixir": { "branch": "master", "commit": "6dd03f87d825bf0a9f8611eb54076c7952d4f15c" },
   "vim-endwise": { "branch": "master", "commit": "e714ac3bcfd5a90038de49c3254eded7c70ae3c3" },
   "vim-fugitive": { "branch": "master", "commit": "43f18ab9155c853a84ded560c6104e6300ad41da" },
