@@ -64,7 +64,8 @@ font-1 = Material Icons:style=Regular:pixelsize=17;5
 inherit = bar/base
 
 modules-left = logo i3
-modules-right = current-dev-branch current-mpd-song bluetooth-headset mouse eth wlan battery output-sink sound date
+# Use separate modules for dev-branch icon and name, so the name can stay even when it's not known
+modules-right = current-dev-branch-icon current-dev-branch-name current-mpd-song bluetooth-headset mouse eth wlan battery output-sink sound date
 
 tray-position = none
 
@@ -221,10 +222,17 @@ type = custom/script
 exec = /usr/bin/env ruby --disable-gems $HOME/bin/mpd-status
 interval = 1
 
-[module/current-dev-branch]
+# env variables are currently configured in $HOME/.config/plasma-workspace/env/
+[module/current-dev-branch-icon]
 type = custom/script
-exec = /usr/bin/env ruby --disable-gems $HOME/bin/lib/current-dev-branch.rb
+exec = /usr/bin/env ruby --disable-gems $HOME/bin/lib/current-dev-branch-icon.rb $MAIN_GIT_REPO_PATH
 interval = 5
+
+[module/current-dev-branch-name]
+type = custom/script
+exec = /usr/bin/env ruby --disable-gems $HOME/bin/lib/current-dev-branch-name.rb $MAIN_GIT_REPO_PATH
+interval = 5
+
 
 [settings]
 screenchange-reload = true
