@@ -4,6 +4,10 @@ require 'json'
 
 TEST_MODE = false
 VALID_SINKS = [
+  # Personal
+  "Built-in Audio Analog Stereo",
+  "Aureon 7.1 USB Analog Stereo",
+  # Dell
   "sof-soundwire Headphones",
   "sof-soundwire Speaker",
   "soundcore Space Q45"
@@ -22,8 +26,6 @@ def cycle
 
   puts "Next port: #{next_port["description"]}"
 
-  puts next_port_and_sink[:sink]["name"]
-  puts default_sink["name"]
   if next_sink["name"] != default_sink["name"]
     command = %[pactl set-default-sink #{next_sink["index"]}]
 
@@ -82,7 +84,7 @@ def port_available?(port)
 end
 
 def show
-  puts shorten_for_bar(current_port)
+  puts shorten_for_bar(current_port, current_sink)
 end
 
 def default_sink
@@ -99,15 +101,24 @@ def current_port
                      end
 end
 
-def shorten_for_bar(sink)
-  description = sink["description"]
+def current_sink
+  @_current_sink ||= begin
+                       default_sink
+                     end
+end
 
-  if description =~ /Headset/
+def shorten_for_bar(port, sink)
+  return "Aureon" if sink["description"] =~ /Aureon/
+
+  description = port["description"]
+
+  case description
+  when /Headset/
     return ""
-  elsif description =~ /Speaker/
+  when /Speaker/
+  when /Line Out/ # This works for my personal PC, but also for the Dell?
     return ""
-
-  elsif description =~ /Headphones/
+  when /Headphones/
     return ""
   end
 
@@ -117,7 +128,8 @@ end
 
 def move_sources_to_current
   sound_providers.each do |provider|
-    `pactl move-sink-input #{provider["index"]} #{default_sink["index"]}`
+    command = "pactl move-sink-input #{provider["index"]} #{default_sink["index"]}"
+    `#{command}`
   end
 end
 
