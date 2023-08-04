@@ -1,21 +1,15 @@
 #!/bin/bash
 
+# See https://unix.stackexchange.com/questions/132308/changing-kdes-mouse-theme-and-buttons-settings-from-a-shell-script
+
+CONFIG=$HOME/.config/kcminputrc
+
 state () {
-  local left='3
-2
-1'
+  local current_state=$(kreadconfig5 --file $CONFIG --group Mouse --key XLbInptLeftHanded)
 
-
-  local right='1
-2
-3'
-
-  local first_three_mouse_mappings=$(xmodmap -pp | grep -P '\d+\s+\d+' | awk '// { print $2; }' | head -3)
-
-  if [ "$first_three_mouse_mappings" = "$left" ]; then
+  if [ "$current_state" = "true" ]; then
     echo "left"
-  fi
-  if [ "$first_three_mouse_mappings" = "$right" ]; then
+  else
     echo "right"
   fi
 }
@@ -30,20 +24,22 @@ format_for_polybar () {
 }
 
 right () {
-  xmodmap -e "pointer = 1 2 3"
+  kwriteconfig5 --file $CONFIG --group Mouse --key XLbInptLeftHanded false
+
+  kcminit kcm_mouse
 }
 
 left () {
-  xmodmap -e "pointer = 3 2 1"
+  kwriteconfig5 --file $CONFIG --group Mouse --key XLbInptLeftHanded true
+
+  kcminit kcm_mouse
 }
 
 swap () {
   if [ "$(state)" = "left" ]; then
     right
   else
-    if [ "$(state)" = "right" ]; then
-      left
-    fi
+    left
   fi
 }
 
