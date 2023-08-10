@@ -226,13 +226,13 @@ interval = 1
 # env variables are currently configured in $HOME/.config/plasma-workspace/env/
 [module/current-dev-branch-icon]
 type = custom/script
-exec = /usr/bin/env ruby --disable-gems $HOME/bin/lib/current-dev-branch-icon.rb $MAIN_GIT_REPO_PATH
+exec = /usr/bin/env ruby --disable-gems $HOME/bin/lib/current-dev-branch.rb icon $MAIN_GIT_REPO_PATH
 exec-if = ls $MAIN_GIT_REPO_PATH
 interval = 5
 
 [module/current-dev-branch-name]
 type = custom/script
-exec = /usr/bin/env ruby --disable-gems $HOME/bin/lib/current-dev-branch-name.rb $MAIN_GIT_REPO_PATH
+exec = /usr/bin/env ruby --disable-gems $HOME/bin/lib/current-dev-branch.rb name $MAIN_GIT_REPO_PATH
 exec-if = ls $MAIN_GIT_REPO_PATH
 interval = 5
 

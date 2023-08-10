@@ -186,7 +186,6 @@ return {
       separator = "-",
     }
   },
-  "stevearc/dressing.nvim",                -- Nicer select and input behavior
   {
     "lukas-reineke/indent-blankline.nvim", -- Show indentation guides
     opts = {
