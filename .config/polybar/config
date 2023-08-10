@@ -201,38 +201,38 @@ interval = 60
 
 [module/mouse]
 type = custom/script
-exec = $HOME/bin/mouse.sh state-polybar
+exec = $HOME/bin/polybar/mouse.sh state-polybar
 interval = 1
 
 [module/output-sink]
 type = custom/script
-exec = /usr/bin/env ruby --disable-gems $HOME/bin/sound_outputs.rb
-click-left = /usr/bin/env ruby --disable-gems $HOME/bin/sound_outputs.rb --cycle
-click-right = /usr/bin/env ruby --disable-gems $HOME/bin/sound_outputs.rb --move-sources-to-current
+exec = /usr/bin/env ruby --disable-gems $HOME/bin/polybar/sound_outputs.rb
+click-left = /usr/bin/env ruby --disable-gems $HOME/bin/polybar/sound_outputs.rb --cycle
+click-right = /usr/bin/env ruby --disable-gems $HOME/bin/polybar/sound_outputs.rb --move-sources-to-current
 
 font = 0
 interval = 1
 
 [module/bluetooth-headset]
 type = custom/script
-exec = /usr/bin/env ruby --disable-gems $HOME/bin/bluetooth_headset --show
+exec = /usr/bin/env ruby --disable-gems $HOME/bin/polybar/bluetooth_headset.rb --show
 interval = 1
 
 [module/current-mpd-song]
 type = custom/script
-exec = /usr/bin/env ruby --disable-gems $HOME/bin/mpd-status
+exec = /usr/bin/env ruby --disable-gems $HOME/bin/polybar/mpd-status.rb
 interval = 1
 
 # env variables are currently configured in $HOME/.config/plasma-workspace/env/
 [module/current-dev-branch-icon]
 type = custom/script
-exec = /usr/bin/env ruby --disable-gems $HOME/bin/lib/current-dev-branch.rb icon $MAIN_GIT_REPO_PATH
+exec = /usr/bin/env ruby --disable-gems $HOME/bin/polybar/current-dev-branch.rb icon $MAIN_GIT_REPO_PATH
 exec-if = ls $MAIN_GIT_REPO_PATH
 interval = 5
 
 [module/current-dev-branch-name]
 type = custom/script
-exec = /usr/bin/env ruby --disable-gems $HOME/bin/lib/current-dev-branch.rb name $MAIN_GIT_REPO_PATH
+exec = /usr/bin/env ruby --disable-gems $HOME/bin/polybar/current-dev-branch.rb name $MAIN_GIT_REPO_PATH
 exec-if = ls $MAIN_GIT_REPO_PATH
 interval = 5
 
