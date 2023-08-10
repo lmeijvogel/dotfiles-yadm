@@ -1,21 +1,19 @@
 #!/usr/bin/env ruby
 
 require 'ipaddr'
+require 'open3'
 require 'socket'
 
-MPD_HOST = "192.168.2.5"
 NETWORK_MASK = "24"
 
 SEPARATOR = "-@*@%@*-"
-
-require 'open3'
 
 class StatusUnknown < StandardError ; end
 
 class HostNotAvailable < StandardError ; end
 
-def query_mpd_status
-  `ping -c 1 -W 1 -q #{MPD_HOST}`
+def query_mpd_status(mpd_host)
+  `ping -c 1 -W 1 -q #{mpd_host}`
 
   if !$?.success?
     raise HostNotAvailable, "Ping failed"
@@ -25,7 +23,7 @@ def query_mpd_status
 
   mpd_status, exit_status = Open3.capture2e(
     "mpc",
-    "--host", MPD_HOST,
+    "--host", mpd_host,
     "--format", format,
     "status"
   )
@@ -37,8 +35,8 @@ def query_mpd_status
   mpd_status.lines
 end
 
-def main
-  mpd_status = query_mpd_status
+def main(mpd_host)
+  mpd_status = query_mpd_status(mpd_host)
 
   if mpd_status.length <= 1
     puts ""
@@ -91,23 +89,27 @@ def read_player_state(song_status)
   matches[1, 3]
 end
 
-def toggle_play_paused
-  `ruby --disable-gems #{ENV["HOME"]}/bin/toggle-mpd-playing #{MPD_HOST}`
+def toggle_play_paused(mpd_host)
+  `ruby --disable-gems #{ENV["HOME"]}/bin/toggle-mpd-playing #{mpd_host}`
 end
 
-mpd_network = IPAddr.new("#{MPD_HOST}/#{NETWORK_MASK}")
-ip_addresses = Socket.ip_address_list.select(&:ipv4?).map(&:ip_address)
+mpd_host = ARGV[-1]
 
-# If we're not on the same network, I don't want to
-# create a useless entry on the bottom bar.
-if ip_addresses.none? { |ip_address| mpd_network.include?(ip_address) }
-  puts # If there is no output, the bottom bar won't be updated. This forces the update.
-
-  exit
-end
+exit 0 if mpd_host.nil?
 
 if ARGV.any?("--status-only")
-  _, song_status, _ = query_mpd_status
+  mpd_network = IPAddr.new("#{mpd_host}/#{NETWORK_MASK}")
+  ip_addresses = Socket.ip_address_list.select(&:ipv4?).map(&:ip_address)
+
+  # If we're not on the same network, I don't want to
+  # create a useless entry on the bottom bar.
+  if ip_addresses.none? { |ip_address| mpd_network.include?(ip_address) }
+    puts # If there is no output, the bottom bar won't be updated. This forces the update.
+
+    exit
+  end
+
+  _, song_status, _ = query_mpd_status(mpd_host)
 
   if song_status && song_status !~ /^ERROR/
     playing_state, _, _ = read_player_state(song_status)
@@ -119,7 +121,8 @@ if ARGV.any?("--status-only")
 elsif ARGV.any?("--toggle")
   toggle_play_paused
 else
-  puts "%{A1:#{$0} --toggle:}#{main}%{A}"
+  title = main(mpd_host)
+  puts "%{A1:#{$0} --toggle:}#{title}%{A}"
 end
 
 # vim: set ft=ruby

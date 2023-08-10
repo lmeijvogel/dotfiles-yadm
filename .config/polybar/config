@@ -220,7 +220,7 @@ interval = 1
 
 [module/current-mpd-song]
 type = custom/script
-exec = /usr/bin/env ruby --disable-gems $HOME/bin/polybar/mpd-status.rb
+exec = /usr/bin/env ruby --disable-gems $HOME/bin/polybar/mpd-status.rb $MPD_HOST
 interval = 1
 
 # env variables are currently configured in $HOME/.config/plasma-workspace/env/
@@ -235,7 +235,6 @@ type = custom/script
 exec = /usr/bin/env ruby --disable-gems $HOME/bin/polybar/current-dev-branch.rb name $MAIN_GIT_REPO_PATH
 exec-if = ls $MAIN_GIT_REPO_PATH
 interval = 5
-
 
 [settings]
 screenchange-reload = true
