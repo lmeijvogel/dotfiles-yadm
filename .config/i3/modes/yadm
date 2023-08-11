@@ -14,9 +14,6 @@ mode "$system_mode" {
     bindsym s $exec bash $HOME/start.sh
     bindsym $mod+s $exec bash $HOME/start.sh
 
-    bindsym m $exec bash $HOME/bin/mouse swap
-    bindsym $mod+m $exec bash $HOME/bin/mouse swap
-
     bindsym n $exec nitrogen --restore &
     bindsym $mod+n $exec nitrogen --restore &
 
