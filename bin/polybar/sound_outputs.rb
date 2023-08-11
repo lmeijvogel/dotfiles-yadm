@@ -115,8 +115,7 @@ def shorten_for_bar(port, sink)
   case description
   when /Headset/
     return ""
-  when /Speaker/
-  when /Line Out/ # This works for my personal PC, but also for the Dell?
+  when /Speaker/, /Line Out/
     return ""
   when /Headphones/
     return ""
