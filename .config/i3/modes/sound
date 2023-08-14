@@ -10,7 +10,7 @@ mode "$sound_mode" {
     bindsym Shift+a  $exec pactl set-sink-volume $default_sink -1% # decrease sound volume (small step)
 
     bindsym z        $exec $mpc cdprev
-    bindsym x        $exec $ruby $HOME/bin/toggle-mpd-playing $mpd_host
+    bindsym x        $exec $mpc toggle
     bindsym c        $exec $mpc pause
     bindsym v        $exec $mpc stop
     bindsym b        $exec $mpc next
