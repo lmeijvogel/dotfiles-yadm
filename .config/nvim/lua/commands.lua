@@ -42,7 +42,8 @@ map('n', '<leader>ff', ':let @+ = expand("%:p")<CR>', { desc = "Copy file to cli
 
 -- Easily create splits
 map('n', '<leader>ss', '<C-w>s', { desc = "Split window" })
-map('n', '<leader>sv', '<C-w>v', { desc = "Split window vertically" })
+map('n', '<leader>vv', '<C-w>v', { desc = "Split window vertically" })
+map('n', '<leader>vv', '<C-w>v', { desc = "Split window vertically" })
 
 -- Easily resize splits
 map('n', '<M-S-Up>', '<C-w>+', {})
