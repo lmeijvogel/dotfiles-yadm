@@ -67,10 +67,6 @@ map('n', 'K', '<Nop>', {})
 map('n', '<expr>', 'k (v:count > 1 ? "m\'" . v:count : \'\') . \'k\'', {})
 map('n', '<expr>', 'j (v:count > 1 ? "m\'" . v:count : \'\') . \'j\'', {})
 
--- Center cursor after page up/down
-map('n', '<C-u>', '<C-u>zz', {})
-map('n', '<C-d>', '<C-d>zz', {})
-
 -- Navigate through git conflict markers a bit more easily
 map('n', '<leader>m', '/^<<<<<<<\\|^|||||||\\|^=======\\|^>>>>>>>/<CR>', { desc = "Find conflict markers" })
 map('x', '<leader>m', '/^<<<<<<<\\|^|||||||\\|^=======\\|^>>>>>>>/<CR>', { desc = "Find conflict markers" })
