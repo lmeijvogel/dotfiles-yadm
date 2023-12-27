@@ -17,8 +17,6 @@ alias brrrrrr='brr'
 
 alias be='bundle exec'
 
-alias conf="cd ~/projects/dotfiles"
-
 alias o='xdg-open'
 
 alias vi='nvim'

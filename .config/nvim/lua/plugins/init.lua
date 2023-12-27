@@ -232,7 +232,6 @@ return {
         yadm = {
           enable = true
         },
-
       })
     end
   }
