@@ -34,6 +34,7 @@
   ll = "!f() { git log --color --decorate --oneline $1 | less --no-init --raw-control-chars --quit-if-one-screen ; }; f"
   loo  = "!f() { base_branch=$(git symbolic-ref --short HEAD); git --no-pager log --color --decorate --oneline -n 10 origin/${1:-$base_branch}; }; f"
   lloo = "!f() { base_branch=$(git symbolic-ref --short HEAD); git log --color --decorate --oneline origin/${1:-$base_branch} | less --no-init --raw-control-chars --quit-if-one-screen; }; f"
+  lom = log origin/master
 
   fp = fetch-and-prune
 
