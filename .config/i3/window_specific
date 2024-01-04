@@ -19,6 +19,9 @@ for_window [class="(?i)*nextcloud*"] floating disable
 for_window [class="Blueman-manager"] floating enable
 for_window [class="Evolution-alarm-notify"] floating enable
 
+for_window [title="Windows .* - Oracle VM VirtualBox : 1"] move container to workspace $ws6
+for_window [title="Windows .* - Oracle VM VirtualBox : 2"] move container to workspace $ws5
+
 no_focus [class="plasmashell"]
 no_focus [class="zoom"]
 # /KDE integration
