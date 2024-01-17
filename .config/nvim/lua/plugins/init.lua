@@ -35,6 +35,9 @@ return {
         adaptive_size = true,
         relativenumber = true
       },
+      renderer = {
+        group_empty = true
+      }
     },
     config = function(_, opts)
       require('nvim-tree').setup(opts)
@@ -185,13 +188,10 @@ return {
       separator = "-",
     }
   },
+  -- "stevearc/dressing.nvim",                -- Nicer select and input behavior
   {
     "lukas-reineke/indent-blankline.nvim", -- Show indentation guides
-    opts = {
-      space_char_blankline = " ",
-      show_current_context = true,
-      show_current_context_start = false, -- The start marker resembles an LSP diagnostic too much
-    }
+    main = "ibl",
   },
   "nvchad/nvim-colorizer.lua", -- Show colors visually
   'folke/trouble.nvim',
@@ -202,6 +202,14 @@ return {
     config = function()
       require('gitsigns').setup({
         current_line_blame = true,
+        current_line_blame_opts = {
+          virt_text = true,
+          virt_text_pos = 'eol',   -- 'eol' | 'overlay' | 'right_align'
+          delay = 500,
+          ignore_whitespace = false,
+          virt_text_priority = 100,
+        },
+
         on_attach = function()
           local gs = package.loaded.gitsigns
           vim.keymap.set('n', ']c', function()
