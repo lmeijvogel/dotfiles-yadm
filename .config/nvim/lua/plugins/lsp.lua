@@ -36,6 +36,7 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', '<space>la', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('v', '<space>la', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', '<space>lf', function() vim.lsp.buf.format { async = true } end, bufopts)
+  vim.keymap.set('n', '<space>lr', '<cmd>LspRestart<CR>', bufopts)
 
   vim.keymap.set('n', '<leader>.', vim.lsp.buf.signature_help, bufopts)
 
@@ -171,5 +172,5 @@ return {
         }
       },
     },
-  },
+  }
 };
