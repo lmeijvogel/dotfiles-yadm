@@ -130,6 +130,8 @@ return {
             -- ['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.InsertBehavior }),
             ['<C-b>'] = cmp.mapping.scroll_docs(-4),
             ['<C-f>'] = cmp.mapping.scroll_docs(4),
+            ['<PageUp>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.SelectBehavior, count = 12 }),
+            ['<PageDown>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.SelectBehavior, count = 12 }),
             ['<C-Space>'] = cmp.mapping.complete(),
             ['<C-e>'] = cmp.mapping.abort(),
             ['<Tab>'] = cmp.mapping(function(fallback)
