@@ -29,23 +29,15 @@ return {
       map('n', '-', '<cmd>Telescope buffers sort_mru=true ignore_current_buffer=true<CR>', {})
 
       map('n', '<leader>tf', '<cmd>Telescope find_files<CR>', { desc = "Find files <C-p>" })
-      map('n', '<leader>tp', '<cmd>Telescope project<CR>', { desc = "Projects" })
       map('n', '<leader>tr', '<cmd>Telescope resume<CR>', { desc = "Resume previous" })
       map('n', '<leader>th', '<cmd>Telescope oldfiles<CR>', { desc = "History" })
     end,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "BurntSushi/ripgrep", -- Optional
-      "nvim-telescope/telescope-project.nvim",
       "nvim-telescope/telescope-fzf-native.nvim",
       "nvim-telescope/telescope-smart-history.nvim",
     }
-  },
-  {
-    "nvim-telescope/telescope-project.nvim",
-    config = function()
-      require 'telescope'.load_extension('project')
-    end
   },
   {
     "nvim-telescope/telescope-fzf-native.nvim",
