@@ -3,7 +3,7 @@ local map = vim.api.nvim_set_keymap
 return {
   {
     "nvim-telescope/telescope.nvim",
-    init = function()
+    config = function()
       -- Having these options in the `opts` argument causes errors on one of my machines,
       -- where it can't find `telescope.actions.
       require('telescope').setup({
@@ -51,11 +51,12 @@ return {
   -- Faster sorting of results in Telescope
   {
     "nvim-telescope/telescope-smart-history.nvim",
-    init = function()
+    config = function()
       require('telescope').load_extension('smart_history')
     end,
     dependencies = {
-      "kkharji/sqlite.lua"
+      "kkharji/sqlite.lua",
+      "nvim-telescope/telescope.nvim",
     }
   },
 }
