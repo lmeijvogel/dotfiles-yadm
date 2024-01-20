@@ -29,7 +29,7 @@ return {
   "junegunn/fzf.vim",
   "mhinz/vim-grepper",
   {
-    "kyazdani42/nvim-tree.lua",
+    "nvim-tree/nvim-tree.lua",
     opts = {
       view = {
         adaptive_size = true,
@@ -240,6 +240,13 @@ return {
           enable = true
         },
       })
+    end,
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'MunifTanjim/nui.nvim',
+      'rcarriga/nvim-notify',
+    },
+  },
     end
   }
 }
