@@ -177,17 +177,6 @@ return {
     }
   },
 
-  -- Context.vim => Show context at top of window
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    opts = {
-      enable = true,   -- Enable this plugin (Can be enabled/disabled later via commands)
-      mode = 'cursor', -- Line used to calculate context. Choices: 'cursor', 'topline'
-      -- Separator between context and content. Should be a single character string, like '-'.
-      -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
-      separator = "-",
-    }
-  },
   -- "stevearc/dressing.nvim",                -- Nicer select and input behavior
   {
     "lukas-reineke/indent-blankline.nvim", -- Show indentation guides
