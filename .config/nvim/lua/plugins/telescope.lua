@@ -8,7 +8,10 @@ return {
       -- where it can't find `telescope.actions.
       require('telescope').setup({
         defaults = {
-          file_ignore_patterns = { "node_modules" },
+          file_ignore_patterns = {
+            "node_modules",
+            "%.png"
+          },
           path_display = { "smart" },
           mappings = {
             i = {
