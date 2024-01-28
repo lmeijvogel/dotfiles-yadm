@@ -26,25 +26,26 @@ local on_attach = function(_, bufnr)
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', telescope.lsp_definitions, bufopts)
-  vim.keymap.set('n', 'gr', telescope.lsp_references, bufopts)
+  vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_doc<CR>', bufopts)
+  vim.keymap.set('n', 'gd', '<cmd>Lspsaga goto_definition<CR>', bufopts)
+  vim.keymap.set('n', 'gD', '<cmd>Lspsaga peek_definition<CR>', bufopts)
+  vim.keymap.set('n', 'gr', '<cmd>Lspsaga finder<CR>', bufopts)
   vim.keymap.set('n', 'gm', telescope.lsp_implementations, bufopts)
   vim.keymap.set('n', '<leader>k', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<leader>rr', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('v', '<leader>la', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', '<leader>rr', '<cmd>Lspsaga rename<CR>', bufopts)
+  vim.keymap.set('n', '<leader>la', '<cmd>Lspsaga code_action<CR>', bufopts)
+  vim.keymap.set('v', '<leader>la', '<cmd>Lspsaga code_action<CR>', bufopts)
   vim.keymap.set('n', '<leader>lf', function() vim.lsp.buf.format { async = true } end, bufopts)
   vim.keymap.set('n', '<leader>lr', '<cmd>LspRestart<CR>', bufopts)
 
   vim.keymap.set('n', '<leader>.', vim.lsp.buf.signature_help, bufopts)
 
   -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-  vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, bufopts)
-  vim.keymap.set('n', '[g', vim.diagnostic.goto_prev, bufopts)
-  vim.keymap.set('n', ']g', vim.diagnostic.goto_next, bufopts)
+  vim.keymap.set('n', '<leader>d', '<cmd>Lspsaga show_line_diagnostics<CR>', bufopts)
+  vim.keymap.set('n', '<leader>D', '<cmd>Lspsaga show_cursor_diagnostics<CR>', bufopts)
+  vim.keymap.set('n', '[g', '<cmd>Lspsaga diagnostic_jump_prev<CR>', bufopts)
+  vim.keymap.set('n', ']g', '<cmd>Lspsaga diagnostic_jump_next<CR>', bufopts)
   vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, bufopts)
 end
 
@@ -176,5 +177,16 @@ return {
         }
       },
     },
+    {
+      'nvimdev/lspsaga.nvim',
+      config = function()
+        require('lspsaga').setup({})
+      end,
+      ft = {'typescript', 'typescriptreact', 'cpp', 'lua', 'rust', 'go'},
+      dependencies = {
+        'nvim-treesitter/nvim-treesitter', -- optional
+        'nvim-tree/nvim-web-devicons'     -- optional
+      }
+    }
   }
 };
