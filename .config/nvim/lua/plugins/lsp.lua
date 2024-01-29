@@ -54,7 +54,9 @@ local eslint_on_attach = function(client, bufnr)
   client.server_capabilities.documentFormattingProvider = true
 end
 
-vim.api.nvim_set_keymap('i', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', {})
+vim.api.nvim_set_keymap('n', '<C-.>', '<cmd>Lspsaga code_action<CR>', {})
+vim.api.nvim_set_keymap('v', '<C-.>', '<cmd>Lspsaga code_action<CR>', {})
+vim.api.nvim_set_keymap('i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', {})
 
 return {
   {
