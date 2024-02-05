@@ -128,6 +128,14 @@
 
 [mergetool]
   keepBackup = false
+
+[merge]
+  tool = kdiff3
+  conflictstyle = diff3
+[difftool "vimdiff"]
+  cmd = vimdiff \"$LOCAL\" \"$REMOTE\"
+[mergetool "vimdiff"]
+  cmd = vimdiff \"$LOCAL\" \"$BASE\" \"$REMOTE\" \"$MERGED\"
 [advice]
   statusHints = false
   pushNonFastForward = false
@@ -146,9 +154,6 @@
 [pull]
   # Passes --rebase-merges to the rebase command.
   rebase = merges
-[merge]
-  tool = kdiff3
-  conflictstyle = diff3
 [core]
   pager = delta
   editor = nvim
@@ -168,3 +173,5 @@
 [delta]
   features = tangara-chilensis
   side-by-side = false
+[mergetool "fugitive"]
+	cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"
