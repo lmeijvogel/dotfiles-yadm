@@ -40,6 +40,11 @@ def render_branch_name(symbolic_ref)
 
   story_name, description = split(symbolic_ref)
 
+  if !story_name
+    puts symbolic_ref[0...25]
+    return
+  end
+
   desired_length = 25
 
   # I want to save at least one char and truncating adds 3, so 4.
@@ -57,7 +62,14 @@ def truncate(ref, desired_length)
 end
 
 def split(ref)
-  parts = %r[(\w+/\d+)-(.*)].match(ref)
+  # A branch name consists of
+  # TEAM/NUMBER-rest-of-description
+  #
+  # Since NUMBER is not always numeric (I use 'xxx' if I don't have a story number yet),
+  # I interpret anything between the '/' and the first '-' as the number.
+  parts = %r[(\w+/[^-]+)-(.*)].match(ref)
+
+  return nil if !parts
 
   story_name = parts[1]
   description = parts[2]
