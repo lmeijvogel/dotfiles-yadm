@@ -182,19 +182,25 @@ return {
     {
       'nvimdev/lspsaga.nvim',
       config = function()
-        require('lspsaga').setup({})
+        require('lspsaga').setup({
+          lightbulb = {
+            enable = false
+          }
+        })
       end,
-      ft = {'typescript', 'typescriptreact', 'cpp', 'lua', 'rust', 'go'},
+      ft = { 'typescript', 'typescriptreact', 'cpp', 'lua', 'rust', 'go' },
       dependencies = {
         'nvim-treesitter/nvim-treesitter', -- optional
-        'nvim-tree/nvim-web-devicons'     -- optional
+        'nvim-tree/nvim-web-devicons'      -- optional
       }
     },
     {
       "ray-x/lsp_signature.nvim",
       event = "VeryLazy",
       opts = {},
-      config = function(_, opts) require'lsp_signature'.setup(opts) end
+      config = function(_, opts)
+        require 'lsp_signature'.setup(opts)
+      end
     }
   }
 };
