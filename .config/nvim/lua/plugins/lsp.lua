@@ -185,6 +185,11 @@ return {
         require('lspsaga').setup({
           lightbulb = {
             enable = false
+          },
+          code_action = {
+            keys = {
+              quit = '<Esc>'
+            }
           }
         })
       end,
