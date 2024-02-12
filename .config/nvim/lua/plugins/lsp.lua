@@ -190,6 +190,12 @@ return {
             keys = {
               quit = '<Esc>'
             }
+          },
+          finder = {
+            keys = {
+              toggle_or_open = "<CR>",
+              quit = "<Esc>"
+            }
           }
         })
       end,
