@@ -131,7 +131,9 @@
 
 [merge]
   tool = kdiff3
-  conflictstyle = diff3
+  conflictstyle = zdiff3
+[difftool "difftastic"]
+  cmd = difft "$LOCAL" "$REMOTE"
 [difftool "vimdiff"]
   cmd = vimdiff \"$LOCAL\" \"$REMOTE\"
 [mergetool "vimdiff"]
@@ -169,9 +171,12 @@
 	required = true
 [diff]
 	noprefix = true
-	tool = meld
+	tool = difftastic
+	algorithm = histogram
 [delta]
   features = tangara-chilensis
   side-by-side = false
 [mergetool "fugitive"]
 	cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"
+[init]
+	defaultBranch = main
