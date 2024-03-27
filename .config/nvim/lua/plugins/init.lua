@@ -132,7 +132,6 @@ return {
   { "tpope/vim-endwise",            ft = "ruby" }, -- Automatically close begin/end statements
   "tpope/vim-unimpaired",                          -- Bracket commands: ]b, etc.
   "tpope/vim-rsi",                                 -- Readline style insertions
-  "editorconfig/editorconfig-vim",
   "buztard/vim-rel-jump",                          -- Store relative jumps (5j, 3k) in the jump list
   -- "jose-elias-alvarez/buftabline.nvim",  {"branch": "main"} ",Buffer list at top of screen
   {
@@ -201,6 +200,16 @@ return {
   'folke/trouble.nvim',
   'folke/neodev.nvim',         -- dev configuration for lua scripting in nvim
   "stevearc/overseer.nvim",    -- Task runner (e.g. VSCode tasks)
+  {
+    "sindrets/diffview.nvim",
+    config = function()
+      require('diffview').setup({
+        view = {
+          layout = "diff4_mixed"
+        }
+      })
+    end
+  },
   {
     "lewis6991/gitsigns.nvim",
     config = function()
