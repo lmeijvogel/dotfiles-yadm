@@ -20,9 +20,29 @@ return {
   {
     "tpope/vim-fugitive",
     config = function()
-      map('n', '<leader>gs', '<cmd>Git<CR>', { desc = "Status" })
       map('n', '<leader>ga', '<cmd>Git add %<CR>', { desc = "Add current file" })
       vim.keymap.set('n', '<leader>gb', '<cmd>Git blame<CR>', { desc = "Git blame" })
+    end
+  },
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",  -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
+
+      -- Only one of these is needed, not both.
+      "nvim-telescope/telescope.nvim", -- optional
+      "ibhagwan/fzf-lua",              -- optional
+    },
+    config = function()
+      require('neogit').setup({
+        git_services = {
+          ["github.com"] = "https://github.com/${owner}/${repository}/compare/${branch_name}?expand=1",
+          ["gitlab.rnd.mendix.com"] =
+          "https://gitlab.rnd.mendix.com/${owner}/${repository}/merge_requests/new?merge_request[source_branch]=${branch_name}",
+        }
+      })
+      map('n', '<leader>gs', '<cmd>Neogit<CR>', { desc = "Status" })
     end
   },
   "junegunn/fzf",
