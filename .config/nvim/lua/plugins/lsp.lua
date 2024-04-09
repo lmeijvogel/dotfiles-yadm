@@ -118,6 +118,9 @@ return {
               require('snippy').expand_snippet(args.body)
             end,
           },
+          -- The next two make sure that the top item is always selected
+          completion = { completeopt = "noselect" },
+          preselect = cmp.PreselectMode.None,
           window = {
             completion = cmp.config.window.bordered(),
             documentation = cmp.config.window.bordered(),
