@@ -78,7 +78,7 @@ return {
       -- The default sections, except mentioned below
       sections = {
         lualine_a = { 'mode' },
-        lualine_b = { 'branch', 'diff', 'diagnostics' },
+        lualine_b = { 'diagnostics' },
         lualine_c = { 'filename' },
         lualine_x = { 'filetype' }, -- Removed 'encoding' and 'fileformat' here
         lualine_y = { 'progress' },
