@@ -1,5 +1,0 @@
-#!/usr/bin/env /bin/bash
-
-i3-msg mode default
-
-sh $HOME/.config/polybar/launch.sh

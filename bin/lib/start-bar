@@ -1,0 +1,13 @@
+#!/usr/bin/env /bin/bash
+
+if [[ "$(hostname)" = "mendix" ]]; then
+  i3-msg mode default
+
+  sh $HOME/.config/polybar/launch.sh
+else
+  waymsg mode default
+
+  waybar
+fi
+
+# vi: set ft=sh

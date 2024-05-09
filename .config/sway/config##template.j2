@@ -1,0 +1,239 @@
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+### See $HOME/.config/yadm/ for monitor configuration
+
+output DP-1 position 0,0
+output HDMI-A-1 position 1680,0
+input "1133:49271:Logitech_USB_Optical_Mouse" {
+    left_handed enabled
+}
+
+input "1423:37904:KINESIS_FREESTYLE_KB800_KB800_Kinesis_Freestyle" {
+    xkb_layout us,us(colemak)
+    xkb_options caps:swapescape,compose:ralt
+}
+
+# Make sure that GTK+ applications start normally
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+# Mod4 == Win key
+set $mod Mod4
+set $hyper Mod4+Control+Shift+Mod1
+set $meh Control+Mod1+Shift
+
+{% if YADM_HOSTNAME == "desktop" %}
+  set $default_sink @DEFAULT_SINK@
+{% elif YADM_HOSTNAME == "mendix" %}
+  set $default_sink 2
+{% endif %}
+
+set $exec exec --no-startup-id
+set $ruby ruby --disable=gems
+set $mpd_host {{MPD_HOST}}
+# NB: Replacing the IP with $mpd_host does not work
+set $mpc mpc -h {{MPD_HOST}}
+
+set $ws1 "1: console"
+set $ws2 "2: code"
+set $ws3 "3: devtools"
+set $ws4 "4: www"
+
+{% if YADM_HOSTNAME == "desktop" %}
+  set $ws5 "5: windows"
+{% elif YADM_HOSTNAME == "mendix" %}
+  set $ws5 "5: zoom"
+{% endif %}
+
+set $ws6 "6: windows"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+set $ws_itest "itest"
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:DejaVu Sans 13
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec konsole
+
+# Lock the screen - The `--release` ensures that the command is executed after key release,
+# otherwise, the screen lock would be cancelled immediately.
+bindsym --release $mod+Control+q exec "/usr/bin/qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock"
+
+# kill focused window
+bindsym $mod+q kill
+bindsym $mod+Shift+q kill
+
+bindsym Mod1+F4 kill
+
+focus_follows_mouse no
+mouse_warping none
+
+# start rofi (program launcher)
+bindsym $mod+d $exec rofi -show drun
+bindsym $mod+slash $exec rofi -show window
+bindsym $mod+F1 $exec $HOME/.lib/run-custom-command.sh
+
+# Open or show my notes
+bindsym $mod+Shift+slash $exec bash $HOME/.lib/open-notes.sh
+
+# change focus
+bindsym $mod+h $exec $ruby $HOME/bin/i3-change-focus-with-floating-window.rb left
+bindsym $mod+j $exec $ruby $HOME/bin/i3-change-focus-with-floating-window.rb down
+bindsym $mod+k $exec $ruby $HOME/bin/i3-change-focus-with-floating-window.rb up
+bindsym $mod+l $exec $ruby $HOME/bin/i3-change-focus-with-floating-window.rb right
+
+# resize windows with the arrow keys
+bindsym $mod+Left resize shrink width 10 px or 10 ppt
+bindsym $mod+Down resize grow height 10 px or 10 ppt
+bindsym $mod+Up resize shrink height 10 px or 10 ppt
+bindsym $mod+Right resize grow width 10 px or 10 ppt
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# split in horizontal orientation
+bindsym $mod+backslash split h
+
+# split in vertical orientation
+bindsym $mod+minus split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus_wrapping no
+
+# reload i3 configuration
+bindsym $mod+Shift+r reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Control+Shift+r restart
+
+bindsym $mod+Shift+e exec wlogout
+
+set $system_mode [y] yadm alt & reload [i] reload i3 [b] polybar [p] plasmashell [n] nitrogen
+set $sound_mode [s] mute [q] volume up [a] volume down -- [z] prev [x] start [c] pause [v] stop [b] next
+set $go_to_mode [s] Slack [z] Start Zoom (LFX) [r] SimpleScreenRecorder [t] Thunderbird [w] webcam settings [m] work helpers
+set $work_mode [V] Set VPN split tunneling [b] Blank App [s] Kitchen Sink [w] Workflow Starter App
+set $webcam_mode [qaz] Zoom [wsx] Brightness [edc] Saturation [rfv] Contrast
+
+{% include ".config/i3/modes/resize" %}
+{% include ".config/i3/modes/yadm" %}
+{% include ".config/i3/modes/sound" %}
+{% include ".config/i3/modes/go_to_window" %}
+{% include ".config/i3/modes/webcam" %}
+{% include ".config/i3/modes/work" %}
+
+bindsym $mod+r mode "resize"
+bindsym $mod+y mode "$system_mode"
+bindsym $mod+Shift+s mode "$sound_mode"
+bindsym $mod+o mode "$go_to_mode"
+
+{% include ".config/i3/window_specific" %}
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #4c7899 #248fff #ffffff #2e9ef4   #ffffff
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
+
+hide_edge_borders horizontal
+
+{# Apparently, it's not possible to interpolate YADM_HOSTNAME or yadm.hostname in the include file path #}
+{% if YADM_HOSTNAME == "desktop" %}
+{% include ".config/yadm/i3_monitors.desktop.j2" %}
+{% elif YADM_HOSTNAME == "mendix" %}
+{% include ".config/yadm/i3_monitors.mendix.j2" %}
+  $exec ~/bin/start_workrave
+
+  for_window [class="firefox"] floating enable, move to scratchpad, scratchpad show
+  bindsym $mod+grave [class="firefox"] scratchpad show
+
+  for_window [class="cantata"] floating enable, move to scratchpad, scratchpad show
+  bindsym $mod+m [class="cantata"] scratchpad show
+
+  for_window [title="^Windows.*VirtualBox$"] move container to workspace $ws6
+
+  bindsym Control+Shift+$mod+Mod1+Escape $exec $HOME/.lib/custom-commands/layouts/$(hostname)/laptop-only.sh
+{% endif %}
+
+# Pulse Audio controls
+bindsym $mod+F8        $exec pactl set-sink-mute   $default_sink toggle # mute/unmute sound
+
+# Open sound mixer in a floating window
+bindsym $mod+Shift+F8  exec qpaeq; exec "bash -c 'sleep 0.2s;i3-msg floating enable;i3-msg resize set 800px 600px;i3-msg move position center'"
+
+bindsym $mod+F9        $exec pactl set-sink-volume $default_sink -5% # decrease sound volume
+bindsym $mod+Shift+F9  $exec pactl set-sink-volume $default_sink -1% # decrease sound volume (small step)
+
+bindsym $mod+F10       $exec pactl set-sink-volume $default_sink +5% # increase sound volume
+bindsym $mod+Shift+F10 $exec pactl set-sink-volume $default_sink +1% # increase sound volume (small step)
+
+# Calculator
+bindsym $mod+F11        $exec kcalc
+
+# Cycle windows (super-tab and alt-tab)
+bindsym $mod+Tab $exec $ruby $HOME/bin/i3-cycle-windows.rb up
+bindsym Mod1+Tab $exec $ruby $HOME/bin/i3-cycle-windows.rb up
+bindsym $mod+Shift+Tab $exec $ruby $HOME/bin/i3-cycle-windows.rb down
+bindsym Mod1+Shift+Tab $exec $ruby $HOME/bin/i3-cycle-windows.rb down
+
+{% if YADM_HOSTNAME == "desktop" %}
+  # For i3-gaps: No border
+  for_window [class=".*"] border pixel 2
+  gaps inner 4
+
+  smart_gaps on
+{% endif %}
+
+# Screenshot selection to clipboard
+bindsym --release Print exec spectacle --background --region --copy-image
+
+# Open screenshot tool
+bindsym --release Shift+Print exec spectacle --gui
+
+# Music bindings without the i3 mode
+bindsym $hyper+s        $exec pactl set-sink-mute   $default_sink toggle
+
+# Volume up/down with q/a
+bindsym $hyper+q        $exec pactl set-sink-volume $default_sink +5% # increase sound volume
+bindsym $hyper+a        $exec pactl set-sink-volume $default_sink -5% # decrease sound volume
+
+bindsym $hyper+z        $exec $mpc cdprev
+bindsym $hyper+x        $exec $ruby $HOME/bin/toggle-mpd-playing $mpd_host
+bindsym $hyper+c        $exec $mpc pause
+bindsym $hyper+v        $exec $mpc stop
+bindsym $hyper+b        $exec $mpc next
+
+bindsym $mod+Shift+w $exec $HOME/bin/breaks_off
+bindsym $hyper+w $exec $HOME/bin/breaks_off
+
+exec_always --no-startup-id "/bin/bash $HOME/start.sh"
+
+{% include ".config/i3/workspaces" %}
+
+$exec i3-msg workspace $ws1
+$exec i3-msg workspace $ws4

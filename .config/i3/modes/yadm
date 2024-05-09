@@ -5,8 +5,8 @@ mode "$system_mode" {
     bindsym i $exec bash $HOME/bin/lib/reload-i3-from-yadm
     bindsym $mod+i $exec bash $HOME/bin/lib/reload-i3-from-yadm
 
-    bindsym b $exec bash $HOME/bin/lib/start-polybar &
-    bindsym $mod+b $exec bash $HOME/bin/lib/start-polybar &
+    bindsym b $exec bash $HOME/bin/lib/start-bar &
+    bindsym $mod+b $exec bash $HOME/bin/lib/start-bar &
 
     bindsym p $exec bash $HOME/bin/lib/start-plasmashell
     bindsym $mod+p $exec bash $HOME/bin/lib/start-plasmashell
