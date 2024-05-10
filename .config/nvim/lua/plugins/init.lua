@@ -80,6 +80,9 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     opts = {
+      options = {
+        theme = 'material'
+      },
       -- The default sections, except mentioned below
       sections = {
         lualine_a = { 'mode' },
