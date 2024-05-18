@@ -30,7 +30,6 @@ set $meh Control+Mod1+Shift
 {% endif %}
 
 set $exec exec --no-startup-id
-set $ruby ruby --disable=gems
 set $mpd_host {{MPD_HOST}}
 # NB: Replacing the IP with $mpd_host does not work
 set $mpc mpc -h {{MPD_HOST}}
@@ -85,10 +84,10 @@ bindsym $mod+F1 $exec $HOME/.lib/run-custom-command.sh
 bindsym $mod+Shift+slash $exec bash $HOME/.lib/open-notes.sh
 
 # change focus
-bindsym $mod+h $exec $ruby $HOME/bin/i3-change-focus-with-floating-window.rb left
-bindsym $mod+j $exec $ruby $HOME/bin/i3-change-focus-with-floating-window.rb down
-bindsym $mod+k $exec $ruby $HOME/bin/i3-change-focus-with-floating-window.rb up
-bindsym $mod+l $exec $ruby $HOME/bin/i3-change-focus-with-floating-window.rb right
+bindsym $mod+h $exec ruby $HOME/bin/i3-change-focus-with-floating-window.rb left
+bindsym $mod+j $exec ruby $HOME/bin/i3-change-focus-with-floating-window.rb down
+bindsym $mod+k $exec ruby $HOME/bin/i3-change-focus-with-floating-window.rb up
+bindsym $mod+l $exec ruby $HOME/bin/i3-change-focus-with-floating-window.rb right
 
 # resize windows with the arrow keys
 bindsym $mod+Left resize shrink width 10 px or 10 ppt
@@ -196,10 +195,10 @@ bindsym $mod+Shift+F10 $exec pactl set-sink-volume $default_sink +1% # increase 
 bindsym $mod+F11        $exec kcalc
 
 # Cycle windows (super-tab and alt-tab)
-bindsym $mod+Tab $exec $ruby $HOME/bin/i3-cycle-windows.rb up
-bindsym Mod1+Tab $exec $ruby $HOME/bin/i3-cycle-windows.rb up
-bindsym $mod+Shift+Tab $exec $ruby $HOME/bin/i3-cycle-windows.rb down
-bindsym Mod1+Shift+Tab $exec $ruby $HOME/bin/i3-cycle-windows.rb down
+bindsym $mod+Tab $exec ruby $HOME/bin/i3-cycle-windows.rb up
+bindsym Mod1+Tab $exec ruby $HOME/bin/i3-cycle-windows.rb up
+bindsym $mod+Shift+Tab $exec ruby $HOME/bin/i3-cycle-windows.rb down
+bindsym Mod1+Shift+Tab $exec ruby $HOME/bin/i3-cycle-windows.rb down
 
 {% if YADM_HOSTNAME == "desktop" %}
   # For i3-gaps: No border
@@ -223,7 +222,7 @@ bindsym $hyper+q        $exec pactl set-sink-volume $default_sink +5% # increase
 bindsym $hyper+a        $exec pactl set-sink-volume $default_sink -5% # decrease sound volume
 
 bindsym $hyper+z        $exec $mpc cdprev
-bindsym $hyper+x        $exec $ruby $HOME/bin/toggle-mpd-playing $mpd_host
+bindsym $hyper+x        $exec ruby $HOME/bin/toggle-mpd-playing $mpd_host
 bindsym $hyper+c        $exec $mpc pause
 bindsym $hyper+v        $exec $mpc stop
 bindsym $hyper+b        $exec $mpc next
