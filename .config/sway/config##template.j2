@@ -64,7 +64,7 @@ bindsym $mod+Return exec konsole
 
 # Lock the screen - The `--release` ensures that the command is executed after key release,
 # otherwise, the screen lock would be cancelled immediately.
-bindsym --release $mod+Control+q exec "/usr/bin/qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock"
+bindsym --release $mod+Control+q exec "loginctl lock-session"
 
 # kill focused window
 bindsym $mod+q kill
