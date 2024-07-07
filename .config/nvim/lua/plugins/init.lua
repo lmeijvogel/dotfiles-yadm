@@ -193,6 +193,12 @@ return {
   { "iamcco/markdown-preview.nvim", build = "cd app && yarn install" },
   "echasnovski/mini.align", -- Align statements
   {
+    "echasnovski/mini.ai",  -- Extra text objects
+    config = function()
+      require('mini.ai').setup({})
+    end
+  },
+  {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       -- this can also be a list of languages
@@ -271,4 +277,18 @@ return {
       'rcarriga/nvim-notify',
     },
   },
+  {
+    "cbochs/portal.nvim",
+    config = function()
+      require("portal").setup({
+        ---The raw window options used for the portal window
+        window_options = {
+          height = 8,
+        },
+      })
+
+      vim.keymap.set("n", "<leader>o", "<cmd>Portal jumplist backward<cr>")
+      vim.keymap.set("n", "<leader>i", "<cmd>Portal jumplist forward<cr>")
+    end
+  }
 }
