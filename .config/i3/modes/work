@@ -2,7 +2,7 @@ mode "$work_mode" {
       bindsym b $exec $HOME/bin/upload_mpk.sh /home/lennaert/projects/studio/itest/resources/mpks/webmodeler/Blank_App.mpk ; mode "default"
       bindsym s $exec $HOME/bin/upload_mpk.sh /home/lennaert/projects/studio/itest/resources/mpks/The_Kitchen_Sink.mpk ; mode "default"
       bindsym w $exec $HOME/bin/upload_mpk.sh /home/lennaert/projects/studio/itest/resources/mpks/workflow/WorkflowStarterApp.mpk ; mode "default"
-      bindsym Shift+v $exec konsole --noclose -p 'LocalTabTitleFormat=vpn' -e bash -c "sudo /usr/bin/openfortivpn" ; mode "default"
+      bindsym Shift+v $exec konsole --noclose -p 'LocalTabTitleFormat=vpn' -e bash $HOME/bin/lib/renew-vpn-routes.sh ; mode "default"
 
       # back to normal: enter or escape
       bindsym Return mode "default"
