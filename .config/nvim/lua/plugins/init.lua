@@ -70,8 +70,10 @@ return {
     "kevinhwang91/nvim-ufo", -- Improved folding
     dependencies = {
       "kevinhwang91/promise-async"
-    }
+    },
+    config = true
   },
+  {
     "stevearc/oil.nvim",
     config = function()
       require("oil").setup({
