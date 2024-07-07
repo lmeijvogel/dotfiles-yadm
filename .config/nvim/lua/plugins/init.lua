@@ -281,9 +281,6 @@ return {
           -- Use a nicer color
           vim.cmd [[hi! link GitSignsCurrentLineBlame Conceal]]
         end,
-        yadm = {
-          enable = true
-        },
       })
     end,
     dependencies = {
