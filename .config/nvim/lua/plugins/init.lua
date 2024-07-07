@@ -72,6 +72,14 @@ return {
       "kevinhwang91/promise-async"
     }
   },
+    "stevearc/oil.nvim",
+    config = function()
+      require("oil").setup({
+        delete_to_trash = true,
+        skip_confirm_for_simple_edits = true
+      })
+    end
+  },
   {
     "nvim-lualine/lualine.nvim",
     opts = {
