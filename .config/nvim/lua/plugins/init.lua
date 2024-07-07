@@ -160,7 +160,17 @@ return {
   "AndrewRadev/splitjoin.vim",
   "jelera/vim-javascript-syntax",
   "MaxMEllon/vim-jsx-pretty", -- Syntax highlighting jsx/tsx
-  "prettier/vim-prettier",
+  {
+    "sbdchd/neoformat",
+    config = function()
+      vim.cmd [[
+        augroup fmt
+          autocmd!
+          autocmd BufWritePre * undojoin | Neoformat
+        augroup END
+    ]]
+    end
+  },
   {
     "jceb/vim-orgmode",
     dependencies = {
