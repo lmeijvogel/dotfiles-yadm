@@ -34,8 +34,8 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', '<leader>k', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', '<leader>rr', '<cmd>Lspsaga rename<CR>', bufopts)
-  vim.keymap.set('n', '<leader>la', '<cmd>Lspsaga code_action<CR>', bufopts)
-  vim.keymap.set('v', '<leader>la', '<cmd>Lspsaga code_action<CR>', bufopts)
+  vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('v', '<leader>la', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', '<leader>lf', function() vim.lsp.buf.format { async = true } end, bufopts)
   vim.keymap.set('n', '<leader>lr', '<cmd>LspRestart<CR>', bufopts)
 
@@ -54,8 +54,8 @@ local eslint_on_attach = function(client, bufnr)
   client.server_capabilities.documentFormattingProvider = true
 end
 
-vim.api.nvim_set_keymap('n', '<C-.>', '<cmd>Lspsaga code_action<CR>', {})
-vim.api.nvim_set_keymap('v', '<C-.>', '<cmd>Lspsaga code_action<CR>', {})
+vim.api.nvim_set_keymap('n', '<C-.>', '<cmd>lua vim.lsp.buf.code_action()<CR>', {})
+vim.api.nvim_set_keymap('v', '<C-.>', '<cmd>lua vim.lsp.buf.code_action()<CR>', {})
 vim.api.nvim_set_keymap('i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', {})
 
 return {
