@@ -214,9 +214,12 @@ return {
     main = "ibl",
   },
   "nvchad/nvim-colorizer.lua", -- Show colors visually
-  'folke/trouble.nvim',
-  'folke/neodev.nvim',         -- dev configuration for lua scripting in nvim
-  "stevearc/overseer.nvim",    -- Task runner (e.g. VSCode tasks)
+  {
+    'folke/trouble.nvim',
+    opts = {}
+  },
+  'folke/neodev.nvim',      -- dev configuration for lua scripting in nvim
+  "stevearc/overseer.nvim", -- Task runner (e.g. VSCode tasks)
   {
     "sindrets/diffview.nvim",
     config = function()
