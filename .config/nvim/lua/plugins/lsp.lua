@@ -64,6 +64,7 @@ return {
       "neovim/nvim-lspconfig",
       config = function()
         require('lspconfig')['vtsls'].setup({ on_attach = on_attach })
+        require('lspconfig')['gopls'].setup({ on_attach = on_attach })
         require('lspconfig')['cssls'].setup({ on_attach = on_attach })
         require('lspconfig')['eslint'].setup({ on_attach = eslint_on_attach })
         require('lspconfig')['lua_ls'].setup({
