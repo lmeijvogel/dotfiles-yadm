@@ -132,7 +132,7 @@
 
 [merge]
   tool = kdiff3
-  conflictstyle = zdiff3
+  ; conflictstyle = zdiff3
 [difftool "difftastic"]
   cmd = difft "$LOCAL" "$REMOTE"
 [difftool "vimdiff"]
