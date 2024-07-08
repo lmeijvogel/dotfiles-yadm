@@ -35,8 +35,6 @@ vim.cmd [[let test#csharp#dotnettest#executable = 'dotnet test --no-build -l "co
 map('n', '<leader>sr', '<cmd>call SwitchTestRunner()<CR>', { desc = "Switch test runner" })
 
 map('n', '<leader>sd', '<cmd>Trouble document_diagnostics<CR>', { desc = "Document diagnostics" })
-map('n', '<leader>sw', '<cmd>Trouble quickfix<CR>', { desc = "Project diagnostics (after build)" })
-map('n', '<leader>sb', '<cmd>make<CR>', { desc = "Build project" })
 
 vim.cmd [[
   augroup strdr4605

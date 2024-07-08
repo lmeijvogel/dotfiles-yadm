@@ -230,8 +230,18 @@ return {
     'folke/trouble.nvim',
     opts = {}
   },
-  'folke/neodev.nvim',      -- dev configuration for lua scripting in nvim
-  "stevearc/overseer.nvim", -- Task runner (e.g. VSCode tasks)
+  'folke/neodev.nvim', -- dev configuration for lua scripting in nvim
+  {
+    "neomake/neomake",
+    config = function()
+      vim.cmd [[
+        autocmd User NeomakeFinished :Trouble quickfix
+      ]]
+
+      map('n', '<leader>sw', '<cmd>Trouble quickfix<CR>', { desc = "Project diagnostics (after build)" })
+      map('n', '<leader>sb', '<cmd>NeomakeProject<CR>', { desc = "Build project" })
+    end
+  },
   {
     "sindrets/diffview.nvim",
     config = function()
