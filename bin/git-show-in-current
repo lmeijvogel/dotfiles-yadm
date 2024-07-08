@@ -1,3 +1,6 @@
+# Given a commit, show all commits in the current history
+# with the same message
+
 message=$(git show --oneline --no-patch --pretty=format:%s $1)
 
 git log --grep "$message"
