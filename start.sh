@@ -22,11 +22,8 @@ if [[ "$(hostname)" = "mendix" ]]; then
   if [[ "$(pactl list short sources | grep Trust_GXT)" != "" ]]; then
     pactl set-default-source alsa_input.usb-MUSIC-BOOST_Trust_GXT_242_Microphone-00.mono-fallback
   fi
-
-  (sleep 2 ; $HOME/bin/lib/start-polybar &)
 else
   (killall -wq gammastep ; gammastep)&
-  (pkill waybar ; waybar --config $HOME/.config/waybar/config.json) &
 
   # Starts swayidle and locks
   (pkill swayidle ; swayidle -w \
@@ -38,5 +35,7 @@ else
 
   (pkill -f sway-audio-idle-inhibit ; sway-audio-idle-inhibit) &
 fi
+
+(sleep 2 ; $HOME/bin/lib/start-bar &)
 
 (sleep 3 ; nitrogen --restore)&
