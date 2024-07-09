@@ -1,3 +1,5 @@
+(nitrogen --restore)&
+
 if [[ "$(hostname)" = "mendix" ]]; then
   # The "sleep" is to (hopefully) ensure that compton is started long after all the monitor adjustments
   if [ -x /usr/sbin/picom ]; then
@@ -37,5 +39,3 @@ else
 fi
 
 (sleep 2 ; $HOME/bin/lib/start-bar &)
-
-(sleep 3 ; nitrogen --restore)&
