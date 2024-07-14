@@ -312,5 +312,34 @@ return {
       vim.keymap.set("n", "<leader>o", "<cmd>Portal jumplist backward<cr>")
       vim.keymap.set("n", "<leader>i", "<cmd>Portal jumplist forward<cr>")
     end
+  },
+  {
+    "lmeijvogel/kitty-runner.nvim",
+    config = function()
+      require("kitty-runner").setup({
+        use_keymaps = false,
+        win_args = { "--class=nvim-testrunner", "--directory=" .. vim.fn.getcwd() },
+
+        run_cmd = { "send-text", "--" },
+        send_key_cmd = { "send-key", "--" },
+        clear_command = { "scroll-window", "end" },
+        kill_cmd = { "close-window" }
+      })
+
+      local function run_tests(path)
+        local runner = require('kitty-runner')
+
+        runner.run_command('npm run test ' .. path)
+      end
+
+      vim.keymap.set("n", "<leader>so", "<cmd>:KittyOpenRunner<cr>")
+      vim.keymap.set("n", "<leader>sf", function() run_tests(vim.fn.expand('%')) end)
+      vim.keymap.set("n", "<leader>sa", function() run_tests("") end)
+      vim.keymap.set("n", "<leader>sc", "<cmd>lua require('kitty-runner').send_key('ctrl+c')<cr>")
+      vim.keymap.set("n", "<leader>sk", "<cmd>:KittyKillRunner<cr>")
+    end,
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
   }
 }

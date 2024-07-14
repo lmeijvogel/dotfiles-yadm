@@ -43,3 +43,5 @@ for_window [class="cantata"] floating enable
 for_window [class="evolution-alarm-notify"] floating enable resize set 800 256
 for_window [title="^vpn — Konsole"] move container to workspace $ws10 ; workspace $ws10
 for_window [class="kruler"] floating enable
+for_window [class="nvim-testrunner"] move container to workspace $ws3 ; workspace $ws3
+for_window [app_id="nvim-testrunner"] move container to workspace $ws3 ; workspace $ws3
