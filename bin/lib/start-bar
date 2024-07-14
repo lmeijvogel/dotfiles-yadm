@@ -5,6 +5,7 @@ if [[ "$(hostname)" = "mendix" ]]; then
 
   sh $HOME/.config/polybar/launch.sh
 else
+  pkill waybar
   waymsg mode default
 
   waybar
