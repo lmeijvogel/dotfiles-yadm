@@ -25,32 +25,14 @@ map('n', '<C-S-Tab>', '<cmd>bp<CR>', {})
 vim.g["neoterm_default_mod"] = 'horizontal'
 vim.g["neoterm_automap_keys"] = '<leader>tt'
 
-vim.cmd [[let test#strategy = "asyncrun_background"]]
-vim.cmd [[let test#ruby#rspec#executable = 'rspec']]
-vim.cmd [[let test#javascript#jest#executable = 'npm run test']]
-
 -- Do not build by default since it's slow
 vim.cmd [[let test#csharp#dotnettest#executable = 'dotnet test --no-build -l "console;verbosity=normal"']]
-
-map('n', '<leader>sr', '<cmd>call SwitchTestRunner()<CR>', { desc = "Switch test runner" })
-
-map('n', '<leader>sd', '<cmd>Trouble document_diagnostics<CR>', { desc = "Document diagnostics" })
 
 vim.cmd [[
   augroup strdr4605
     autocmd FileType typescript,typescriptreact compiler tsc | setlocal makeprg=npx\ tsc
   augroup END
 ]]
-
-function SwitchTestRunner()
-  if vim.g["test#strategy"] == "neoterm" then
-    vim.g["test#strategy"] = "asyncrun_background"
-    print "Using asyncrun for tests"
-  else
-    vim.g["test#strategy"] = "neoterm"
-    print "Sending tests to neoterm"
-  end
-end
 
 vim.g["prettier#exec_cmd_path"] = vim.fn.getcwd() .. "/node_modules/.bin/prettier-eslint"
 

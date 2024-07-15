@@ -190,11 +190,8 @@ return {
   },
   "leafgarland/typescript-vim", -- Syntax files for typescript
   "ruanyl/vim-sort-imports",    -- Sort typescript imports
-
-  "wellle/targets.vim",         -- New text objects, like cI,
-
   {
-    "machakann/vim-sandwich", -- alternative to surround.vim
+    "machakann/vim-sandwich",   -- alternative to surround.vim
     config = function()
       vim.cmd [[runtime macros/sandwich/keymap/surround.vim]]
     end
