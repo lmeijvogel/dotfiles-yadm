@@ -13,7 +13,7 @@ map('n', '<leader>e1', ':e $HOME/.vimrc<CR>', {})
 require("commands")
 map('n', '<leader>e2', ':e $HOME/.config/nvim/lua/commands.lua<CR>', {})
 
-require("plugins")
+require("plugins_config")
 map('n', '<leader>e3', ':e $HOME/.config/nvim/lua/plugins/init.lua<CR>', {})
 
 require("plugin_commands")
