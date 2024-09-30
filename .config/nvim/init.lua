@@ -73,12 +73,56 @@ vim.opt.scrolloff = 10
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
+-- Add aliases to catch typos
+vim.cmd [[
+  command! W w
+  command! Wq wq
+  command! WQ wq
+  command! Q q
+
+  command! Qa qa
+  command! Wqa wqa
+  command! -bang Qa qa<bang>
+  command! -bang QA qa<bang>
+  command! -bang Wqa wqa<bang>
+]]
+
+vim.cmd [[autocmd BufLeave,FocusLost silent! wall]]
+
+-- The order is "reversed" (j is previous, k is next) to look more like
+-- left <-> right
+vim.keymap.set('n', '<C-A-k>', '<cmd>bn<CR>', {})
+vim.keymap.set('n', '<C-A-j>', '<cmd>bp<CR>', {})
+
+vim.keymap.set('n', '<M-h>', '<cmd>bp<CR>', {})
+vim.keymap.set('n', '<M-l>', '<cmd>bn<CR>', {})
+
+-- With shift - makes for easier buffer deletion (not having to release and press Shift every time)
+vim.keymap.set('n', '<M-S-h>', '<cmd>bp<CR>', {})
+vim.keymap.set('n', '<M-S-l>', '<cmd>bn<CR>', {})
+
+-- Easy delete buffer
+vim.keymap.set('n', '<M-S-d>', '<cmd>bd<CR>', {})
+
+-- Same with ctrl-tab
+vim.keymap.set('n', '<C-Tab>', '<cmd>bn<CR>', {})
+vim.keymap.set('n', '<C-S-Tab>', '<cmd>bp<CR>', {})
+
+vim.keymap.set('n', '<F6>', ':colorscheme tokyonight-night<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<F7>', ':colorscheme tokyonight-day<CR>', { noremap = true, silent = true })
+
+-- Copy filename:line_number to clipboard
+vim.keymap.set('n', '<leader>fl', ":let @+ = expand(\"%:p\").':'.line('.')<CR>", { desc = 'Copy file+line to clipboard' })
+vim.keymap.set('n', '<leader>ff', ':let @+ = expand("%:p")<CR>', { desc = 'Copy file to clipboard' })
+
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>d', '<cmd>Lspsaga show_line_diagnostics<CR>', { desc = 'Show line diagnostics' })
+vim.keymap.set('n', '<leader>D', '<cmd>Lspsaga show_cursor_diagnostics<CR>', { desc = 'Show cursor diagnostics' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -410,6 +454,8 @@ require('lazy').setup({
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
           map('<leader>rr', vim.lsp.buf.rename, '[R]ename')
+
+          vim.api.nvim_set_keymap('i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', {})
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
