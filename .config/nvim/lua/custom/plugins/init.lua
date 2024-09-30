@@ -34,7 +34,7 @@ return {
         autocmd User NeomakeJobInit :wall
       ]]
 
-      vim.keymap.set('n', '<leader>sw', '<cmd>Trouble quickfix<CR>', { desc = 'Project diagnostics (after build)' })
+      vim.keymap.set('n', '<leader>ww', '<cmd>Trouble quickfix<CR>', { desc = 'Project diagnostics (after build)' })
       vim.keymap.set('n', '<leader>wb', '<cmd>NeomakeProject<CR>', { desc = '[B]uild project' })
     end,
   },
