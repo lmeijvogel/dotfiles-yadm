@@ -762,6 +762,26 @@ require('lazy').setup({
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
+  -- Store relative jumps (5j, 3k) in the jump list
+  'buztard/vim-rel-jump',
+
+  -- Readline style insertions
+  'tpope/vim-rsi',
+
+  {
+    'gbprod/yanky.nvim',
+    config = function()
+      require('yanky').setup {}
+      vim.keymap.set({ 'n', 'x' }, 'p', '<Plug>(YankyPutAfter)')
+      vim.keymap.set({ 'n', 'x' }, 'P', '<Plug>(YankyPutBefore)')
+      vim.keymap.set({ 'n', 'x' }, 'gp', '<Plug>(YankyGPutAfter)')
+      vim.keymap.set({ 'n', 'x' }, 'gP', '<Plug>(YankyGPutBefore)')
+
+      vim.keymap.set('n', '<M-p>', '<Plug>(YankyPreviousEntry)')
+      vim.keymap.set('n', '<M-n>', '<Plug>(YankyNextEntry)')
+    end,
+  },
+
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
     config = function()

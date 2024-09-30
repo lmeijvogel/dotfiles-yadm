@@ -43,6 +43,12 @@ return {
     opts = {},
   },
   {
+    'nvimdev/lspsaga.nvim',
+    config = function()
+      require('lspsaga').setup {}
+    end,
+  },
+  {
     'stevearc/overseer.nvim',
     config = function()
       require('overseer').setup()
@@ -68,4 +74,14 @@ return {
       })
     end,
   }, -- Task runner (e.g. VSCode tasks)
+  {
+    'Shatur/neovim-session-manager',
+    config = function()
+      local config = require 'session_manager.config'
+
+      require('session_manager').setup {
+        autoload_mode = { config.AutoloadMode.CurrentDir },
+      }
+    end,
+  },
 }
