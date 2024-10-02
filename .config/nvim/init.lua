@@ -101,9 +101,6 @@ vim.keymap.set('n', '<M-l>', '<cmd>bn<CR>', {})
 vim.keymap.set('n', '<M-S-h>', '<cmd>bp<CR>', {})
 vim.keymap.set('n', '<M-S-l>', '<cmd>bn<CR>', {})
 
--- Easy delete buffer
-vim.keymap.set('n', '<M-S-d>', '<cmd>bd<CR>', {})
-
 -- Same with ctrl-tab
 vim.keymap.set('n', '<C-Tab>', '<cmd>bn<CR>', {})
 vim.keymap.set('n', '<C-S-Tab>', '<cmd>bp<CR>', {})

@@ -84,4 +84,11 @@ return {
       }
     end,
   },
+  {
+    'famiu/bufdelete.nvim', -- Allow deleting buffers while keeping splits (which :bd doesn't do)
+    config = function()
+      -- Easy delete buffer
+      vim.keymap.set('n', '<M-S-d>', '<cmd>Bdelete<CR>', {})
+    end,
+  },
 }
