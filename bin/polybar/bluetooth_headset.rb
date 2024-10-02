@@ -23,13 +23,14 @@ class BluetoothDevice
   end
 
   def toggle
-    return if !connected
+    return if !connected?
 
     new_profile = profile_id == HEADSET ? HIFI : HEADSET
 
     system("pacmd", "set-card-profile", pa_device_index, new_profile)
   rescue StandardError => e
     puts "Error! #{e.message}"
+    puts e.backtrace
     exit 1
   end
 
