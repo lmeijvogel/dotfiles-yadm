@@ -338,6 +338,13 @@ require('lazy').setup({
             require('telescope.themes').get_dropdown(),
           },
         },
+        defaults = {
+          mappings = {
+            i = {
+              ['<C-u>'] = false,
+            },
+          },
+        },
       }
 
       -- Enable Telescope extensions if they are installed
