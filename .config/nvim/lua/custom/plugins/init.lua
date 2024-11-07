@@ -111,4 +111,13 @@ return {
       vim.keymap.set('n', '<M-S-d>', '<cmd>Bdelete<CR>', {})
     end,
   },
+  {
+    'kevinhwang91/nvim-ufo', -- Improved folding
+    dependencies = {
+      'kevinhwang91/promise-async',
+    },
+    config = function()
+      vim.opt.foldlevelstart = 99
+    end,
+  },
 }
