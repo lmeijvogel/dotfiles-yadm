@@ -59,7 +59,9 @@ return {
   {
     'stevearc/overseer.nvim',
     config = function()
-      require('overseer').setup()
+      local overseer = require 'overseer'
+
+      overseer.setup()
 
       vim.api.nvim_create_user_command('Make', function(params)
         -- Insert args at the '$*' in the makeprg
@@ -80,6 +82,16 @@ return {
         nargs = '*',
         bang = true,
       })
+
+      -- open = true: Open quickfix if there are diagnostics
+      -- close = true: Close quickfix if there are no diagnostics
+      overseer.add_template_hook({ module = 'vscode', name = '^Typescript watch' }, function(task_defn, util)
+        util.add_component(task_defn, { 'on_result_diagnostics_quickfix', open = true, close = true })
+        util.add_component(task_defn, { 'on_complete_notify', statuses = { 'SUCCESS' } })
+      end)
+
+      vim.keymap.set('n', '<leader>tr', '<cmd>OverseerRun<CR>', { desc = 'Run task' })
+      vim.keymap.set('n', '<leader>tt', '<cmd>OverseerToggle<CR>', { desc = 'Toggle tasks window' })
     end,
   }, -- Task runner (e.g. VSCode tasks)
   {
