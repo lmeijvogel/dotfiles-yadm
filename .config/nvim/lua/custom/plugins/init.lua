@@ -19,6 +19,14 @@ return {
       vim.keymap.set('n', '<leader>gs', '<cmd>Neogit<CR>', { desc = 'Status' })
     end,
   },
+  {
+    'tpope/vim-fugitive',
+    config = function()
+      vim.keymap.set('n', '<leader>ga', '<cmd>Git add %<CR>', { desc = 'Add current file' })
+      vim.keymap.set('n', '<leader>gb', '<cmd>Git blame<CR>', { desc = 'Git blame' })
+    end,
+  },
+
   'numToStr/Comment.nvim',
   {
     'neomake/neomake',
