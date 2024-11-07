@@ -112,6 +112,41 @@ return {
     end,
   },
   {
+    'zk-org/zk-nvim',
+    config = function()
+      require('zk').setup {
+        -- can be "telescope", "fzf", "fzf_lua", "minipick", or "select" (`vim.ui.select`)
+        -- it's recommended to use "telescope", "fzf", "fzf_lua", or "minipick"
+        picker = 'telescope',
+
+        lsp = {
+          -- `config` is passed to `vim.lsp.start_client(config)`
+          config = {
+            cmd = { 'zk', 'lsp' },
+            name = 'zk',
+            -- on_attach = ...
+            -- etc, see `:h vim.lsp.start_client()`
+          },
+
+          -- automatically attach buffers in a zk notebook that match the given filetypes
+          auto_attach = {
+            enabled = true,
+            filetypes = { 'markdown' },
+          },
+        },
+      }
+
+      vim.keymap.set('n', '<leader>kn', '<cmd>ZkNew<CR>', {})
+      vim.keymap.set('v', '<leader>knt', "<cmd>'<,'>ZkNewFromTitleSelection<CR>", {})
+      vim.keymap.set('v', '<leader>knc', "<cmd>'<,'>ZkNewFromContentSelection<CR>", {})
+
+      vim.keymap.set('n', '<leader>kl', '<cmd>ZkNotes<CR>', {})
+      vim.keymap.set('n', '<leader>kt', "<cmd>'<,'>ZkTags<CR>", {})
+
+      vim.keymap.set('n', '<leader>kd', "<cmd>ZkNew { dir = 'journal/daily' }<CR>", {})
+    end,
+  },
+  {
     'kevinhwang91/nvim-ufo', -- Improved folding
     dependencies = {
       'kevinhwang91/promise-async',
