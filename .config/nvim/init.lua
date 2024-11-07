@@ -105,7 +105,7 @@ vim.keymap.set('n', '<M-S-l>', '<cmd>bn<CR>', {})
 vim.keymap.set('n', '<C-Tab>', '<cmd>bn<CR>', {})
 vim.keymap.set('n', '<C-S-Tab>', '<cmd>bp<CR>', {})
 
-vim.keymap.set('n', '<F6>', ':colorscheme tokyonight-night<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<F6>', ':colorscheme sorbet<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<F7>', ':colorscheme tokyonight-day<CR>', { noremap = true, silent = true })
 
 -- Copy filename:line_number to clipboard
