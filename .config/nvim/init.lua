@@ -99,6 +99,11 @@ vim.cmd [[
 
 vim.cmd [[autocmd BufLeave,FocusLost silent! wall]]
 
+-- When navigating up/down on wrapped lines, go the next/previous _screen_ line
+-- This might be confusing when navigating up/down over longer distances
+vim.keymap.set('n', 'j', 'gj', {})
+vim.keymap.set('n', 'k', 'gk', {})
+
 -- The order is "reversed" (j is previous, k is next) to look more like
 -- left <-> right
 vim.keymap.set('n', '<C-A-k>', '<cmd>bn<CR>', {})
