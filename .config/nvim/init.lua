@@ -73,6 +73,16 @@ vim.opt.scrolloff = 10
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
+if vim.g.neovide then
+  vim.o.guifont = 'Cascadia Mono:h12'
+
+  vim.g.neovide_scroll_animation_length = 0.15
+
+  vim.g.neovide_cursor_animation_length = 0
+
+  vim.g.neovide_hide_mouse_when_typing = true
+end
+
 -- Add aliases to catch typos
 vim.cmd [[
   command! W w
