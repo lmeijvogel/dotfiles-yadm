@@ -162,9 +162,9 @@ export SAVEHIST=10000000
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
-export VOLTA_HOME="$HOME/.volta"
 
-export PATH="$VOLTA_HOME/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 [ -s "/home/lennaert/.scm_breeze/scm_breeze.sh" ] && source "/home/lennaert/.scm_breeze/scm_breeze.sh"
+
+export ZK_NOTEBOOK_DIR="$HOME/my-notes"
