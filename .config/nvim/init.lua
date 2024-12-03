@@ -594,6 +594,11 @@ require('lazy').setup({
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for tsserver)
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+
+            if server_name == 'vstls' then
+              server.capabilities.documentFormattingProvider = false
+            end
+
             require('lspconfig')[server_name].setup(server)
           end,
         },
@@ -635,8 +640,8 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        typescript = { 'prettier' },
-        typescriptreact = { 'prettier' },
+        typescript = { 'eslint' },
+        typescriptreact = { 'eslint' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
