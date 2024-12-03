@@ -22,7 +22,7 @@ alias o='xdg-open'
 alias vi='nvim'
 alias vim='nvim'
 
-alias nq='swallow nvim-qt --nofork'
+alias nq='swallow ~/bin/neovide.AppImage'
 
 alias k1='kill %1'
 alias k91='kill -9 %1'
