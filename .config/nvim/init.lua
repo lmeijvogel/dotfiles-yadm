@@ -533,7 +533,12 @@ require('lazy').setup({
           vim.api.nvim_create_autocmd('BufWritePre', {
             buffer = event.buf,
             callback = function()
-              vim.cmd "EslintFixAll"
+              -- Never use vtsls
+              vim.lsp.buf.format({
+                filter = function(cl) return cl.name ~= "vtsls" end
+                ,
+                async = false
+              })
             end,
           })
         end,
@@ -609,10 +614,6 @@ require('lazy').setup({
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for tsserver)
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-
-            if server_name == 'vstls' then
-              server.capabilities.documentFormattingProvider = true
-            end
 
             require('lspconfig')[server_name].setup(server)
           end,
