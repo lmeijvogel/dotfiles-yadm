@@ -136,14 +136,23 @@ return {
         },
       }
 
-      vim.keymap.set('n', '<leader>kn', '<cmd>ZkNew<CR>', {})
-      vim.keymap.set('v', '<leader>knt', "<cmd>'<,'>ZkNewFromTitleSelection<CR>", {})
-      vim.keymap.set('v', '<leader>knc', "<cmd>'<,'>ZkNewFromContentSelection<CR>", {})
+      vim.keymap.set('n', '<leader>kn', '<cmd>ZkNew<CR>', { desc = "Create note" })
+      vim.keymap.set('v', '<leader>knt', "<cmd>'<,'>ZkNewFromTitleSelection<CR>",
+        { desc = "Extract to note with title from selection" })
+      vim.keymap.set('v', '<leader>knc', "<cmd>'<,'>ZkNewFromContentSelection<CR>",
+        { desc = "Extract to note with content from selection" })
 
-      vim.keymap.set('n', '<leader>kl', '<cmd>ZkNotes<CR>', {})
-      vim.keymap.set('n', '<leader>kt', "<cmd>'<,'>ZkTags<CR>", {})
+      vim.keymap.set('n', '<leader>kln', '<cmd>ZkNotes<CR>', { desc = "List all notes" })
+      vim.keymap.set('n', '<leader>kt', "<cmd>'<,'>ZkTags<CR>", { desc = "List all tags" })
 
-      vim.keymap.set('n', '<leader>kd', "<cmd>ZkNew { dir = 'journal/daily' }<CR>", {})
+      -- Journal
+      vim.keymap.set('n', '<leader>kj', "<cmd>ZkNew { dir = 'journal/daily' }<CR>",
+        { desc = "Show or create journal entry for today" })
+      vim.keymap.set('n', '<leader>klj',
+        function() require("zk.commands").get("ZkNotes")({ createdAfter = "7 days ago", tags = { "journal" } }) end,
+        { desc = "List daily notes (recent)" })
+      vim.keymap.set('n', '<leader>klJ', function() require("zk.commands").get("ZkNotes")({ tags = { "journal" } }) end,
+        { desc = "List daily notes (all)" })
     end,
   },
   {

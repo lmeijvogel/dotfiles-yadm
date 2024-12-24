@@ -1,1 +1,6 @@
-# {{format-date now "long"}}
+---
+title: {{format-date now "long"}}
+tags:
+  - journal
+---
+
