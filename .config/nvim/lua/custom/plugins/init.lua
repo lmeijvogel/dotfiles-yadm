@@ -147,12 +147,12 @@ return {
 
       -- Journal
       vim.keymap.set('n', '<leader>kj', "<cmd>ZkNew { dir = 'journal/daily' }<CR>",
-        { desc = "Show or create journal entry for today" })
+        { desc = "Show or create [j]ournal entry for today" })
       vim.keymap.set('n', '<leader>klj',
         function() require("zk.commands").get("ZkNotes")({ createdAfter = "7 days ago", tags = { "journal" } }) end,
-        { desc = "List daily notes (recent)" })
+        { desc = "List [j]ournal entries (recent)" })
       vim.keymap.set('n', '<leader>klJ', function() require("zk.commands").get("ZkNotes")({ tags = { "journal" } }) end,
-        { desc = "List daily notes (all)" })
+        { desc = "List [J]ournal entries (all)" })
     end,
   },
   {
