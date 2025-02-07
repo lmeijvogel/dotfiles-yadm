@@ -108,6 +108,7 @@ def current_sink
 end
 
 def shorten_for_bar(port, sink)
+  return "No sound outputs" if port.nil?
   return "Aureon" if sink["description"] =~ /Aureon/
 
   description = port["description"]
