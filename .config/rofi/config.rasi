@@ -1,0 +1,17 @@
+configuration {
+	modi: "window,run,ssh,drun";
+	font: "Coda Bold 11";
+	// Don't match 'categories': When I type 'system', that would always propose VirtualBox
+	drun-match-fields: "name,generic,exec,keywords";
+	drun-show-actions: false;
+	disable-history: false;
+	sidebar-mode: true;
+  timeout {
+      action: "kb-cancel";
+      delay:  0;
+  }
+  filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+  }
+}
