@@ -59,6 +59,11 @@ return {
   {
     'nvimdev/lspsaga.nvim',
     config = function()
+      -- Add workaround for lspsaga line diagnostics suddenly no longer working
+      vim.diagnostic.config {
+        severity_sort = true,
+      }
+
       require('lspsaga').setup {}
     end,
   },
