@@ -27,7 +27,13 @@ return {
     end,
   },
 
-  'numToStr/Comment.nvim',
+  {
+    'numToStr/Comment.nvim',
+    config = function()
+      vim.keymap.set('n', '<C-/>', '<Plug>(comment_toggle_linewise_current)<CR>', { desc = 'Comment current line' })
+      vim.keymap.set('v', '<C-/>', '<Plug>(comment_toggle_linewise_visual)<CR>', { desc = 'Comment selection' })
+    end,
+  },
   {
     'neomake/neomake',
     config = function()
