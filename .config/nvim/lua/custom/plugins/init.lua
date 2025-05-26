@@ -4,6 +4,58 @@
 -- See the kickstart.nvim README for more information
 return {
   {
+    'ibhagwan/fzf-lua',
+    config = function()
+      local fzf = require 'fzf-lua'
+
+      fzf.setup()
+
+      vim.keymap.set('n', '<leader>sf', function()
+        require('fzf-lua').files()
+      end, { desc = '[S]earch [F]iles' })
+
+      vim.keymap.set('n', '<leader>sw', function()
+        require('fzf-lua').grep_cword()
+      end, { desc = '[S]earch current [W]ord' })
+
+      vim.keymap.set('n', '<leader>sg', function()
+        require('fzf-lua').live_grep()
+      end, { desc = '[S]earch with [G]rep' })
+
+      vim.keymap.set('n', '<leader>sd', function()
+        require('fzf-lua').diagnostics_workspace()
+      end, { desc = '[S]earch [D]iagnostics' })
+
+      vim.keymap.set('n', '<leader>sr', function()
+        require('fzf-lua').resume()
+      end, { desc = '[S]earch [R]esume' })
+
+      vim.keymap.set('n', '<leader>s.', function()
+        require('fzf-lua').oldfiles()
+      end, { desc = '[S]earch Recent Files ("." for repeat)' })
+
+      vim.keymap.set('n', '<leader><leader>', function()
+        require('fzf-lua').buffers()
+      end, { desc = '[ ] Find existing buffers' })
+
+      vim.keymap.set('n', '<leader>sh', function()
+        require('fzf-lua').helptags()
+      end, { desc = '[S]earch [H]elp' })
+
+      vim.keymap.set('n', '<leader>sk', function()
+        require('fzf-lua').keymaps()
+      end, { desc = '[S]earch [K]eymaps' })
+      -- vim.keymap.set('n', '<leader><leader>', function()
+      --   builtin.buffers { sort_mru = true, ignore_current_buffer = true }
+      -- end, { desc = '[ ] Find existing buffers' })
+
+      vim.keymap.set('n', '<C-p>', function()
+        require('fzf-lua').files()
+      end, { desc = 'Search Files' })
+    end,
+  },
+
+  {
     'NeogitOrg/neogit',
     dependencies = {
       'nvim-lua/plenary.nvim',  -- required
