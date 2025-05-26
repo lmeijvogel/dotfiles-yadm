@@ -10,11 +10,6 @@ alias qgit='git'
 
 alias lg='lazygit'
 
-alias brrr='brr'
-alias brrrr='brr'
-alias brrrrr='brr'
-alias brrrrrr='brr'
-
 alias be='bundle exec'
 
 alias o='xdg-open'
@@ -26,8 +21,6 @@ alias nq='ge swallow ~/bin/neovide.AppImage'
 
 alias k1='kill %1'
 alias k91='kill -9 %1'
-
-alias sa='ssh-add'
 
 alias aptup='sudo apt-get update && sudo apt-get upgrade'
 
