@@ -76,6 +76,9 @@ bindsym $mod+j $exec ruby $HOME/bin/i3-change-focus-with-floating-window.rb down
 bindsym $mod+k $exec ruby $HOME/bin/i3-change-focus-with-floating-window.rb up
 bindsym $mod+l $exec ruby $HOME/bin/i3-change-focus-with-floating-window.rb right
 
+bindsym $mod+comma focus output left
+bindsym $mod+period focus output right
+
 # resize windows with the arrow keys
 bindsym $mod+Left resize shrink width 10 px or 10 ppt
 bindsym $mod+Down resize grow height 10 px or 10 ppt
