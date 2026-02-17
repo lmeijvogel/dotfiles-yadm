@@ -1,7 +1,7 @@
 mode "$go_to_mode" {
+      bindsym e $exec /usr/bin/microsoft-edge ; mode "default"
       bindsym s $exec i3-msg [class=Slack] focus ; mode "default"
-      bindsym t $exec i3-msg [class=Thunderbird] focus ; mode "default"
-      bindsym z $exec $HOME/bin/start-zoom lfx ; mode "default"
+      bindsym t $exec $HOME/bin/start-teams lfx ; mode "default"
       bindsym r $exec simplescreenrecorder ; mode "default"
       bindsym w mode "$webcam_mode"
       bindsym m mode "$work_mode"
