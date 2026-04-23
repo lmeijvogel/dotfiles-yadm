@@ -36,6 +36,7 @@
   lloo = "!f() { base_branch=$(git symbolic-ref --short HEAD); git log --color --decorate --oneline origin/${1:-$base_branch} | less --no-init --raw-control-chars --quit-if-one-screen; }; f"
   lom = log origin/master
 
+  lp = log --patch
   fp = fetch-and-prune
 
   # This prevents accidental pushing when I typo git-fp.
@@ -54,8 +55,13 @@
   rup5   = rebase --interactive --autosquash HEAD~5
 
   rom    = rebase origin/master
+  ro10   = rebase origin/version-lts/10.24
+
   from   = "!f() { git fetch ; git rebase origin/master; }; f"
   roo    = "!f() { base_branch=$(git symbolic-ref --short HEAD); git rebase origin/${1:-$base_branch}; }; f"
+
+  rom12 = rebase --onto origin/version-mts/10.12
+  rom18 = rebase --onto origin/version-mts/10.18
 
   cia = commit --amend --no-edit
   ciam = commit --amend
@@ -82,6 +88,8 @@
   rh2 = reset HEAD~2 --hard
   rh3 = reset HEAD~3 --hard
 
+  rhom = "!f() { base_branch=$(git symbolic-ref --short HEAD); git reset --hard origin/master; }; f"
+  rsom = "!f() { base_branch=$(git symbolic-ref --short HEAD); git reset --soft origin/master; }; f"
   rhoo = "!f() { base_branch=$(git symbolic-ref --short HEAD); git reset --hard origin/${1:-$base_branch}; }; f"
   rsoo = "!f() { base_branch=$(git symbolic-ref --short HEAD); git reset --soft origin/${1:-$base_branch}; }; f"
 
